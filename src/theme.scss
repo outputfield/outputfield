@@ -1,0 +1,25 @@
+// Color Palette =======================
+// add new colors here and don't forget colors.js!
+$white: #ffffff;
+
+// make sure to add new colors to the export function as well!
+:export {
+  white: $white;
+}
+
+// TYPOGRAPHY mixins =======================
+
+// EXAMPLE
+// @mixin display-large {
+//   font-family: Georgia, 'Times New Roman', Times, serif;
+//   font-size: 64px;
+//   line-height: 80px;
+//   font-weight: 500;
+//   letter-spacing: 0.015em;
+// }
+
+// We will eventually make a <Text/> component that leverages these mix-ins as they will be assigned as css classes.
+// ===== text.style.scss file =====
+// .display-large {
+//   @include display-large
+// }
