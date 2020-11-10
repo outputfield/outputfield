@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SignUp from './pages/SignUp/SignUp.component';
+import SignUp from './pages/SignUp/SignUpPage';
 
 export const App = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SignUpForm } from './SignUp.components'
 
-
+/*
 export const SignUp = () => {
 
   const [{username, password, repeatPassword}, setRegisterData] = useState({
@@ -47,3 +47,30 @@ export const SignUp = () => {
     </SignUpForm>
   );
 };
+*/
+
+export const SignUp = () => {
+
+  const [{username}, setRegisterData] = useState({
+    username: '',
+  })
+
+  const [error, setError] = useState('')
+
+  const register = (event: React.FormEvent) => {
+    event.preventDefault();
+  }
+  return (
+    <SignUpForm>
+      <label htmlFor="username">Email</label>
+      <input value={username} name="username" type="email" onChange={(event) => setRegisterData({
+        username: event.target.value,
+      })} />
+
+      <button type="submit"> SignUp </button>
+      {error.length > 0 && <p>{error}</p>}
+    </SignUpForm>
+  );
+};
+
+export default SignUp;
