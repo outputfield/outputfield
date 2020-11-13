@@ -1,5 +1,42 @@
 import React, { useState } from 'react';
 import { SignUpForm } from './SignUp.components'
+import client from '../../client.js';
+
+
+export const SignUp = () => {
+
+  const [{username}, setRegisterData] = useState({
+    username: '',
+  })
+
+  const [error, setError] = useState('')
+
+  const handler = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const register = {
+      _type: 'signupform',
+      data: {
+        email: username
+      }
+    }
+    const result = await client.create(register);
+  };
+
+  return (
+    <SignUpForm onSubmit={handler}>
+      <label htmlFor="username"> Email </label>
+      <input value={username} name="username" type="email" onChange={(event) => setRegisterData({
+        username: event.target.value,
+      })} />
+
+      <button type="submit"> SignUp </button>
+      {error.length > 0 && <p>{error}</p>}
+    </SignUpForm>
+  );
+};
+
+export default SignUp;
 
 /*
 export const SignUp = () => {
@@ -21,7 +58,7 @@ export const SignUp = () => {
     }
   }
   return (
-    <SignUpForm>
+    <SignUpForm onSubmit={register}>
       <label htmlFor="username">Username</label>
       <input value={username} name="username" onChange={(event) => setRegisterData({
         username: event.target.value,
@@ -48,29 +85,3 @@ export const SignUp = () => {
   );
 };
 */
-
-export const SignUp = () => {
-
-  const [{username}, setRegisterData] = useState({
-    username: '',
-  })
-
-  const [error, setError] = useState('')
-
-  const register = (event: React.FormEvent) => {
-    event.preventDefault();
-  }
-  return (
-    <SignUpForm>
-      <label htmlFor="username">Email</label>
-      <input value={username} name="username" type="email" onChange={(event) => setRegisterData({
-        username: event.target.value,
-      })} />
-
-      <button type="submit"> SignUp </button>
-      {error.length > 0 && <p>{error}</p>}
-    </SignUpForm>
-  );
-};
-
-export default SignUp;

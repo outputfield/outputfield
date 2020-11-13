@@ -14,7 +14,7 @@ export default {
       type: 'array',
       title: 'Page sections',
       of: [
-        { type: 'emailSignUp' },
+        { type: 'signupform' },
       ],
     },
   ],

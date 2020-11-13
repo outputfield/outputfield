@@ -8,9 +8,10 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import page from './documents/page';
 import siteConfig from './documents/siteConfig';
 import route from './documents/route';
+import signupform from './documents/signupform.js'
 
-// Landing page sections
-import emailSignUp from './objects/emailSignUp';
+// Object types
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,6 +23,6 @@ export default createSchema({
     page,
     siteConfig,
     route,
-    emailSignUp,
+    signupform,
   ])
 })
