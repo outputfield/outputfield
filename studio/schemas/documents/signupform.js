@@ -1,7 +1,10 @@
+import { MdPersonAdd } from "react-icons/md";
+
 export default {
   name: 'signupform',
   type: 'document',
   title: 'SignUp',
+  icon: MdPersonAdd,
   fields: [
     {
       name: 'title',
