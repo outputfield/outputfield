@@ -11,7 +11,10 @@ import route from './documents/route';
 import signupform from './documents/signupform.js'
 
 // Object types
-
+import emailsignup from './objects/emailsignup.js'
+import artist from './objects/artist.js'
+import textsection from './objects/textsection';
+import portableText from './objects/portableText';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,5 +27,9 @@ export default createSchema({
     siteConfig,
     route,
     signupform,
+    emailsignup,
+    artist,
+    textsection,
+    portableText,
   ])
 })

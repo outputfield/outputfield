@@ -1,7 +1,7 @@
 export default {
   type: 'object',
-  name: 'emailSignUp',
-  title: 'email signup',
+  name: 'emailsignup',
+  title: 'Email Signup Section',
   fields: [
     {
       name: 'heading',

@@ -8,7 +8,7 @@ export default {
       name: 'metadata',
     },
   ],
-  
+
   fields: [
     {
       name: 'title',
@@ -20,7 +20,8 @@ export default {
       type: 'array',
       title: 'Page sections',
       of: [
-        { type: 'signupform' },
+        { type: 'emailsignup' },
+        { type: 'textsection' },
       ],
     },
     {

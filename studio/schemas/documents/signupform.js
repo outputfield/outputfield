@@ -7,19 +7,23 @@ export default {
   icon: MdPersonAdd,
   fields: [
     {
-      name: 'title',
+      name: 'heading',
       type: 'string',
-      title: 'Title',
-    },
-    {
-      name: 'number',
-      type: 'number',
-      title: 'Number',
+      title: 'Heading',
     },
     {
       name: 'created_at',
       type: 'datetime',
       title: 'Created at',
+    },
+    {
+      name: 'artist',
+      type: 'reference',
+      to: [
+        {
+          type: 'artist',
+        },
+      ],
     },
     {
       name: 'data',
