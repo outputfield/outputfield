@@ -4,7 +4,7 @@
 # next.js build output
 .next
 
-# dotenv environment variables file (build for Zeit Now)
+# dotenv environment variables file
 .env
 .env.build
 
