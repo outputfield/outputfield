@@ -1,0 +1,71 @@
+@import "theme.scss";
+
+.root {
+  .buttonBorder {
+    position: absolute;
+    border: 1px solid purple;
+    height: inherit;
+    width: inherit;
+    border-radius: 100%;
+    transition: transform 1s;
+    &.buttonBorderFirst {
+      transform: rotate(-3deg);
+    }
+    &.buttonBorderSecond {
+      transform: rotate(2deg);
+    }
+  }
+  .buttonText {
+    height: inherit;
+    width: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transition: margin-left 1s;
+    padding-top: 48px;
+    &.buttonTextFirst {
+      margin-left: -4px;
+      position: absolute;
+      transform: unset;
+    }
+    &.buttonTextSecond {
+      margin-left: 4px;
+      position: absolute;
+    }
+  }
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: unset;
+  font-family: "Times New Roman", Times, serif;
+  border: none;
+  font-size: 36px;
+  line-height: 54px;
+  height: 105px;
+  width: 270px;
+  color: black;
+  font-style: italic;
+  text-transform: uppercase;
+  filter: blur(3px);
+  transition: filter 1s;
+  &:hover {
+    filter: blur(0);
+  }
+  &:hover > .buttonBorderFirst {
+    transform: rotate(0deg);
+  }
+  &:hover > .buttonBorderSecond {
+    transform: rotate(0deg);
+  }
+  &:hover > .buttonTextFirst {
+    margin-left: 0;
+  }
+  &:hover > .buttonTextSecond {
+    margin-left: 0;
+  }
+}
