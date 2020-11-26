@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SignUpForm } from './SignUp.components'
-import client from '../../client.js';
+import { SignUpForm } from './LandingPage/SignUp.components'
+import client from '../client.js';
 
 
 export const SignUp = () => {
