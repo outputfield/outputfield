@@ -1,8 +1,6 @@
-import React from 'react';
-import type { BaseApp } from 'next/app'
-import client from '../client'
+import React from "react";
+import "../styles/styles.global.scss";
 
-import '../styles/styles.global.scss';
 //import SignUp from './SignUp/SignUpPage';
 
 /*
@@ -12,10 +10,8 @@ import '../styles/styles.global.scss';
   It also has to be placed in the pages folder.
 */
 
-function App({ Component, pageProps }: BaseApp) {
-  return (
-    <Component {...pageProps} />
-  );
-};
+function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
 
 export default App;
