@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
-import { SignUpForm } from "./LandingPage/SignUp.components";
+import { SignUpForm } from "../components/LandingPage";
 
 export const SignUp = () => {
   const [{ username }, setRegisterData] = useState({
