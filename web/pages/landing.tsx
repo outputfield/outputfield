@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
 import { SignUpForm } from "./LandingPage/SignUp.components";
 
@@ -20,7 +21,7 @@ export const SignUp = () => {
       const signupResponse = await sendSignup(signupRequest);
       console.log("signup response", signupResponse);
     } catch (e) {
-      console.error("failed to send signup request", e);
+      setError(getErrorMessage(e));
     }
   };
 
