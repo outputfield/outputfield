@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
-import { SignUpForm } from './LandingPage/SignUp.components'
-import client from '../client.js';
-
+import React, { useState } from "react";
+import { getErrorMessage } from "../api-client/errors";
+import { sendSignup, SignupRequest } from "../api-client/signup";
+import { SignUpForm } from "./LandingPage/SignUp.components";
 
 export const SignUp = () => {
+  const [{ username }, setRegisterData] = useState({
+    username: "",
+  });
 
-  const [{username}, setRegisterData] = useState({
-    username: '',
-  })
-
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
 
   const handler = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const register = {
-      _type: 'signupform',
-      data: {
-        email: username
-      }
+    const signupRequest: SignupRequest = {
+      email: username,
+    };
+
+    try {
+      const signupResponse = await sendSignup(signupRequest);
+      console.log("signup response", signupResponse);
+    } catch (e) {
+      setError(getErrorMessage(e));
     }
-    const result = await client.create(register);
   };
 
   return (
     <SignUpForm onSubmit={handler}>
       <label htmlFor="username"> Email </label>
-      <input value={username} name="username" type="email" onChange={(event) => setRegisterData({
-        username: event.target.value,
-      })} />
+      <input
+        value={username}
+        name="username"
+        type="email"
+        onChange={(event) =>
+          setRegisterData({
+            username: event.target.value,
+          })
+        }
+      />
 
       <button type="submit"> SignUp </button>
       {error.length > 0 && <p>{error}</p>}
