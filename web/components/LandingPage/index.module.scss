@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.ellipse {
+    width: 196px;
+    height: 83px;
+    border-radius: 98px / 41px;
+    border: 2px solid #ff0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform-origin: center center;
+    filter: blur(1px);
+    transition: transform 1s ease, filter 1s ease;
+}
+
+#ellipse1 {
+    transform: rotate(6deg);
+}
+#ellipse2 {
+    transform: rotate(-6deg);
+    opacity: 0.75;
+}
+
+.signuptext {
+    width: 200px;
+    height:87px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: serif;
+    font-style: italic;
+    font-size: 32px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    user-select: none;
+    filter: blur(1px);
+    transition: transform 1s ease, left 1s ease, filter 1s ease;
+}
+#signuptext1{
+    left:-3px;
+}
+#signuptext2{
+    left:3px;
+    opacity: 0.75;
+}

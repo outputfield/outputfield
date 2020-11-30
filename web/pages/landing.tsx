@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
-import { SignUpForm } from "../components/LandingPage";
+import { SignUpForm, Label, Input, Signupbutton } from "../components/LandingPage/index.ts";
+import styles from '../components/LandingPage/index.module.scss';
+
+//TRY
+//import Signup from '../components/sections/signup.tsx';
 
 export const SignUp = () => {
   const [{ username }, setRegisterData] = useState({
@@ -26,22 +30,25 @@ export const SignUp = () => {
   };
 
   return (
-    <SignUpForm onSubmit={handler}>
-      <label htmlFor="username"> Email </label>
-      <input
-        value={username}
-        name="username"
-        type="email"
-        onChange={(event) =>
-          setRegisterData({
-            username: event.target.value,
-          })
-        }
-      />
-
-      <button type="submit"> SignUp </button>
-      {error.length > 0 && <p>{error}</p>}
-    </SignUpForm>
+    <div>
+      <SignUpForm onSubmit={handler}>
+        <Label htmlFor="username"> Sign up for launch updates. </Label>
+        <Input value={username}
+                   name="username"
+                   type="email"
+                   onChange={(event) => setRegisterData({
+                     username: event.target.value,
+                   })}>
+        </Input>
+        <Signupbutton type="submit">
+          <div id="ellipse1" className={styles.ellipse}></div>
+    			<div id="ellipse2" className={styles.ellipse}></div>
+    			<div id="signuptext1" className={styles.signuptext}>SIGN UP</div>
+    			<div id="signuptext2" className={styles.signuptext}>SIGN UP</div>
+        </Signupbutton>
+        {error.length > 0 && <p>{error}</p>}
+      </SignUpForm>
+  </div>
   );
 };
 
