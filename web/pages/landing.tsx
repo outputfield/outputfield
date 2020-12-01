@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
-import { SignUpForm, Label, Input, Signupbutton } from "../components/LandingPage/index.ts";
+import { Input, Label, Signupbutton, SignUpForm } from "../components/LandingPage";
 import styles from '../components/LandingPage/index.module.scss';
 
 //TRY
