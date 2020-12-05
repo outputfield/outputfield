@@ -38,47 +38,6 @@ export const SignUp = () => {
 
   return (
     <div>
-      <div>
-        <Text
-          size="H1"
-          textAlign="left"
-          text="Output Field is collaborative"
-          color={colors.black}
-        />
-      </div>
-      <div>
-        <Text
-          size="H2"
-          textAlign="left"
-          text="Output Field is collaborative"
-          color={colors.black}
-        />
-      </div>
-      <div>
-        <Text
-          size="T1"
-          textAlign="left"
-          text="Output Field is collaborative"
-          color={colors.black}
-        />
-      </div>
-      <div>
-        <Text
-          size="T2"
-          textAlign="left"
-          text="Output Field is collaborative"
-          color={colors.black}
-        />
-      </div>
-      <div>
-        <Text
-          size="T3"
-          textAlign="left"
-          text="Output Field is collaborative"
-          color={colors.black}
-        />
-      </div>
-
       <SignUpForm onSubmit={handler}>
         <Label htmlFor="username"> Sign up for launch updates. </Label>
         <Input
