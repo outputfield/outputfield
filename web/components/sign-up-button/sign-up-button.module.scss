@@ -3,7 +3,7 @@
 .root {
   .buttonBorder {
     position: absolute;
-    border: 1px solid purple;
+    border: 1px solid $black;
     height: inherit;
     width: inherit;
     border-radius: 100%;
@@ -42,15 +42,11 @@
   text-align: center;
   box-sizing: border-box;
   background-color: unset;
-  font-family: "Times New Roman", Times, serif;
   border: none;
-  font-size: 36px;
-  line-height: 54px;
   height: 105px;
   width: 270px;
-  color: black;
-  font-style: italic;
-  text-transform: uppercase;
+  @include T2;
+  color: $black;
   filter: blur(3px);
   transition: filter 1s;
   &:hover {

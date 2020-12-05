@@ -1,5 +1,5 @@
 // This file is so that we can pass hexcodes in Javascript/Typscript. It requires alot of work to be able to export from SCSS to Typescript
-export const theme = {
+export const colors = {
   white: "#fff",
   black: "#000000",
   primary: "#0000FF",
@@ -8,4 +8,4 @@ export const theme = {
   disabled: "#7B61FF",
 };
 
-export default theme;
+export default colors;
