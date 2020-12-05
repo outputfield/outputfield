@@ -2,6 +2,10 @@ import { storiesOf } from "@storybook/react";
 import React, { CSSProperties } from "react";
 import colors from "../colors";
 
+export default {
+  title: "ui-kit/color",
+};
+
 export interface ColorSwatchProps {
   hexValue: string;
   colorKey: string;
@@ -26,15 +30,13 @@ const ColorSwatch = (props: ColorSwatchProps) => {
   );
 };
 
-storiesOf("Colors", module).add("Color Palette", () => {
-  return (
+export const Colors = () => (
+  <div>
+    <div className="h1">Colors</div>
     <div>
-      <div className="h1">Colors</div>
-      <div>
-        {Object.keys(colors).map((key) => (
-          <ColorSwatch hexValue={colors[key]} colorKey={key} />
-        ))}
-      </div>
+      {Object.keys(colors).map((key) => (
+        <ColorSwatch hexValue={colors[key]} colorKey={key} />
+      ))}
     </div>
-  );
-});
+  </div>
+);

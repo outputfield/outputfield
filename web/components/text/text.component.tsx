@@ -1,11 +1,10 @@
 import React from "react";
 import { ITextProps, IStyles } from "./text.model";
-import "./text.module.scss";
 import classNames from "classnames";
 
 export const Text = ({
   textAlign = "left",
-  color = "inherit",
+  color,
   size,
   text,
   marginTop,
@@ -22,8 +21,8 @@ export const Text = ({
     marginLeft,
   };
 
-  const textClass = classNames("text", {
-    test: size === "H1",
+  const textClass = classNames("text-component", {
+    H1: size === "H1",
     H2: size === "H2",
     T1: size === "T1",
     T2: size === "T2",

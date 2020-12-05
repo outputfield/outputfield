@@ -42,3 +42,9 @@ a {
 .T3 {
   @include T3;
 }
+
+.text-component {
+  display: inline-flex;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
