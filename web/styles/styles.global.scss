@@ -1,11 +1,44 @@
-body{
-    margin: 0px;
-    background-color: #000000;
-    color: #ffffff;
-    font-size: 26px;
-    font-family: sans-serif;
+@import "../theme.scss";
+
+@font-face {
+  font-family: "Authentic Sans";
+  src: local("AUTHENTICSans-90"),
+    url(../assets/fonts/AUTHENTICSans-90.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Times New Roman MT Std";
+  src: local("TimesNewRomanMTStd-CondIt.otf"),
+    url(../assets/fonts/TimesNewRomanMTStd-CondIt.otf) format("opentype");
+}
+
+body {
+  margin: 0px;
+  background-color: $white;
+  color: $black;
+  font-size: 26px;
+  font-family: sans-serif;
 }
 
 a {
-  color: #ffffff;
+  color: $white;
+}
+
+.H1 {
+  @include H1;
+}
+.H2 {
+  @include H2;
+}
+
+.T1 {
+  @include T1;
+}
+
+.T2 {
+  @include T2;
+}
+
+.T3 {
+  @include T3;
 }
