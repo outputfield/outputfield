@@ -1,0 +1,24 @@
+@import "../../theme.scss";
+
+.text {
+  display: inline-flex;
+  &.H1 {
+    @include H1;
+  }
+}
+
+.H1 {
+  @include H1;
+}
+.H2 {
+  @include H2;
+}
+.T1 {
+  @include T1;
+}
+.T2 {
+  @include T2;
+}
+.T3 {
+  @include T3;
+}
