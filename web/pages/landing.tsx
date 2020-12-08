@@ -6,7 +6,7 @@ import {
   Label,
   Signupbutton,
   SignUpForm,
-} from "../components/LandingPage";
+} from "../components/landingPage";
 import styles from "../components/LandingPage/index.module.scss";
 import { Text } from "../components/text/text.component";
 import colors from "../colors";
