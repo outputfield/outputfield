@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
 import {
@@ -7,50 +8,44 @@ import {
   Signupbutton,
   SignUpForm,
 } from "../components/landingPage";
-import styles from "../components/LandingPage/index.module.scss";
+import styles from "../components/landingPage/index.module.scss";
 import { Text } from "../components/text/text.component";
 import colors from "../colors";
 
-//TRY
-//import Signup from '../components/sections/signup.tsx';
+export default () => {
+  /**
+  Resembles the landing page.
+    */
+  const [email, setRegisterData] = useState("");
+  const [state, setState] = useState("IDLE");
+  const [error, setError] = useState(null);
 
-export const SignUp = () => {
-  const [{ username }, setRegisterData] = useState({
-    username: "",
-  });
-
-  const [error, setError] = useState("");
-
-  const handler = async (event: React.FormEvent) => {
+  const subscribe = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    const signupRequest: SignupRequest = {
-      email: username,
-    };
+    setState("loading");
+    setError(null);
 
     try {
-      const signupResponse = await sendSignup(signupRequest);
-      console.log("signup response", signupResponse);
-    } catch (e) {
-      setError(getErrorMessage(e));
+      const response = await axios.post("/api/signup", { email });
+      setState("success");
+    } catch (event) {
+      setError(getErrorMessage(event));
+      setState("error");
     }
   };
 
   return (
     <div>
-      <SignUpForm onSubmit={handler}>
-        <Label htmlFor="username"> Sign up for launch updates. </Label>
+      <SignUpForm onSubmit={subscribe}>
+        <Label> Sign up for launch updates. </Label>
         <Input
-          value={username}
-          name="username"
-          type="email"
+          value={email}
+          type="text"
           onChange={(event) =>
-            setRegisterData({
-              username: event.target.value,
-            })
+            setRegisterData(event.target.value)
           }
         ></Input>
-        <Signupbutton type="submit">
+        <Signupbutton>
           <div id="ellipse1" className={styles.ellipse}></div>
           <div id="ellipse2" className={styles.ellipse}></div>
           <div id="signuptext1" className={styles.signuptext}>
@@ -60,58 +55,8 @@ export const SignUp = () => {
             SIGN UP
           </div>
         </Signupbutton>
-        {error.length > 0 && <p>{error}</p>}
       </SignUpForm>
     </div>
-  );
+
+  )
 };
-
-export default SignUp;
-
-/*
-export const SignUp = () => {
-
-  const [{username, password, repeatPassword}, setRegisterData] = useState({
-    username: '',
-    password: '',
-    repeatPassword: ''
-  })
-
-  const [error, setError] = useState('')
-
-  const register = (event: React.FormEvent) => {
-    event.preventDefault();
-    if(password == repeatPassword) {
-      // perform API call
-    } else {
-      setError('passwords do not match.')
-    }
-  }
-  return (
-    <SignUpForm onSubmit={register}>
-      <label htmlFor="username">Username</label>
-      <input value={username} name="username" onChange={(event) => setRegisterData({
-        username: event.target.value,
-        password,
-        repeatPassword
-      })} />
-
-      <label htmlFor="password">Password</label>
-      <input value={password} name="password" type="password" onChange={(event) => setRegisterData({
-        username,
-        password: event.target.value,
-        repeatPassword
-      })} />
-
-      <label htmlFor="repeatPassword">Repeat Password</label>
-      <input value={repeatPassword} name="repeatPassword" type="password" onChange={(event) => setRegisterData({
-        username,
-        password,
-        repeatPassword: event.target.value
-      })} />
-      <button type="submit"> Register </button>
-      {error.length > 0 && <p>{error}</p>}
-    </SignUpForm>
-  );
-};
-*/

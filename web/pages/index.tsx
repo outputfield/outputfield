@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import SignUp from './landing';
 import Link from 'next/link'
 import Router from 'next/router'
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";

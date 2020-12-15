@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export interface SignupRequest {
   email: string;
 }
@@ -8,6 +9,6 @@ export interface SignupRequest {
 export type SignupResponse = SignupRequest;
 
 export const sendSignup = async (request: SignupRequest) => {
-  const response = await axios.post("/api/signup", request);
+  const response = await axios.post("api/signup", request);
   return response.data as SignupResponse;
 };
