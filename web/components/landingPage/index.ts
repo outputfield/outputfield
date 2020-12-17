@@ -16,7 +16,12 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-    font-size: 26px;
+  font-family: "Authentic Sans";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 39px;
+  letter-spacing: -0.01em;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -25,17 +30,17 @@ export const Input = styled.input`
     outline: none;
     border: none;
     background: none;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #000;
     margin-bottom: 5px;
     padding: 0px 0px 5px 0px;
     height: 30px;
-    color: #fff;
-    font-family: sans-serif;
+    color: #000;
     width: 425px;
     caret-color: #ffff00;
     position: absolute;
     top: 10px;
     left: 0px;
+    cursor: inherit;
 `;
 
 export const Signupbutton = styled.button`
@@ -70,6 +75,14 @@ export const Signupbutton = styled.button`
       transform: rotate(0deg);
       filter: blur(0px);
     }
+`;
+
+export const Intro = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 800px;
+  z-index: 1;
 `;
 
 /*

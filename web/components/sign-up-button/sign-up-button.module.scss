@@ -45,6 +45,7 @@
   border: none;
   height: 105px;
   width: 270px;
+  cursor: inherit;
   @include T2;
   color: $black;
   filter: blur(3px);
