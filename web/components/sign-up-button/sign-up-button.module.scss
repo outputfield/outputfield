@@ -3,11 +3,8 @@
 $buttonBorderBase: 2px solid $black;
 $buttonBorderHover: 2px solid $primary;
 $dropshadow: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
-$cubicBezierFirstDefault: cubic-bezier(0.6, -0.28, 0.83, 1);
-$cubicBezierSecondDefault: cubic-bezier(0.17, 0, 0.73, 0.04);
-
-$cubicBezierFirstHover: cubic-bezier(0.17, 0.89, 0.83, 1);
-$cubicBezierSecondHover: cubic-bezier(0.17, 0, 0.32, 1.27);
+$ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
+// $transition-out: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 
 .root {
   &:focus {
@@ -19,13 +16,16 @@ $cubicBezierSecondHover: cubic-bezier(0.17, 0, 0.32, 1.27);
     height: inherit;
     width: inherit;
     border-radius: 100%;
-    transition: transform 1s, border-color 1s;
+    transition: transform 1s, border-color 1s, margin-left 1s;
+    transition-timing-function: $ease-in-out;
     filter: $dropshadow;
     &.buttonBorderFirst {
       transform: rotate(-5deg);
+      margin-left: -1px;
     }
     &.buttonBorderSecond {
       transform: rotate(4deg);
+      margin-left: 1px;
     }
   }
 
@@ -38,6 +38,7 @@ $cubicBezierSecondHover: cubic-bezier(0.17, 0, 0.32, 1.27);
     right: 0;
     text-align: center;
     transition: margin-left 1s, color 1s;
+    transition-timing-function: $ease-in-out;
     padding-top: 48px;
     &.buttonTextFirst {
       margin-left: -4px;
@@ -57,6 +58,7 @@ $cubicBezierSecondHover: cubic-bezier(0.17, 0, 0.32, 1.27);
     background-color: $white;
     border-radius: 100%;
     transition: transform 1s;
+    transition-timing-function: $ease-in-out;
     &.buttonFillFirst {
       transform: rotate(-5deg);
     }
@@ -77,8 +79,9 @@ $cubicBezierSecondHover: cubic-bezier(0.17, 0, 0.32, 1.27);
   width: 100%;
   cursor: inherit;
   color: $black;
-  filter: blur(0.1px);
+  filter: blur(4.8px);
   transition: filter 1s;
+  transition-timing-function: $ease-in-out;
 
   &:hover {
     filter: blur(0);
