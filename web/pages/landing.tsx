@@ -39,10 +39,8 @@ export default () => {
         <Text
           text="Output Field is a virtual space for collaboration and experimentation. It is a digital showcase and directory of artists across disciplines, platforms, and time zones. We are a placeless collective reframing our creative practice by fusing mediums."
           size="H1"
+          marginBottom={72}
         />
-        <br />
-        <br />
-        <br />
         <Text text="We exhibit work that is collaborative." size="H1" />
       </Intro>
       <Donut text="OUTPUT FIELD" />
