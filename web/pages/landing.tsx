@@ -11,7 +11,7 @@ import { Donut } from "../components/donut/donut.component";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import colors from "../colors";
 
-export default () => {
+const Landing = () => {
   /**
   Resembles the landing page.
     */
@@ -57,3 +57,4 @@ export default () => {
     </Cursor>
   );
 };
+export default Landing;
