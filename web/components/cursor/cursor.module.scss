@@ -1,0 +1,16 @@
+@import "theme.scss";
+
+.cursorx{
+  z-index: -10;
+  opacity: 0.5;
+  width: 2px;
+  height: 3000px;
+  position: fixed;
+}
+.cursory{
+  z-index: -10;
+  opacity: 0.5;
+  width: 6000px;
+  height: 2px;
+  position: fixed;
+}

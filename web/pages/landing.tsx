@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
-import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
-import { Input, Label, SignUpForm } from "../components/landingPage";
+
+import { Input, Label, SignUpForm, Intro } from "../components/landingPage";
 import styles from "../components/landingPage/index.module.scss";
 import { Text } from "../components/text/text.component";
+import { Cursor } from "../components/cursor/cursor.component";
+import { Donut } from "../components/donut/donut.component";
+import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import colors from "../colors";
 
 export default () => {
@@ -31,16 +34,28 @@ export default () => {
   };
 
   return (
-    <div>
+    <Cursor color="#FF0000" strokeLength={20}>
+      <Intro>
+        <Text
+          text="Output Field is a virtual space for collaboration and experimentation. It is a digital showcase and directory of artists across disciplines, platforms, and time zones. We are a placeless collective reframing our creative practice by fusing mediums."
+          size="H1"
+        />
+        <br />
+        <br />
+        <br />
+        <Text text="We exhibit work that is collaborative." size="H1" />
+      </Intro>
+      <Donut text="OUTPUT FIELD" />
       <SignUpForm onSubmit={subscribe}>
-        <Label> Sign up for launch updates. </Label>
         <Input
           value={email}
           type="text"
           onChange={(event) => setRegisterData(event.target.value)}
         ></Input>
-        <SignUpButton buttonText="Sign Up" />
+        <Text text="Sign up for launch updates" size="H2" marginTop={47} />
+        <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100} />
       </SignUpForm>
-    </div>
+      <script> </script> {/*chrome form transition bug fix*/}
+    </Cursor>
   );
 };

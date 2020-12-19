@@ -1,0 +1,40 @@
+@import "../../theme.scss";
+
+.donut{
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  margin: 0 -1150px -500px 0;
+  filter: blur(5px);
+  transition: filter 1s ease;
+  z-index: 0;
+  pointer-events: none;
+
+  &.clear{
+    filter: blur(0px);
+  }
+
+  & path{
+    fill:none;
+  }
+
+  & text{
+    @include H1;
+    position: relative;
+    fill:#000000;
+    animation: rotation 180s infinite linear;
+    transform-origin: center center;
+    user-select: none;
+    pointer-events: all;
+    z-index: 1;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(359deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
