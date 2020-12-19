@@ -9,7 +9,6 @@ import { Text } from "../components/text/text.component";
 import { Cursor } from "../components/cursor/cursor.component";
 import { Donut } from "../components/donut/donut.component";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
-import colors from "../colors";
 
 const Landing = () => {
   /**
@@ -51,7 +50,9 @@ const Landing = () => {
           onChange={(event) => setRegisterData(event.target.value)}
         ></Input>
         <Text text="Sign up for launch updates" size="H2" marginTop={47} />
-        <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100} />
+        <div className={styles.signUpButtonContainer}>
+          <SignUpButton buttonText="sign up" />
+        </div>
       </SignUpForm>
       <script> </script> {/*chrome form transition bug fix*/}
     </Cursor>
