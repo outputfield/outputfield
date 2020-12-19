@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent } from "react";
 
 export interface ISignUpButtonProps {
   buttonText: string | JSX.Element;
@@ -7,6 +7,7 @@ export interface ISignUpButtonProps {
   marginBottom?: number | string;
   marginLeft?: number | string;
   marginRight?: number | string;
+  width: number;
 }
 
 export interface ISignUpButtonStyles {
@@ -14,4 +15,5 @@ export interface ISignUpButtonStyles {
   marginRight?: number | string;
   marginTop?: number | string;
   marginBottom?: number | string;
+  width: number;
 }

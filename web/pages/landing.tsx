@@ -50,9 +50,8 @@ const Landing = () => {
           onChange={(event) => setRegisterData(event.target.value)}
         ></Input>
         <Text text="Sign up for launch updates" size="H2" marginTop={47} />
-        <div className={styles.signUpButtonContainer}>
-          <SignUpButton buttonText="sign up" />
-        </div>
+        {/* please remove the marginLeft={140} once the textInput component is styled/done */}
+        <SignUpButton buttonText="sign up" width={240} marginLeft={140} />
       </SignUpForm>
       <script> </script> {/*chrome form transition bug fix*/}
     </Cursor>
