@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { getErrorMessage } from "../api-client/errors";
 import { sendSignup, SignupRequest } from "../api-client/signup";
-import {
-  Input,
-  Label,
-  Signupbutton,
-  SignUpForm,
-} from "../components/landingPage";
+import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
+import { Input, Label, SignUpForm } from "../components/landingPage";
 import styles from "../components/landingPage/index.module.scss";
 import { Text } from "../components/text/text.component";
 import colors from "../colors";
@@ -41,22 +37,10 @@ export default () => {
         <Input
           value={email}
           type="text"
-          onChange={(event) =>
-            setRegisterData(event.target.value)
-          }
+          onChange={(event) => setRegisterData(event.target.value)}
         ></Input>
-        <Signupbutton>
-          <div id="ellipse1" className={styles.ellipse}></div>
-          <div id="ellipse2" className={styles.ellipse}></div>
-          <div id="signuptext1" className={styles.signuptext}>
-            SIGN UP
-          </div>
-          <div id="signuptext2" className={styles.signuptext}>
-            SIGN UP
-          </div>
-        </Signupbutton>
+        <SignUpButton buttonText="Sign Up" />
       </SignUpForm>
     </div>
-
-  )
+  );
 };
