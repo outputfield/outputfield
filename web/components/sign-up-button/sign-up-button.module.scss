@@ -2,7 +2,9 @@
 
 $buttonBorderBase: 2px solid $black;
 $buttonBorderHover: 2px solid $primary;
-$dropshadow: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
+
+$dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
+$dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
 $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
 // $transition-out: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 
@@ -16,9 +18,9 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     height: inherit;
     width: inherit;
     border-radius: 100%;
-    transition: transform 1s, border-color 1s, margin-left 1s;
+    transition: transform 1s, border-color 1s, margin-left 1s, filter 1s;
     transition-timing-function: $ease-in-out;
-    filter: $dropshadow;
+    filter: $dropshadowDefault;
     &.buttonBorderFirst {
       transform: rotate(-5deg);
       margin-left: -1px;
@@ -89,6 +91,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   &:hover > .buttonBorderFirst {
     transform: rotate(0deg);
     border: $buttonBorderHover;
+    filter: $dropshadowHover;
   }
   &:hover > .buttonBorderSecond {
     transform: rotate(0deg);
