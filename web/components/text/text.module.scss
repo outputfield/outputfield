@@ -1,0 +1,17 @@
+@use '../../theme.scss';
+
+.H1 {
+  @include theme.H1;
+}
+.H2 {
+  @include theme.H2;
+}
+.T1 {
+  @include theme.T1;
+}
+.T2 {
+  @include theme.T2;
+}
+.T3 {
+  @include theme.T3;
+}

@@ -1,10 +1,18 @@
 module.exports = {
-  "stories": [
+  stories: [
     "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  "addons": [
+  addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
-  ]
-}
+    "@storybook/addon-essentials",
+    {
+      name: "@storybook/preset-scss",
+      options: {
+        sassLoaderOptions: {
+          implementation: require("sass"),
+        },
+      },
+    },
+  ],
+};

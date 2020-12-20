@@ -1,9 +1,9 @@
-@import "theme.scss";
+@use "theme.scss";
 
 .root {
   .buttonBorder {
     position: absolute;
-    border: 1px solid $black;
+    border: 1px solid theme.$black;
     height: inherit;
     width: inherit;
     border-radius: 100%;
@@ -46,8 +46,8 @@
   height: 105px;
   width: 270px;
   cursor: inherit;
-  @include T2;
-  color: $black;
+  @include theme.T2;
+  color: theme.$black;
   filter: blur(3px);
   transition: filter 1s;
   &:hover {
