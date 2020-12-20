@@ -23,25 +23,6 @@ a {
   color: $black;
 }
 
-.H1 {
-  @include H1;
-}
-.H2 {
-  @include H2;
-}
-
-.T1 {
-  @include T1;
-}
-
-.T2 {
-  @include T2;
-}
-
-.T3 {
-  @include T3;
-}
-
 .text-component {
   display: inline-flex;
   margin-bottom: 0px;

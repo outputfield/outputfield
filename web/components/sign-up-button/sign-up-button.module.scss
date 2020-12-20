@@ -1,5 +1,16 @@
 @import "theme.scss";
 
+@mixin T2 {
+  font-family: "Times New Roman MT Std";
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 54px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
 .root {
   .buttonBorder {
     position: absolute;

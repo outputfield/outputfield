@@ -1,6 +1,16 @@
 @import "../../theme.scss";
 
-.donut{
+@mixin H1 {
+  font-family: "Authentic Sans";
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -0.011em;
+  text-align: left;
+}
+
+.donut {
   position: fixed;
   right: 0px;
   bottom: 0px;
@@ -10,18 +20,18 @@
   z-index: 0;
   pointer-events: none;
 
-  &.clear{
+  &.clear {
     filter: blur(0px);
   }
 
-  & path{
-    fill:none;
+  & path {
+    fill: none;
   }
 
-  & text{
+  & text {
     @include H1;
     position: relative;
-    fill:#000000;
+    fill: #000000;
     animation: rotation 180s infinite linear;
     transform-origin: center center;
     user-select: none;
