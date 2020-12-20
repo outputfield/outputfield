@@ -1,14 +1,4 @@
-@import "../../theme.scss";
-
-@mixin H1 {
-  font-family: "Authentic Sans";
-  font-size: 34px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 50px;
-  letter-spacing: -0.011em;
-  text-align: left;
-}
+@use "../../theme.scss";
 
 .donut {
   position: fixed;
@@ -29,7 +19,7 @@
   }
 
   & text {
-    @include H1;
+    @include theme.H1;
     position: relative;
     fill: #000000;
     animation: rotation 180s infinite linear;
