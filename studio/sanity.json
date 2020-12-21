@@ -16,8 +16,7 @@
     "@sanity/dashboard",
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
-    "dashboard-widget-netlify",
-    "@sanity/vision"
+    "dashboard-widget-netlify"
   ],
   "env": {
     "development": {

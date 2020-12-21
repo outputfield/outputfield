@@ -15,7 +15,6 @@ import emailsignup from './objects/emailsignup.js'
 import artist from './objects/artist.js'
 import textsection from './objects/textsection';
 import portableText from './objects/portableText';
-import field from './objects/field';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,6 +31,5 @@ export default createSchema({
     artist,
     textsection,
     portableText,
-    field,
   ])
 })
