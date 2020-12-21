@@ -22,6 +22,7 @@ export default {
       of: [
         { type: 'emailsignup' },
         { type: 'textsection' },
+        { type: 'field' },
       ],
     },
     {

@@ -16,7 +16,12 @@ import { Donut } from "../components/donut/donut.component";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import colors from "../colors";
 
-export default () => {
+const page = "Frontpage";
+
+const Landing = (props) => {
+  const {
+    pageData
+  } = props
   /**
   Resembles the landing page.
     */
@@ -40,7 +45,7 @@ export default () => {
 
   return (
     <Cursor color="#FF0000" strokeLength={20}>
-      <Intro><Text text="Output Field is a virtual space for collaboration and experimentation. It is a digital showcase and directory of artists across disciplines, platforms, and time zones. We are a placeless collective reframing our creative practice by fusing mediums." size="H1"/><br/><br/><br/><Text text="We exhibit work that is collaborative." size="H1"/></Intro>
+      <Intro>{pageData.introduction.map((t)=>{return <Text text={t} size={"H1"}/>})}</Intro>
       <Donut text="OUTPUT FIELD"/>
       <SignUpForm onSubmit={subscribe}>
         <Input
@@ -58,3 +63,14 @@ export default () => {
 
   )
 };
+
+Landing.getInitialProps = async function (context) {
+  try{
+    const host = (context.req.headers.host.split(":")[0]=="localhost")?"http://"+context.req.headers.host:"";
+    const response = await axios.post(host+"/api/page-content", {page});
+    return {pageData: response.data};
+  } catch (event) {
+    throw getErrorMessage(event);
+  }
+}
+export default Landing;
