@@ -20,6 +20,16 @@ const addSignupToSanity = async (request: SignupRequest) => {
   return await client.create(register);
 };
 
+// Helper to validate email based on regex
+const EMAIL_REGEX = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+function validateEmail (email) {
+  if (typeof email === 'string' && email.length > 5 && email.length < 61 && EMAIL_REGEX.test(email)) {
+    return email.toLowerCase();
+  } else {
+    return false;
+  }
+}
 
 function getRequestParams(email) {
   /**
@@ -71,22 +81,36 @@ export default async (
   const signupRequest = req.body as SignupRequest;
 
   if (typeof signupRequest?.email !== "string") {
-    throw new Error("Missing email");
+    return sendError(res, 501, "Missing email.");
   }
+  if (!email || !email.length) {
+    return sendError(res, 501, "Missing email.");
+  }
+
+  if (!validateEmail(email)){
+    return sendError(res, 502, "Please enter valid email.");
+  }
+
+
 
   try {
     const { url, data, headers } = getRequestParams(email);
+
     const response = await axios.post(url, data, { headers });
 
     await addSignupToSanity(signupRequest);
 
     return res.status(200).json({ email: signupRequest.email });
   } catch (event) {
-    if (event.statusCode === 403) {
-      console.error("Mailchimp isn't authorized!!");
-      return sendError(res, 500, "Internal auth issue");
-    } else {
-      return sendError(res, 500, "Failed to send to mailchimp");
+
+    if (event.response.status === 400) {
+      return sendError(res, 400, "Email is already used.");
+    }
+    else if (event.response.status === 403) {
+      return sendError(res, 403, "Internal auth issue");
+    }
+    else {
+      return sendError(res, 500, "Failed to subscribe.");
     }
   }
 };

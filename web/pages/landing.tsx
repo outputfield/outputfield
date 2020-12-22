@@ -5,9 +5,9 @@ import { sendSignup, SignupRequest } from "../api-client/signup";
 import {
   Input,
   Label,
-  Signupbutton,
   SignUpForm,
   Intro,
+  MessageForm
 } from "../components/landingPage";
 import styles from "../components/landingPage/index.module.scss";
 import { Text } from "../components/text/text.component";
@@ -57,6 +57,10 @@ const Landing = (props) => {
         ></Input>
         <Text text="Sign up for launch updates" size="H2" marginTop={47} />
         <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100}/>
+
+        {state === "error" && (<MessageForm className={styles.messageError}>{error} </MessageForm>)}
+        {state === "success" && (<MessageForm className={styles.messageSucess}> Subscribing successful. Stay tuned. </MessageForm>)}
+
       </SignUpForm>
       <script> </script> {/*chrome form transition bug fix*/}
     </Cursor>
