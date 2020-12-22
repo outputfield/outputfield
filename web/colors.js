@@ -4,6 +4,7 @@ export const colors = {
   black: "#000000",
   primary: "#0000FF",
   error: "#FF0000",
+  success: "#3CB371",
   magnetic: "#E0FF00",
   disabled: "#7B61FF",
 };

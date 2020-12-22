@@ -6,10 +6,8 @@ import {
   Input,
   Label,
   SignUpForm,
-  Intro,
-  MessageForm
+  Intro
 } from "../components/landingPage";
-import styles from "../components/landingPage/index.module.scss";
 import { Text } from "../components/text/text.component";
 import { Cursor } from "../components/cursor/cursor.component";
 import { Donut } from "../components/donut/donut.component";
@@ -26,13 +24,13 @@ const Landing = (props) => {
   Resembles the landing page.
     */
   const [email, setRegisterData] = useState("");
-  const [state, setState] = useState("IDLE");
-  const [error, setError] = useState(null);
+  const [state, setState] = useState("");
+  const [error, setError] = useState("");
 
   const subscribe = async (event: React.FormEvent) => {
     event.preventDefault();
     setState("loading");
-    setError(null);
+    setError("");
 
     try {
       const response = await axios.post("/api/signup", { email });
@@ -55,11 +53,12 @@ const Landing = (props) => {
             setRegisterData(event.target.value)
           }
         ></Input>
-        <Text text="Sign up for launch updates" size="H2" marginTop={47} />
-        <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100}/>
 
-        {state === "error" && (<MessageForm className={styles.messageError}>{error} </MessageForm>)}
-        {state === "success" && (<MessageForm className={styles.messageSucess}> Subscribing successful. Stay tuned. </MessageForm>)}
+        {state === "" && (<Text text="Sign up for launch updates" size="H2" marginTop={47} />)}
+        {state === "error" && (<Text text={error} color={colors.error} size="H2" marginTop={47} />)}
+        {state === "success" && (<Text text="Subscribing successful. Stay tuned." color={colors.success} size="H2" marginTop={47} />)}
+
+        <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100}/>
 
       </SignUpForm>
       <script> </script> {/*chrome form transition bug fix*/}
