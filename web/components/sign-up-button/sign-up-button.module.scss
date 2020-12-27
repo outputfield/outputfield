@@ -1,7 +1,7 @@
 @use "theme.scss";
 
-$buttonBorderBase: 2px solid $black;
-$buttonBorderHover: 2px solid $primary;
+$buttonBorderBase: 2px solid theme.$black;
+$buttonBorderHover: 2px solid theme.$primary;
 
 $dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
 $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
@@ -33,15 +33,13 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
 
   .buttonText {
     height: inherit;
-    width: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    margin: 0 auto;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
     transition: margin-left 1s, color 1s;
     transition-timing-function: $ease-in-out;
-    padding-top: 48px;
+    padding-top: 8px;
     &.buttonTextFirst {
       margin-left: -4px;
       position: absolute;
@@ -57,7 +55,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     position: absolute;
     height: inherit;
     width: inherit;
-    background-color: $white;
+    background-color: theme.$white;
     border-radius: 100%;
     transition: transform 1s;
     transition-timing-function: $ease-in-out;
@@ -76,18 +74,12 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   box-sizing: border-box;
   background-color: unset;
   border: none;
-  min-width: 240px;
+  //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
   height: 96px;
-  width: 100%;
+  width: 240px;
   cursor: inherit;
-<<<<<<< HEAD
-  color: $black;
-  filter: blur(4.8px);
-=======
-  @include theme.T2;
   color: theme.$black;
-  filter: blur(3px);
->>>>>>> 2688c62684227812b0d4626ed895ba931af3bc4b
+  filter: blur(4.8px);
   transition: filter 1s;
   transition-timing-function: $ease-in-out;
 
@@ -112,13 +104,13 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   }
   &:hover > .buttonTextFirst {
     margin-left: -1px;
-    color: $primary;
+    color: theme.$primary;
   }
   &:hover > .buttonTextSecond {
     margin-left: 0px;
-    color: $primary;
+    color: theme.$primary;
   }
   &:focus > .buttonBorder {
-    border-color: $primary;
+    border-color: theme.$primary;
   }
 }

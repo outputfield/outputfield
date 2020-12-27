@@ -13,15 +13,12 @@ export const SignUpButton = ({
   marginRight,
   marginBottom,
   marginLeft,
-  width,
 }: ISignUpButtonProps) => {
   const signUpButtonStyles: ISignUpButtonStyles = {
     marginTop,
     marginRight,
     marginBottom,
     marginLeft,
-    width,
-    //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
   };
 
   return (

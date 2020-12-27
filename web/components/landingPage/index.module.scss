@@ -1,61 +1,9 @@
 @charset "UTF-8";
 
-<<<<<<< HEAD
-.ellipse {
-  width: 196px;
-  height: 83px;
-  border-radius: 98px / 41px;
-  border: 2px solid #ff0;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  transform-origin: center center;
-  filter: blur(1px);
-  transition: transform 1s ease, filter 1s ease;
-}
-
-#ellipse1 {
-  transform: rotate(6deg);
-}
-#ellipse2 {
-  transform: rotate(-6deg);
-  opacity: 0.75;
-}
-
-.signuptext {
-  width: 200px;
-  height: 87px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-family: serif;
-  font-style: italic;
-  font-size: 32px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  user-select: none;
-  filter: blur(1px);
-  transition: transform 1s ease, left 1s ease, filter 1s ease;
-}
-#signuptext1 {
-  left: -3px;
-}
-#signuptext2 {
-  left: 3px;
-  opacity: 0.75;
-}
-.signUpButtonContainer {
-  background-color: red;
-  display: inline-flex;
-  //   width: fit-content;
-=======
 .messageSucess {
-    //color: #66FF00;
-    color: #3CB371;
+  //color: #66FF00;
+  color: #3cb371;
 }
 .messageError {
-    color: #FF0000;
->>>>>>> 2688c62684227812b0d4626ed895ba931af3bc4b
+  color: #ff0000;
 }

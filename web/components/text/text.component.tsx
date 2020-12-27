@@ -37,7 +37,7 @@ export const Text = ({
     );
   } else {
     return (
-      <p className={textClass} style={textStyles}>
+      <p className={textClass + " text-p"} style={textStyles}>
         {text}
       </p>
     );
