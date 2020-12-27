@@ -1,4 +1,4 @@
-@import "theme.scss";
+@use "theme.scss";
 
 $buttonBorderBase: 2px solid $black;
 $buttonBorderHover: 2px solid $primary;
@@ -80,8 +80,14 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   height: 96px;
   width: 100%;
   cursor: inherit;
+<<<<<<< HEAD
   color: $black;
   filter: blur(4.8px);
+=======
+  @include theme.T2;
+  color: theme.$black;
+  filter: blur(3px);
+>>>>>>> 2688c62684227812b0d4626ed895ba931af3bc4b
   transition: filter 1s;
   transition-timing-function: $ease-in-out;
 

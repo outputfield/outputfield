@@ -3,6 +3,7 @@
 $white: #ffffff;
 $black: #000000;
 $primary: #0000ff;
+$success: #3CB371;
 $error: #ff0000;
 $magnetic: #e0ff00;
 $disabled: #7b61ff;
@@ -12,6 +13,7 @@ $disabled: #7b61ff;
   white: $white;
   black: $black;
   primary: $primary;
+  success: $success;
   error: $error;
   magnetic: $magnetic;
   disabled: $disabled;
@@ -29,7 +31,6 @@ $disabled: #7b61ff;
   letter-spacing: -0.011em;
   text-align: left;
 }
-
 @mixin H2 {
   font-family: "Authentic Sans";
   font-size: 26px;
@@ -39,7 +40,6 @@ $disabled: #7b61ff;
   letter-spacing: -0.01em;
   text-align: left;
 }
-
 @mixin T1 {
   font-family: "Times New Roman MT Std";
   font-size: 36px;
@@ -49,7 +49,6 @@ $disabled: #7b61ff;
   letter-spacing: 0em;
   text-align: left;
 }
-
 @mixin T2 {
   font-family: "Times New Roman MT Std";
   font-size: 36px;
@@ -60,7 +59,6 @@ $disabled: #7b61ff;
   text-align: left;
   text-transform: uppercase;
 }
-
 @mixin T3 {
   font-family: "Authentic Sans";
   font-size: 18px;

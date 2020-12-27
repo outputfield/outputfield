@@ -1,7 +1,7 @@
+import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { Text } from "../components/text/text.component";
-import { withKnobs, text, number, select } from "@storybook/addon-knobs";
 import colors from "../colors";
+import { Text } from "../components/text/text.component";
 
 /* eslint-disable */
 export default {

@@ -43,40 +43,6 @@ export const Input = styled.input`
     cursor: inherit;
 `;
 
-export const Signupbutton = styled.button`
-    position: absolute;
-    left: 450px;
-    top: 0px;
-    height: 87px;
-    width: 200px;
-    z-index: 10;
-    border: none;
-    background: black;
-
-    &.ellipse {
-      width: 196px;
-      height: 83px;
-      border-radius: 98px / 41px;
-      border: 2px solid #ff0;
-      position: absolute;
-      top: 0px;
-      left: 450px;
-      transform-origin: center center;
-      filter: blur(1px);
-      transition: transform 1s ease, filter 1s ease;
-    }
-
-    &:hover .ellipse1 ellipse2 {
-      transform: rotate(0deg);
-      filter: blur(0px);
-    }
-
-    &:hover .signuptext1 .signuptext2 {
-      transform: rotate(0deg);
-      filter: blur(0px);
-    }
-`;
-
 export const Intro = styled.div`
   position: absolute;
   top: 20px;
@@ -85,36 +51,11 @@ export const Intro = styled.div`
   z-index: 1;
 `;
 
-/*
-export const Signupbutton = styled.button`
-    position: absolute;
-    left: 450px;
-    top: 0px;
-    height: 87px;
-    width: 200px;
-    z-index: 10;
-
-    &.ellipse {
-      width: 196px;
-      height: 83px;
-      border-radius: 98px / 41px;
-      border: 2px solid #ff0;
-      position: absolute;
-      top: 0px;
-      left: 450px;
-      transform-origin: center center;
-      filter: blur(1px);
-      transition: transform 1s ease, filter 1s ease;
-    }
-
-    &:hover .ellipse1 {
-      transform: rotate(0deg);
-      filter: blur(0px);
-    }
-
-    &:hover .signuptext1 .signuptext2 {
-      transform: rotate(0deg);
-      filter: blur(0px);
-    }
+export const MessageForm = styled.div`
+  position: absolute;
+  top: -80px;
+  left: 100px;
+  font-family: serif;
+  font-style: italic;
+  font-size: 32px;
 `;
-*/

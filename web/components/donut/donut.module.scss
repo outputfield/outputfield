@@ -1,6 +1,6 @@
-@import "../../theme.scss";
+@use "../../theme.scss";
 
-.donut{
+.donut {
   position: fixed;
   right: 0px;
   bottom: 0px;
@@ -10,18 +10,18 @@
   z-index: 0;
   pointer-events: none;
 
-  &.clear{
+  &.clear {
     filter: blur(0px);
   }
 
-  & path{
-    fill:none;
+  & path {
+    fill: none;
   }
 
-  & text{
-    @include H1;
+  & text {
+    @include theme.H1;
     position: relative;
-    fill:#000000;
+    fill: #000000;
     animation: rotation 180s infinite linear;
     transform-origin: center center;
     user-select: none;
