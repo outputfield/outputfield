@@ -1,30 +1,45 @@
 @use "theme.scss";
 
+$buttonBorderBase: 2px solid theme.$black;
+$buttonBorderHover: 2px solid theme.$primary;
+
+$dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
+$dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
+$ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
+// $transition-out: cubic-bezier(0.32, 0.94, 0.60, 1.00);
+
 .root {
+  &:focus {
+    outline: none;
+  }
   .buttonBorder {
     position: absolute;
-    border: 1px solid theme.$black;
+    border: $buttonBorderBase;
     height: inherit;
     width: inherit;
     border-radius: 100%;
-    transition: transform 1s;
+    transition: transform 1s, border-color 1s, margin-left 1s, filter 1s;
+    transition-timing-function: $ease-in-out;
+    filter: $dropshadowDefault;
     &.buttonBorderFirst {
-      transform: rotate(-3deg);
+      transform: rotate(-5deg);
+      margin-left: -1px;
     }
     &.buttonBorderSecond {
-      transform: rotate(2deg);
+      transform: rotate(4deg);
+      margin-left: 1px;
     }
   }
+
   .buttonText {
     height: inherit;
-    width: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    margin: 0 auto;
     text-align: center;
-    transition: margin-left 1s;
-    padding-top: 48px;
+    display: inline-flex;
+    align-items: center;
+    transition: margin-left 1s, color 1s;
+    transition-timing-function: $ease-in-out;
+    padding-top: 8px;
     &.buttonTextFirst {
       margin-left: -4px;
       position: absolute;
@@ -35,34 +50,67 @@
       position: absolute;
     }
   }
+
+  .buttonFill {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background-color: theme.$white;
+    border-radius: 100%;
+    transition: transform 1s;
+    transition-timing-function: $ease-in-out;
+    &.buttonFillFirst {
+      transform: rotate(-5deg);
+    }
+    &.buttonFillSecond {
+      transform: rotate(4deg);
+    }
+  }
   padding: 0px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   box-sizing: border-box;
   background-color: unset;
   border: none;
-  height: 105px;
-  width: 270px;
+  //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
+  height: 96px;
+  width: 240px;
   cursor: inherit;
-  @include theme.T2;
   color: theme.$black;
-  filter: blur(3px);
+  filter: blur(4.8px);
   transition: filter 1s;
+  transition-timing-function: $ease-in-out;
+
   &:hover {
     filter: blur(0);
   }
   &:hover > .buttonBorderFirst {
     transform: rotate(0deg);
+    border: $buttonBorderHover;
+    filter: $dropshadowHover;
   }
   &:hover > .buttonBorderSecond {
     transform: rotate(0deg);
+    border: $buttonBorderHover;
+  }
+
+  &:hover > .buttonFillFirst {
+    transform: rotate(0deg);
+  }
+  &:hover > .buttonFillSecond {
+    transform: rotate(0deg);
   }
   &:hover > .buttonTextFirst {
-    margin-left: 0;
+    margin-left: -1px;
+    color: theme.$primary;
   }
   &:hover > .buttonTextSecond {
-    margin-left: 0;
+    margin-left: 0px;
+    color: theme.$primary;
+  }
+  &:focus > .buttonBorder {
+    border-color: theme.$primary;
   }
 }

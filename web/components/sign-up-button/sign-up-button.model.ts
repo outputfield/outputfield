@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent } from "react";
 
 export interface ISignUpButtonProps {
   buttonText: string | JSX.Element;

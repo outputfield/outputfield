@@ -3,7 +3,7 @@
 $white: #ffffff;
 $black: #000000;
 $primary: #0000ff;
-$success: #3CB371;
+$success: #3cb371;
 $error: #ff0000;
 $magnetic: #e0ff00;
 $disabled: #7b61ff;
@@ -21,8 +21,14 @@ $disabled: #7b61ff;
 
 // TYPOGRAPHY mixins =======================
 
-// EXAMPLE
+@mixin base {
+  display: inline-flex;
+  margin-block-start: unset;
+  margin-block-end: unset;
+}
+
 @mixin H1 {
+  @include base;
   font-family: "Authentic Sans";
   font-size: 34px;
   font-style: normal;
@@ -32,6 +38,7 @@ $disabled: #7b61ff;
   text-align: left;
 }
 @mixin H2 {
+  @include base;
   font-family: "Authentic Sans";
   font-size: 26px;
   font-style: normal;
@@ -41,6 +48,7 @@ $disabled: #7b61ff;
   text-align: left;
 }
 @mixin T1 {
+  @include base;
   font-family: "Times New Roman MT Std";
   font-size: 36px;
   font-style: italic;
@@ -50,6 +58,7 @@ $disabled: #7b61ff;
   text-align: left;
 }
 @mixin T2 {
+  @include base;
   font-family: "Times New Roman MT Std";
   font-size: 36px;
   font-style: italic;
@@ -60,6 +69,7 @@ $disabled: #7b61ff;
   text-transform: uppercase;
 }
 @mixin T3 {
+  @include base;
   font-family: "Authentic Sans";
   font-size: 18px;
   font-style: normal;

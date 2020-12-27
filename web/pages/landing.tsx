@@ -37,11 +37,16 @@ const Landing = (props) => {
   const isError = state === "error";
 
   return (
-    <Cursor color="#FF0000" strokeLength={20}>
+    <Cursor color={colors.error} strokeLength={20}>
       <Intro>
+        <Text text={pageData.introduction[0]} size={"H1"} marginBottom={80} />
+        <Text text={pageData.introduction[2]} size={"H1"} marginBottom={80} />
+        {/* can't do the following... the layout/style doesnt work due to pageData.introduction[1] is an empty string...
+        thus, need to remove that in Sanity}
+
         {pageData.introduction.map((t) => {
-          return <Text text={t} size={"H1"} />;
-        })}
+          return <Text text={t} size={"H1"} marginBottom={80} />;
+        })} */}
       </Intro>
       <Donut text="OUTPUT FIELD" />
       <SignUpForm onSubmit={subscribe}>
