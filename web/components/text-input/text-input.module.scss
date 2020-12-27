@@ -1,0 +1,40 @@
+@use '../../theme.scss';
+
+@mixin font-base {
+  font-family: "Authentic Sans";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 150%;
+}
+
+.input {
+  @include font-base();
+  font-size: 26px;
+
+  background: none;
+  outline: none;
+  color: theme.$primary;
+  border: none;
+  border-bottom: 2px solid theme.$primary;
+
+  &.disabled {
+    color: theme.$disabled;
+    border-color: theme.$disabled;
+  }
+  &.invalid {
+    color: theme.$error;
+    border-color: theme.$error;
+  }
+}
+
+.label {
+  @include font-base();
+  font-size: 22px;
+  color: black;
+}
+
+.errorMessage {
+  @include font-base();
+  font-size: 16px;
+  height: 22px;
+}
