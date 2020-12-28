@@ -52,7 +52,12 @@ const Landing = (props) => {
       <SignUpForm onSubmit={subscribe}>
         <TextInput
           label={"Sign up for launch updates"}
-          onChange={(event) => setRegisterData(event.target.value)}
+          onChange={(event) => {
+            setRegisterData(event.target.value)
+            if (isError) {
+              setState('')
+            }
+          }}
           invalid={isError}
           errorMessage={isError && error ? error : undefined}
         />
