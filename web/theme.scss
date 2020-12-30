@@ -43,12 +43,12 @@ $disabled-text: #555555;
     line-height: 50px;
   }
   //tablet
-  @media only screen and (min-height: 375px) and (min-width: 812px) {
+  @media only screen and (max-height: 760px) and (max-width: 1180px) {
     font-size: 24px;
     line-height: 36px;
   }
   //phone
-  @media only screen and (max-height: 375px) and (max-width: 812px) {
+  @media only screen and (max-width: 375px) {
     font-size: 30px;
     line-height: 44px;
   }
@@ -66,12 +66,12 @@ $disabled-text: #555555;
     line-height: 39px;
   }
   //tablet
-  @media only screen and (min-height: 375px) and (min-width: 812px) {
+  @media only screen and (max-height: 760px) and (max-width: 1180px) {
     font-size: 17px;
     line-height: 25px;
   }
   //phone
-  @media only screen and (max-height: 375px) and (max-width: 812px) {
+  @media only screen and (max-width: 375px) {
     font-size: 24px;
     line-height: 36px;
   }
@@ -89,12 +89,12 @@ $disabled-text: #555555;
     line-height: 54px;
   }
   //tablet
-  @media only screen and (min-height: 375px) and (min-width: 812px) {
+  @media only screen and (max-height: 760px) and (max-width: 1180px) {
     font-size: 24px;
     line-height: 36px;
   }
   //phone
-  @media only screen and (max-height: 375px) and (max-width: 812px) {
+  @media only screen and (max-width: 375px) {
     font-size: 34px;
     line-height: 51px;
   }
@@ -113,12 +113,12 @@ $disabled-text: #555555;
     line-height: 54px;
   }
   //tablet
-  @media only screen and (min-height: 375px) and (min-width: 812px) {
+  @media only screen and (max-height: 760px) and (max-width: 1180px) {
     font-size: 24px;
     line-height: 36px;
   }
   //phone
-  @media only screen and (max-height: 375px) and (max-width: 812px) {
+  @media only screen and (max-width: 375px) {
     font-size: 36px;
     line-height: 54px;
   }
@@ -136,12 +136,12 @@ $disabled-text: #555555;
     line-height: 27px;
   }
   //tablet
-  @media only screen and (min-height: 375px) and (min-width: 812px) {
+  @media only screen and (max-height: 760px) and (max-width: 1180px) {
     font-size: 12px;
     line-height: 18px;
   }
   //phone
-  @media only screen and (max-height: 375px) and (max-width: 812px) {
+  @media only screen and (max-width: 375px) {
     font-size: 18px;
     line-height: 27px;
   }
