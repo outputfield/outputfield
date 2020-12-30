@@ -18,8 +18,8 @@
   border-bottom: 2px solid theme.$primary;
 
   &.disabled {
-    color: theme.$disabled;
-    border-color: theme.$disabled;
+    color: theme.$disabled-text;
+    border-color: theme.$disabled-elements;
   }
   &.invalid {
     color: theme.$error;

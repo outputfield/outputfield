@@ -6,7 +6,8 @@ $primary: #0000ff;
 $success: #3cb371;
 $error: #ff0000;
 $magnetic: #e0ff00;
-$disabled: #7b61ff;
+$disabled-elements: #eeeeee;
+$disabled-text: #555555;
 
 // make sure to add new colors to the export function as well!
 :export {
@@ -16,7 +17,8 @@ $disabled: #7b61ff;
   success: $success;
   error: $error;
   magnetic: $magnetic;
-  disabled: $disabled;
+  disabled-elements: $disabled-elements;
+  disabled-text: $disabled-text;
 }
 
 // TYPOGRAPHY mixins =======================
