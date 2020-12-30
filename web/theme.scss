@@ -32,53 +32,119 @@ $disabled-text: #555555;
 @mixin H1 {
   @include base;
   font-family: "Authentic Sans";
-  font-size: 34px;
   font-style: normal;
   font-weight: 400;
-  line-height: 50px;
-  letter-spacing: -0.011em;
   text-align: left;
+  letter-spacing: -0.008em;
+
+  //desktop
+  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+    font-size: 34px;
+    line-height: 50px;
+  }
+  //tablet
+  @media only screen and (min-height: 375px) and (min-width: 812px) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  //phone
+  @media only screen and (max-height: 375px) and (max-width: 812px) {
+    font-size: 30px;
+    line-height: 44px;
+  }
 }
 @mixin H2 {
   @include base;
   font-family: "Authentic Sans";
-  font-size: 26px;
   font-style: normal;
   font-weight: 400;
-  line-height: 39px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.008em;
   text-align: left;
+  //desktop
+  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+    font-size: 26px;
+    line-height: 39px;
+  }
+  //tablet
+  @media only screen and (min-height: 375px) and (min-width: 812px) {
+    font-size: 17px;
+    line-height: 25px;
+  }
+  //phone
+  @media only screen and (max-height: 375px) and (max-width: 812px) {
+    font-size: 24px;
+    line-height: 36px;
+  }
 }
 @mixin T1 {
   @include base;
   font-family: "Times New Roman MT Std";
-  font-size: 36px;
   font-style: italic;
   font-weight: 400;
-  line-height: 54px;
   letter-spacing: 0em;
   text-align: left;
+  //desktop
+  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+    font-size: 36px;
+    line-height: 54px;
+  }
+  //tablet
+  @media only screen and (min-height: 375px) and (min-width: 812px) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  //phone
+  @media only screen and (max-height: 375px) and (max-width: 812px) {
+    font-size: 34px;
+    line-height: 51px;
+  }
 }
 @mixin T2 {
   @include base;
   font-family: "Times New Roman MT Std";
-  font-size: 36px;
   font-style: italic;
   font-weight: 400;
-  line-height: 54px;
   letter-spacing: 0em;
   text-align: left;
   text-transform: uppercase;
+  //desktop
+  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+    font-size: 36px;
+    line-height: 54px;
+  }
+  //tablet
+  @media only screen and (min-height: 375px) and (min-width: 812px) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  //phone
+  @media only screen and (max-height: 375px) and (max-width: 812px) {
+    font-size: 36px;
+    line-height: 54px;
+  }
 }
 @mixin T3 {
   @include base;
   font-family: "Authentic Sans";
-  font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 27px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.008em;
   text-align: left;
+  //desktop
+  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  //tablet
+  @media only screen and (min-height: 375px) and (min-width: 812px) {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  //phone
+  @media only screen and (max-height: 375px) and (max-width: 812px) {
+    font-size: 18px;
+    line-height: 27px;
+  }
 }
 
 // We will eventually make a <Text/> component that leverages these mix-ins as they will be assigned as css classes.
