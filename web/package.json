@@ -22,12 +22,15 @@
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "dotenv": "^6.2.0",
+    "html-react-parser": "^1.1.1",
     "next": "^10.0.1",
     "react": "^17.0.1",
     "react-cursor-position": "^3.0.3",
     "react-dom": "^17.0.1",
+    "react-responsive": "^8.2.0",
     "sass": "^1.29.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "supports-color": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

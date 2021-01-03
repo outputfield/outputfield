@@ -4,10 +4,11 @@ import { getErrorMessage } from "../api-client/errors";
 import colors from "../colors";
 import { Cursor } from "../components/cursor/cursor.component";
 import { Donut } from "../components/donut/donut.component";
-import { Intro, SignUpForm } from "../components/landingPage";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
+import styles from "../components/landingPage/index.module.scss";
+import { Breakpoint } from "../components/breakpoint/breakpoint.component";
 
 const page = "Frontpage";
 
@@ -38,18 +39,18 @@ const Landing = (props) => {
 
   return (
     <Cursor color={colors.error} strokeLength={20}>
-      <Intro>
-        <Text text={pageData.introduction[0]} size={"H1"} marginBottom={80} />
-        <Text text={pageData.introduction[2]} size={"H1"} marginBottom={80} />
-        {/* can't do the following... the layout/style doesnt work due to pageData.introduction[1] is an empty string...
-        thus, need to remove that in Sanity}
-
-        {pageData.introduction.map((t) => {
-          return <Text text={t} size={"H1"} marginBottom={80} />;
-        })} */}
-      </Intro>
+      <div className={styles.intro}>
+        {pageData.introduction.map((t,i) => {
+          return <Text text={t} key={i} size={"H1"}/>;
+        })}
+        <Text text="" size={"H1"}/>
+        {pageData.exhibition!==""
+          ? <Text text={'We <a href="'+pageData.exhibition+'">exhibit</a> work that is collaborative'} size={"H1"} html={true}/>
+          : <Text text={'We exhibit work that is collaborative'} size={"H1"} />
+        }
+      </div>
       <Donut text="OUTPUT FIELD" />
-      <SignUpForm onSubmit={subscribe}>
+      <form className={styles.signUpForm} onSubmit={subscribe}>
         <TextInput
           label={"Sign up for launch updates"}
           onChange={(event) => {
@@ -71,7 +72,7 @@ const Landing = (props) => {
         )}
 
         <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100} />
-      </SignUpForm>
+      </form>
       <script> </script> {/*chrome form transition bug fix*/}
     </Cursor>
   );

@@ -13,15 +13,15 @@ export default {
       title: 'Label',
     },
     {
-      name: 'text',
+      name: 'value',
       type: 'string',
-      title: 'Text',
+      title: 'text',
     },
   ],
   preview: {
     select: {
       title: 'label',
-      subtitle: 'text',
+      subtitle: 'value',
     },
   },
 };

@@ -7,3 +7,21 @@
 .messageError {
   color: #ff0000;
 }
+
+.intro{
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 800px;
+  z-index: 1;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.signUpForm{
+  align-items: center;
+  position: fixed;
+  left: 50px;
+  bottom: 50px;
+  height: 87px;
+}

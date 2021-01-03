@@ -11,6 +11,7 @@ export const Text = ({
   marginRight,
   marginBottom,
   marginLeft,
+  html,
 }: ITextProps) => {
   const textStyles: IStyles = {
     textAlign,
@@ -21,7 +22,9 @@ export const Text = ({
     marginLeft,
   };
 
-  const textClass = styles[size];
+  const parse = require('html-react-parser');
+  text = html?parse(text):text;
+  const textClass = styles[size] + (text==""?" "+styles.newline:"") + (html?" "+styles.markup:"");
 
   if (size === "H1") {
     return (

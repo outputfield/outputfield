@@ -20,5 +20,6 @@ body {
 }
 
 a {
-  color: $black;
+  color: $primary;
+  text-underline-offset: 0.25em;
 }

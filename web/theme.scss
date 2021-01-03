@@ -21,6 +21,34 @@ $disabled-text: #555555;
   disabled-text: $disabled-text;
 }
 
+// BREAKPOINTS =======================
+// add changes to breakpoints component as well
+@mixin mobileVertical{
+  @media only screen and (min-width: 0px){
+    @content;
+  }
+}
+@mixin mobileHorizontal{
+  @media only screen and (min-width: 800px){
+    @content;
+  }
+}
+@mixin desktopSmall{
+  @media only screen and (min-width: 960px) {
+    @content;
+  }
+}
+@mixin desktopMedium{
+  @media only screen and (min-width: 1180px) and (min-height: 760px) {
+    @content;
+  }
+}
+@mixin desktopLarge{
+  @media only screen and (min-width: 1440px){
+    @content;
+  }
+}
+
 // TYPOGRAPHY mixins =======================
 
 @mixin base {
@@ -36,21 +64,17 @@ $disabled-text: #555555;
   font-weight: 400;
   text-align: left;
   letter-spacing: -0.008em;
-
-  //desktop
-  @media only screen and (min-height: 760px) and (min-width: 1180px) {
-    font-size: 34px;
-    line-height: 50px;
+  @include mobileVertical{
+    font-size: 30px;
+    line-height: 44px;
   }
-  //tablet
-  @media only screen and (max-height: 760px) and (max-width: 1180px) {
+  @include desktopSmall{
     font-size: 24px;
     line-height: 36px;
   }
-  //phone
-  @media only screen and (max-width: 375px) {
-    font-size: 30px;
-    line-height: 44px;
+  @include desktopMedium{
+    font-size: 34px;
+    line-height: 50px;
   }
 }
 @mixin H2 {
@@ -60,20 +84,17 @@ $disabled-text: #555555;
   font-weight: 400;
   letter-spacing: -0.008em;
   text-align: left;
-  //desktop
-  @media only screen and (min-height: 760px) and (min-width: 1180px) {
-    font-size: 26px;
-    line-height: 39px;
+  @include mobileVertical{
+    font-size: 24px;
+    line-height: 36px;
   }
-  //tablet
-  @media only screen and (max-height: 760px) and (max-width: 1180px) {
+  @include desktopSmall{
     font-size: 17px;
     line-height: 25px;
   }
-  //phone
-  @media only screen and (max-width: 375px) {
-    font-size: 24px;
-    line-height: 36px;
+  @include desktopMedium{
+    font-size: 26px;
+    line-height: 39px;
   }
 }
 @mixin T1 {
@@ -83,20 +104,17 @@ $disabled-text: #555555;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
-  //desktop
-  @media only screen and (min-height: 760px) and (min-width: 1180px) {
-    font-size: 36px;
-    line-height: 54px;
+  @include mobileVertical{
+    font-size: 34px;
+    line-height: 51px;
   }
-  //tablet
-  @media only screen and (max-height: 760px) and (max-width: 1180px) {
+  @include desktopSmall{
     font-size: 24px;
     line-height: 36px;
   }
-  //phone
-  @media only screen and (max-width: 375px) {
-    font-size: 34px;
-    line-height: 51px;
+  @include desktopMedium{
+    font-size: 36px;
+    line-height: 54px;
   }
 }
 @mixin T2 {
@@ -107,18 +125,15 @@ $disabled-text: #555555;
   letter-spacing: 0em;
   text-align: left;
   text-transform: uppercase;
-  //desktop
-  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+  @include mobileVertical{
     font-size: 36px;
     line-height: 54px;
   }
-  //tablet
-  @media only screen and (max-height: 760px) and (max-width: 1180px) {
+  @include desktopSmall{
     font-size: 24px;
     line-height: 36px;
   }
-  //phone
-  @media only screen and (max-width: 375px) {
+  @include desktopMedium{
     font-size: 36px;
     line-height: 54px;
   }
@@ -130,18 +145,15 @@ $disabled-text: #555555;
   font-weight: 400;
   letter-spacing: -0.008em;
   text-align: left;
-  //desktop
-  @media only screen and (min-height: 760px) and (min-width: 1180px) {
+  @include mobileVertical{
     font-size: 18px;
     line-height: 27px;
   }
-  //tablet
-  @media only screen and (max-height: 760px) and (max-width: 1180px) {
+  @include desktopSmall{
     font-size: 12px;
     line-height: 18px;
   }
-  //phone
-  @media only screen and (max-width: 375px) {
+  @include desktopMedium{
     font-size: 18px;
     line-height: 27px;
   }

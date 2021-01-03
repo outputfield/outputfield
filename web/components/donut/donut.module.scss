@@ -27,6 +27,15 @@
     user-select: none;
     pointer-events: all;
     z-index: 1;
+    @include theme.mobileVertical{
+      letter-spacing: 0.0115em;
+    }
+    @include theme.desktopSmall{
+      letter-spacing: 0.0055em;
+    }
+    @include theme.desktopMedium{
+      letter-spacing: 0.003em;
+    }
   }
 }
 
