@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
+import { getPageContent } from "./api/page-content"
 import colors from "../colors";
 import { Cursor } from "../components/cursor/cursor.component";
 import { Donut } from "../components/donut/donut.component";
+import styles from "../components/landingPage/index.module.scss";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
-import styles from "../components/landingPage/index.module.scss";
-import { Breakpoint } from "../components/breakpoint/breakpoint.component";
 
 const page = "Frontpage";
 
@@ -40,23 +40,32 @@ const Landing = (props) => {
   return (
     <Cursor color={colors.error} strokeLength={20}>
       <div className={styles.intro}>
-        {pageData.introduction.map((t,i) => {
-          return <Text text={t} key={i} size={"H1"}/>;
+        {pageData.introduction.map((t, i) => {
+          return <Text text={t} key={i} size={"H1"} />;
         })}
-        <Text text="" size={"H1"}/>
-        {pageData.exhibition!==""
-          ? <Text text={'We <a href="'+pageData.exhibition+'">exhibit</a> work that is collaborative'} size={"H1"} html={true}/>
-          : <Text text={'We exhibit work that is collaborative'} size={"H1"} />
-        }
+        <Text text="" size={"H1"} />
+        {pageData.exhibition !== "" ? (
+          <Text
+            text={
+              'We <a href="' +
+              pageData.exhibition +
+              '">exhibit</a> work that is collaborative'
+            }
+            size={"H1"}
+            html={true}
+          />
+        ) : (
+          <Text text={"We exhibit work that is collaborative"} size={"H1"} />
+        )}
       </div>
       <Donut text="OUTPUT FIELD" />
       <form className={styles.signUpForm} onSubmit={subscribe}>
         <TextInput
           label={"Sign up for launch updates"}
           onChange={(event) => {
-            setRegisterData(event.target.value)
+            setRegisterData(event.target.value);
             if (isError) {
-              setState('')
+              setState("");
             }
           }}
           invalid={isError}
@@ -82,15 +91,13 @@ const Landing = (props) => {
 
 Landing.getInitialProps = async function (context) {
   try {
-    const response = await axios.get(
-      `${
-        context.req !== undefined ? process.env.SERVER_URI : ""
-      }/api/page-content`,
-      { params: { page: page } }
-    );
-    return { pageData: response.data };
+    // Use raw sanity query here because `getInitialProps` runs on the server.
+    // This does not expose the key to the client
+    const pageData = await getPageContent(page)
+    return { pageData }
   } catch (event) {
     throw getErrorMessage(event);
   }
 };
+
 export default Landing;
