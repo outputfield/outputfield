@@ -21,8 +21,19 @@ export const SignUpButton = ({
     marginLeft,
   };
 
+  // TODO use context instead of this
   return (
     <button
+      onMouseEnter={() => {
+        document
+          .getElementById("rotating-cursors")!
+          .classList.add("signupHover");
+      }}
+      onMouseLeave={() => {
+        document
+          .getElementById("rotating-cursors")!
+          .classList.remove("signupHover");
+      }}
       className={styles.root}
       style={signUpButtonStyles}
       onClick={handleClick}
