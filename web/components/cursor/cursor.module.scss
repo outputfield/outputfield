@@ -1,64 +1,16 @@
 @import "theme.scss";
 
-@keyframes spinA {
-  0% {
-    transform: rotate(180deg) translateX(10px);
-  }
-  100% {
-    transform: rotate(360deg) translateX(-10px);
-  }
+.cursorx{
+  z-index: -10;
+  opacity: 0.5;
+  width: 2px;
+  height: 3000px;
+  position: fixed;
 }
-@keyframes spinB {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.cursory{
+  z-index: -10;
+  opacity: 0.5;
+  width: 6000px;
+  height: 2px;
+  position: fixed;
 }
-
-@mixin lineBase() {
-  height: 0;
-  transition: transform 1s;
-  z-index: 10000;
-}
-
-// .lineA {
-//   @include lineBase();
-//   border: 1px solid blue;
-//   animation: spinA 4s linear infinite;
-// }
-
-// .lineB {
-//   @include lineBase();
-//   border: 1px solid blue;
-//   animation: spinB 4s linear infinite;
-// }
-
-// .cursorContainer {
-//   &.signUpHover {
-//     .lineA {
-//       animation: none;
-//     }
-//     .lineB {
-//       animation: none;
-//       transform: rotate(90deg);
-//     }
-//   }
-// }
-
-// .cursorx {
-//   z-index: -10;
-//   opacity: 0.5;
-//   width: 4px;
-//   height: 100px;
-//   position: fixed;
-// }
-
-// .cursory {
-//   // z-index: -10;
-//   opacity: 0.5;
-//   width: 100px;
-//   height: 4px;
-//   position: fixed;
-// }
