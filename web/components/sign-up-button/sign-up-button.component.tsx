@@ -1,9 +1,9 @@
 import React from "react";
+import { Text } from "../text/text.component";
 import {
   ISignUpButtonProps,
   ISignUpButtonStyles,
 } from "./sign-up-button.model";
-import { Text } from "../text/text.component";
 import styles from "./sign-up-button.module.scss";
 
 export const SignUpButton = ({
@@ -21,8 +21,19 @@ export const SignUpButton = ({
     marginLeft,
   };
 
+  // TODO use context instead of this
   return (
     <button
+      onMouseEnter={() => {
+        document
+          .getElementById("rotating-cursors")!
+          .classList.add("signupHover");
+      }}
+      onMouseLeave={() => {
+        document
+          .getElementById("rotating-cursors")!
+          .classList.remove("signupHover");
+      }}
       className={styles.root}
       style={signUpButtonStyles}
       onClick={handleClick}
