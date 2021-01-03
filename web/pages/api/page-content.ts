@@ -6,7 +6,7 @@ import { sendError } from "../../api-utilities/send-error";
 import client from "../../client";
 
 
-const getPageContent = async (name) => {
+export const getPageContent = async (name: string) => {
   /**
   queries Sanity data for page of given name and returns array of text fields
   */
