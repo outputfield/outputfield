@@ -1,9 +1,9 @@
 import React from "react";
+import { Text } from "../text/text.component";
 import {
   ISignUpButtonProps,
   ISignUpButtonStyles,
 } from "./sign-up-button.model";
-import { Text } from "../text/text.component";
 import styles from "./sign-up-button.module.scss";
 
 export const SignUpButton = ({
@@ -26,6 +26,7 @@ export const SignUpButton = ({
       className={styles.root}
       style={signUpButtonStyles}
       onClick={handleClick}
+      aria-label={"Submit email signup"}
     >
       {/* we have to draw and separate out the border and the background fill for 2 reasons:
       1. we need a background fill so that the button 'covers' the background image

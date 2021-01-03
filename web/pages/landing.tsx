@@ -61,6 +61,8 @@ const Landing = (props) => {
           }}
           invalid={isError}
           errorMessage={isError && error ? error : undefined}
+          aria-label={"Email"}
+          aria-required={true}
         />
         {state === "success" && (
           <Text

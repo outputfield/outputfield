@@ -12,13 +12,26 @@ interface Props {
   ref?: any;
   width?: string | number;
   onChange?: (event: any) => any;
+
+  ariaLabel?: string;
+  ariaRequired?: boolean;
 }
 
 const cx = classNames.bind(styles);
 
 export const TextInput: React.FC<Props> = forwardRef(
   (
-    { label, invalid, disabled, defaultValue, errorMessage, width, onChange },
+    {
+      label,
+      invalid,
+      disabled,
+      defaultValue,
+      errorMessage,
+      width,
+      onChange,
+      ariaLabel,
+      ariaRequired,
+    },
     ref
   ) => {
     const inputClasses = cx({
@@ -40,6 +53,8 @@ export const TextInput: React.FC<Props> = forwardRef(
           disabled={disabled}
           defaultValue={defaultValue}
           onChange={onChange}
+          aria-label={ariaLabel}
+          aria-required={ariaRequired}
         />
         <div className={labelClasses}>{label}</div>
       </div>
