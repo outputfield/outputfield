@@ -23,28 +23,28 @@ $disabled-text: #555555;
 
 // BREAKPOINTS =======================
 // add changes to breakpoints component as well
-@mixin mobileVertical{
-  @media only screen and (min-width: 0px){
+@mixin mobileVertical {
+  @media only screen and (min-width: 0px) {
     @content;
   }
 }
-@mixin mobileHorizontal{
-  @media only screen and (min-width: 800px){
+@mixin mobileHorizontal {
+  @media only screen and (min-width: 800px) {
     @content;
   }
 }
-@mixin desktopSmall{
+@mixin desktopSmall {
   @media only screen and (min-width: 960px) {
     @content;
   }
 }
-@mixin desktopMedium{
+@mixin desktopMedium {
   @media only screen and (min-width: 1180px) and (min-height: 760px) {
     @content;
   }
 }
-@mixin desktopLarge{
-  @media only screen and (min-width: 1440px){
+@mixin desktopLarge {
+  @media only screen and (min-width: 1440px) {
     @content;
   }
 }
@@ -59,103 +59,103 @@ $disabled-text: #555555;
 
 @mixin H1 {
   @include base;
-  font-family: "Authentic Sans";
+  font-family: "Neue Haas Unica Pro Regular";
   font-style: normal;
   font-weight: 400;
   text-align: left;
   letter-spacing: -0.008em;
-  @include mobileVertical{
+  @include mobileVertical {
     font-size: 30px;
     line-height: 44px;
   }
-  @include desktopSmall{
+  @include desktopSmall {
     font-size: 24px;
     line-height: 36px;
   }
-  @include desktopMedium{
+  @include desktopMedium {
     font-size: 34px;
-    line-height: 50px;
+    line-height: 52px;
   }
 }
 @mixin H2 {
   @include base;
-  font-family: "Authentic Sans";
+  font-family: "Neue Haas Unica Pro Regular";
   font-style: normal;
   font-weight: 400;
   letter-spacing: -0.008em;
   text-align: left;
-  @include mobileVertical{
-    font-size: 24px;
-    line-height: 36px;
+  @include mobileVertical {
+    font-size: 18px;
+    line-height: 27px;
   }
-  @include desktopSmall{
+  @include desktopSmall {
     font-size: 17px;
     line-height: 25px;
   }
-  @include desktopMedium{
-    font-size: 26px;
-    line-height: 39px;
+  @include desktopMedium {
+    font-size: 24px;
+    line-height: 36px;
   }
 }
 @mixin T1 {
   @include base;
-  font-family: "Times New Roman MT Std";
+  font-family: "Saol Display Medium Italic";
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
-  @include mobileVertical{
-    font-size: 34px;
-    line-height: 51px;
-  }
-  @include desktopSmall{
+  @include mobileVertical {
     font-size: 24px;
     line-height: 36px;
   }
-  @include desktopMedium{
-    font-size: 36px;
-    line-height: 54px;
+  @include desktopSmall {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  @include desktopMedium {
+    font-size: 32px;
+    line-height: 48px;
   }
 }
 @mixin T2 {
   @include base;
-  font-family: "Times New Roman MT Std";
+  font-family: "Saol Display Medium Italic";
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
   text-transform: uppercase;
-  @include mobileVertical{
-    font-size: 36px;
-    line-height: 54px;
-  }
-  @include desktopSmall{
+  @include mobileVertical {
     font-size: 24px;
     line-height: 36px;
   }
-  @include desktopMedium{
-    font-size: 36px;
-    line-height: 54px;
+  @include desktopSmall {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  @include desktopMedium {
+    font-size: 32px;
+    line-height: 48px;
   }
 }
 @mixin T3 {
   @include base;
-  font-family: "Authentic Sans";
+  font-family: "Neue Haas Unica Pro Regular";
   font-style: normal;
   font-weight: 400;
   letter-spacing: -0.008em;
   text-align: left;
-  @include mobileVertical{
+  @include mobileVertical {
     font-size: 18px;
     line-height: 27px;
   }
-  @include desktopSmall{
-    font-size: 12px;
-    line-height: 18px;
+  @include desktopSmall {
+    font-size: 17px;
+    line-height: 25px;
   }
-  @include desktopMedium{
-    font-size: 18px;
-    line-height: 27px;
+  @include desktopMedium {
+    font-size: 24px;
+    line-height: 36px;
   }
 }
 

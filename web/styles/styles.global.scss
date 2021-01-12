@@ -1,22 +1,22 @@
 @import "../theme.scss";
 
 @font-face {
-  font-family: "Authentic Sans";
-  src: local("AUTHENTICSans-90"),
-    url(../assets/fonts/AUTHENTICSans-90.otf) format("opentype");
+  font-family: "Neue Haas Unica Pro Regular";
+  src: local("Neue-Haas-Unica-pro-regular"),
+    url(../assets/fonts/Neue-Haas-Unica-pro-regular.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "Times New Roman MT Std";
-  src: local("TimesNewRomanMTStd-CondIt.otf"),
-    url(../assets/fonts/TimesNewRomanMTStd-CondIt.otf) format("opentype");
+  font-family: "Saol Display Medium Italic";
+  src: local("SaolDisplay-MediumItalic"),
+    url(../assets/fonts/SaolDisplay-MediumItalic.otf) format("opentype");
 }
 
 body {
   margin: 0px;
   background-color: $white;
   color: $black;
-  font-family: "Authentic Sans";
+  font-family: "Neue Hass Unica Pro Regular";
 }
 
 a {
