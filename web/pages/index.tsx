@@ -1,30 +1,4 @@
-import React, {useEffect} from 'react';
-import Link from 'next/link'
-import Router from 'next/router'
-import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
+import LandingPage from "./landing";
 
-export const Index = () => {
-
-  useEffect(() => {
-    const {pathname} = Router
-
-    if(pathname == '/' ){
-         Router.push('landing');
-    }
-  }, []);
-  /*
-  return (
-      <p>
-        <Link href="./SignUp/SignUpPage">
-          <a> Apply now . </a>
-        </Link>
-      </p>
-  );
-};
-*/
-  return (
-    null
-  );
-};
-
-export default Index;
+// simply use the landing page. keeping the other route for now for short-term posterity
+export default LandingPage;
