@@ -18,15 +18,15 @@ export const CursorCrosshair = ({
   };
 
   return (
-    <div>
+    <div className={styles.cursorwrapper}>
       <div className={styles.cursorx} style={{
-        left: x - 1,
+        left: x - (typeof window!=="undefined"?window.pageXOffset:0) - 1,
         top: (y%strokeLength)-(strokeLength*1.7),
         background: `repeating-linear-gradient(0deg, ${color} 0px, ${color} ${strokeLength*0.6}px, #fff0 ${strokeLength*0.6}px, #fff0 ${strokeLength}px)`
       }} />
       <div className={styles.cursory} style={{
         left: (x%strokeLength)-(strokeLength*1.3),
-        top: y - 1,
+        top: y - (typeof window!=="undefined"?window.pageYOffset:0) - 1,
         background: `repeating-linear-gradient(90deg, ${color} 0px, ${color} ${strokeLength*0.6}px, #fff0 ${strokeLength*0.6}px, #fff0 ${strokeLength}px)`
       }} />
     </div>

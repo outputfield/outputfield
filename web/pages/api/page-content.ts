@@ -11,11 +11,22 @@ export const getPageContent = async (name: string) => {
   queries Sanity data for page of given name and returns array of text fields
   */
 
-  const response = await client.fetch(` *[_type == "page" && title == $name][0].content {"id": label,"text": text[].children[],"value":value}`, { name });
+  const response = await client.fetch(` *[_type == "page" && title == $name][0].content {"type":_type,"id": label,"text": text[].children[],"value":value,"title":title,"url":image.asset->url}`, { name });
 
   const reduced = response.map((obj,i)=>{
-    let mObj = {};
-    mObj[obj.id] = (obj.text?obj.text.map((o)=>{return o[0].text}):(obj.value?obj.value:""));
+    let mObj = {images: {}};
+    switch(obj.type){
+      case "textsection":
+        mObj[obj.id] = obj.text.map((o)=>{return o[0].text});
+        break;
+      case "field":
+        mObj[obj.id] = obj.value;
+        break;
+      case "imageWithTitle":
+        mObj.images[obj.title] = obj.url;
+    }
+
+
     return mObj;
   }).reduce((r,o)=>{
     for(let key of Object.keys(o)){r[key.toLowerCase()]=o[key]};

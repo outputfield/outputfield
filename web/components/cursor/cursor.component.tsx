@@ -17,12 +17,7 @@ export const Cursor = ({
   };
 
   return (
-    <ReactCursorPosition className={styles.cursorwrapper} style={{
-        position: "absolute",
-        height: "100%",
-        width: "100%",
-        cursor: "none",
-      }} mapChildProps={({position}) => {return{x: position.x, y: position.y};}}>
+    <ReactCursorPosition className={styles.cursorposition} mapChildProps={({position}) => {return{x: position.x, y: position.y};}}>
       <CursorCrosshair color={color} strokeLength={strokeLength}/>
       {children}
     </ReactCursorPosition>

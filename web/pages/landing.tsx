@@ -39,13 +39,29 @@ const Landing = (props) => {
 
   return (
     <Cursor color={colors.error} strokeLength={20}>
-      <div className={styles.intro}>
-        {pageData.introduction.map((t, i) => {
-          return <Text text={t} key={i} size={"H1"} />;
-        })}
-        <Text text="" size={"H1"} />
-        {pageData.exhibition !== "" ? (
-          <Text
+      <div className={styles.main}>
+
+        <div className={styles.nav}>
+          <Text text={'<a href="mailto:' +
+          pageData.email +
+          '">Mail</a>, <a href="'+
+          pageData.instagram+
+          '">Instagram</a>, Discord'} size={"H1"} html={true} color={colors.primary} textAlign="right" />
+        </div>
+
+        <div className={styles.render}>
+          <div className={styles.renderWrap}>
+            <img src={pageData.images.render}/>
+          </div>
+        </div>
+
+        <div className={styles.intro}>
+          {pageData.introduction.map((t, i) => {
+            return <Text text={t} key={i} size={"H1"} />;
+          })}
+          <Text text="" size={"H1"} />
+          {pageData.exhibition !== "" ? (
+            <Text
             text={
               'We <a href="' +
               pageData.exhibition +
@@ -53,37 +69,39 @@ const Landing = (props) => {
             }
             size={"H1"}
             html={true}
-          />
-        ) : (
-          <Text text={"We exhibit work that is collaborative"} size={"H1"} />
-        )}
-      </div>
-      <Donut text="OUTPUT FIELD" />
-      <form className={styles.signUpForm} onSubmit={subscribe}>
-        <TextInput
-          label={"Sign up for launch updates"}
-          onChange={(event) => {
-            setRegisterData(event.target.value);
-            if (isError) {
-              setState("");
-            }
-          }}
-          invalid={isError}
-          errorMessage={isError && error ? error : undefined}
-          aria-label={"Email"}
-          aria-required={true}
-        />
-        {state === "success" && (
-          <Text
-            text="Subscribing successful. Stay tuned."
-            color={colors.success}
-            size="H2"
-            marginTop={10}
-          />
-        )}
+            />
+          ) : (
+            <Text text={"We exhibit work that is collaborative"} size={"H1"} />
+          )}
+        </div>
 
-        <SignUpButton buttonText="sign up" marginLeft={450} marginTop={-100} />
-      </form>
+        <form className={styles.signUpForm} onSubmit={subscribe}>
+          <TextInput
+            label={"Sign up for launch updates"}
+            onChange={(event) => {
+              setRegisterData(event.target.value);
+              if (isError) {
+                setState("");
+              }
+            }}
+            invalid={isError}
+            errorMessage={isError && error ? error : undefined}
+            aria-label={"Email"}
+            aria-required={true}
+          />
+          {state === "success" && (
+            <Text
+              text="Subscribing successful. Stay tuned."
+              color={colors.success}
+              size="H2"
+              marginTop={10}
+            />
+          )}
+
+          <SignUpButton buttonText="sign up"/>
+        </form>
+
+      </div>
       <script> </script> {/*chrome form transition bug fix*/}
     </Cursor>
   );
