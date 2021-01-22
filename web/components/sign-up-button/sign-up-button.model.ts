@@ -7,6 +7,7 @@ export interface ISignUpButtonProps {
   marginBottom?: number | string;
   marginLeft?: number | string;
   marginRight?: number | string;
+  className?: string;
 }
 
 export interface ISignUpButtonStyles {

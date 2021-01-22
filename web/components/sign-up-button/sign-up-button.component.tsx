@@ -13,6 +13,7 @@ export const SignUpButton = ({
   marginRight,
   marginBottom,
   marginLeft,
+  className,
 }: ISignUpButtonProps) => {
   const signUpButtonStyles: ISignUpButtonStyles = {
     marginTop,
@@ -21,9 +22,19 @@ export const SignUpButton = ({
     marginLeft,
   };
 
+  if (typeof className !== "undefined"){
+    let c = " ";
+    className.split(" ").forEach(e => {
+      c += styles[e] + " ";
+    });
+    className = c;
+  } else {
+    className = "";
+  }
+
   return (
     <button
-      className={styles.root}
+      className={styles.root + className}
       style={signUpButtonStyles}
       onClick={handleClick}
       aria-label={"Submit email signup"}

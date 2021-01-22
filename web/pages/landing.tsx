@@ -39,6 +39,10 @@ const Landing = (props) => {
 
   return (
     <Cursor color={colors.error} strokeLength={20}>
+      {/*}<div style={{width:"200px",height:"50px",backgroundColor:"#0003",position:"fixed",bottom:"100px",left:"200px",display:"flex",alignItems:"center",justifyContent:"center",border:"1px solid #000",zIndex:1000}}>
+        <a style={{textDecoration:"underline",color:colors.error}} onClick={()=>{setState("error");setError("Error Testing")}}>error test</a>
+        <a style={{textDecoration:"underline",marginLeft:"25px",color:colors.primary}} onClick={()=>{setState("success")}}>success test</a>
+      </div>*/}
       <div className={styles.main}>
 
         <div className={styles.nav}>
@@ -77,28 +81,37 @@ const Landing = (props) => {
 
         <form className={styles.signUpForm} onSubmit={subscribe}>
           <TextInput
-            label={"Sign up for launch updates"}
+            label={
+              state === "success" ?
+              "You’re all signed up! Sign up a friend?"
+              : "Sign up for launch updates"
+            }
             onChange={(event) => {
               setRegisterData(event.target.value);
               if (isError) {
                 setState("");
               }
             }}
+            onFocus={(event) => {
+              setState("typing");
+            }}
+            onBlur={(event) => {
+              if (event.target.value.length == 0){
+                setState("");
+              }
+            }}
             invalid={isError}
             errorMessage={isError && error ? error : undefined}
+            state={state}
             aria-label={"Email"}
             aria-required={true}
           />
-          {state === "success" && (
-            <Text
-              text="Subscribing successful. Stay tuned."
-              color={colors.success}
-              size="H2"
-              marginTop={10}
-            />
+          {state == "typing" || state == "loading" ? (
+            <SignUpButton className={"focus"} buttonText="sign up"/>
+          ) : (
+            <SignUpButton buttonText="sign up"/>
           )}
 
-          <SignUpButton buttonText="sign up"/>
         </form>
 
       </div>

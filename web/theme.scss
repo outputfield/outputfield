@@ -6,6 +6,7 @@ $primary: #0000ff;
 $success: #3cb371;
 $error: #ff0000;
 $magnetic: #e0ff00;
+$highlight: #e0ff00;
 $disabled-elements: #eeeeee;
 $disabled-text: #555555;
 
@@ -17,6 +18,7 @@ $disabled-text: #555555;
   success: $success;
   error: $error;
   magnetic: $magnetic;
+  highlight: $highlight;
   disabled-elements: $disabled-elements;
   disabled-text: $disabled-text;
 }

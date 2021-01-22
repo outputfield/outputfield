@@ -12,6 +12,10 @@ interface Props {
   ref?: any;
   width?: string | number;
   onChange?: (event: any) => any;
+  onFocus?: (event: any) => any;
+  onBlur?: (event: any) => any;
+  state?: string;
+  textInput?: React.Ref<HTMLInputElement>;
 
   ariaLabel?: string;
   ariaRequired?: boolean;
@@ -29,6 +33,9 @@ export const TextInput: React.FC<Props> = forwardRef(
       errorMessage,
       width,
       onChange,
+      onFocus,
+      onBlur,
+      state,
       ariaLabel,
       ariaRequired,
     },
@@ -36,23 +43,35 @@ export const TextInput: React.FC<Props> = forwardRef(
   ) => {
     const inputClasses = cx({
       input: true,
+      focus: state == "typing" || state == "loading",
       invalid,
       disabled,
     });
     const labelClasses = cx({
       label: true,
+      success: state === "success",
       invalid,
       disabled,
     });
+
+    const textInput = React.useRef<HTMLInputElement>(null);
+    if(state === "success" && textInput != null && textInput.current != null){
+      textInput.current.value = "";
+    }
+
+    console.log(state);
+
     return (
       <div style={{ width }}>
         <div className={styles.errorMessage}>{errorMessage}</div>
         <input
           className={inputClasses}
-          ref={ref as any}
+          ref={textInput}
           disabled={disabled}
           defaultValue={defaultValue}
           onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
           aria-label={ariaLabel}
           aria-required={ariaRequired}
         />

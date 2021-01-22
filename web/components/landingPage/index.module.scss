@@ -16,7 +16,7 @@ div.main{
   }
   @include theme.mobileHorizontal{
     grid-template-columns: auto 490px;
-    grid-template-rows: 430px 590px 290px;
+    grid-template-rows: 430px 590px 220px;
     left: 8px;
     top: 20px;
     width: calc(100% - 8px - 35px);
@@ -25,12 +25,15 @@ div.main{
   }
   @include theme.desktopSmall{
     grid-template-columns: 52px auto 735px;
-    grid-template-rows: auto 125px;
+    grid-template-rows: auto 90px;
     left: 24px;
     top: 24px;
     width: calc(100% - 24px - 32px);
     height: calc(100% - 24px - 28px);
     margin-bottom: 28px;
+  }
+  @include theme.desktopMedium{
+  grid-template-rows: auto 125px;
   }
 
   & div.nav{
@@ -148,7 +151,7 @@ div.main{
       grid-row: 3;
       grid-column: 1;
       grid-template-columns: auto;
-      grid-template-rows: 125px 165px;
+      grid-template-rows: 90px 90px;
       margin: auto 0px;
     }
     @include theme.mobileHorizontal{
@@ -159,11 +162,21 @@ div.main{
     @include theme.desktopSmall{
       grid-row: 2;
       grid-column: 3;
-      grid-template-columns: auto 265px;
+      grid-template-columns: auto 163px;
+    }
+    @include theme.desktopMedium{
+      grid-template-columns: auto 206px;
+      grid-template-rows: 125px;
     }
 
     & div input{
       width: 100%;
+    }
+
+    & div:first-of-type{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
     & button{
@@ -171,7 +184,10 @@ div.main{
         margin: 15px auto 0px;
       }
       @include theme.desktopSmall{
-        margin: 0px auto;
+        margin: auto 4px 8px auto;
+      }
+      @include theme.desktopMedium{
+        margin: auto 4px 10px auto;
       }
     }
   }

@@ -20,7 +20,8 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     border-radius: 100%;
     transition: transform 1s, border-color 1s, margin-left 1s, filter 1s;
     transition-timing-function: $ease-in-out;
-    filter: $dropshadowDefault;
+    // filter: $dropshadowDefault;
+    filter: blur(2px);
     &.buttonBorderFirst {
       transform: rotate(-5deg);
       margin-left: -1px;
@@ -39,16 +40,28 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     align-items: center;
     transition: margin-left 1s, color 1s;
     transition-timing-function: $ease-in-out;
-    padding-top: 8px;
+    @include theme.mobileVertical{
+      padding-top: 4px;
+    }
+    @include theme.desktopMedium{
+      padding-top: 6px;
+    }
     &.buttonTextFirst {
-      margin-left: -4px;
+      // margin-left: -4px;
       position: absolute;
       transform: unset;
     }
     &.buttonTextSecond {
-      margin-left: 4px;
+      // margin-left: 4px;
       position: absolute;
+      filter:blur(5px);
     }
+  }
+
+  &.focus .buttonText{
+    color: theme.$primary;
+    transition: color 0.3s;
+    transition-timing-function: $ease-in-out;
   }
 
   .buttonFill {
@@ -57,7 +70,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     width: inherit;
     background-color: theme.$white;
     border-radius: 100%;
-    transition: transform 1s;
+    transition: transform 1s, background-color 1s;
     transition-timing-function: $ease-in-out;
     &.buttonFillFirst {
       transform: rotate(-5deg);
@@ -75,25 +88,44 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   background-color: unset;
   border: none;
   //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
-  height: 96px;
-  width: 240px;
+  @include theme.mobileVertical{
+    height: 73px;
+    width: 175px;
+  }
+  @include theme.desktopSmall{
+    height: 63px;
+    width: 151px;
+  }
+  @include theme.desktopMedium{
+    height: 81px;
+    width: 194px;
+  }
   cursor: inherit;
   color: theme.$black;
-  filter: blur(4.8px);
+  // filter: blur(4.8px);
   transition: filter 1s;
   transition-timing-function: $ease-in-out;
 
   &:hover {
     filter: blur(0);
   }
+
+  &:hover > .buttonBorder{
+    filter: blur(0);
+  }
+
   &:hover > .buttonBorderFirst {
     transform: rotate(0deg);
-    border: $buttonBorderHover;
-    filter: $dropshadowHover;
+    // border: $buttonBorderHover;
+    // filter: $dropshadowHover;
   }
   &:hover > .buttonBorderSecond {
     transform: rotate(0deg);
-    border: $buttonBorderHover;
+    // border: $buttonBorderHover;
+  }
+
+  &:hover > .buttonFill {
+    background-color: theme.$highlight;
   }
 
   &:hover > .buttonFillFirst {
@@ -111,6 +143,6 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     color: theme.$primary;
   }
   &:focus > .buttonBorder {
-    border-color: theme.$primary;
+    // border-color: theme.$primary;
   }
 }

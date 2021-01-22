@@ -1,21 +1,13 @@
 @use '../../theme.scss';
 
-@mixin font-base {
-  font-family: "Authentic Sans";
-  font-style: normal;
-  font-weight: normal;
-  line-height: 150%;
-}
-
 .input {
-  @include font-base();
-  font-size: 26px;
+  @include theme.T1;
 
   background: none;
   outline: none;
   color: theme.$primary;
   border: none;
-  border-bottom: 2px solid theme.$primary;
+  border-bottom: 2px solid theme.$black;
 
   &.disabled {
     color: theme.$disabled-text;
@@ -25,17 +17,21 @@
     color: theme.$error;
     border-color: theme.$error;
   }
+  &.focus {
+    border-color: theme.$primary;
+  }
 }
 
 .label {
-  @include font-base();
-  font-size: 22px;
-  color: black;
+  @include theme.T3;
+}
+
+.success{
+  color: theme.$primary;
 }
 
 .errorMessage {
-  @include font-base();
+  @include theme.T3;
   color: theme.$error;
-  font-size: 16px;
-  height: 22px;
+  letter-spacing: -0.008em;
 }
