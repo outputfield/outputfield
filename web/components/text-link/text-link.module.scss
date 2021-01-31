@@ -1,0 +1,89 @@
+@use '../../theme.scss';
+
+.root {
+  text-decoration: none;
+  user-select: none;
+  display: inline;
+  position: relative;
+
+  .linkText{
+    display: contents;
+
+    &.linkTextFirst{
+      position: absolute;
+      user-select: text;
+      z-index: 2;
+
+      & h1, & h2, & div{
+        display: inline;
+      }
+    }
+
+    &.linkTextSecond{
+      position: absolute;
+      display: block;
+      visibility: hidden;
+      top: 1px;
+      left: 0px;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+      filter: blur(6px);
+      opacity: 0.7;
+      transition-property: filter, opacity;
+      transition-duration: 1s;
+      transition-timing-function: theme.$ease-in-out;
+
+      & h1, & h2, & div{
+        width: 100%;
+        display: block;
+        user-select: none;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .linkUnderline{
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    user-select: none;
+    pointer-events: none;
+    padding-bottom: 0.15em;
+
+    .linewrap{
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+
+      .line{
+        width: 0px;
+        top: 0px;
+        display: block;
+        user-select: none;
+        pointer-events: none;
+        border: 0px solid theme.$primary;
+        padding: 0px;
+        transition-property: width;
+        transition-duration: 1s;
+        transition-timing-function: theme.$ease-in-out;
+        @include theme.mobileVertical{
+          border-width: 3px;
+        }
+        @include theme.desktopSmall{
+          border-width: 2px;
+        }
+        @include theme.desktopMedium{
+          border-width: 4px;
+        }
+      }
+    }
+  }
+
+  &:hover > .linkText.linkTextSecond{
+    filter: blur(0px);
+    opacity: 0;
+  }
+}

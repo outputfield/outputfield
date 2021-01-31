@@ -59,8 +59,6 @@ export const TextInput: React.FC<Props> = forwardRef(
       textInput.current.value = "";
     }
 
-    console.log(state);
-
     return (
       <div style={{ width }}>
         <div className={styles.errorMessage}>{errorMessage}</div>

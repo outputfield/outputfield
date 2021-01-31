@@ -1,0 +1,314 @@
+import React, { useEffect, useRef } from "react";
+import { IStyles, ITextLinkProps } from "./text-link.model";
+import styles from "./text-link.module.scss";
+import colors from "../../colors";
+import { Text } from "../text/text.component";
+
+export const TextLink = ({
+  textAlign = "left",
+  url,
+  color = colors.primary,
+  size,
+  text,
+  marginTop,
+  marginRight,
+  marginBottom,
+  marginLeft,
+}: ITextLinkProps) => {
+  const textLinkStyles: IStyles = {
+    textAlign,
+    color,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+  };
+
+  class TextRect{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+
+    constructor(x: number, y: number, width: number, height: number){
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+    }
+  }
+
+  class TextRectList{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    end: number;
+    recs: TextRect[];
+    offset: boolean;
+    offsetLength: number;
+    length: number;
+    rotate270: boolean;
+
+    constructor(){
+      this.x = Number.MAX_VALUE;
+      this.y = Number.MAX_VALUE;
+      this.width = 0;
+      this.height = 0;
+      this.end = Number.MIN_VALUE
+      this.recs = [] as TextRect[];
+      this.offset = false;
+      this.offsetLength = 0;
+      this.length = 0;
+      this.rotate270 = false;
+    }
+
+    push(a: TextRect){
+      if(a.x < this.x){ this.x = a.x }
+      if(a.y < this.y){ this.y = a.y }
+      if(a.x + a.width > this.end){ this.end = a.x + a.width}
+      if(this.recs.length>=1 && a.x < this.recs[this.recs.length-1].x){
+        this.offset = true;
+        this.offsetLength = this.recs[this.recs.length-1].x - a.x;
+      }
+      this.width = this.end - this.x;
+      this.height = a.y + a.height - this.y;
+      this.recs.push(a);
+      this.length++;
+    }
+
+    getElements(){
+      let text2;
+      if(underline != null && underline.current != null && linktext != null && linktext2.current != null){
+        text2 = [linktext2.current.getElementsByTagName("h1")[0],
+                  linktext2.current.getElementsByTagName("h2")[0],
+                  linktext2.current.getElementsByTagName("div")[0]][0];
+      }
+      return this.recs.map((e,i) => {
+        if(underline != null && underline.current != null && linktext != null && linktext2.current != null){
+          let len = e.width/this.width*100;
+          let wrap = document.createElement("div");
+          wrap.classList.add(styles.linewrap);
+          wrap.style.top = (e.y-this.y)+"px";
+          if(this.offset && i==0){
+            let st = this.offsetLength/this.width*100;
+            wrap.style.clipPath = "polygon("+st+"% 0%, "+(st+len)+"% 0%, "+(st+len)+"% 100%, "+st+"% 100%)";
+
+            linktext2.current.style.left = "-"+this.offsetLength+"px";
+            underline.current.style.left = "-"+this.offsetLength+"px";
+            console.log(linktext2.current.style.left);
+            linktext2.current.style.width = this.width+"px";
+            text2.style.textIndent = this.offsetLength+"px";
+
+          } else {
+            wrap.style.clipPath = "polygon(0% 0%, "+len+"% 0%, "+len+"% 100%, 0% 100%)";
+            if(i==0){
+              linktext2.current.style.left = "0px";
+              underline.current.style.left = "0px";
+            }
+          }
+          text2.style.visibility = "visible";
+          let element = document.createElement("div");
+          element.setAttribute("full-width",""+this.width);
+          element.classList.add(styles.line);
+          element.style.height = e.height+"px";
+          if(this.rotate270){
+            wrap.style.width = (e.width+6)+"px";
+            wrap.style.height = this.height+"px";
+            wrap.style.transform = "rotate(270deg)";
+            wrap.style.transformOrigin = (e.width/2)+"px "+(e.width/2)+"px";
+            wrap.style.top = "6px"
+            element.setAttribute("full-height",""+this.height);
+            element.style.height = "0px";
+            element.style.borderBottomWidth = "0px";
+            element.style.transitionProperty = "height";
+            element.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
+            linktext2.current.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
+          } else {
+            wrap.style.width = this.width+"px";
+            wrap.style.height = (e.height+6)+"px";
+            element.style.borderRightWidth = "0px";
+            element.style.transitionProperty = "width";
+            element.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
+            linktext2.current.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
+          }
+          element.style.borderTopWidth = "0px";
+          element.style.borderLeftWidth = "0px";
+          wrap.appendChild(element);
+          return wrap;
+
+
+        }
+      })
+    }
+
+    setRotate270(rot: boolean){
+      this.rotate270 = rot;
+    }
+  }
+
+  const underline = useRef<HTMLDivElement>(null);
+  const linktext = useRef<HTMLDivElement>(null);
+  const linktext2 = useRef<HTMLDivElement>(null);
+  let nav;
+
+  let linkrecs: DOMRectList, newlinkrecs: DOMRectList;
+  let rotate270 = false;
+
+
+  //https://medium.com/@pat_migliaccio/rate-limiting-throttling-consecutive-function-calls-with-queues-4c9de7106acc
+  function limiter(fn, wait){
+    let isCalled = false;
+
+    return function(){
+      if (!isCalled){
+        fn.call();
+        isCalled = true;
+        setTimeout(function(){
+          isCalled = false;
+        }, wait)
+      }
+    };
+  }
+
+  function onMouseOver(){
+    if(underline != null && underline.current != null){
+      let children = underline.current.getElementsByClassName(styles.linewrap);
+      if(children != null && children.length > 0){
+        setTimeout(()=>{
+          for(let i = 0; i<children.length; i++){
+            let c = children[i].getElementsByTagName("div")[0];
+              if(c.hasAttribute("full-height")){
+                c.style.height = c.getAttribute("full-height")+"px";
+              } else {
+                c.style.width = c.getAttribute("full-width")+"px";
+              }
+          }
+        },1);
+      }
+    }
+  }
+
+  function onMouseOut(){
+    if(underline != null && underline.current != null){
+      let children = underline.current.getElementsByClassName(styles.linewrap);
+      if(children != null && children.length > 0){
+        for(let i = 0; i<children.length; i++){
+          let c = children[i].getElementsByTagName("div")[0];
+          if(c.hasAttribute("full-height")){
+            c.style.height = "0px";
+          } else {
+            c.style.width = "0px";
+          }
+        }
+      }
+    }
+  }
+
+  function getRecs(){
+    if(linktext != null && linktext.current != null){
+      const obj = linktext.current.childNodes[0].childNodes[0];
+      let r = document.createRange();
+      r.selectNode(obj);
+      return r.getClientRects();
+    } else {
+      return document.createRange().getClientRects();
+    }
+  }
+
+  function compareRecs(a: DOMRectList, b: DOMRectList){
+    let eq;
+    if(a != null && b != null){
+      eq = (a.length == b.length);
+      if(eq){
+        for(let i = 0; i < a.length; i++){
+          if(a[i].width!=b[i].width || a[i].height!=b[i].height){
+            eq = false;
+            break;
+          }
+        }
+      }
+    }else {
+      eq = false;
+    }
+    return eq
+  }
+
+  function generateLinks(recs){
+    if(linktext != null && linktext.current != null){
+      if (recs != null && recs.length > 0){
+        let r = new TextRectList();
+        r.setRotate270(nav.contains(linktext.current)&&rotate270);
+        for(let i = 0; i<recs.length; i++){
+          r.push(new TextRect(
+            recs[i].x,
+            recs[i].y,
+            recs[i].width,
+            recs[i].height
+          ));
+        }
+
+        return r;
+      }
+    }
+  }
+
+  function appendLinks(links){
+    // console.log(links);
+    if(underline != null && underline.current != null){
+      underline.current.innerHTML = "";
+      if(links != null && links.length > 0){
+        links.getElements().forEach(e => {
+          if(underline.current != null){
+            underline.current.appendChild(e);
+          }
+        });
+      }
+    }
+  }
+
+  function handleResize(){
+    newlinkrecs = getRecs();
+    if(!compareRecs(linkrecs, newlinkrecs)){
+      linkrecs = newlinkrecs;
+      if(nav != null){
+        rotate270 = (window.getComputedStyle(nav,null).transform!="none");
+      }
+      let a = generateLinks(linkrecs);
+      if(a!=undefined){
+        appendLinks(a);
+      }
+    }
+  }
+
+  useEffect(() => {
+    const resize = limiter(handleResize,25);
+
+    window.addEventListener('load', function(){
+      nav = document.getElementById("nav");
+      setTimeout(handleResize,50)
+    });
+
+    window.addEventListener('resize', resize);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+    }
+  });
+
+
+
+  return(
+    <a className={styles.root} href={url} onMouseOver={onMouseOver}
+    onMouseOut={onMouseOut} style={textLinkStyles}>
+      <div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
+        <Text text={text} size={size} />
+      </div>
+      <div className={styles.linkUnderline} ref={underline}>
+      </div>
+      <div className={`${styles.linkText} ${styles.linkTextFirst}`} ref={linktext}>
+        <Text text={text} size={size} />
+      </div>
+    </a>
+  );
+};

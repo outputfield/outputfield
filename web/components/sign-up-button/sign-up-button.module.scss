@@ -5,7 +5,6 @@ $buttonBorderHover: 2px solid theme.$primary;
 
 $dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
 $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
-$ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
 // $transition-out: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 
 .root {
@@ -19,7 +18,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     width: inherit;
     border-radius: 100%;
     transition: transform 1s, border-color 1s, margin-left 1s, filter 1s;
-    transition-timing-function: $ease-in-out;
+    transition-timing-function: theme.$ease-in-out;
     // filter: $dropshadowDefault;
     filter: blur(2px);
     &.buttonBorderFirst {
@@ -39,7 +38,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     display: inline-flex;
     align-items: center;
     transition: margin-left 1s, color 1s;
-    transition-timing-function: $ease-in-out;
+    transition-timing-function: theme.$ease-in-out;
     @include theme.mobileVertical{
       padding-top: 4px;
     }
@@ -61,7 +60,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   &.focus .buttonText{
     color: theme.$primary;
     transition: color 0.3s;
-    transition-timing-function: $ease-in-out;
+    transition-timing-function: theme.$ease-in-out;
   }
 
   .buttonFill {
@@ -71,7 +70,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
     background-color: theme.$white;
     border-radius: 100%;
     transition: transform 1s, background-color 1s;
-    transition-timing-function: $ease-in-out;
+    transition-timing-function: theme.$ease-in-out;
     &.buttonFillFirst {
       transform: rotate(-5deg);
     }
@@ -104,7 +103,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   color: theme.$black;
   // filter: blur(4.8px);
   transition: filter 1s;
-  transition-timing-function: $ease-in-out;
+  transition-timing-function: theme.$ease-in-out;
 
   &:hover {
     filter: blur(0);

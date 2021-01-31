@@ -51,6 +51,11 @@ $disabled-text: #555555;
   }
 }
 
+// BEZIER CURVES =======================
+$ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
+
+
+
 // TYPOGRAPHY mixins =======================
 
 @mixin base {

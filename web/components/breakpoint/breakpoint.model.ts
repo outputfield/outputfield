@@ -1,4 +1,4 @@
 export interface IBreakpointProps {
-  size: "mobileHorizontal" | "mobileVertical" | "desktopSmall" | "desktopMedium" | "desktopLarge";
+  size: "mobile" | "mobileHorizontal" | "mobileVertical" | "desktop" | "desktopSmall" | "desktopMedium" | "desktopLarge";
   children?: string | React.ReactNode;
 }

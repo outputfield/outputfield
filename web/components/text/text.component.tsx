@@ -1,4 +1,5 @@
 import React from "react";
+import { TextLink } from "../text-link/text-link.component";
 import { IStyles, ITextProps } from "./text.model";
 import styles from "./text.module.scss";
 
@@ -22,8 +23,16 @@ export const Text = ({
     marginLeft,
   };
 
-  const parse = require('html-react-parser');
-  text = html?parse(text):text;
+  if(html){
+    const parse = require('html-react-parser');
+    let parsedText = parse(text);
+    parsedText.forEach((v,i)=>{
+      if(parsedText[i].type == "a"){
+        parsedText[i] = <TextLink key={i} url={parsedText[i].props.href} size={size} text={parsedText[i].props.children} />;
+      }
+    })
+    text = parsedText;
+  }
   const textClass = styles[size] + (text==""?" "+styles.newline:"") + (html?" "+styles.markup:"");
 
   if (size === "H1") {

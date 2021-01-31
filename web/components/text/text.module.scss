@@ -17,8 +17,61 @@
 }
 .newline{
   display: block;
-  height: 38px;
+
+  @include theme.mobileVertical{
+    &.H1 {
+      height: 44px;
+    }
+    &.H2 {
+      height: 27px;
+    }
+    &.T1 {
+      height: 36px;
+    }
+    &.T2 {
+      height: 36px;
+    }
+    &.T3 {
+      height: 27px;
+    }
+  }
+  @include theme.desktopSmall{
+    &.H1 {
+      height: 36px;
+    }
+    &.H2 {
+      height: 25px;
+    }
+    &.T1 {
+      height: 36px;
+    }
+    &.T2 {
+      height: 36px;
+    }
+    &.T3 {
+      height: 25px;
+    }
+
+  }
+  @include theme.desktopLarge{
+    &.H1 {
+      height: 52px;
+    }
+    &.H2 {
+      height: 36px;
+    }
+    &.T1 {
+      height: 48px;
+    }
+    &.T2 {
+      height: 48px;
+    }
+    &.T3 {
+      height: 36px;
+    }
+  }
 }
+
 .markup{
-  display: inline-block;
+  display: inline;
 }

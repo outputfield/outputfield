@@ -6,11 +6,13 @@ export const Breakpoint = ({
   children
 }) => {
   const breakpoints = {
-    mobileVertical : useMediaQuery({minWidth: 0 }),
-    mobileHorizontal : useMediaQuery({ minWidth: 800 }),
-    desktopSmall : useMediaQuery({ minWidth: 960 }),
-    desktopMedium : useMediaQuery({ minWidth: 1180, minHeight: 760 }),
-    desktopLarge : useMediaQuery({ minWidth: 1440 })
+    mobile :            useMediaQuery({minWidth: 0,     maxWidth: 959}),
+    mobileVertical :    useMediaQuery({minWidth: 0 ,    maxWidth: 799}),
+    mobileHorizontal :  useMediaQuery({minWidth: 800,   maxWidth: 959 }),
+    desktop :           useMediaQuery({minWidth: 960}),
+    desktopSmall :      useMediaQuery({minWidth: 960,   maxWidth: 1179 }),
+    desktopMedium :     useMediaQuery({minWidth: 1180,  maxWidth: 1439, minHeight: 760 }),
+    desktopLarge :      useMediaQuery({minWidth: 1440 })
   }
 
   const sizes = size.split(" ");
