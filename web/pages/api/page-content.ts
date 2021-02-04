@@ -36,7 +36,7 @@ export const getPageContent = async (name: string) => {
   return reduced;
 };
 
-export default async (
+const HandleRequest = async (
   req: NextApiRequest,
   res: NextApiResponse<PageContentResponse | ErrorWithMessage>
 ) => {
@@ -57,3 +57,5 @@ export default async (
     return sendError(res, 500, "Failed to query database");
   }
 };
+
+export default HandleRequest;

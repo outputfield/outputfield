@@ -19,6 +19,7 @@ const Landing = (props) => {
   const [email, setRegisterData] = useState("");
   const [state, setState] = useState("");
   const [error, setError] = useState("");
+  const [modal, setModal] = useState("");
 
   const subscribe = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -42,14 +43,18 @@ const Landing = (props) => {
         <a style={{textDecoration:"underline",color:colors.error}} onClick={()=>{setState("error");setError("Error Testing")}}>error test</a>
         <a style={{textDecoration:"underline",marginLeft:"25px",color:colors.primary}} onClick={()=>{setState("success")}}>success test</a>
       </div>*/}
-      <div className={styles.main}>
+      <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(event)=>{setModal("")}}>
+        {`${modal}`.toUpperCase()}
+      </div>
+      <div className={`${styles.main} ${modal!=""?styles.modalActive:""}`}>
         <div className={styles.navWrap}>
           <div className={styles.nav} id="nav">
-              <Text text={'<a href="mailto:' +
-              pageData.email +
-              '">Mail</a>, <a href="'+
-              pageData.instagram+
-              '">Instagram</a>, Discord'} size={"H1"} html={true} color={colors.primary} textAlign="right" />
+            <Text size={"H1"} html={true} color={colors.primary} textAlign="right">
+              <a onClick={(event)=>{setModal(pageData.email)}} href={"#"}>Mail</a>
+              {", "}
+              <a onClick={(event)=>{setModal(pageData.instagram)}} href={"#"}>Instagram</a>
+              {", Discord"}
+            </Text>
           </div>
         </div>
 
@@ -61,23 +66,19 @@ const Landing = (props) => {
 
         <div className={styles.intro}>
           {pageData.introduction.map((t, i) => {
-            return <Text text={t} key={i} size={"H1"} />;
+            return <Text key={i} size={"H1"}>{t}</Text>;
           })}
-          <Text text="" size={"H1"} />
+          <Text size={"H1"}/>
           {pageData.exhibition !== "" ? (
-            <Text
-            text={
-              'We <a href="' +
-              pageData.exhibition +
-              '">exhibit</a> work that is collaborative'
-            }
-            size={"H1"}
-            html={true}
-            />
+            <Text size={"H1"} html={true}>
+              We <a href={pageData.exhibition}>exhibit</a> work that is collaborative
+            </Text>
           ) : (
-            <Text text={"We exhibit work that is collaborative "} size={"H1"} />
+            <Text size={"H1"}>We exhibit work that is collaborative</Text>
           )}
-          {/*<br/><br/><Text size={"H1"} text={"this is a test <a href='#'>of a multiline link. there are several words to take up at least one line of the paragraph</a> and then some more text here"} html={true}/>*/}
+          {/*<br/><br/><Text size={"H1"} html={true}>
+          this is a test <a href='#'>of a multiline link. there are several words to take up at least one line of the paragraph</a> and then some more text here
+          </Text>*/}
         </div>
 
         <form className={styles.signUpForm} onSubmit={subscribe}>

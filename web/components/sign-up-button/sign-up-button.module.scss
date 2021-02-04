@@ -39,12 +39,12 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
     align-items: center;
     transition: margin-left 1s, color 1s;
     transition-timing-function: theme.$ease-in-out;
-    @include theme.mobileVertical{
-      padding-top: 4px;
-    }
-    @include theme.desktopMedium{
-      padding-top: 6px;
-    }
+    // @include theme.mobileVertical{
+    //   padding-top: 4px;
+    // }
+    // @include theme.desktopMedium{
+    //   padding-top: 6px;
+    // }
     &.buttonTextFirst {
       // margin-left: -4px;
       position: absolute;

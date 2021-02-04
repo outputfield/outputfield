@@ -9,11 +9,12 @@ export const TextLink = ({
   url,
   color = colors.primary,
   size,
-  text,
   marginTop,
   marginRight,
   marginBottom,
   marginLeft,
+  onClick,
+  children
 }: ITextLinkProps) => {
   const textLinkStyles: IStyles = {
     textAlign,
@@ -96,7 +97,6 @@ export const TextLink = ({
 
             linktext2.current.style.left = "-"+this.offsetLength+"px";
             underline.current.style.left = "-"+this.offsetLength+"px";
-            console.log(linktext2.current.style.left);
             linktext2.current.style.width = this.width+"px";
             text2.style.textIndent = this.offsetLength+"px";
 
@@ -150,6 +150,7 @@ export const TextLink = ({
   const underline = useRef<HTMLDivElement>(null);
   const linktext = useRef<HTMLDivElement>(null);
   const linktext2 = useRef<HTMLDivElement>(null);
+  const underlinecurrent = (()=>{const ul = underline; return ul.current})();
   let nav;
 
   let linkrecs: DOMRectList, newlinkrecs: DOMRectList;
@@ -254,7 +255,6 @@ export const TextLink = ({
   }
 
   function appendLinks(links){
-    // console.log(links);
     if(underline != null && underline.current != null){
       underline.current.innerHTML = "";
       if(links != null && links.length > 0){
@@ -281,12 +281,20 @@ export const TextLink = ({
     }
   }
 
+  function init(){
+    if(linktext.current == null || linktext2.current == null || underline.current == null){
+      setTimeout(init,50);
+    } else {
+      nav = document.getElementById("nav");
+      handleResize();
+    }
+  }
+
   useEffect(() => {
     const resize = limiter(handleResize,25);
 
     window.addEventListener('load', function(){
-      nav = document.getElementById("nav");
-      setTimeout(handleResize,50)
+      init();
     });
 
     window.addEventListener('resize', resize);
@@ -299,15 +307,15 @@ export const TextLink = ({
 
 
   return(
-    <a className={styles.root} href={url} onMouseOver={onMouseOver}
+    <a className={styles.root} onClick={onClick} href={url} onMouseOver={onMouseOver}
     onMouseOut={onMouseOut} style={textLinkStyles}>
       <div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
-        <Text text={text} size={size} />
+        <Text size={size}>{children}</Text>
       </div>
       <div className={styles.linkUnderline} ref={underline}>
       </div>
       <div className={`${styles.linkText} ${styles.linkTextFirst}`} ref={linktext}>
-        <Text text={text} size={size} />
+        <Text size={size}>{children}</Text>
       </div>
     </a>
   );
