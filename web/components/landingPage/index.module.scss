@@ -211,6 +211,19 @@ div.modal{
   line-height: 150px;
 
   &.modalActive{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & p{
+      font-size: min(96px, 8vw);
+      line-height: min(96px, 8vw);
+      color: theme.$primary;
+
+      & a{
+        display: inline-block;
+        padding: 50px;
+      }
+    }
   }
 }

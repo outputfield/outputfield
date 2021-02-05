@@ -11,7 +11,7 @@ export const Text = ({
   marginRight,
   marginBottom,
   marginLeft,
-  html,
+  parseHtml,
   children,
 }: ITextProps) => {
   const textStyles: IStyles = {
@@ -23,7 +23,7 @@ export const Text = ({
     marginLeft,
   };
 
-  if(html){
+  if(parseHtml){
     const parse = require('html-react-parser');
     let newChildren = [] as any;
 
@@ -50,7 +50,7 @@ export const Text = ({
     }
     children = newChildren;
   }
-  const textClass = styles[size] + (children==undefined||children==""?" "+styles.newline:"") + (html?" "+styles.markup:"");
+  const textClass = styles[size] + (children==undefined||children==""?" "+styles.newline:"") + (parseHtml?" "+styles.markup:"");
 
   if (size === "H1") {
     return (

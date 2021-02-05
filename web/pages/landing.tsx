@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content"
 import colors from "../colors";
-import { Cursor } from "../components/cursor/cursor.component";
 import styles from "../components/landingPage/index.module.scss";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import { TextInput } from "../components/text-input/text-input.component";
@@ -38,22 +37,31 @@ const Landing = (props) => {
   const isError = state === "error";
 
   return (
-    <Cursor color={colors.error} strokeLength={20}>
+    <div>
       {/*}<div style={{width:"200px",height:"50px",backgroundColor:"#0003",position:"fixed",bottom:"100px",left:"200px",display:"flex",alignItems:"center",justifyContent:"center",border:"1px solid #000",zIndex:1000}}>
         <a style={{textDecoration:"underline",color:colors.error}} onClick={()=>{setState("error");setError("Error Testing")}}>error test</a>
         <a style={{textDecoration:"underline",marginLeft:"25px",color:colors.primary}} onClick={()=>{setState("success")}}>success test</a>
       </div>*/}
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(event)=>{setModal("")}}>
-        {`${modal}`.toUpperCase()}
+        {modal == "email" &&
+          <Text size={"T1"}><a href={`mailto:${pageData.email}`} onClick={(event)=>{event.stopPropagation()}}>{pageData.email}</a></Text>
+        }
+        {modal == "instagram" &&
+          <Text size={"T1"}><a href={pageData.instagram} onClick={(event)=>{event.stopPropagation()}}>@{(pageData.instagram).split("instagram.com/")[1]}</a></Text>
+        }
+        {modal == "discord" &&
+          <Text size={"T1"}><a href={pageData.discord} onClick={(event)=>{event.stopPropagation()}}>{pageData.discord}</a></Text>
+        }
       </div>
       <div className={`${styles.main} ${modal!=""?styles.modalActive:""}`}>
         <div className={styles.navWrap}>
           <div className={styles.nav} id="nav">
-            <Text size={"H1"} html={true} color={colors.primary} textAlign="right">
-              <a onClick={(event)=>{setModal(pageData.email)}} href={"#"}>Mail</a>
+            <Text size={"H1"} color={colors.primary} textAlign="right" parseHtml={true}>
+              <a onClick={(event)=>{setModal("email")}}>Mail</a>
               {", "}
-              <a onClick={(event)=>{setModal(pageData.instagram)}} href={"#"}>Instagram</a>
-              {", Discord"}
+              <a onClick={(event)=>{setModal("instagram")}}>Instagram</a>
+              {", "}
+              <a onClick={(event)=>{setModal("discord")}}>Discord</a>
             </Text>
           </div>
         </div>
@@ -70,13 +78,13 @@ const Landing = (props) => {
           })}
           <Text size={"H1"}/>
           {pageData.exhibition !== "" ? (
-            <Text size={"H1"} html={true}>
+            <Text size={"H1"} parseHtml={true}>
               We <a href={pageData.exhibition}>exhibit</a> work that is collaborative
             </Text>
           ) : (
             <Text size={"H1"}>We exhibit work that is collaborative</Text>
           )}
-          {/*<br/><br/><Text size={"H1"} html={true}>
+          {/*<br/><br/><Text size={"H1"} parseHtml={true}>
           this is a test <a href='#'>of a multiline link. there are several words to take up at least one line of the paragraph</a> and then some more text here
           </Text>*/}
         </div>
@@ -118,7 +126,7 @@ const Landing = (props) => {
 
       </div>
       <script> </script> {/*chrome form transition bug fix*/}
-    </Cursor>
+    </div>
   );
 };
 

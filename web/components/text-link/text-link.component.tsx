@@ -150,7 +150,6 @@ export const TextLink = ({
   const underline = useRef<HTMLDivElement>(null);
   const linktext = useRef<HTMLDivElement>(null);
   const linktext2 = useRef<HTMLDivElement>(null);
-  const underlinecurrent = (()=>{const ul = underline; return ul.current})();
   let nav;
 
   let linkrecs: DOMRectList, newlinkrecs: DOMRectList;
@@ -236,8 +235,8 @@ export const TextLink = ({
   }
 
   function generateLinks(recs){
-    if(linktext != null && linktext.current != null){
-      if (recs != null && recs.length > 0){
+    if(nav==null){nav=document.getElementById("nav");}
+    if(linktext != null && linktext.current != null && recs != null && recs.length > 0 && nav != undefined){
         let r = new TextRectList();
         r.setRotate270(nav.contains(linktext.current)&&rotate270);
         for(let i = 0; i<recs.length; i++){
@@ -251,7 +250,6 @@ export const TextLink = ({
 
         return r;
       }
-    }
   }
 
   function appendLinks(links){

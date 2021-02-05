@@ -6,7 +6,7 @@ export interface ITextProps {
   marginBottom?: number | string;
   marginLeft?: number | string;
   marginRight?: number | string;
-  html?: boolean;
+  parseHtml?: boolean;
   children?: string | React.ReactNode | React.ReactNodeArray;
 }
 
