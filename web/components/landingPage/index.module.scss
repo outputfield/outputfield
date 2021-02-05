@@ -197,6 +197,10 @@ div.main{
       }
     }
   }
+
+  & ::selection{
+    background-color: theme.$highlight;
+  }
 }
 
 div.modal{
@@ -226,4 +230,17 @@ div.modal{
       }
     }
   }
+}
+
+div.highlight{
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  left: -1px;
+  top: -1px;
+  background-color: theme.$highlight;
+  transition: 1s clip-path theme.$ease-in-out;
+  clip-path: polygon(-10% -10%, -10% -10%, -10% 110%, -10% 110%);
+  z-index: -1;
+  filter: blur(4px);
 }

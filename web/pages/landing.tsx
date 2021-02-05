@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content"
 import colors from "../colors";
@@ -34,25 +34,116 @@ const Landing = (props) => {
     }
   };
 
+  let highlightFired = false;
+  let padY = 2, padX = 10;
+  let t, r;
+
+  function highlight(){
+    if(!highlightFired){
+      t = document.getElementById("intro");
+      r = document.createRange();
+      if(t!=null){
+        let el = t.children[0].childNodes[0];
+        r.setStart(el, 0);
+        r.setEnd(el, 12);
+        let x = r.getClientRects();
+        if(x[0].y > 0 && window.innerHeight > x[0].y+x[0].height+(2*padY)){
+          let h = document.getElementById("highlight");
+          if(h != null){
+            t.children[0].appendChild(h);
+            window.addEventListener('resize',sizeHighlight);
+            showHighlight();
+          }
+        } else {
+          window.addEventListener('scroll', highlight);
+        }
+      } else {
+        setTimeout(highlight,50);
+      }
+    } else {
+      window.removeEventListener('load', highlight);
+      window.removeEventListener('scroll', highlight);
+    }
+  }
+
+  function showHighlight(){
+    if(!highlightFired){
+      let txt = r.getClientRects()[0];
+      highlightFired = true;
+      let h = document.getElementById("highlight");
+      if(h != null){
+        h.style.left = "-"+padX+"px";
+        h.style.top = "0px";
+        h.style.height = txt.height+(2*padY)+"px";
+        h.style.width = txt.width+(2*padX)+"px";
+        h.style.clipPath = "polygon(-10% -10%, 110% -10%, 110% 110%, -10% 110%)";
+        setTimeout(()=>{resetHighlight()},2000);
+      }
+    }
+  };
+
+  function sizeHighlight(){
+    let h = document.getElementById("highlight");
+    let txt = r.getClientRects()[0];
+    if(h!=null && txt!=null){
+      h.style.height = txt.height+(2*padY)+"px";
+      h.style.width = txt.width+(2*padX)+"px";
+    }
+  }
+
+  function resetHighlight(){
+    let h = document.getElementById("highlight");
+    if(h != null){
+      h.style.clipPath = "polygon(110% -10%, 110% -10%, 110% 110%, 110% 110%)";
+      setTimeout(function(){
+        if(h!=null){
+          h.remove();
+          window.removeEventListener('scroll', highlight);
+          window.removeEventListener('resize', sizeHighlight);
+        }
+      },1000);
+    }
+  }
+
+  useEffect(() => {
+    if(!highlightFired){
+      window.addEventListener('load', highlight);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', highlight);
+      window.removeEventListener('resize', sizeHighlight);
+    }
+  });
+
   const isError = state === "error";
 
   return (
     <div>
-      {/*}<div style={{width:"200px",height:"50px",backgroundColor:"#0003",position:"fixed",bottom:"100px",left:"200px",display:"flex",alignItems:"center",justifyContent:"center",border:"1px solid #000",zIndex:1000}}>
-        <a style={{textDecoration:"underline",color:colors.error}} onClick={()=>{setState("error");setError("Error Testing")}}>error test</a>
-        <a style={{textDecoration:"underline",marginLeft:"25px",color:colors.primary}} onClick={()=>{setState("success")}}>success test</a>
-      </div>*/}
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(event)=>{setModal("")}}>
         {modal == "email" &&
-          <Text size={"T1"}><a href={`mailto:${pageData.email}`} onClick={(event)=>{event.stopPropagation()}}>{pageData.email}</a></Text>
+          <Text size={"T1"}>
+            <a href={`mailto:${pageData.email}`} onClick={(event)=>{event.stopPropagation()}}>
+              {pageData.email}
+            </a>
+          </Text>
         }
         {modal == "instagram" &&
-          <Text size={"T1"}><a href={pageData.instagram} onClick={(event)=>{event.stopPropagation()}}>@{(pageData.instagram).split("instagram.com/")[1]}</a></Text>
+          <Text size={"T1"}>
+            <a href={pageData.instagram} onClick={(event)=>{event.stopPropagation()}}>
+              @{(pageData.instagram).split("instagram.com/")[1]}
+            </a>
+          </Text>
         }
         {modal == "discord" &&
-          <Text size={"T1"}><a href={pageData.discord} onClick={(event)=>{event.stopPropagation()}}>{pageData.discord}</a></Text>
+          <Text size={"T1"}>
+            <a href={pageData.discord} onClick={(event)=>{event.stopPropagation()}}>
+              {pageData.discord}
+            </a>
+          </Text>
         }
       </div>
+      <div className={styles.highlight} id="highlight"/>
       <div className={`${styles.main} ${modal!=""?styles.modalActive:""}`}>
         <div className={styles.navWrap}>
           <div className={styles.nav} id="nav">
@@ -72,7 +163,7 @@ const Landing = (props) => {
           </div>
         </div>
 
-        <div className={styles.intro}>
+        <div className={styles.intro} id="intro">
           {pageData.introduction.map((t, i) => {
             return <Text key={i} size={"H1"}>{t}</Text>;
           })}
