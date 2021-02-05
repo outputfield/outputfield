@@ -76,8 +76,9 @@ const Landing = (props) => {
         h.style.top = "0px";
         h.style.height = txt.height+(2*padY)+"px";
         h.style.width = txt.width+(2*padX)+"px";
-        h.style.clipPath = "polygon(-10% -10%, 110% -10%, 110% 110%, -10% 110%)";
-        setTimeout(()=>{resetHighlight()},2000);
+        h.style.backgroundSize= "100% 100%";
+        h.style.backgroundPosition = "left";
+        setTimeout(()=>{resetHighlight()},2500);
       }
     }
   };
@@ -94,14 +95,15 @@ const Landing = (props) => {
   function resetHighlight(){
     let h = document.getElementById("highlight");
     if(h != null){
-      h.style.clipPath = "polygon(110% -10%, 110% -10%, 110% 110%, 110% 110%)";
+      h.style.backgroundSize= "0% 100%";
+      h.style.backgroundPosition = "right";
       setTimeout(function(){
         if(h!=null){
           h.remove();
           window.removeEventListener('scroll', highlight);
           window.removeEventListener('resize', sizeHighlight);
         }
-      },1000);
+      },2000);
     }
   }
 

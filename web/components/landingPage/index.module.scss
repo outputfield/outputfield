@@ -238,9 +238,11 @@ div.highlight{
   height: 0px;
   left: -1px;
   top: -1px;
-  background-color: theme.$highlight;
-  transition: 1s clip-path theme.$ease-in-out;
-  clip-path: polygon(-10% -10%, -10% -10%, -10% 110%, -10% 110%);
+  background: linear-gradient(theme.$highlight,theme.$highlight);
+  background-position: right;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: 1.25s background-size theme.$ease-in-out;
   z-index: -1;
   filter: blur(4px);
 }
