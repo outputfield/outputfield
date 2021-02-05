@@ -25,9 +25,9 @@ a {
 }
 
 html, body, input {
-  cursor: url(../assets/cursor/cursorNormal.svg), auto;
+  cursor: url(../assets/cursor/cursorNormal.svg) 10 3, auto;
 }
 
 a:hover, button:hover{
-  cursor: url(../assets/cursor/cursorHover.svg), auto;
+  cursor: url(../assets/cursor/cursorHover.svg) 6 4, auto;
 }
