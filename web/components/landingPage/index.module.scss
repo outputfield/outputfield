@@ -220,13 +220,14 @@ div.modal{
     justify-content: center;
 
     & p{
-      font-size: min(96px, 8vw);
-      line-height: min(96px, 8vw);
+      font-size: min(96px, 5.5vw);
+      line-height: min(96px, 5.5vw);
       color: theme.$primary;
 
       & a{
         display: inline-block;
         padding: 50px;
+        word-break: keep-all;
       }
     }
   }
