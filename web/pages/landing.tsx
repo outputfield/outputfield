@@ -34,6 +34,23 @@ const Landing = (props) => {
     }
   };
 
+  function scrollTo(e: any){
+    let el = e.currentTarget as any;
+    if(el!=null){
+      el=el.getClientRects()[0];
+      console.log({ely: el.y, win: window.scrollY});
+      let origin = window.scrollY;
+      let target = el.y + window.scrollY;
+      let dist = el.y - 25;
+      let speed = dist/window.innerHeight * 1500;
+      let resolution = 300;
+      for(let i = 0; i < resolution; i++){
+        let y = (origin+dist*((Math.sin((i/resolution*Math.PI)-Math.PI/2)+1)/2));
+        setTimeout(()=>{window.scrollTo(0,y)},i*speed/resolution);
+      }
+    }
+  }
+
   let highlightFired = false;
   let padY = 2, padX = 10;
   let t, r;
@@ -157,12 +174,14 @@ const Landing = (props) => {
               <a onClick={(event)=>{setModal("discord")}}>Discord</a>
             </Text>
           </div>
+          <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
 
         <div className={styles.render}>
           <div className={styles.renderWrap}>
             <img src={pageData.images.render}/>
           </div>
+          <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
 
         <div className={styles.intro} id="intro">
@@ -180,6 +199,7 @@ const Landing = (props) => {
           {/*<br/><br/><Text size={"H1"} parseHtml={true}>
           this is a test <a href='#'>of a multiline link. there are several words to take up at least one line of the paragraph</a> and then some more text here
           </Text>*/}
+          <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
 
         <form className={styles.signUpForm} onSubmit={subscribe}>

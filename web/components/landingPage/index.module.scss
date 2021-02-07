@@ -42,6 +42,18 @@ div.main{
   grid-template-rows: auto 125px;
   }
 
+  & a.downArrow{
+    position: absolute;
+    display: block;
+    width: 21px;
+    & div{
+      background-image: url(../../assets/cursor/downArrow.svg);
+      width: 21px;
+      height: 33px;
+      background-repeat: no-repeat;
+    }
+  }
+
   & div.navWrap{
     position: relative;
     z-index: 100;
@@ -83,11 +95,25 @@ div.main{
         text-decoration: none;
       }
     }
+    & a.downArrow{
+      top: 470px;
+      left: 12px;
+      @include theme.mobileVertical{
+        display: none;
+      }
+      @include theme.mobileHorizontal{
+        display: block;
+      }
+      @include theme.desktopSmall{
+        display: none;
+      }
+    }
   }
 
   & div.render{
     display: flex;
     justify-content: center;
+    position: relative;
 
     @include theme.mobileVertical{
       grid-row: 1;
@@ -128,6 +154,16 @@ div.main{
         }
       }
     }
+    & a.downArrow{
+      right: 32px;
+      bottom: 48px;
+      @include theme.mobileVertical{
+        display: block;
+      }
+      @include theme.mobileHorizontal{
+        display: none;
+      }
+    }
   }
 
   & div.intro{
@@ -145,6 +181,17 @@ div.main{
     @include theme.desktopSmall{
       grid-row: 1;
       grid-column: 3;
+    }
+
+    & a.downArrow{
+      right: 32px;
+      bottom: -80px;
+      @include theme.mobileVertical{
+        display: block;
+      }
+      @include theme.mobileHorizontal{
+        display: none;
+      }
     }
   }
 
