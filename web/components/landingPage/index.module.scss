@@ -1,5 +1,23 @@
 @use '../../theme.scss';
 
+.cursorSelect{
+  position: fixed;
+  top: 50px;
+  left: 100px;
+  background: #bbb;
+  padding: 25px;
+  z-index: 1000;
+
+  & button{
+    display: inline-block;
+      margin: 0px 0px 0px 25px;
+      width: 75px;
+  }
+  & button:first-of-type{
+    margin-left: 0px;
+  }
+}
+
 div.main{
   display:grid;
   position: absolute;

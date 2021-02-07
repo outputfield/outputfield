@@ -137,8 +137,30 @@ const Landing = (props) => {
 
   const isError = state === "error";
 
+  function cursor(cur){
+    let h = document.getElementsByTagName("html")[0];
+    h.classList.remove(...["big","shadow","blur"]);
+    switch(cur){
+      case "big":
+      h.classList.add("big");
+      break;
+      case "shadow":
+      h.classList.add("shadow");
+      break;
+      case "blur":
+      h.classList.add("blur");
+      break;
+    }
+  }
+
   return (
     <div>
+      <div className={styles.cursorSelect}>
+      <button onClick={(e)=>{cursor("default")}}>default</button>
+      <button onClick={(e)=>{cursor("big")}}>big</button>
+      <button onClick={(e)=>{cursor("shadow")}}>shadow</button>
+      <button onClick={(e)=>{cursor("blur")}}>blur</button>
+      </div>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(event)=>{setModal("")}}>
         {modal == "email" &&
           <Text size={"T1"}>
