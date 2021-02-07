@@ -62,6 +62,7 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   display: inline-flex;
   margin-block-start: unset;
   margin-block-end: unset;
+  margin: 0px;
 }
 
 @mixin H1 {
