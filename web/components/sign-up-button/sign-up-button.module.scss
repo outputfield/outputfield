@@ -32,11 +32,13 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
   }
 
   .buttonText {
+    width: inherit;
     height: inherit;
     margin: 0 auto;
     text-align: center;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     transition: margin-left 1s, color 1s;
     transition-timing-function: theme.$ease-in-out;
     // @include theme.mobileVertical{
@@ -49,11 +51,19 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
       // margin-left: -4px;
       position: absolute;
       transform: unset;
+      z-index: 10;
     }
     &.buttonTextSecond {
       // margin-left: 4px;
       position: absolute;
       filter:blur(5px);
+    }
+    &.buttonTextFirst H1, &.buttonTextFirst H2, &.buttonTextFirst p,
+    &.buttonTextSecond H1, &.buttonTextSecond H2, &.buttonTextSecond p{
+      display: inline-block;
+      width: inherit;
+      margin: 0px auto;
+      text-align: center;
     }
   }
 
