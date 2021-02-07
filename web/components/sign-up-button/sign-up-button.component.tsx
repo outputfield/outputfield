@@ -46,11 +46,11 @@ export const SignUpButton = ({
       <div className={`${styles.buttonFill} ${styles.buttonFillSecond}`} />
       <div className={`${styles.buttonBorder} ${styles.buttonBorderFirst}`} />
       <div className={`${styles.buttonText} ${styles.buttonTextFirst}`}>
-        <Text text={buttonText} size="T2" />
+        <Text size="T2" >{buttonText}</Text>
       </div>
       <div className={`${styles.buttonBorder} ${styles.buttonBorderSecond}`} />
       <div className={`${styles.buttonText} ${styles.buttonTextSecond}`}>
-        <Text text={buttonText} size="T2" />
+        <Text size="T2" >{buttonText}</Text>
       </div>
     </button>
   );

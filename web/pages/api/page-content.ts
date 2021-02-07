@@ -14,7 +14,7 @@ export const getPageContent = async (name: string) => {
   const response = await client.fetch(` *[_type == "page" && title == $name][0].content {"type":_type,"id": label,"text": text[].children[],"value":value,"title":title,"url":image.asset->url}`, { name });
 
   const reduced = response.map((obj,i)=>{
-    let mObj = {images: {}};
+    let mObj = {} as any;
     switch(obj.type){
       case "textsection":
         mObj[obj.id] = obj.text.map((o)=>{return o[0].text});
@@ -23,20 +23,29 @@ export const getPageContent = async (name: string) => {
         mObj[obj.id] = obj.value;
         break;
       case "imageWithTitle":
-        mObj.images[obj.title] = obj.url;
+        mObj["images"] = {};
+        mObj["images"][obj.title] = obj.url;
     }
-
-
     return mObj;
   }).reduce((r,o)=>{
-    for(let key of Object.keys(o)){r[key.toLowerCase()]=o[key]};
+    for(let key of Object.keys(o)){
+      if(key=="images"){
+        if(r[key]==undefined){
+          r[key]={};
+        }
+        for(let k of Object.keys(o[key])){
+          r[key][k] = o[key][k];
+        }
+      }else{
+        r[key.toLowerCase()]=o[key]
+      }
+    };
     return r;
   });
-
   return reduced;
 };
 
-export default async (
+const HandleRequest = async (
   req: NextApiRequest,
   res: NextApiResponse<PageContentResponse | ErrorWithMessage>
 ) => {
@@ -57,3 +66,5 @@ export default async (
     return sendError(res, 500, "Failed to query database");
   }
 };
+
+export default HandleRequest;

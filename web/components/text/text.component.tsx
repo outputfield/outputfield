@@ -7,12 +7,12 @@ export const Text = ({
   textAlign = "left",
   color,
   size,
-  text,
   marginTop,
   marginRight,
   marginBottom,
   marginLeft,
-  html,
+  parseHtml,
+  children,
 }: ITextProps) => {
   const textStyles: IStyles = {
     textAlign,
@@ -23,34 +23,51 @@ export const Text = ({
     marginLeft,
   };
 
-  if(html){
+  if(parseHtml){
     const parse = require('html-react-parser');
-    let parsedText = parse(text);
-    parsedText.forEach((v,i)=>{
-      if(parsedText[i].type == "a"){
-        parsedText[i] = <TextLink key={i} url={parsedText[i].props.href} size={size} text={parsedText[i].props.children} />;
+    let newChildren = [] as any;
+
+    if(children != null && Array.isArray(children)){
+      let parsedText;
+      for(let i = 0; i < children.length; i++){
+        if(typeof children[i] == "string"){
+          parsedText = parse(children[i]);
+        } else {
+          parsedText = children[i];
+        }
+        if(parsedText.type == "a"){
+          parsedText = <TextLink
+          key={i}
+          url={parsedText.props.href}
+          size={size}
+          onClick={parsedText.props.onClick}
+          >
+           {parsedText.props.children}
+          </TextLink>
+        }
+        newChildren[i] = parsedText;
       }
-    })
-    text = parsedText;
+    }
+    children = newChildren;
   }
-  const textClass = styles[size] + (text==""?" "+styles.newline:"") + (html?" "+styles.markup:"");
+  const textClass = styles[size] + (children==undefined||children==""?" "+styles.newline:"") + (parseHtml?" "+styles.markup:"");
 
   if (size === "H1") {
     return (
       <h1 className={textClass} style={textStyles}>
-        {text}
+        {children}
       </h1>
     );
   } else if (size === "H2") {
     return (
       <h2 className={textClass} style={textStyles}>
-        {text}
+        {children}
       </h2>
     );
   } else {
     return (
       <p className={textClass + " text-p"} style={textStyles}>
-        {text}
+        {children}
       </p>
     );
   }

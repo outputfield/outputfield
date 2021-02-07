@@ -9,11 +9,12 @@ export const TextLink = ({
   url,
   color = colors.primary,
   size,
-  text,
   marginTop,
   marginRight,
   marginBottom,
   marginLeft,
+  onClick,
+  children
 }: ITextLinkProps) => {
   const textLinkStyles: IStyles = {
     textAlign,
@@ -96,7 +97,6 @@ export const TextLink = ({
 
             linktext2.current.style.left = "-"+this.offsetLength+"px";
             underline.current.style.left = "-"+this.offsetLength+"px";
-            console.log(linktext2.current.style.left);
             linktext2.current.style.width = this.width+"px";
             text2.style.textIndent = this.offsetLength+"px";
 
@@ -235,8 +235,8 @@ export const TextLink = ({
   }
 
   function generateLinks(recs){
-    if(linktext != null && linktext.current != null){
-      if (recs != null && recs.length > 0){
+    if(nav==null){nav=document.getElementById("nav");}
+    if(linktext != null && linktext.current != null && recs != null && recs.length > 0 && nav != undefined){
         let r = new TextRectList();
         r.setRotate270(nav.contains(linktext.current)&&rotate270);
         for(let i = 0; i<recs.length; i++){
@@ -250,11 +250,9 @@ export const TextLink = ({
 
         return r;
       }
-    }
   }
 
   function appendLinks(links){
-    // console.log(links);
     if(underline != null && underline.current != null){
       underline.current.innerHTML = "";
       if(links != null && links.length > 0){
@@ -281,12 +279,20 @@ export const TextLink = ({
     }
   }
 
+  function init(){
+    if(linktext.current == null || linktext2.current == null || underline.current == null){
+      setTimeout(init,50);
+    } else {
+      nav = document.getElementById("nav");
+      handleResize();
+    }
+  }
+
   useEffect(() => {
     const resize = limiter(handleResize,25);
 
     window.addEventListener('load', function(){
-      nav = document.getElementById("nav");
-      setTimeout(handleResize,50)
+      init();
     });
 
     window.addEventListener('resize', resize);
@@ -299,15 +305,15 @@ export const TextLink = ({
 
 
   return(
-    <a className={styles.root} href={url} onMouseOver={onMouseOver}
+    <a className={styles.root} onClick={onClick} href={url} onMouseOver={onMouseOver}
     onMouseOut={onMouseOut} style={textLinkStyles}>
       <div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
-        <Text text={text} size={size} />
+        <Text size={size}>{children}</Text>
       </div>
       <div className={styles.linkUnderline} ref={underline}>
       </div>
       <div className={`${styles.linkText} ${styles.linkTextFirst}`} ref={linktext}>
-        <Text text={text} size={size} />
+        <Text size={size}>{children}</Text>
       </div>
     </a>
   );

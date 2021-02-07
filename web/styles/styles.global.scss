@@ -21,5 +21,13 @@ body {
 
 a {
   color: $primary;
-  text-underline-offset: 0.25em;
+  text-decoration: none;
+}
+
+html, body, input {
+  cursor: url(../assets/cursor/cursorNormal.svg) 10 3, auto;
+}
+
+a:hover, button:hover{
+  cursor: url(../assets/cursor/cursorHover.svg) 6 4, auto;
 }

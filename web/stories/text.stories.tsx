@@ -15,41 +15,46 @@ export const TypeRamp = () => (
       <Text
         size="H1"
         textAlign="left"
-        text="Output Field is collaborative"
         color={colors.black}
-      />
+      >
+        Output Field is collaborative
+      </Text>
     </div>
     <div>
       <Text
         size="H2"
         textAlign="left"
-        text="Output Field is collaborative"
         color={colors.black}
-      />
+      >
+        Output Field is collaborative
+      </Text>
     </div>
     <div>
       <Text
         size="T1"
         textAlign="left"
-        text="Output Field is collaborative"
         color={colors.black}
-      />
+      >
+        Output Field is collaborative
+      </Text>
     </div>
     <div>
       <Text
         size="T2"
         textAlign="left"
-        text="Output Field is collaborative"
         color={colors.black}
-      />
+      >
+        Output Field is collaborative
+      </Text>
     </div>
     <div>
       <Text
         size="T3"
         textAlign="left"
-        text="Output Field is collaborative"
         color={colors.black}
-      />
+      >
+        Output Field is collaborative
+      </Text>
     </div>
   </div>
 );

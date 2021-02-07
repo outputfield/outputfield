@@ -5,6 +5,12 @@ div.main{
   position: absolute;
   user-select: text;
 
+  &.modalActive{
+    filter: blur(50px);
+    user-select: none;
+    pointer-events: none;
+  }
+
   @include theme.mobileVertical{
     grid-template-columns: 1fr;
     grid-template-rows: 475px auto 665px 76px;
@@ -34,6 +40,18 @@ div.main{
   }
   @include theme.desktopMedium{
   grid-template-rows: auto 125px;
+  }
+
+  & a.downArrow{
+    position: absolute;
+    display: block;
+    width: 21px;
+    & div{
+      background-image: url(../../assets/cursor/downArrow.svg);
+      width: 21px;
+      height: 33px;
+      background-repeat: no-repeat;
+    }
   }
 
   & div.navWrap{
@@ -77,11 +95,25 @@ div.main{
         text-decoration: none;
       }
     }
+    & a.downArrow{
+      top: 470px;
+      left: 12px;
+      @include theme.mobileVertical{
+        display: none;
+      }
+      @include theme.mobileHorizontal{
+        display: block;
+      }
+      @include theme.desktopSmall{
+        display: none;
+      }
+    }
   }
 
   & div.render{
     display: flex;
     justify-content: center;
+    position: relative;
 
     @include theme.mobileVertical{
       grid-row: 1;
@@ -122,6 +154,16 @@ div.main{
         }
       }
     }
+    & a.downArrow{
+      right: 32px;
+      bottom: 48px;
+      @include theme.mobileVertical{
+        display: block;
+      }
+      @include theme.mobileHorizontal{
+        display: none;
+      }
+    }
   }
 
   & div.intro{
@@ -139,6 +181,17 @@ div.main{
     @include theme.desktopSmall{
       grid-row: 1;
       grid-column: 3;
+    }
+
+    & a.downArrow{
+      right: 32px;
+      bottom: -80px;
+      @include theme.mobileVertical{
+        display: block;
+      }
+      @include theme.mobileHorizontal{
+        display: none;
+      }
     }
   }
 
@@ -191,4 +244,53 @@ div.main{
       }
     }
   }
+
+  & ::selection{
+    background-color: theme.$highlight;
+  }
+}
+
+div.modal{
+  position: fixed;
+  display: none;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 200px;
+  word-break: break-all;
+  line-height: 150px;
+
+  &.modalActive{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & p{
+      font-size: min(96px, 5.5vw);
+      line-height: min(96px, 5.5vw);
+      color: theme.$primary;
+
+      & a{
+        display: inline-block;
+        padding: 50px;
+        word-break: keep-all;
+      }
+    }
+  }
+}
+
+div.highlight{
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  left: -1px;
+  top: -1px;
+  background: linear-gradient(theme.$highlight,theme.$highlight);
+  background-position: right;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: 1.25s background-size theme.$ease-in-out;
+  z-index: -1;
+  filter: blur(4px);
 }
