@@ -24,34 +24,10 @@ a {
   text-decoration: none;
 }
 
-html, body, input, img {
-  cursor: default;
+html, body, input, img, img:hover {
+  cursor: url(../assets/cursor/cursorNormal_shadow.svg) 7 2, auto;
 }
 
 a:hover, button:hover{
-  cursor: pointer;
-}
-
-html.big, html.big body, html.big input, html.big img {
-  cursor: url(../assets/cursor/cursorNormal.svg) 10 3, auto;
-}
-
-html.big a:hover, html.big button:hover{
-  cursor: url(../assets/cursor/cursorHover.svg) 6 4, auto;
-}
-
-html.shadow, html.shadow body, html.shadow input, html.shadow img {
-  cursor: url(../assets/cursor/cursorNormal_shadow.svg) 6 4, auto;
-}
-
-html.shadow a:hover, html.shadow button:hover{
-  cursor: url(../assets/cursor/cursorHover_shadow.svg) 6 4, auto;
-}
-
-html.blur, html.blur body, html.blur input, html.blur img {
-  cursor: url(../assets/cursor/cursorNormal_blur.svg) 11 6, auto;
-}
-
-html.blur a:hover, html.blur button:hover{
-  cursor: url(../assets/cursor/cursorHover_blur.svg) 6 4, auto;
+  cursor: url(../assets/cursor/cursorHover_shadow.svg) 4 2, auto;
 }
