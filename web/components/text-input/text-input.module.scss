@@ -1,37 +1,45 @@
 @use '../../theme.scss';
 
-.input {
-  @include theme.T1;
+.root{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
 
-  background: none;
-  outline: none;
-  color: theme.$primary;
-  border: none;
-  border-bottom: 2px solid theme.$black;
+  & .input {
+    @include theme.T1;
 
-  &.disabled {
-    color: theme.$disabled-text;
-    border-color: theme.$disabled-elements;
+    background: none;
+    outline: none;
+    color: theme.$primary;
+    border: none;
+    border-bottom: 2px solid theme.$black;
+
+    &.disabled {
+      color: theme.$disabled-text;
+      border-color: theme.$disabled-elements;
+    }
+    &.invalid {
+      color: theme.$error;
+      border-color: theme.$error;
+    }
+    &.focus {
+      border-color: theme.$primary;
+    }
   }
-  &.invalid {
+
+  & .label {
+    @include theme.T3;
+  }
+
+  & .success{
+    color: theme.$primary;
+  }
+
+  & .errorMessage {
+    @include theme.T3;
     color: theme.$error;
-    border-color: theme.$error;
+    letter-spacing: -0.008em;
   }
-  &.focus {
-    border-color: theme.$primary;
-  }
-}
-
-.label {
-  @include theme.T3;
-}
-
-.success{
-  color: theme.$primary;
-}
-
-.errorMessage {
-  @include theme.T3;
-  color: theme.$error;
-  letter-spacing: -0.008em;
 }

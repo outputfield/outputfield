@@ -3,14 +3,40 @@
 $buttonBorderBase: 2px solid theme.$black;
 $buttonBorderHover: 2px solid theme.$primary;
 
-$dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
-$dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
+// $dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
+// $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
 // $transition-out: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 
 .root {
+  position: relative;
+  padding: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: unset;
+  border: none;
+  cursor: inherit;
+  color: theme.$black;
+
+  //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
+  @include theme.mobileVertical{
+    height: 73px;
+    width: 175px;
+  }
+  @include theme.desktopSmall{
+    height: 63px;
+    width: 151px;
+  }
+  @include theme.desktopMedium{
+    height: 81px;
+    width: 194px;
+  }
+
   &:focus {
     outline: none;
   }
+
   .buttonBorder {
     position: absolute;
     border: $buttonBorderBase;
@@ -19,44 +45,45 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
     border-radius: 100%;
     transition: transform 0.65s, border-color 0.65s, filter 0.65s;
     transition-timing-function: theme.$ease-in-out;
-    // filter: $dropshadowDefault;
     filter: blur(2px);
     &.buttonBorderFirst {
       transform: rotate(-5deg);
-      margin-left: -1px;
     }
     &.buttonBorderSecond {
       transform: rotate(4deg);
-      margin-left: 1px;
     }
+  }
+  &:hover > .buttonBorder{
+    filter: blur(0px);
+  }
+  &:hover > .buttonBorderFirst,
+  &:hover > .buttonBorderSecond {
+    transform: rotate(0deg);
   }
 
   .buttonText {
-    width: inherit;
-    height: inherit;
-    margin: 0px auto;
+    width: 150px;
+    margin: 0px;
     text-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.65s;
+    transition: color 0.65s, filter 0.65s;
     transition-timing-function: theme.$ease-in-out;
     &.buttonTextFirst {
       position: absolute;
-      transform: unset;
       z-index: 10;
     }
     &.buttonTextSecond {
       position: absolute;
-      filter:blur(5px);
-      opacity: 1;
-      transition: color 0.65s, filter 0.65s;
+      filter: blur(5px);
+      z-index: 9;
     }
     &.buttonTextFirst H1, &.buttonTextFirst H2, &.buttonTextFirst p,
     &.buttonTextSecond H1, &.buttonTextSecond H2, &.buttonTextSecond p{
       display: inline-block;
       width: inherit;
-      margin: 0px auto;
+      margin: 0px;
       text-align: center;
     }
   }
@@ -65,6 +92,13 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
     color: theme.$primary;
     transition: color 0.3s;
     transition-timing-function: theme.$ease-in-out;
+  }
+  &:focus > .buttonBorder {
+    border-color: theme.$primary;
+  }
+  &:hover > .buttonTextFirst,
+  &:hover > .buttonTextSecond {
+    color: theme.$primary;
   }
 
   .buttonFill {
@@ -82,65 +116,11 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
       transform: rotate(4deg);
     }
   }
-  padding: 0px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-sizing: border-box;
-  background-color: unset;
-  border: none;
-  //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
-  @include theme.mobileVertical{
-    height: 73px;
-    width: 175px;
-  }
-  @include theme.desktopSmall{
-    height: 63px;
-    width: 151px;
-  }
-  @include theme.desktopMedium{
-    height: 81px;
-    width: 194px;
-  }
-  cursor: inherit;
-  color: theme.$black;
-  transition: filter 0.65s;
-  transition-timing-function: theme.$ease-in-out;
-
-  &:hover {
-    filter: blur(0);
-  }
-
-  &:hover > .buttonBorder{
-    filter: blur(0);
-  }
-
-  &:hover > .buttonBorderFirst {
-    transform: rotate(0deg);
-  }
-  &:hover > .buttonBorderSecond {
-    transform: rotate(0deg);
-  }
-
   &:hover > .buttonFill {
     background-color: theme.$highlight;
   }
-
-  &:hover > .buttonFillFirst {
-    transform: rotate(0deg);
-  }
+  &:hover > .buttonFillFirst,
   &:hover > .buttonFillSecond {
     transform: rotate(0deg);
-  }
-  &:hover > .buttonTextFirst {
-    color: theme.$primary;
-  }
-  &:hover > .buttonTextSecond {
-    opacity: 0;
-    color: theme.$primary;
-  }
-  &:focus > .buttonBorder {
-    // border-color: theme.$primary;
   }
 }

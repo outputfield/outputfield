@@ -60,7 +60,7 @@ export const TextInput: React.FC<Props> = forwardRef(
     }
 
     return (
-      <div style={{ width }}>
+      <div className={styles.root} style={{ width }}>
         <div className={styles.errorMessage}>{errorMessage}</div>
         <input
           className={inputClasses}

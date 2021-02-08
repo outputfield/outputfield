@@ -244,12 +244,6 @@ div.main{
       width: 100%;
     }
 
-    & div:first-of-type{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
     & button{
       @include theme.mobileVertical{
         margin: 15px auto 0px;
