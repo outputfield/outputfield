@@ -194,8 +194,8 @@ const Landing = (props) => {
           <div className={styles.renderWrap}>
             <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
             <model-viewer src={baggie} poster={baggiePoster} camera-controls camera-orbit="-41.45deg 92.35deg 3.306m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m">
-              <div class="progress-bar hide" slot="progress-bar">
-                <div class="update-bar"></div>
+              <div className="progress-bar hide" slot="progress-bar">
+                <div className="update-bar"></div>
               </div>
             </model-viewer>
           </div>
