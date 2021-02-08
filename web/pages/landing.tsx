@@ -9,8 +9,8 @@ import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
 
 const path = require("path");
-let baggie = path.resolve("../../assets/3d/baggie.glb");
-let baggiePoster = path.resolve("../../assets/3d/baggie.png");
+let baggie = path.resolve("assets/3d/baggie.glb");
+let baggiePoster = path.resolve("assets/3d/baggie.png");
 
 const page = "Frontpage";
 
@@ -192,12 +192,13 @@ const Landing = (props) => {
 
         <div className={styles.render}>
           <div className={styles.renderWrap}>
-            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+          <img src={baggiePoster}/>
+            {/*<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
             <model-viewer src={baggie} poster={baggiePoster} camera-controls camera-orbit="-41.45deg 92.35deg 3.306m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m">
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
-            </model-viewer>
+            </model-viewer>*/}
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
