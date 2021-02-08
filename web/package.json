@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "./",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -30,8 +31,7 @@
     "react-responsive": "^8.2.0",
     "sass": "^1.29.0",
     "styled-components": "^5.2.1",
-    "supports-color": "^8.1.0",
-    "assets": "file:./assets/*"
+    "supports-color": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
