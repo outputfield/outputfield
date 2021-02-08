@@ -14,6 +14,15 @@ let baggiePoster = path.resolve("assets/3d/baggie.png");
 
 const page = "Frontpage";
 
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "model-viewer": any;
+    }
+  }
+}
+
 const Landing = (props) => {
   const { pageData } = props;
   /**
