@@ -9,8 +9,8 @@ import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
 
 const path = require("path");
-let baggie = path.resolve("assets/3d/baggie.glb");
-let baggiePoster = path.resolve("assets/3d/baggie.png");
+let baggie = path.resolve("../../assets/3d/baggie.glb");
+let baggiePoster = path.resolve("../../assets/3d/baggie.png");
 
 const page = "Frontpage";
 
