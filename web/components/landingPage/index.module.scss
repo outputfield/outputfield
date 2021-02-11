@@ -53,7 +53,8 @@ div.main{
     left: 24px;
     top: 24px;
     width: calc(100% - 24px - 32px);
-    height: max(500px, 100% - 24px - 28px);
+    height: calc(100% - 24px - 28px);
+    min-height: 500px;
     margin-bottom: 28px;
   }
   @include theme.desktopMedium{
