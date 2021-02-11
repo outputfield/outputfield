@@ -8,9 +8,8 @@ import { SignUpButton } from "../components/sign-up-button/sign-up-button.compon
 import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
 
-// const path = require("path");
-// let baggie = path.resolve("assets/3d/baggie.glb");
-// let baggiePoster = path.resolve("assets/3d/baggie.png");
+
+import CSS from 'csstype';
 
 const page = "Frontpage";
 
@@ -64,7 +63,7 @@ const Landing = (props) => {
     }
   }
 
-  let highlightFired = false;
+  let highlightFired = false, modelloaded = false;
   let padY = 2, padX = 10;
   let t, r;
 
@@ -142,6 +141,19 @@ const Landing = (props) => {
       window.addEventListener('load', highlight);
     }
 
+    if(!modelloaded){
+      let mv = document.querySelector("#modelViewer") as any;
+      if(mv!=null){
+        let s = document.createElement("style");
+        s.innerHTML = "div.userInput{ outline: none !important; border: none !important; }";
+        let sr = mv.shadowRoot;
+        if(sr != null){
+          mv.shadowRoot.appendChild(s);
+        }
+      }
+      modelloaded = true;
+    }
+
     return () => {
       window.removeEventListener('scroll', highlight);
       window.removeEventListener('resize', sizeHighlight);
@@ -149,6 +161,7 @@ const Landing = (props) => {
   });
 
   const isError = state === "error";
+
 
   return (
     <div>
@@ -192,13 +205,12 @@ const Landing = (props) => {
 
         <div className={styles.render}>
           <div className={styles.renderWrap}>
-          <img src="/assets/3d/baggie.png"/>
-            {/*<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer src={baggie} poster={baggiePoster} camera-controls camera-orbit="-41.45deg 92.35deg 3.306m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m">
+            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+            <model-viewer src="3d/baggie.glb" poster="3d/baggie.png" auto-rotate field-of-view="32deg" camera-target="0m -0.05m -3.882e-11m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m" camera-orbit="-48.22deg 90deg 3.306m" interaction-prompt="none"  id="modelViewer">
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
-            </model-viewer>*/}
+            </model-viewer>
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
