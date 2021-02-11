@@ -1,6 +1,6 @@
 @use '../../theme.scss';
 
-.cursorSelect{
+.verbiage{
   position: fixed;
   top: 50px;
   left: 100px;
@@ -8,13 +8,33 @@
   padding: 25px;
   z-index: 1000;
 
-  & button{
-    display: inline-block;
-      margin: 0px 0px 0px 25px;
-      width: 75px;
+  & textarea{
+    display: block;
+    margin: 0px 0px 25px 0px;
   }
-  & button:first-of-type{
-    margin-left: 0px;
+
+  & label{
+    display: inline-block;
+    width: 140px;
+  }
+  & input{
+    width: 172px;
+    margin-right: 78px;
+    display: inline-block;
+    position: relative;
+  }
+  & input:first-of-type{
+    width: 250px;
+    margin-right: 0px;
+  }
+  & .valuereadout{
+    width: 40px;
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+  }
+  & .verb_go{
+    float: right;
+    margin-right: 25px;
   }
 }
 
@@ -240,6 +260,11 @@ div.main{
       @include theme.mobileHorizontal{
         display: none;
       }
+    }
+
+    & .exhibitionVerbs.clear{
+      opacity: 0;
+      transition-timing-function: theme.$ease-in-out;
     }
   }
 

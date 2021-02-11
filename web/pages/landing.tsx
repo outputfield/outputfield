@@ -8,11 +8,7 @@ import { SignUpButton } from "../components/sign-up-button/sign-up-button.compon
 import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
 
-
-import CSS from 'csstype';
-
 const page = "Frontpage";
-
 
 declare global {
   namespace JSX {
@@ -150,6 +146,69 @@ const Landing = (props) => {
     e.stopPropagation();
   }
 
+  let demoload = false;
+  let words = [] as string[], wordcount = 0, wordtimer;
+  function slider(id){
+    let a = document.getElementById(id) as HTMLInputElement;
+    let b = document.getElementById(id+"_label");
+    if(b!=null){
+      b.innerHTML = a.value+(Math.floor(parseFloat(a.value))==parseFloat(a.value)?".0":"")+" s";
+    }
+  }
+  function verbiage():string[]{
+    let words = document.getElementById("wordoptions") as HTMLTextAreaElement;
+    let tokclean = [] as string[];
+    if(words!=null){
+      let tok = words.value.split(",");
+      for(let i = 0; i < tok.length ; i++){
+        if(tok[i].trim()!="")tokclean.push(tok[i].trim());
+      }
+    }
+    return tokclean;
+  }
+  function startverbs(cleantime=1000){
+    clearTimeout(wordtimer);
+    words = verbiage();
+    wordcount = 0;
+    let target = document.getElementById("exhibitionVerbs");
+    if(target != null && words.length>0){
+      target.innerHTML = "";
+      target.style.transition = "opacity 0ms";
+      target.classList.remove(styles.clear);
+      wordtimer = setTimeout(()=>{
+        if(target!=null)target.innerHTML = words[0];
+        let st = document.getElementById("verb_initial") as HTMLInputElement, time = 1;
+        if(st!=null){
+          time = parseFloat(st.value) * 1000;
+        }
+        console.log("inital display time: "+time);
+        wordtimer = setTimeout(nextWord,time);
+      },cleantime);
+    }
+  }
+  function nextWord(){
+    let sw_el = document.getElementById("verb_switch") as HTMLInputElement;
+    let dis_el = document.getElementById("verb_subsequent") as HTMLInputElement;
+    let target = document.getElementById("exhibitionVerbs");
+    if(sw_el!=null && dis_el!=null && target!=null){
+      console.log("  inside nextword nullcheck");
+      let sw = parseFloat(sw_el.value)*500;
+      let dis = parseFloat(dis_el.value)*1000;
+      target.style.transition = "opacity "+sw+"ms";
+      target.classList.add(styles.clear);
+      wordtimer = setTimeout(()=>{
+        if(target!=null){
+          console.log({words:words,wordcount:wordcount});
+          wordcount = (wordcount+1)%words.length;
+          target.innerHTML = words[wordcount];
+          target.classList.remove(styles.clear);
+          wordtimer = setTimeout(nextWord,dis);
+        }
+      },sw);
+    }
+
+  }
+
   useEffect(() => {
     if(!highlightFired){
       window.addEventListener('load', highlight);
@@ -168,6 +227,26 @@ const Landing = (props) => {
       modelloaded = true;
     }
 
+    if(!demoload){
+      let sliders = ["verb_initial","verb_switch","verb_subsequent"];
+      sliders.forEach((id,i)=>{
+        let a = document.getElementById(id) as HTMLInputElement;
+        if(a!=null){
+          if(i==0) a.value = "8";
+          if(i==1) a.value = "2";
+          if(i==2) a.value = "4";
+          slider(id);
+          a.addEventListener("input",()=>{slider(id)});
+        }
+      });
+      let b = document.getElementById("wordoptions");
+      if(b!=null){
+        b.textContent = "collaborative, subversive, experimental, critical, speculative, avant-garde";
+      }
+      demoload = true;
+      startverbs(0);
+    }
+
     window.addEventListener("keydown",keypress);
 
     return () => {
@@ -182,6 +261,14 @@ const Landing = (props) => {
 
   return (
     <div>
+      <div className={styles.verbiage}>
+        <textarea rows={6} cols={35} style={{resize:"none"}} id="wordoptions">
+        </textarea>
+        <label>initial display:</label><br/><input id="verb_initial" type="range" step="0.1" min="0" max="15"/><div className={styles.valuereadout} id="verb_initial_label"/><br/>
+        <label>switch speed:</label><br/><input id="verb_switch" type="range" step="0.1" min="0" max="10"/><div className={styles.valuereadout} id="verb_switch_label"/><br/>
+        <label>subsequent display:</label><br/><input id="verb_subsequent" type="range" step="0.1" min="0" max="10"/><div className={styles.valuereadout} id="verb_subsequent_label"/><br/><br/>
+        <button className={styles.verb_go} id="verb_go" onClick={()=>{startverbs(1000)}}>words !!</button>
+      </div>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
       {modal!="" &&
         <div className={styles.modalWrap} onClick={modalClick}>
@@ -237,7 +324,7 @@ const Landing = (props) => {
           <Text size={"H1"}/>
           {pageData.exhibition !== "" ? (
             <Text size={"H1"} parseHtml={true}>
-              We <a href={pageData.exhibition}>exhibit</a> work that is collaborative
+              We <a href={pageData.exhibition}>exhibit</a> work that is <span className={styles.exhibitionVerbs} id="exhibitionVerbs"></span>
             </Text>
           ) : (
             <Text size={"H1"}>We exhibit work that is collaborative</Text>
