@@ -167,8 +167,10 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.68, 0.06);
   }
 }
 
-// We will eventually make a <Text/> component that leverages these mix-ins as they will be assigned as css classes.
-// ===== text.style.scss file =====
-// .display-large {
-//   @include display-large
-// }
+// CURSOR mixins =======================
+@mixin defaultCursor{
+  cursor: url(assets/cursor/cursorNormal_shadow.svg) 7 2, auto;
+}
+@mixin pointerCursor{
+  cursor: url(assets/cursor/cursorHover_shadow.svg) 4 2, auto;
+}

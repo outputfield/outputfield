@@ -25,9 +25,9 @@ a {
 }
 
 html, body, input, img, img:hover {
-  cursor: url(../assets/cursor/cursorNormal_shadow.svg) 7 2, auto;
+  @include defaultCursor;
 }
 
 a:hover, button:hover{
-  cursor: url(../assets/cursor/cursorHover_shadow.svg) 4 2, auto;
+  @include pointerCursor;
 }

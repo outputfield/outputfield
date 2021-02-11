@@ -136,6 +136,20 @@ const Landing = (props) => {
     }
   }
 
+  function keypress(e){
+    if(modal != "" && e.key == "Escape"){
+      setModal("");
+    }
+  }
+
+  function modalClick(e){
+    let select = window.getSelection() || document.getSelection();
+    if(select == null || select.toString() == "" || e.target.textContent.indexOf(select.toString()) == -1){
+      window.open((modal=="email"?"mailto:":"")+pageData[modal]);
+    }
+    e.stopPropagation();
+  }
+
   useEffect(() => {
     if(!highlightFired){
       window.addEventListener('load', highlight);
@@ -154,9 +168,12 @@ const Landing = (props) => {
       modelloaded = true;
     }
 
+    window.addEventListener("keydown",keypress);
+
     return () => {
       window.removeEventListener('scroll', highlight);
       window.removeEventListener('resize', sizeHighlight);
+      window.removeEventListener("keydown",keypress);
     }
   });
 
@@ -165,28 +182,26 @@ const Landing = (props) => {
 
   return (
     <div>
-      <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(event)=>{setModal("")}}>
+      <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
+      {modal!="" &&
+        <div className={styles.modalWrap} onClick={modalClick}>
         {modal == "email" &&
           <Text size={"T1"}>
-            <a href={`mailto:${pageData.email}`} onClick={(event)=>{event.stopPropagation()}}>
-              {pageData.email}
-            </a>
+            {pageData.email}
           </Text>
         }
         {modal == "instagram" &&
           <Text size={"T1"}>
-            <a href={pageData.instagram} onClick={(event)=>{event.stopPropagation()}}>
-              @{(pageData.instagram).split("instagram.com/")[1]}
-            </a>
+            @{(pageData.instagram).split("instagram.com/")[1]}
           </Text>
         }
         {modal == "discord" &&
           <Text size={"T1"}>
-            <a href={pageData.discord} onClick={(event)=>{event.stopPropagation()}}>
-              {pageData.discord}
-            </a>
+            {pageData.discord}
           </Text>
         }
+        </div>
+      }
       </div>
       <div className={styles.highlight} id="highlight"/>
       <div className={`${styles.main} ${modal!=""?styles.modalActive:""}`}>
