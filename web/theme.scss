@@ -9,6 +9,7 @@ $magnetic: #e0ff00;
 $highlight: #e0ff00;
 $disabled-elements: #eeeeee;
 $disabled-text: #555555;
+$background-grey: #ECECEC;
 
 // make sure to add new colors to the export function as well!
 :export {
@@ -21,6 +22,7 @@ $disabled-text: #555555;
   highlight: $highlight;
   disabled-elements: $disabled-elements;
   disabled-text: $disabled-text;
+  background-grey: $background-grey;
 }
 
 // BREAKPOINTS =======================

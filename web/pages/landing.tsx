@@ -8,9 +8,6 @@ import { SignUpButton } from "../components/sign-up-button/sign-up-button.compon
 import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
 
-
-import CSS from 'csstype';
-
 const page = "Frontpage";
 
 
@@ -159,7 +156,7 @@ const Landing = (props) => {
       let mv = document.querySelector("#modelViewer") as any;
       if(mv!=null){
         let s = document.createElement("style");
-        s.innerHTML = "div.userInput{ outline: none !important; border: none !important; }";
+        s.innerHTML = "*{ outline: none !important; border: none !important; } .focus-visible{ outline: none !important}";
         let sr = mv.shadowRoot;
         if(sr != null){
           mv.shadowRoot.appendChild(s);
@@ -221,7 +218,7 @@ const Landing = (props) => {
         <div className={styles.render}>
           <div className={styles.renderWrap}>
             <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer src="3d/baggie.glb" poster="3d/baggie.png" auto-rotate camera-controls field-of-view="32deg" camera-target="0m -0.05m -3.882e-11m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m" camera-orbit="-48.22deg 90deg 3.306m" interaction-prompt="none"  id="modelViewer">
+            <model-viewer src="3d/baggie.glb" /*poster="3d/baggie.png"*/ auto-rotate camera-controls field-of-view="32deg" camera-target="0m -0.05m -3.882e-11m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m" camera-orbit="-48.22deg 90deg 3.306m" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer">
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>

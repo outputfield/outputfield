@@ -7,6 +7,10 @@ export const colors = {
   success: "#3CB371",
   magnetic: "#E0FF00",
   disabled: "#7B61FF",
+  highlight: "#e0ff00",
+  disabledElements: "#eeeeee",
+  disabledText: "#555555",
+  backgroundGrey: "#ECECEC",
 };
 
 export default colors;
