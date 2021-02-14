@@ -14,7 +14,7 @@
 
 body {
   margin: 0px;
-  background-color: $white;
+  background-color: $background-grey;
   color: $black;
   font-family: "Neue Hass Unica Pro Regular";
 }
@@ -24,10 +24,10 @@ a {
   text-decoration: none;
 }
 
-html, body, input {
-  cursor: url(../assets/cursor/cursorNormal.svg) 10 3, auto;
+html, body, input, img, img:hover {
+  @include defaultCursor;
 }
 
 a:hover, button:hover{
-  cursor: url(../assets/cursor/cursorHover.svg) 6 4, auto;
+  @include pointerCursor;
 }

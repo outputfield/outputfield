@@ -1,5 +1,23 @@
 @use '../../theme.scss';
 
+.cursorSelect{
+  position: fixed;
+  top: 50px;
+  left: 100px;
+  background: #bbb;
+  padding: 25px;
+  z-index: 1000;
+
+  & button{
+    display: inline-block;
+      margin: 0px 0px 0px 25px;
+      width: 75px;
+  }
+  & button:first-of-type{
+    margin-left: 0px;
+  }
+}
+
 div.main{
   display:grid;
   position: absolute;
@@ -9,6 +27,10 @@ div.main{
     filter: blur(50px);
     user-select: none;
     pointer-events: none;
+
+    & .renderWrap{
+      opacity: 0.5;
+    }
   }
 
   @include theme.mobileVertical{
@@ -36,6 +58,7 @@ div.main{
     top: 24px;
     width: calc(100% - 24px - 32px);
     height: calc(100% - 24px - 28px);
+    min-height: 500px;
     margin-bottom: 28px;
   }
   @include theme.desktopMedium{
@@ -90,7 +113,14 @@ div.main{
         transform: rotate(270deg);
         transform-origin: 0px 0px;
       }
-
+      @include theme.desktopSmall{
+        width: 300px;
+        top: 314px;
+      }
+      @include theme.desktopMedium{
+        width: 400px;
+        top: 414px;
+      }
       & a {
         text-decoration: none;
       }
@@ -113,11 +143,13 @@ div.main{
   & div.render{
     display: flex;
     justify-content: center;
-    position: relative;
+    align-items: center;
 
     @include theme.mobileVertical{
       grid-row: 1;
       grid-column: 1;
+      position: relative;
+      overflow: hidden;
     }
     @include theme.mobileHorizontal{
       grid-row: 2;
@@ -126,32 +158,51 @@ div.main{
     @include theme.desktopSmall{
       grid-row: 1 / 3;
       grid-column: 2;
+      overflow: visible;
     }
 
     & div.renderWrap{
-      width: 0px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
+      @include theme.mobileVertical{
+        height: 120%;
+        width: 150%;
+      }
+      @include theme.mobileHorizontal{
+        height: 620px;
+        width: 680px;
+      }
+      @include theme.desktopSmall{
+        height: min(550px, 100%);
+        width: max(550px, 150%);
+      }
+      @include theme.desktopMedium{
+        height: min(650px, 100%);
+        width: max(650px, 150%);
+      }
+      @include theme.desktopLarge{
+        height: min(1000px, 100%);
+        width: max(1000px, 150%);
+      }
+
+      & model-viewer{
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        // user-select: none;
+        // pointer-events: none;
+      }
+      & model-viewer:focus, & model-viewer:active{
+        outline: none;
+        border: none;
+      }
       & img{
         position: absolute;
-
-        @include theme.mobileVertical{
-          transform: scale(0.75) translate(-66.6%, -20%);
-          object-fit: cover;
-          width: 480px;
-          height: 677px;
-        }
-        @include theme.mobileHorizontal{
-          transform: translate(-50%, -10%);
-        }
-        @include theme.desktopSmall{
-          transform: scale(0.75) translateX(-66.6%);
-          object-fit: unset;
-          width: unset;
-          height: unset;
-        }
-        @include theme.desktopMedium{
-          transform: translateX(-50%);
-        }
       }
     }
     & a.downArrow{
@@ -226,12 +277,6 @@ div.main{
       width: 100%;
     }
 
-    & div:first-of-type{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
     & button{
       @include theme.mobileVertical{
         margin: 15px auto 0px;
@@ -258,7 +303,6 @@ div.modal{
   width: 100%;
   height: 100%;
   font-size: 200px;
-  word-break: break-all;
   line-height: 150px;
 
   &.modalActive{
@@ -266,15 +310,16 @@ div.modal{
     align-items: center;
     justify-content: center;
 
-    & p{
-      font-size: min(96px, 5.5vw);
-      line-height: min(96px, 5.5vw);
-      color: theme.$primary;
+    & .modalWrap{
+      display: flex;
+      word-break: keep-all;
+      padding: 100px;
+      @include theme.pointerCursor;
 
-      & a{
-        display: inline-block;
-        padding: 50px;
-        word-break: keep-all;
+      & p{
+        font-size: min(96px, 5.5vw);
+        line-height: min(96px, 5.5vw);
+        color: theme.$primary;
       }
     }
   }
@@ -286,6 +331,7 @@ div.highlight{
   height: 0px;
   left: -1px;
   top: -1px;
+  margin: 0px;
   background: linear-gradient(theme.$highlight,theme.$highlight);
   background-position: right;
   background-size: 0% 100%;

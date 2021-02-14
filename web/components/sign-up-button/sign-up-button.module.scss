@@ -3,89 +3,22 @@
 $buttonBorderBase: 2px solid theme.$black;
 $buttonBorderHover: 2px solid theme.$primary;
 
-$dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
-$dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
+// $dropshadowDefault: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.76));
+// $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
 // $transition-out: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 
 .root {
-  &:focus {
-    outline: none;
-  }
-  .buttonBorder {
-    position: absolute;
-    border: $buttonBorderBase;
-    height: inherit;
-    width: inherit;
-    border-radius: 100%;
-    transition: transform 1s, border-color 1s, margin-left 1s, filter 1s;
-    transition-timing-function: theme.$ease-in-out;
-    // filter: $dropshadowDefault;
-    filter: blur(2px);
-    &.buttonBorderFirst {
-      transform: rotate(-5deg);
-      margin-left: -1px;
-    }
-    &.buttonBorderSecond {
-      transform: rotate(4deg);
-      margin-left: 1px;
-    }
-  }
-
-  .buttonText {
-    height: inherit;
-    margin: 0 auto;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    transition: margin-left 1s, color 1s;
-    transition-timing-function: theme.$ease-in-out;
-    // @include theme.mobileVertical{
-    //   padding-top: 4px;
-    // }
-    // @include theme.desktopMedium{
-    //   padding-top: 6px;
-    // }
-    &.buttonTextFirst {
-      // margin-left: -4px;
-      position: absolute;
-      transform: unset;
-    }
-    &.buttonTextSecond {
-      // margin-left: 4px;
-      position: absolute;
-      filter:blur(5px);
-    }
-  }
-
-  &.focus .buttonText{
-    color: theme.$primary;
-    transition: color 0.3s;
-    transition-timing-function: theme.$ease-in-out;
-  }
-
-  .buttonFill {
-    position: absolute;
-    height: inherit;
-    width: inherit;
-    background-color: theme.$white;
-    border-radius: 100%;
-    transition: transform 1s, background-color 1s;
-    transition-timing-function: theme.$ease-in-out;
-    &.buttonFillFirst {
-      transform: rotate(-5deg);
-    }
-    &.buttonFillSecond {
-      transform: rotate(4deg);
-    }
-  }
+  position: relative;
   padding: 0px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-sizing: border-box;
   background-color: unset;
   border: none;
+  cursor: inherit;
+  color: theme.$black;
+
   //set the width of the button manually since we can't do width 100% due to complex positioning aka absolute and all the layer stacking we do
   @include theme.mobileVertical{
     height: 73px;
@@ -99,49 +32,102 @@ $dropshadowHover: drop-shadow(0px 4px 4px rgba(0, 0, 255, 1));
     height: 81px;
     width: 194px;
   }
-  cursor: inherit;
-  color: theme.$black;
-  // filter: blur(4.8px);
-  transition: filter 1s;
-  transition-timing-function: theme.$ease-in-out;
 
-  &:hover {
-    filter: blur(0);
+  &:focus {
+    outline: none;
   }
 
+  .buttonBorder {
+    position: absolute;
+    border: $buttonBorderBase;
+    height: inherit;
+    width: inherit;
+    border-radius: 100%;
+    transition: transform 0.65s, border-color 0.65s, opacity 0.65s;
+    transition-timing-function: theme.$ease-in-out;
+    filter: blur(2px);
+    opacity: 1;
+    &.buttonBorderFirst {
+      transform: rotate(-5deg);
+    }
+    &.buttonBorderSecond {
+      transform: rotate(4deg);
+    }
+  }
   &:hover > .buttonBorder{
-    filter: blur(0);
+    opacity: 0;
   }
-
-  &:hover > .buttonBorderFirst {
-    transform: rotate(0deg);
-    // border: $buttonBorderHover;
-    // filter: $dropshadowHover;
-  }
+  &:hover > .buttonBorderFirst,
   &:hover > .buttonBorderSecond {
     transform: rotate(0deg);
-    // border: $buttonBorderHover;
   }
 
+  .buttonText {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.65s, filter 0.65s;
+    transition-timing-function: theme.$ease-in-out;
+    &.buttonTextFirst {
+      position: absolute;
+      z-index: 10;
+    }
+    &.buttonTextSecond {
+      position: absolute;
+      filter: blur(5px);
+      z-index: 9;
+    }
+    &.buttonTextFirst H1, &.buttonTextFirst H2, &.buttonTextFirst p,
+    &.buttonTextSecond H1, &.buttonTextSecond H2, &.buttonTextSecond p{
+      display: inline-block;
+      width: inherit;
+      margin: 0px;
+      text-align: center;
+    }
+  }
+
+  &.typing .buttonText,
+  &:focus .buttonText{
+    color: theme.$primary;
+  }
+
+  &:focus > .buttonBorder {
+    border-color: theme.$primary;
+  }
+  &:hover > .buttonTextFirst,
+  &:hover > .buttonTextSecond {
+    color: theme.$primary;
+  }
+
+  .buttonFill {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background-color: theme.$background-grey;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    mix-blend-mode: darken;
+    transition: transform 0.65s, background-color 0.65s, border-color 0.65s;
+    transition-timing-function: theme.$ease-in-out;
+    &.buttonFillFirst {
+      transform: rotate(-5deg);
+    }
+    &.buttonFillSecond {
+      transform: rotate(4deg);
+    }
+  }
   &:hover > .buttonFill {
     background-color: theme.$highlight;
+    border-color: theme.$black;
   }
-
-  &:hover > .buttonFillFirst {
-    transform: rotate(0deg);
+  &.typing:hover > .buttonFill{
+    border-color: theme.$primary;
   }
+  &:hover > .buttonFillFirst,
   &:hover > .buttonFillSecond {
     transform: rotate(0deg);
-  }
-  &:hover > .buttonTextFirst {
-    margin-left: -1px;
-    color: theme.$primary;
-  }
-  &:hover > .buttonTextSecond {
-    margin-left: 0px;
-    color: theme.$primary;
-  }
-  &:focus > .buttonBorder {
-    // border-color: theme.$primary;
   }
 }

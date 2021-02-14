@@ -14,15 +14,5 @@
 <path d="M18.4685 30.1451L16.7977 31.0335L18.0078 33.3093L19.6786 32.4209L18.4685 30.1451Z" fill="black"/>
 <path d="M15.8978 29.3409L14.227 30.2293L15.1269 31.9219L16.7978 31.0335L15.8978 29.3409Z" fill="black"/>
 </g>
-<defs>
-<filter id="filter0_d" x="-2" y="0" width="51.6235" height="55.9313" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset dy="6"/>
-<feGaussianBlur stdDeviation="2.5"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-</defs>
+
 </svg>

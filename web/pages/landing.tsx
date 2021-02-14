@@ -10,6 +10,15 @@ import { Text } from "../components/text/text.component";
 
 const page = "Frontpage";
 
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "model-viewer": any;
+    }
+  }
+}
+
 const Landing = (props) => {
   const { pageData } = props;
   /**
@@ -51,7 +60,7 @@ const Landing = (props) => {
     }
   }
 
-  let highlightFired = false;
+  let highlightFired = false, modelloaded = false;
   let padY = 2, padX = 10;
   let t, r;
 
@@ -124,43 +133,90 @@ const Landing = (props) => {
     }
   }
 
+  let verbiage = false, wordcount = 0, wordtimer;
+  let worddelay_initial = 3000, worddelay_subsequent = 1300;
+  let words = ["collaborative", "subversive", "experimental", "critical", "speculative", "avant-garde"];
+
+  function nextWord(){
+    let target = document.getElementById("exhibitionVerbs");
+    if(target!=null){
+      wordcount = (wordcount+1)%words.length;
+      target.innerHTML = words[wordcount];
+      wordtimer = setTimeout(nextWord,worddelay_subsequent);
+    }
+  }
+
+  function keypress(e){
+    if(modal != "" && e.key == "Escape"){
+      setModal("");
+    }
+  }
+
+  function modalClick(e){
+    let select = window.getSelection() || document.getSelection();
+    if(select == null || select.toString() == "" || e.target.textContent.indexOf(select.toString()) == -1){
+      window.open((modal=="email"?"mailto:":"")+pageData[modal]);
+    }
+    e.stopPropagation();
+  }
+
   useEffect(() => {
     if(!highlightFired){
       window.addEventListener('load', highlight);
     }
 
+    if(!modelloaded){
+      let mv = document.querySelector("#modelViewer") as any;
+      if(mv!=null){
+        let s = document.createElement("style");
+        s.innerHTML = "*{ outline: none !important; border: none !important; } .focus-visible, *:focus, div.container:focus{ outline: none !important}";
+        let sr = mv.shadowRoot;
+        if(sr != null){
+          mv.shadowRoot.appendChild(s);
+        }
+      }
+      modelloaded = true;
+    }
+
+    if(!verbiage){
+      verbiage = true;
+      wordtimer=setTimeout(nextWord,worddelay_initial);
+    }
+
+    window.addEventListener("keydown",keypress);
+
     return () => {
       window.removeEventListener('scroll', highlight);
       window.removeEventListener('resize', sizeHighlight);
+      window.removeEventListener("keydown",keypress);
     }
   });
 
   const isError = state === "error";
 
+
   return (
     <div>
-      <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(event)=>{setModal("")}}>
+      <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
+      {modal!="" &&
+        <div className={styles.modalWrap} onClick={modalClick}>
         {modal == "email" &&
           <Text size={"T1"}>
-            <a href={`mailto:${pageData.email}`} onClick={(event)=>{event.stopPropagation()}}>
-              {pageData.email}
-            </a>
+            {pageData.email}
           </Text>
         }
         {modal == "instagram" &&
           <Text size={"T1"}>
-            <a href={pageData.instagram} onClick={(event)=>{event.stopPropagation()}}>
-              @{(pageData.instagram).split("instagram.com/")[1]}
-            </a>
+            @{(pageData.instagram).split("instagram.com/")[1]}
           </Text>
         }
         {modal == "discord" &&
           <Text size={"T1"}>
-            <a href={pageData.discord} onClick={(event)=>{event.stopPropagation()}}>
-              {pageData.discord}
-            </a>
+            {pageData.discord}
           </Text>
         }
+        </div>
+      }
       </div>
       <div className={styles.highlight} id="highlight"/>
       <div className={`${styles.main} ${modal!=""?styles.modalActive:""}`}>
@@ -179,7 +235,12 @@ const Landing = (props) => {
 
         <div className={styles.render}>
           <div className={styles.renderWrap}>
-            <img src={pageData.images.render}/>
+            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" auto-rotate camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer">
+              <div className="progress-bar hide" slot="progress-bar">
+                <div className="update-bar"></div>
+              </div>
+            </model-viewer>
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
@@ -191,7 +252,7 @@ const Landing = (props) => {
           <Text size={"H1"}/>
           {pageData.exhibition !== "" ? (
             <Text size={"H1"} parseHtml={true}>
-              We <a href={pageData.exhibition}>exhibit</a> work that is collaborative
+              We <a href={pageData.exhibition}>exhibit</a> work that is <span id="exhibitionVerbs">collaborative</span>
             </Text>
           ) : (
             <Text size={"H1"}>We exhibit work that is collaborative</Text>
@@ -230,7 +291,7 @@ const Landing = (props) => {
             aria-required={true}
           />
           {state == "typing" || state == "loading" ? (
-            <SignUpButton className={"focus"} buttonText="sign up"/>
+            <SignUpButton className={"typing"} buttonText="sign up"/>
           ) : (
             <SignUpButton buttonText="sign up"/>
           )}
