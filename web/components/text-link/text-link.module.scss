@@ -67,9 +67,6 @@
         pointer-events: none;
         border: 0px solid theme.$primary;
         padding: 0px;
-        transition-property: width;
-        transition-duration: 1s;
-        transition-timing-function: theme.$ease-in-out;
         @include theme.mobileVertical{
           border-width: 3px;
         }
@@ -79,8 +76,28 @@
         @include theme.desktopMedium{
           border-width: 4px;
         }
+        &.clear{
+          width: 0px;
+          transition-property: width;
+        }
+        &.clear270{
+          height: 0px;
+          transition-property: height;
+        }
+        &.clear,
+        &.clear270{
+          transition-duration: 1s;
+          transition-timing-function: theme.$ease-in-out;
+        }
       }
     }
+  }
+
+  &:hover > .linkUnderline .line.clear{
+    width: 100%;
+  }
+  &:hover > .linkUnderline .line.clear270{
+    height: 100%;
   }
 
   &:hover > .linkText.linkTextSecond{

@@ -111,7 +111,6 @@ export const TextLink = ({
           let element = document.createElement("div");
           element.setAttribute("full-width",""+this.width);
           element.classList.add(styles.line);
-          element.style.height = e.height+"px";
           if(this.rotate270){
             wrap.style.width = (e.width+6)+"px";
             wrap.style.height = this.height+"px";
@@ -119,18 +118,20 @@ export const TextLink = ({
             wrap.style.transformOrigin = (e.width/2)+"px "+(e.width/2)+"px";
             wrap.style.top = "6px"
             element.setAttribute("full-height",""+this.height);
-            element.style.height = "0px";
             element.style.borderBottomWidth = "0px";
             element.style.transitionProperty = "height";
             element.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
             linktext2.current.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
+            element.classList.add(styles.clear270);
           } else {
             wrap.style.width = this.width+"px";
             wrap.style.height = (e.height+6)+"px";
+            element.style.height = e.height+"px";
             element.style.borderRightWidth = "0px";
             element.style.transitionProperty = "width";
             element.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
             linktext2.current.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
+            element.classList.add(styles.clear);
           }
           element.style.borderTopWidth = "0px";
           element.style.borderLeftWidth = "0px";
@@ -169,40 +170,6 @@ export const TextLink = ({
         }, wait)
       }
     };
-  }
-
-  function onMouseOver(){
-    if(underline != null && underline.current != null){
-      let children = underline.current.getElementsByClassName(styles.linewrap);
-      if(children != null && children.length > 0){
-        setTimeout(()=>{
-          for(let i = 0; i<children.length; i++){
-            let c = children[i].getElementsByTagName("div")[0];
-              if(c.hasAttribute("full-height")){
-                c.style.height = c.getAttribute("full-height")+"px";
-              } else {
-                c.style.width = c.getAttribute("full-width")+"px";
-              }
-          }
-        },1);
-      }
-    }
-  }
-
-  function onMouseOut(){
-    if(underline != null && underline.current != null){
-      let children = underline.current.getElementsByClassName(styles.linewrap);
-      if(children != null && children.length > 0){
-        for(let i = 0; i<children.length; i++){
-          let c = children[i].getElementsByTagName("div")[0];
-          if(c.hasAttribute("full-height")){
-            c.style.height = "0px";
-          } else {
-            c.style.width = "0px";
-          }
-        }
-      }
-    }
   }
 
   function getRecs(){
@@ -305,8 +272,7 @@ export const TextLink = ({
 
 
   return(
-    <a className={styles.root} onClick={onClick} href={url} onMouseOver={onMouseOver}
-    onMouseOut={onMouseOut} style={textLinkStyles}>
+    <a className={styles.root} onClick={onClick} href={url} style={textLinkStyles}>
       <div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
         <Text size={size}>{children}</Text>
       </div>
