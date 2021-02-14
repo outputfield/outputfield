@@ -156,7 +156,7 @@ const Landing = (props) => {
       let mv = document.querySelector("#modelViewer") as any;
       if(mv!=null){
         let s = document.createElement("style");
-        s.innerHTML = "*{ outline: none !important; border: none !important; } .focus-visible{ outline: none !important}";
+        s.innerHTML = "*{ outline: none !important; border: none !important; } .focus-visible, *:focus, div.container:focus{ outline: none !important}";
         let sr = mv.shadowRoot;
         if(sr != null){
           mv.shadowRoot.appendChild(s);
