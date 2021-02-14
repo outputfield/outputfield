@@ -218,7 +218,7 @@ const Landing = (props) => {
         <div className={styles.render}>
           <div className={styles.renderWrap}>
             <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer src="3d/baggie.glb" /*poster="3d/baggie.png"*/ auto-rotate camera-controls field-of-view="32deg" camera-target="0m -0.05m -3.882e-11m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 3.306m" camera-orbit="-48.22deg 90deg 3.306m" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer">
+            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" auto-rotate camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer">
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
@@ -273,7 +273,7 @@ const Landing = (props) => {
             aria-required={true}
           />
           {state == "typing" || state == "loading" ? (
-            <SignUpButton className={"focus"} buttonText="sign up"/>
+            <SignUpButton className={"typing"} buttonText="sign up"/>
           ) : (
             <SignUpButton buttonText="sign up"/>
           )}
