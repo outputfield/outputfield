@@ -133,6 +133,19 @@ const Landing = (props) => {
     }
   }
 
+  let verbiage = false, wordcount = 0, wordtimer;
+  let worddelay_initial = 3000, worddelay_subsequent = 1300;
+  let words = ["collaborative", "subversive", "experimental", "critical", "speculative", "avant-garde"];
+
+  function nextWord(){
+    let target = document.getElementById("exhibitionVerbs");
+    if(target!=null){
+      wordcount = (wordcount+1)%words.length;
+      target.innerHTML = words[wordcount];
+      wordtimer = setTimeout(nextWord,worddelay_subsequent);
+    }
+  }
+
   function keypress(e){
     if(modal != "" && e.key == "Escape"){
       setModal("");
@@ -163,6 +176,11 @@ const Landing = (props) => {
         }
       }
       modelloaded = true;
+    }
+
+    if(!verbiage){
+      verbiage = true;
+      wordtimer=setTimeout(nextWord,worddelay_initial);
     }
 
     window.addEventListener("keydown",keypress);
@@ -234,7 +252,7 @@ const Landing = (props) => {
           <Text size={"H1"}/>
           {pageData.exhibition !== "" ? (
             <Text size={"H1"} parseHtml={true}>
-              We <a href={pageData.exhibition}>exhibit</a> work that is collaborative
+              We <a href={pageData.exhibition}>exhibit</a> work that is <span id="exhibitionVerbs">collaborative</span>
             </Text>
           ) : (
             <Text size={"H1"}>We exhibit work that is collaborative</Text>
