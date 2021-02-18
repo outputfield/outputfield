@@ -13,6 +13,10 @@
       position: absolute;
       user-select: text;
       z-index: 2;
+      opacity: 0.6;
+      transition-property: opacity;
+      transition-duration: 1s;
+      transition-timing-function: theme.$ease-in-out;
 
       & h1, & h2, & div{
         display: inline;
@@ -28,7 +32,7 @@
       z-index: 1;
       user-select: none;
       pointer-events: none;
-      filter: blur(6px);
+      filter: blur(4px);
       opacity: 0.7;
       transition-property: filter, opacity;
       transition-duration: 1s;
@@ -42,6 +46,15 @@
         margin: 0px;
       }
     }
+  }
+
+  &:hover > .linkText.linkTextFirst{
+    opacity: 1;
+  }
+
+  &:hover > .linkText.linkTextSecond{
+    filter: blur(0px);
+    opacity: 0;
   }
 
   .linkUnderline{
@@ -98,10 +111,5 @@
   }
   &:hover > .linkUnderline .line.clear270{
     height: 100%;
-  }
-
-  &:hover > .linkText.linkTextSecond{
-    filter: blur(0px);
-    opacity: 0;
   }
 }
