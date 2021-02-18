@@ -169,7 +169,7 @@ const Landing = (props) => {
       let mv = document.querySelector("#modelViewer") as any;
       if(mv!=null){
         let s = document.createElement("style");
-        s.innerHTML = "*{ outline: none !important; border: none !important; } .focus-visible, *:focus, div.container:focus{ outline: none !important}";
+        s.innerHTML = "*.focus-visible, *, *:focus, *:focus-visible, *:hover, *:active, div.container:focus, div.container:focus-visible, div.container:hover, div.container:active{ outline: none !important; outline-width: 0 !important; border: none !important; box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important;}";
         let sr = mv.shadowRoot;
         if(sr != null){
           mv.shadowRoot.appendChild(s);
