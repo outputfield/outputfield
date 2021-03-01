@@ -1,9 +1,29 @@
 @import "../theme.scss";
+@import url("//hello.myfonts.net/count/3d3396");
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 4010902, 2021-02-09T23:21:36-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: NeueHaasUnicaW1G-Regular by Linotype
+ * URL: https://www.myfonts.com/fonts/linotype/neue-haas-unica/regular/
+ * Copyright: Copyright &amp;#x00A9; 2016 Monotype Imaging Inc. All rights reserved.
+ *
+ *
+ *
+ * © 2021 MyFonts Inc
+*/
 
 @font-face {
   font-family: "Neue Haas Unica Pro Regular";
-  src: local("Neue-Haas-Unica-pro-regular"),
-    url(../assets/fonts/Neue-Haas-Unica-pro-regular.ttf) format("truetype");
+  src: url("../assets/fonts/NeueHaasUnicaW1GRegular.woff2") format('woff2'),
+    url("../assets/fonts/NeueHaasUnicaW1GRegular.woff") format('woff');
 }
 
 @font-face {

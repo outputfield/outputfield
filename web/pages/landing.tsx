@@ -61,7 +61,7 @@ const Landing = (props) => {
   }
 
   let highlightFired = false, modelloaded = false;
-  let padY = 2, padX = 10;
+  let padY = 2, padX = 2;
   let t, r;
 
   function highlight(){
@@ -133,22 +133,34 @@ const Landing = (props) => {
     }
   }
 
+  const worddelay_initial = 3000, worddelay_subsequent = 1300;
+  const words = ["collaborative", "subversive", "experimental", "critical", "speculative", "avant-garde"];
   let verbiage = false, wordcount = 0, wordtimer;
-  let worddelay_initial = 3000, worddelay_subsequent = 1300;
-  let words = ["collaborative", "subversive", "experimental", "critical", "speculative", "avant-garde"];
 
   function nextWord(){
     let target = document.getElementById("exhibitionVerbs");
     if(target!=null){
       wordcount = (wordcount+1)%words.length;
       target.innerHTML = words[wordcount];
-      wordtimer = setTimeout(nextWord,worddelay_subsequent);
     }
   }
 
   function keypress(e){
     if(modal != "" && e.key == "Escape"){
       setModal("");
+    }
+  }
+
+  function removemodeloutline(){
+    console.log("removemodeloutline");
+    let mv = document.querySelector("#modelViewer") as any;
+    if(mv!=null){
+      let s = document.createElement("style");
+      s.innerHTML = "*.focus-visible, *, *:focus, *:focus-visible, *:hover, *:active, div.container:focus, div.container:focus-visible, div.container:hover, div.container:active{ outline: none !important; outline-width: 0 !important; border: none !important; box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important;}";
+      let sr = mv.shadowRoot;
+      if(sr != null){
+        mv.shadowRoot.appendChild(s);
+      }
     }
   }
 
@@ -167,21 +179,35 @@ const Landing = (props) => {
 
     if(!modelloaded){
       let mv = document.querySelector("#modelViewer") as any;
-      if(mv!=null){
-        let s = document.createElement("style");
-        s.innerHTML = "*{ outline: none !important; border: none !important; } .focus-visible, *:focus, div.container:focus{ outline: none !important}";
-        let sr = mv.shadowRoot;
-        if(sr != null){
-          mv.shadowRoot.appendChild(s);
-        }
-      }
+      mv.addEventListener("load",removemodeloutline);
       modelloaded = true;
     }
 
     if(!verbiage){
       verbiage = true;
-      wordtimer=setTimeout(nextWord,worddelay_initial);
+      setTimeout(()=>{
+        nextWord();
+        clearTimeout(wordtimer);
+        wordtimer = setInterval(nextWord,worddelay_subsequent);
+      },worddelay_initial);
     }
+
+    //https://stackoverflow.com/questions/54948840/how-to-pause-settimeout-when-leaving-the-window-with-javascript
+    function changefocus() {
+      if (document.hidden || document["mozHidden"] || document["webkitHidden"] || document["msHidden"]) {
+        clearTimeout(wordtimer);
+      } else {
+        wordtimer = setInterval(nextWord,worddelay_subsequent);
+      }
+    }
+
+    let prefix = "";
+    if (typeof document["mozHidden"] !== "undefined") prefix = "moz";
+    else if (typeof document["msHidden"] !== "undefined") prefix = "ms";
+    else if (typeof document["webkitHidden"] !== "undefined") prefix = "webkit";
+
+    document.addEventListener(prefix+"visibilitychange", changefocus, false);
+
 
     window.addEventListener("keydown",keypress);
 
@@ -272,18 +298,21 @@ const Landing = (props) => {
             }
             onChange={(event) => {
               setRegisterData(event.target.value);
-              if (isError) {
+              if (isError || event.target.value.length == 0) {
                 setState("");
+              } else {
+                setState("typing");
               }
             }}
             onFocus={(event) => {
-              setState("typing");
+              setState("focus");
             }}
             onBlur={(event) => {
               if (event.target.value.length == 0){
                 setState("");
               }
             }}
+            placeholder={"you@email.com"}
             invalid={isError}
             errorMessage={isError && error ? error : undefined}
             state={state}

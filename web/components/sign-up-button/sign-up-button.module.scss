@@ -101,6 +101,9 @@ $buttonBorderHover: 2px solid theme.$primary;
   &:hover > .buttonTextSecond {
     color: theme.$primary;
   }
+  &:hover > .buttonTextSecond {
+    filter: blur(2px);
+  }
 
   .buttonFill {
     position: absolute;
@@ -110,7 +113,9 @@ $buttonBorderHover: 2px solid theme.$primary;
     border-radius: 100%;
     border: 2px solid transparent;
     mix-blend-mode: darken;
-    transition: transform 0.65s, background-color 0.65s, border-color 0.65s;
+    transition-delay: 0s, 0s, 0s;
+    transition-duration: 0.65s, 0.45s, 0.65s;
+    transition-property: transform, background-color, border-color;
     transition-timing-function: theme.$ease-in-out;
     &.buttonFillFirst {
       transform: rotate(-5deg);
@@ -122,6 +127,7 @@ $buttonBorderHover: 2px solid theme.$primary;
   &:hover > .buttonFill {
     background-color: theme.$highlight;
     border-color: theme.$black;
+    transition-delay: 0s, 0.3s, 0s;
   }
   &.typing:hover > .buttonFill{
     border-color: theme.$primary;

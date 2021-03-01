@@ -79,14 +79,14 @@ export const TextLink = ({
     }
 
     getElements(){
-      let text2;
-      if(underline != null && underline.current != null && linktext != null && linktext2.current != null){
-        text2 = [linktext2.current.getElementsByTagName("h1")[0],
-                  linktext2.current.getElementsByTagName("h2")[0],
-                  linktext2.current.getElementsByTagName("div")[0]][0];
+      // let text2;
+      if(underline != null && underline.current != null && linktext != null && linktext.current != null){
+        // text2 = [linktext2.current.getElementsByTagName("h1")[0],
+        //           linktext2.current.getElementsByTagName("h2")[0],
+        //           linktext2.current.getElementsByTagName("div")[0]][0];
       }
       return this.recs.map((e,i) => {
-        if(underline != null && underline.current != null && linktext != null && linktext2.current != null){
+        if(underline != null && underline.current != null && linktext != null && linktext.current != null){
           let len = e.width/this.width*100;
           let wrap = document.createElement("div");
           wrap.classList.add(styles.linewrap);
@@ -95,42 +95,53 @@ export const TextLink = ({
             let st = this.offsetLength/this.width*100;
             wrap.style.clipPath = "polygon("+st+"% 0%, "+(st+len)+"% 0%, "+(st+len)+"% 100%, "+st+"% 100%)";
 
-            linktext2.current.style.left = "-"+this.offsetLength+"px";
+            // linktext2.current.style.left = "-"+this.offsetLength+"px";
             underline.current.style.left = "-"+this.offsetLength+"px";
-            linktext2.current.style.width = this.width+"px";
-            text2.style.textIndent = this.offsetLength+"px";
+            // linktext2.current.style.width = this.width+"px";
+            // text2.style.textIndent = this.offsetLength+"px";
 
           } else {
             wrap.style.clipPath = "polygon(0% 0%, "+len+"% 0%, "+len+"% 100%, 0% 100%)";
             if(i==0){
-              linktext2.current.style.left = "0px";
-              underline.current.style.left = "0px";
+              // linktext2.current.style.left = "0px";
+              if(this.rotate270){
+                underline.current.style.left = "-4px";
+                underline.current.style.padding = " 0px 0.15em 0px 0px";
+              } else {
+                underline.current.style.left = "0px";
+              }
             }
           }
-          text2.style.visibility = "visible";
+          // text2.style.visibility = "visible";
           let element = document.createElement("div");
           element.setAttribute("full-width",""+this.width);
           element.classList.add(styles.line);
           if(this.rotate270){
-            wrap.style.width = (e.width+6)+"px";
+            wrap.style.width = (e.width+12)+"px";
             wrap.style.height = this.height+"px";
-            wrap.style.transform = "rotate(270deg)";
-            wrap.style.transformOrigin = (e.width/2)+"px "+(e.width/2)+"px";
-            wrap.style.top = "6px"
+            // wrap.style.transform = "rotate(270deg)";
+            wrap.style.transformOrigin = "center center";
+            // wrap.style.top = "6px"
             element.setAttribute("full-height",""+this.height);
             element.style.borderBottomWidth = "0px";
-            element.style.transitionProperty = "height";
-            element.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
-            linktext2.current.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
+            element.style.transitionProperty = "height"
+            let duration = Math.max(0.5,(this.height/700));
+            linktext.current.style.transitionDuration = duration+"s";
+            wrap.style.transitionDuration = duration+"s";
+            element.style.transitionDuration = duration+"s";
+            // linktext2.current.style.transitionDuration = Math.max(0.5,(this.height/700))+"s";
             element.classList.add(styles.clear270);
           } else {
             wrap.style.width = this.width+"px";
-            wrap.style.height = (e.height+6)+"px";
+            wrap.style.height = (e.height+12)+"px";
             element.style.height = e.height+"px";
             element.style.borderRightWidth = "0px";
             element.style.transitionProperty = "width";
-            element.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
-            linktext2.current.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
+            let duration = Math.max(0.5,(this.width/700));
+            linktext.current.style.transitionDuration = duration+"s";
+            wrap.style.transitionDuration = duration+"s";
+            element.style.transitionDuration = duration+"s";
+            // linktext2.current.style.transitionDuration = Math.max(0.5,(this.width/700))+"s";
             element.classList.add(styles.clear);
           }
           element.style.borderTopWidth = "0px";
@@ -150,7 +161,7 @@ export const TextLink = ({
 
   const underline = useRef<HTMLDivElement>(null);
   const linktext = useRef<HTMLDivElement>(null);
-  const linktext2 = useRef<HTMLDivElement>(null);
+  // const linktext2 = useRef<HTMLDivElement>(null);
   let nav;
 
   let linkrecs: DOMRectList, newlinkrecs: DOMRectList;
@@ -225,7 +236,10 @@ export const TextLink = ({
       if(links != null && links.length > 0){
         links.getElements().forEach(e => {
           if(underline.current != null){
+            let e2 = e.cloneNode(true);
             underline.current.appendChild(e);
+            e2.classList.add(styles.linewrapblur);
+            underline.current.appendChild(e2);
           }
         });
       }
@@ -247,7 +261,7 @@ export const TextLink = ({
   }
 
   function init(){
-    if(linktext.current == null || linktext2.current == null || underline.current == null){
+    if(linktext.current == null || /*linktext2.current == null ||*/ underline.current == null){
       setTimeout(init,50);
     } else {
       nav = document.getElementById("nav");
@@ -273,9 +287,9 @@ export const TextLink = ({
 
   return(
     <a className={styles.root} onClick={onClick} href={url} style={textLinkStyles}>
-      <div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
+      {/*<div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
         <Text size={size}>{children}</Text>
-      </div>
+      </div>*/}
       <div className={styles.linkUnderline} ref={underline}>
       </div>
       <div className={`${styles.linkText} ${styles.linkTextFirst}`} ref={linktext}>
