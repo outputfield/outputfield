@@ -169,7 +169,6 @@ const Landing = (props) => {
   function removemodeloutline(){
     if(!modelloaded){
       let mv = document.querySelector("#modelViewer") as any;
-      console.log(mv.shadowRoot);
       if(mv != null && mv.shadowRoot != null){
         let s = document.createElement("style");
         s.innerHTML = "*.focus-visible, *, *:focus, *:focus-visible, *:hover, *:active, div.container:focus, div.container:focus-visible, div.container:hover, div.container:active{ outline: none !important; outline-width: 0 !important; border: none !important; box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important;}";
