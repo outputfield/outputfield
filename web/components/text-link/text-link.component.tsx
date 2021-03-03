@@ -7,6 +7,7 @@ import { Text } from "../text/text.component";
 export const TextLink = ({
   textAlign = "left",
   url,
+  target,
   color = colors.primary,
   size,
   marginTop,
@@ -286,10 +287,7 @@ export const TextLink = ({
 
 
   return(
-    <a className={styles.root} onClick={onClick} href={url} style={textLinkStyles}>
-      {/*<div className={`${styles.linkText} ${styles.linkTextSecond}`} ref={linktext2}>
-        <Text size={size}>{children}</Text>
-      </div>*/}
+    <a className={styles.root} onClick={onClick} href={url} target={target} style={textLinkStyles}>
       <div className={styles.linkUnderline} ref={underline}>
       </div>
       <div className={`${styles.linkText} ${styles.linkTextFirst}`} ref={linktext}>
