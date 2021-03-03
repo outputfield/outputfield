@@ -33,6 +33,15 @@
     opacity: 0;
   }
 
+  &:hover > .linkText.linkTextFirst{
+    opacity: 1;
+  }
+
+  &:hover > .linkText.linkTextSecond{
+    filter: blur(0px);
+    opacity: 0;
+  }
+
   .linkUnderline{
     display: block;
     position: absolute;
