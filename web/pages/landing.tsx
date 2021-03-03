@@ -166,24 +166,6 @@ const Landing = (props) => {
     }
   }
 
-  function removemodeloutline(){
-    if(!modelloaded){
-      let mv = document.querySelector("#modelViewer") as any;
-      console.log(mv.shadowRoot);
-      if(mv != null && mv.shadowRoot != null){
-        let s = document.createElement("style");
-        s.innerHTML = "*.focus-visible, *, *:focus, *:focus-visible, *:hover, *:active, div.container:focus, div.container:focus-visible, div.container:hover, div.container:active{ outline: none !important; outline-width: 0 !important; border: none !important; box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important;}";
-        let sr = mv.shadowRoot;
-        if(sr != null){
-          mv.shadowRoot.appendChild(s);
-        }
-        modelloaded = true;
-      } else {
-        setTimeout(removemodeloutline,100);
-      }
-    }
-  }
-
   function modalClick(e){
     let select = window.getSelection() || document.getSelection();
     if(select == null || select.toString() == "" || e.target.textContent.indexOf(select.toString()) == -1){
@@ -205,14 +187,10 @@ const Landing = (props) => {
   useEffect(() => {
     window.addEventListener('load', init);
 
-    let mv = document.querySelector("#modelViewer") as any;
-    mv.addEventListener("load",removemodeloutline);
-
     window.addEventListener("keydown",keypress);
 
     return () => {
       window.removeEventListener("load",init);
-      mv.removeEventListener("load",removemodeloutline);
       window.removeEventListener("scroll", highlight);
       window.removeEventListener("resize", sizeHighlight);
       window.removeEventListener("keydown",keypress);
@@ -252,7 +230,7 @@ const Landing = (props) => {
         <div className={styles.render}>
           <div className={styles.renderWrap}>
             <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" /*auto-rotate*/ camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer">
+            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" auto-rotate camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
