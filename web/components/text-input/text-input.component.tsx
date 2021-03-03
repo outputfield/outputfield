@@ -14,6 +14,7 @@ interface Props {
   onChange?: (event: any) => any;
   onFocus?: (event: any) => any;
   onBlur?: (event: any) => any;
+  placeholder?: string;
   state?: string;
   textInput?: React.Ref<HTMLInputElement>;
 
@@ -35,6 +36,7 @@ export const TextInput: React.FC<Props> = forwardRef(
       onChange,
       onFocus,
       onBlur,
+      placeholder,
       state,
       ariaLabel,
       ariaRequired,
@@ -70,6 +72,7 @@ export const TextInput: React.FC<Props> = forwardRef(
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          placeholder={placeholder}
           aria-label={ariaLabel}
           aria-required={ariaRequired}
         />

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content"
 import colors from "../colors";
@@ -47,7 +47,6 @@ const Landing = (props) => {
     let el = e.currentTarget as any;
     if(el!=null){
       el=el.getClientRects()[0];
-      console.log({ely: el.y, win: window.scrollY});
       let origin = window.scrollY;
       let target = el.y + window.scrollY;
       let dist = el.y - 25;
@@ -60,8 +59,13 @@ const Landing = (props) => {
     }
   }
 
+  function init(){
+    highlight();
+    startWords();
+  }
+
   let highlightFired = false, modelloaded = false;
-  let padY = 2, padX = 10;
+  let padY = 2, padX = 2;
   let t, r;
 
   function highlight(){
@@ -133,16 +137,26 @@ const Landing = (props) => {
     }
   }
 
-  let verbiage = false, wordcount = 0, wordtimer;
-  let worddelay_initial = 3000, worddelay_subsequent = 1300;
-  let words = ["collaborative", "subversive", "experimental", "critical", "speculative", "avant-garde"];
+  const worddelay_initial = 3000, worddelay_subsequent = 1300;
+  const words = ["collaborative", "subversive", "experimental", "critical", "speculative", "avant-garde"];
+  const wordtimer = useRef(null) as any;
+  let verbiage = false, wordcount = 0;
+
+  function startWords(){
+    if(!verbiage){
+      setTimeout(()=>{
+        nextWord();
+        wordtimer.current = setInterval(nextWord,worddelay_subsequent);
+      },worddelay_initial);
+      verbiage = true;
+    }
+  }
 
   function nextWord(){
     let target = document.getElementById("exhibitionVerbs");
-    if(target!=null){
+    if(target!=null && wordtimer.current != null){
       wordcount = (wordcount+1)%words.length;
       target.innerHTML = words[wordcount];
-      wordtimer = setTimeout(nextWord,worddelay_subsequent);
     }
   }
 
@@ -152,42 +166,54 @@ const Landing = (props) => {
     }
   }
 
-  function modalClick(e){
-    let select = window.getSelection() || document.getSelection();
-    if(select == null || select.toString() == "" || e.target.textContent.indexOf(select.toString()) == -1){
-      window.open((modal=="email"?"mailto:":"")+pageData[modal]);
-    }
-    e.stopPropagation();
-  }
-
-  useEffect(() => {
-    if(!highlightFired){
-      window.addEventListener('load', highlight);
-    }
-
+  function removemodeloutline(){
     if(!modelloaded){
       let mv = document.querySelector("#modelViewer") as any;
-      if(mv!=null){
+      if(mv != null && mv.shadowRoot != null){
         let s = document.createElement("style");
         s.innerHTML = "*.focus-visible, *, *:focus, *:focus-visible, *:hover, *:active, div.container:focus, div.container:focus-visible, div.container:hover, div.container:active{ outline: none !important; outline-width: 0 !important; border: none !important; box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important;}";
         let sr = mv.shadowRoot;
         if(sr != null){
           mv.shadowRoot.appendChild(s);
         }
+        modelloaded = true;
+      } else {
+        setTimeout(removemodeloutline,100);
       }
-      modelloaded = true;
     }
+  }
 
-    if(!verbiage){
-      verbiage = true;
-      wordtimer=setTimeout(nextWord,worddelay_initial);
+  function modalClick(e){
+    let select = window.getSelection() || document.getSelection();
+    if(select == null || select.toString() == "" || e.target.textContent.indexOf(select.toString()) == -1){
+      let copy = document.querySelector("#modalWrap p:nth-of-type(2)") as any;
+      if(copy != null){
+        const el = document.createElement("textarea");
+        el.innerHTML = pageData.email;
+        el.classList.add(styles.copy);
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        copy.style.display = "block";
+      }
     }
+    e.stopPropagation();
+  }
+
+  useEffect(() => {
+    window.addEventListener('load', init);
+
+    let mv = document.querySelector("#modelViewer") as any;
+    mv.addEventListener("load",removemodeloutline);
 
     window.addEventListener("keydown",keypress);
 
     return () => {
-      window.removeEventListener('scroll', highlight);
-      window.removeEventListener('resize', sizeHighlight);
+      window.removeEventListener("load",init);
+      mv.removeEventListener("load",removemodeloutline);
+      window.removeEventListener("scroll", highlight);
+      window.removeEventListener("resize", sizeHighlight);
       window.removeEventListener("keydown",keypress);
     }
   });
@@ -198,25 +224,14 @@ const Landing = (props) => {
   return (
     <div>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
-      {modal!="" &&
-        <div className={styles.modalWrap} onClick={modalClick}>
-        {modal == "email" &&
+        <div className={styles.modalWrap} onClick={modalClick} id="modalWrap">
           <Text size={"T1"}>
             {pageData.email}
           </Text>
-        }
-        {modal == "instagram" &&
-          <Text size={"T1"}>
-            @{(pageData.instagram).split("instagram.com/")[1]}
+          <Text size={"T3"}>
+            Copied to your clipboard!
           </Text>
-        }
-        {modal == "discord" &&
-          <Text size={"T1"}>
-            {pageData.discord}
-          </Text>
-        }
         </div>
-      }
       </div>
       <div className={styles.highlight} id="highlight"/>
       <div className={`${styles.main} ${modal!=""?styles.modalActive:""}`}>
@@ -225,9 +240,9 @@ const Landing = (props) => {
             <Text size={"H1"} color={colors.primary} textAlign="right" parseHtml={true}>
               <a onClick={(event)=>{setModal("email")}}>Mail</a>
               {", "}
-              <a onClick={(event)=>{setModal("instagram")}}>Instagram</a>
+              <a href={pageData.instagram} target="_blank">Instagram</a>
               {", "}
-              <a onClick={(event)=>{setModal("discord")}}>Discord</a>
+              <a href={pageData.donate} target="_blank">Donate</a>
             </Text>
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
@@ -236,7 +251,7 @@ const Landing = (props) => {
         <div className={styles.render}>
           <div className={styles.renderWrap}>
             <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" auto-rotate camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer">
+            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" auto-rotate camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
@@ -272,18 +287,21 @@ const Landing = (props) => {
             }
             onChange={(event) => {
               setRegisterData(event.target.value);
-              if (isError) {
+              if (isError || event.target.value.length == 0) {
                 setState("");
+              } else {
+                setState("typing");
               }
             }}
             onFocus={(event) => {
-              setState("typing");
+              setState("focus");
             }}
             onBlur={(event) => {
               if (event.target.value.length == 0){
                 setState("");
               }
             }}
+            placeholder={"you@email.com"}
             invalid={isError}
             errorMessage={isError && error ? error : undefined}
             state={state}

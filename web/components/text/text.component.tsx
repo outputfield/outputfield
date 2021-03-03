@@ -39,6 +39,7 @@ export const Text = ({
           parsedText = <TextLink
           key={i}
           url={parsedText.props.href}
+          target={parsedText.props.target}
           size={size}
           onClick={parsedText.props.onClick}
           >

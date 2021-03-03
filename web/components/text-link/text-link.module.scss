@@ -13,39 +13,24 @@
       position: absolute;
       user-select: text;
       z-index: 2;
-      opacity: 0.6;
-      transition-property: opacity;
+      transition-property: text-shadow;
       transition-duration: 1s;
       transition-timing-function: theme.$ease-in-out;
+      text-shadow: 0px 0px 4px theme.$primary;
 
       & h1, & h2, & div{
         display: inline;
       }
     }
+  }
 
-    &.linkTextSecond{
-      position: absolute;
-      display: block;
-      visibility: hidden;
-      top: 1px;
-      left: 0px;
-      z-index: 1;
-      user-select: none;
-      pointer-events: none;
-      filter: blur(4px);
-      opacity: 0.7;
-      transition-property: filter, opacity;
-      transition-duration: 1s;
-      transition-timing-function: theme.$ease-in-out;
+  &:hover > .linkText.linkTextFirst{
+    text-shadow: none;
+  }
 
-      & h1, & h2, & div{
-        width: 100%;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        margin: 0px;
-      }
-    }
+  &:hover > .linkText.linkTextSecond{
+    filter: blur(0px);
+    opacity: 0;
   }
 
   &:hover > .linkText.linkTextFirst{
@@ -71,6 +56,7 @@
       position: absolute;
       user-select: none;
       pointer-events: none;
+      z-index: 2;
 
       .line{
         width: 0px;
@@ -104,6 +90,18 @@
         }
       }
     }
+
+    .linewrapblur{
+      z-index: 1;
+      filter: blur(4px);
+      transition-duration: 1s;
+      transition-property: opacity;
+      transition-timing-function: theme.$ease-in-out;
+    }
+  }
+
+  &:hover > .linkUnderline .linewrapblur{
+    opacity: 0;
   }
 
   &:hover > .linkUnderline .line.clear{
