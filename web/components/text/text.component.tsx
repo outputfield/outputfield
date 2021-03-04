@@ -42,6 +42,7 @@ export const Text = ({
           target={parsedText.props.target}
           size={size}
           onClick={parsedText.props.onClick}
+          className={parsedText.props.className}
           >
            {parsedText.props.children}
           </TextLink>

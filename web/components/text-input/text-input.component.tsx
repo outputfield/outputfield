@@ -55,6 +55,12 @@ export const TextInput: React.FC<Props> = forwardRef(
       invalid,
       disabled,
     });
+    const lineClasses = cx({
+      error: state === "error",
+      focus: state == "typing" || state == "loading",
+      invalid,
+      disabled,
+    });
 
     const textInput = React.useRef<HTMLInputElement>(null);
     if(state === "success" && textInput != null && textInput.current != null){
@@ -76,6 +82,7 @@ export const TextInput: React.FC<Props> = forwardRef(
           aria-label={ariaLabel}
           aria-required={ariaRequired}
         />
+        <hr className={lineClasses}/>
         <div className={labelClasses}>{label}</div>
       </div>
     );

@@ -10,6 +10,7 @@ export interface ITextLinkProps {
   marginRight?: number | string;
   onClick?: (event: any) => any;
   children?: string | React.ReactNodeArray;
+  className?: string;
 }
 
 export interface IStyles {

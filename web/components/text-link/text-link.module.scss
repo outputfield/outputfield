@@ -5,6 +5,11 @@
   user-select: none;
   display: inline;
   position: relative;
+  display: inline-block;
+
+  &.navLink{
+    transition: rotate(0deg);
+  }
 
   .linkText{
     display: contents;
@@ -14,7 +19,7 @@
       user-select: text;
       z-index: 2;
       transition-property: text-shadow;
-      transition-duration: 1s;
+      transition-duration: 0.5s;
       transition-timing-function: theme.$ease-in-out;
       text-shadow: 0px 0px 4px theme.$primary;
 
@@ -45,58 +50,65 @@
   .linkUnderline{
     display: block;
     position: absolute;
-    width: 100%;
-    left: 0px;
     top: 0px;
+    left: 0px;
     user-select: none;
     pointer-events: none;
-    padding-bottom: 0.15em;
-
-    .linewrap{
-      position: absolute;
-      user-select: none;
-      pointer-events: none;
-      z-index: 2;
-
-      .line{
-        width: 0px;
-        top: 0px;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        border: 0px solid theme.$primary;
-        padding: 0px;
-        @include theme.mobileVertical{
-          border-width: 3px;
-        }
-        @include theme.desktopSmall{
-          border-width: 2px;
-        }
-        @include theme.desktopMedium{
-          border-width: 4px;
-        }
-        &.clear{
-          width: 0px;
-          transition-property: width;
-        }
-        &.clear270{
-          height: 0px;
-          transition-property: height;
-        }
-        &.clear,
-        &.clear270{
-          transition-duration: 1s;
-          transition-timing-function: theme.$ease-in-out;
-        }
-      }
+    height: 2px;
+    width: 0%;
+    background-color: theme.$primary;
+    transition-duration: 0.5s;
+    transition-property: width, box-shadow;
+    transition-timing-function: theme.$ease-in-out;
+    box-shadow: 0px 0px 4px theme.$primary;
+    @include theme.mobileVertical{
+      margin-top: 44px;
     }
+    @include theme.desktopSmall{
+      margin-top: 36px;
+    }
+    @include theme.desktopMedium{
+      margin-top: 52px;
+    }
+  }
+  &.navLink .linkUnderline{
+    @include theme.mobileVertical{
+      height: 2px;
+      width: 0%;
+      margin-top: 44px;
+    }
+    @include theme.mobileHorizontal{
+      height: 0%;
+      width: 2px;
+      left: unset;
+      right: 0px;
+      margin-top: 0px;
+      margin-right: 44px;
+      transition-property: height, box-shadow;
+    }
+    @include theme.desktopSmall{
+      margin-right: 36px;
+    }
+    @include theme.desktopMedium{
+      margin-right: 52px;
+    }
+  }
 
-    .linewrapblur{
-      z-index: 1;
-      filter: blur(4px);
-      transition-duration: 1s;
-      transition-property: opacity;
-      transition-timing-function: theme.$ease-in-out;
+  &:hover > .linkUnderline{
+    width: 100%;
+    box-shadow: 0px 0px 4px theme.$primary50opacity;
+  }
+
+  &.navLink:hover > .linkUnderline{
+    box-shadow: 0px 0px 4px theme.$primary50opacity;
+
+    @include theme.mobileVertical{
+      height: 2px;
+      width: 100%;
+    }
+    @include theme.mobileHorizontal{
+      height: 100%;
+      width: 2px;
     }
   }
 

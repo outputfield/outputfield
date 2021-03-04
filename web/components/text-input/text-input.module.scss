@@ -14,19 +14,40 @@
     outline: none;
     color: theme.$black;
     border: none;
-    border-bottom: 2px solid theme.$black;
+    text-indent: 10px;
+    position: relative;
+    left: -10px;
 
     &.disabled {
       color: theme.$disabled-text;
-      border-color: theme.$disabled-elements;
     }
     &.invalid {
       color: theme.$error;
-      border-color: theme.$error;
     }
     &.focus {
       color: theme.$primary;
-      border-color: theme.$primary;
+    }
+    &::placeholder{
+      color: theme.$disabled-text;
+      opacity: 1;
+    }
+  }
+
+  & hr{
+    margin: 0px;
+    width: 100%;
+    height: 2px;
+    border: none;
+    background-color: theme.$black;
+
+    &.disabled {
+      background-color: theme.$disabled-elements;
+    }
+    &.invalid {
+      background-color: theme.$error;
+    }
+    &.focus {
+      background-color: theme.$primary;
     }
   }
 

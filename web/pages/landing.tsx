@@ -62,6 +62,7 @@ const Landing = (props) => {
   function init(){
     highlight();
     startWords();
+    focusInput();
   }
 
   let highlightFired = false, modelloaded = false;
@@ -134,6 +135,18 @@ const Landing = (props) => {
           window.removeEventListener('resize', sizeHighlight);
         }
       },2000);
+    }
+  }
+
+  let inputfocus = false;
+  function focusInput(){
+    if(!inputfocus){
+      let i = document.querySelector("form input:first-of-type") as HTMLInputElement;
+      console.log(i);
+      if(i != null && i != undefined){
+        i.focus();
+        inputfocus = true;
+      }
     }
   }
 
@@ -220,7 +233,6 @@ const Landing = (props) => {
 
   const isError = state === "error";
 
-
   return (
     <div>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
@@ -238,11 +250,11 @@ const Landing = (props) => {
         <div className={styles.navWrap}>
           <div className={styles.nav} id="nav">
             <Text size={"H1"} color={colors.primary} textAlign="right" parseHtml={true}>
-              <a onClick={(event)=>{setModal("email")}}>Mail</a>
+              <a onClick={(event)=>{setModal("email")}} className={"navLink"}>Mail</a>
               {", "}
-              <a href={pageData.instagram} target="_blank">Instagram</a>
+              <a href={pageData.instagram} className={"navLink"} target="_blank">Instagram</a>
               {", "}
-              <a href={pageData.donate} target="_blank">Donate</a>
+              <a href={pageData.donate} className={"navLink"} target="_blank">Donate</a>
             </Text>
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
@@ -265,16 +277,15 @@ const Landing = (props) => {
             return <Text key={i} size={"H1"}>{t}</Text>;
           })}
           <Text size={"H1"}/>
-          {pageData.exhibition !== "" ? (
-            <Text size={"H1"} parseHtml={true}>
-              We <a href={pageData.exhibition}>exhibit</a> work that is <span id="exhibitionVerbs">collaborative</span>
-            </Text>
-          ) : (
-            <Text size={"H1"}>We exhibit work that is collaborative</Text>
-          )}
-          {/*<br/><br/><Text size={"H1"} parseHtml={true}>
-          this is a test <a href='#'>of a multiline link. there are several words to take up at least one line of the paragraph</a> and then some more text here
-          </Text>*/}
+          <Text size={"H1"} parseHtml={true}>
+              We {
+                pageData.exhibition !== "" ?
+                (<a href={pageData.exhibition}>exhibit</a>)
+                :
+                ("exhibit")
+              }
+              {(" ")}work that is <span id="exhibitionVerbs">collaborative</span>
+          </Text>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
 
@@ -301,19 +312,14 @@ const Landing = (props) => {
                 setState("");
               }
             }}
-            placeholder={"you@email.com"}
+            placeholder={"youremail@email.com"}
             invalid={isError}
             errorMessage={isError && error ? error : undefined}
             state={state}
             aria-label={"Email"}
             aria-required={true}
           />
-          {state == "typing" || state == "loading" ? (
-            <SignUpButton className={"typing"} buttonText="sign up"/>
-          ) : (
-            <SignUpButton buttonText="sign up"/>
-          )}
-
+          <SignUpButton className={state=="typing"||state=="loading"?"typing":""} buttonText="sign up"/>
         </form>
 
       </div>
