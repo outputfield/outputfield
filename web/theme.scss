@@ -113,7 +113,7 @@ $ease-in-out-reverse: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 @mixin T1 {
   @include base;
   font-family: "Saol Display Medium Italic";
-  font-style: italic;
+  // font-style: italic;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
@@ -133,7 +133,7 @@ $ease-in-out-reverse: cubic-bezier(0.32, 0.94, 0.60, 1.00);
 @mixin T2 {
   @include base;
   font-family: "Saol Display Medium Italic";
-  font-style: italic;
+  // font-style: italic;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
