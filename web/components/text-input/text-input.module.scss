@@ -49,6 +49,17 @@
     &.focus {
       background-color: theme.$primary;
     }
+    @include theme.mobileVertical{
+      margin-top: -4px;
+      margin-bottom: 0px;
+    }
+    @include theme.desktopSmall{
+      margin-bottom: 5px;
+    }
+    @include theme.desktopMedium{
+      margin-top: -6px;
+      margin-bottom: 0px;
+    }
   }
 
   & .label {
