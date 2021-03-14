@@ -61,11 +61,12 @@ div.main{
   & a.downArrow{
     position: absolute;
     display: block;
-    width: 21px;
+    width: 28px;
+    margin-right: -3px;
     & div{
       background-image: url(../../assets/cursor/downArrow.svg);
-      width: 21px;
-      height: 33px;
+      width: 28px;
+      height: 38px;
       background-repeat: no-repeat;
     }
   }
@@ -238,6 +239,13 @@ div.main{
       grid-column: 3;
     }
 
+    & .exhibitionVerbs{
+      @media only screen and (max-width: 520px) {
+        display: block;
+        min-width: 120px;
+      }
+    }
+
     & a.downArrow{
       right: 32px;
       bottom: -80px;
@@ -357,7 +365,7 @@ div.highlight{
   background-position: right;
   background-size: 0% 100%;
   background-repeat: no-repeat;
-  transition: 1.25s background-size theme.$ease-in-out;
+  transition: 0.75s background-size theme.$ease-in-out;
   z-index: -1;
   filter: blur(2px);
 }

@@ -30,7 +30,7 @@
   }
 
   &:hover > .linkText.linkTextFirst{
-    text-shadow: none;
+    text-shadow: 0px 0px 3px theme.$primary50opacity;
   }
 
   &:hover > .linkText.linkTextSecond{

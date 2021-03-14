@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState,useEffect,useRef } from "react";
+import React, { useState,useEffect,useRef, AriaAttributes, DOMAttributes } from "react";
+import MetaTags from 'react-meta-tags';
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content"
 import colors from "../colors";
@@ -16,6 +17,11 @@ declare global {
     interface IntrinsicElements {
       "model-viewer": any;
     }
+  }
+}
+declare module 'react'{
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    itemprop?:any;
   }
 }
 
@@ -109,7 +115,7 @@ const Landing = (props) => {
         h.style.width = txt.width+(2*padX)+"px";
         h.style.backgroundSize= "100% 100%";
         h.style.backgroundPosition = "left";
-        setTimeout(()=>{resetHighlight()},2500);
+        setTimeout(()=>{resetHighlight()},1500);
       }
     }
   };
@@ -142,9 +148,11 @@ const Landing = (props) => {
   function focusInput(){
     if(!inputfocus){
       let i = document.querySelector("form input:first-of-type") as HTMLInputElement;
-      console.log(i);
       if(i != null && i != undefined){
+        let x = window.scrollX;
+        let y = window.scrollY;
         i.focus();
+        window.scrollTo(x,y);
         inputfocus = true;
       }
     }
@@ -233,8 +241,36 @@ const Landing = (props) => {
 
   const isError = state === "error";
 
+  const meta_title = "Output Field";
+  const meta_description = "Neutralize the canon";
+  const meta_canonical = "https://outputfield.com";
+  const meta_image = "https://outputfield.com/public/meta/social.png";
+
   return (
     <div>
+      <MetaTags>
+        <title>{meta_title}</title>
+      	<meta property="og:title" content={meta_title}/>
+      	<meta name="twitter:title" content={meta_title}/>
+      	<meta itemprop="name" content={meta_title}/>
+        <link rel="canonical" href={meta_canonical}></link>
+        <meta property="og:url" content={meta_canonical}/>
+        <meta name="description" content={meta_description}/>
+        <meta itemprop="description" content={meta_description}/>
+        <meta property="og:description" content={meta_description}/>
+        <meta name="twitter:description" content={meta_description}/>
+        <meta property="og:type" content="website"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:site" content=""/>
+        <meta name="twitter:image" content={meta_image}/>
+        <meta property="og:image" content={meta_image}/>
+        <meta itemprop="image" content={meta_image}/>
+        <meta property="og:image:alt" content={meta_title}/>
+        <link rel="shortcut icon" href={meta_canonical+"public/meta/favicon.ico"}></link>
+        <link rel="apple-touch-icon" sizes="180x180" href={meta_canonical+"public/meta/apple-touch-icon.png"}></link>
+        <link rel="icon" type="image/png" sizes="32x32" href={meta_canonical+"public/meta/favicon-32x32.png"}></link>
+        <link rel="icon" type="image/png" sizes="16x16" href={meta_canonical+"public/meta/favicon-16x16.png"}></link>
+      </MetaTags>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
         <div className={styles.modalWrap} onClick={modalClick} id="modalWrap">
           <Text size={"T1"}>
@@ -284,7 +320,7 @@ const Landing = (props) => {
                 :
                 ("exhibit")
               }
-              {(" ")}work that is <span id="exhibitionVerbs">collaborative</span>
+              {(" ")}work that is <span id="exhibitionVerbs" className={styles.exhibitionVerbs}>collaborative</span>
           </Text>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>

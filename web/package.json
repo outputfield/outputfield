@@ -28,6 +28,7 @@
     "react": "^17.0.1",
     "react-cursor-position": "^3.0.3",
     "react-dom": "^17.0.1",
+    "react-meta-tags": "^1.0.1",
     "react-responsive": "^8.2.0",
     "sass": "^1.29.0",
     "styled-components": "^5.2.1",
