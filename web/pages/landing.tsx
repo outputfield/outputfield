@@ -244,7 +244,7 @@ const Landing = (props) => {
   const meta_title = "Output Field";
   const meta_description = "Neutralize the canon";
   const meta_canonical = "https://outputfield.com";
-  const meta_image = "https://outputfield.com/public/meta/social.png";
+  const meta_image = "https://outputfield.com/meta/social.png";
 
   return (
     <div>
@@ -253,7 +253,7 @@ const Landing = (props) => {
       	<meta property="og:title" content={meta_title}/>
       	<meta name="twitter:title" content={meta_title}/>
       	<meta itemprop="name" content={meta_title}/>
-        <link rel="canonical" href={meta_canonical}></link>
+        <link rel="canonical" href={meta_canonical}/>
         <meta property="og:url" content={meta_canonical}/>
         <meta name="description" content={meta_description}/>
         <meta itemprop="description" content={meta_description}/>
@@ -266,10 +266,10 @@ const Landing = (props) => {
         <meta property="og:image" content={meta_image}/>
         <meta itemprop="image" content={meta_image}/>
         <meta property="og:image:alt" content={meta_title}/>
-        <link rel="shortcut icon" href={meta_canonical+"public/meta/favicon.ico"}></link>
-        <link rel="apple-touch-icon" sizes="180x180" href={meta_canonical+"public/meta/apple-touch-icon.png"}></link>
-        <link rel="icon" type="image/png" sizes="32x32" href={meta_canonical+"public/meta/favicon-32x32.png"}></link>
-        <link rel="icon" type="image/png" sizes="16x16" href={meta_canonical+"public/meta/favicon-16x16.png"}></link>
+        <link rel="shortcut icon" href={meta_canonical+"/meta/favicon.ico"}/>
+        <link rel="apple-touch-icon" sizes="180x180" href={meta_canonical+"/meta/apple-touch-icon.png"}/>
+        <link rel="icon" type="image/png" sizes="32x32" href={meta_canonical+"/meta/favicon-32x32.png"}/>
+        <link rel="icon" type="image/png" sizes="16x16" href={meta_canonical+"/meta/favicon-16x16.png"}/>
       </MetaTags>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
         <div className={styles.modalWrap} onClick={modalClick} id="modalWrap">
