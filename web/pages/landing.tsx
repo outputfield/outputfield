@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState,useEffect,useRef, AriaAttributes, DOMAttributes } from "react";
-import MetaTags from 'react-meta-tags';
+import Head from 'next/head';
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content"
 import colors from "../colors";
@@ -248,7 +248,7 @@ const Landing = (props) => {
 
   return (
     <div>
-      <MetaTags>
+      <Head>
         <title>{meta_title}</title>
       	<meta property="og:title" content={meta_title}/>
       	<meta name="twitter:title" content={meta_title}/>
@@ -270,7 +270,7 @@ const Landing = (props) => {
         <link rel="apple-touch-icon" sizes="180x180" href={meta_canonical+"/meta/apple-touch-icon.png"}/>
         <link rel="icon" type="image/png" sizes="32x32" href={meta_canonical+"/meta/favicon-32x32.png"}/>
         <link rel="icon" type="image/png" sizes="16x16" href={meta_canonical+"/meta/favicon-16x16.png"}/>
-      </MetaTags>
+      </Head>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
         <div className={styles.modalWrap} onClick={modalClick} id="modalWrap">
           <Text size={"T1"}>
