@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState,useEffect,useRef } from "react";
+import React, { useState,useEffect,useRef, AriaAttributes, DOMAttributes } from "react";
+import Head from 'next/head';
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content"
 import colors from "../colors";
@@ -16,6 +17,11 @@ declare global {
     interface IntrinsicElements {
       "model-viewer": any;
     }
+  }
+}
+declare module 'react'{
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    itemprop?:any;
   }
 }
 
@@ -62,6 +68,7 @@ const Landing = (props) => {
   function init(){
     highlight();
     startWords();
+    focusInput();
   }
 
   let highlightFired = false, modelloaded = false;
@@ -108,7 +115,7 @@ const Landing = (props) => {
         h.style.width = txt.width+(2*padX)+"px";
         h.style.backgroundSize= "100% 100%";
         h.style.backgroundPosition = "left";
-        setTimeout(()=>{resetHighlight()},2500);
+        setTimeout(()=>{resetHighlight()},1500);
       }
     }
   };
@@ -134,6 +141,20 @@ const Landing = (props) => {
           window.removeEventListener('resize', sizeHighlight);
         }
       },2000);
+    }
+  }
+
+  let inputfocus = false;
+  function focusInput(){
+    if(!inputfocus){
+      let i = document.querySelector("form input:first-of-type") as HTMLInputElement;
+      if(i != null && i != undefined){
+        let x = window.scrollX;
+        let y = window.scrollY;
+        i.focus();
+        window.scrollTo(x,y);
+        inputfocus = true;
+      }
     }
   }
 
@@ -220,9 +241,36 @@ const Landing = (props) => {
 
   const isError = state === "error";
 
+  const meta_title = "Output Field";
+  const meta_description = "Neutralize the canon";
+  const meta_canonical = "https://outputfield.com";
+  const meta_image = "https://outputfield.com/meta/social.png";
 
   return (
     <div>
+      <Head>
+        <title>{meta_title}</title>
+      	<meta property="og:title" content={meta_title}/>
+      	<meta name="twitter:title" content={meta_title}/>
+      	<meta itemprop="name" content={meta_title}/>
+        <link rel="canonical" href={meta_canonical}/>
+        <meta property="og:url" content={meta_canonical}/>
+        <meta name="description" content={meta_description}/>
+        <meta itemprop="description" content={meta_description}/>
+        <meta property="og:description" content={meta_description}/>
+        <meta name="twitter:description" content={meta_description}/>
+        <meta property="og:type" content="website"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:site" content=""/>
+        <meta name="twitter:image" content={meta_image}/>
+        <meta property="og:image" content={meta_image}/>
+        <meta itemprop="image" content={meta_image}/>
+        <meta property="og:image:alt" content={meta_title}/>
+        <link rel="shortcut icon" href={meta_canonical+"/meta/favicon.ico"}/>
+        <link rel="apple-touch-icon" sizes="180x180" href={meta_canonical+"/meta/apple-touch-icon.png"}/>
+        <link rel="icon" type="image/png" sizes="32x32" href={meta_canonical+"/meta/favicon-32x32.png"}/>
+        <link rel="icon" type="image/png" sizes="16x16" href={meta_canonical+"/meta/favicon-16x16.png"}/>
+      </Head>
       <div className={`${styles.modal} ${modal!=""?styles.modalActive:""}`} onClick={(e)=>{setModal("")}}>
         <div className={styles.modalWrap} onClick={modalClick} id="modalWrap">
           <Text size={"T1"}>
@@ -238,11 +286,11 @@ const Landing = (props) => {
         <div className={styles.navWrap}>
           <div className={styles.nav} id="nav">
             <Text size={"H1"} color={colors.primary} textAlign="right" parseHtml={true}>
-              <a onClick={(event)=>{setModal("email")}}>Mail</a>
+              <a onClick={(event)=>{setModal("email")}} className={"navLink"}>Mail</a>
               {", "}
-              <a href={pageData.instagram} target="_blank">Instagram</a>
+              <a href={pageData.instagram} className={"navLink"} target="_blank">Instagram</a>
               {", "}
-              <a href={pageData.donate} target="_blank">Donate</a>
+              <a href={pageData.donate} className={"navLink"} target="_blank">Donate</a>
             </Text>
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
@@ -265,16 +313,15 @@ const Landing = (props) => {
             return <Text key={i} size={"H1"}>{t}</Text>;
           })}
           <Text size={"H1"}/>
-          {pageData.exhibition !== "" ? (
-            <Text size={"H1"} parseHtml={true}>
-              We <a href={pageData.exhibition}>exhibit</a> work that is <span id="exhibitionVerbs">collaborative</span>
-            </Text>
-          ) : (
-            <Text size={"H1"}>We exhibit work that is collaborative</Text>
-          )}
-          {/*<br/><br/><Text size={"H1"} parseHtml={true}>
-          this is a test <a href='#'>of a multiline link. there are several words to take up at least one line of the paragraph</a> and then some more text here
-          </Text>*/}
+          <Text size={"H1"} parseHtml={true}>
+              We {
+                pageData.exhibition !== "" ?
+                (<a href={pageData.exhibition}>exhibit</a>)
+                :
+                ("exhibit")
+              }
+              {(" ")}work that is <span id="exhibitionVerbs" className={styles.exhibitionVerbs}>collaborative</span>
+          </Text>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
 
@@ -301,19 +348,14 @@ const Landing = (props) => {
                 setState("");
               }
             }}
-            placeholder={"you@email.com"}
+            placeholder={"youremail@email.com"}
             invalid={isError}
             errorMessage={isError && error ? error : undefined}
             state={state}
             aria-label={"Email"}
             aria-required={true}
           />
-          {state == "typing" || state == "loading" ? (
-            <SignUpButton className={"typing"} buttonText="sign up"/>
-          ) : (
-            <SignUpButton buttonText="sign up"/>
-          )}
-
+          <SignUpButton className={state=="typing"||state=="loading"?"typing":""} buttonText="sign up"/>
         </form>
 
       </div>
