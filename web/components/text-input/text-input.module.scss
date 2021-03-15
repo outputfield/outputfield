@@ -64,6 +64,16 @@
 
   & .label {
     @include theme.T3;
+
+    & br{
+      display: none;
+    }
+    @media screen and (max-width: 440px){
+      height: 54px;
+      & br{
+        display: block;
+      }
+    }
   }
 
   & .success{

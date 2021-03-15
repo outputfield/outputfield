@@ -66,6 +66,8 @@ export const TextInput: React.FC<Props> = forwardRef(
     if(state === "success" && textInput != null && textInput.current != null){
       textInput.current.value = "";
     }
+    const parse = require('html-react-parser');
+    label = parse(label);
 
     return (
       <div className={styles.root} style={{ width }}>

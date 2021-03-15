@@ -329,7 +329,7 @@ const Landing = (props) => {
           <TextInput
             label={
               state === "success" ?
-              "You’re all signed up! Sign up a friend?"
+              "You’re all signed up! <br/>Follow us on Instagram too!"
               : "Sign up for launch updates"
             }
             onChange={(event) => {

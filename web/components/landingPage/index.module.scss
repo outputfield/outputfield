@@ -104,6 +104,14 @@ div.main{
         text-align: center;
         width: 330px;
       }
+      @media screen and (max-width: 380px){
+        width: 100%;
+        & h1{
+          width: 100%;
+          font-size: 7.5vw;
+          white-space: nowrap;
+        }
+      }
       @include theme.mobileHorizontal{
         width: auto;
         text-align: right;
@@ -240,7 +248,8 @@ div.main{
     }
 
     & .exhibitionVerbs{
-      @media only screen and (max-width: 520px) {
+      @media only screen and (max-width: 304px),
+      only screen and (min-width: 339px) and (max-width: 520px) {
         display: block;
         min-width: 120px;
       }
@@ -365,7 +374,7 @@ div.highlight{
   background-position: right;
   background-size: 0% 100%;
   background-repeat: no-repeat;
-  transition: 0.75s background-size theme.$ease-in-out;
+  transition: 1.5s background-size theme.$ease-in-out;
   z-index: -1;
   filter: blur(2px);
 }
