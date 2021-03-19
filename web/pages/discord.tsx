@@ -7,7 +7,7 @@ const Donate = (props) => {
   const { pageData } = props;
 
   useEffect(() => {
-    Router.push(pageData.donate);
+    Router.push(pageData.discord);
   });
 
   return (

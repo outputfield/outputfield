@@ -7,7 +7,7 @@ const Exhibit = (props) => {
   const { pageData } = props;
 
   useEffect(() => {
-    Router.push(pageData.link);
+    Router.push(pageData.exhibition);
   });
 
   return (
@@ -17,7 +17,7 @@ const Exhibit = (props) => {
 
 Exhibit.getInitialProps = async function (context) {
   try {
-    const pageData = await getPageContent("exhibit");
+    const pageData = await getPageContent("Frontpage");
     return { pageData }
   } catch (event) {
     throw getErrorMessage(event);
