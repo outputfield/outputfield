@@ -164,6 +164,9 @@ div.main{
       @include theme.mobileHorizontal{
         height: 590px;
       }
+      @include theme.desktopSmall{
+        height: 100%;
+      }
     }
 
     &.portrait{
@@ -178,6 +181,9 @@ div.main{
       }
       @include theme.mobileHorizontal{
         height: 590px;
+      }
+      @include theme.desktopSmall{
+        height: 100%;
       }
     }
 

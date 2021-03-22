@@ -39,9 +39,9 @@ const models = [
     orientation:"portrait",
     cameraTarget:"0.03197m 3.069m -0.21m",
     cameraOrbit:"23.1deg 94.01deg 8.35m",
-    minCameraOrbit:"auto auto auto",
-    maxCameraOrbit:"auto auto 8.35m",
-    minFieldOfview:"45deg",
+    minCameraOrbit:"auto auto 8.35m",
+    maxCameraOrbit:"auto auto auto",
+    minFieldOfView:"45deg",
     maxFieldOfView:"45deg"
   }
   // current model selection happens in getInitialProps
