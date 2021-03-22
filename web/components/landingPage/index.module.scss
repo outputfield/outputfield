@@ -21,19 +21,19 @@ div.main{
 
   @include theme.mobileVertical{
     grid-template-columns: 1fr;
-    left: 26px;
+    left: 0px;
     top: 0px;
     grid-template-rows: auto auto 665px 76px;
-    width: calc(100% - 26px - 18px);
+    width: 100%;
     margin-bottom: 32px;
   }
 
   @include theme.mobileHorizontal{
-    grid-template-columns: auto 490px;
-    grid-template-rows: 440px auto 220px;
+    grid-template-columns: auto 526px;
+    grid-template-rows: 396px auto 220px;
     left: 8px;
     top: 10px;
-    width: calc(100% - 8px - 35px);
+    width: calc(100% - 8px);
     margin-bottom: 40px;
   }
   @include theme.desktopSmall{
@@ -69,6 +69,7 @@ div.main{
     position: relative;
     z-index: 100;
     display: inline-block;
+    box-sizing: border-box;
 
     @include theme.mobileVertical{
       grid-row: 4;
@@ -76,13 +77,17 @@ div.main{
       width: 100%;
       display: flex;
       justify-content: center;
+      padding-left: 26px;
+      padding-right: 18px;
     }
     @include theme.mobileHorizontal{
       grid-row: 1 / 3;
       grid-column: 1;
-      width: 60px;
+      width: 70px;
       display: block;
       justify-content: unset;
+      padding-left: 0px;
+      padding-right: 0px;
       padding-top: 10px;
     }
     @include theme.desktopSmall{
@@ -143,10 +148,13 @@ div.main{
       grid-column: 1;
       position: relative;
       overflow: hidden;
+      height: 400px;
+      margin-left: -18px;
     }
     @include theme.mobileHorizontal{
       grid-row: 2;
       grid-column: 2;
+      margin-left: -36px;
     }
     @include theme.desktopSmall{
       grid-row: 1 / 3;
@@ -155,25 +163,16 @@ div.main{
     }
 
     &.landscape{
-      @include theme.mobileVertical{
-        height: 400px;
-      }
       @media only screen and (min-width: 475px) {
-        height: 475px;
+        height: 500px;
       }
       @include theme.mobileHorizontal{
-        height: 590px;
-      }
-      @include theme.desktopSmall{
-        height: 100%;
+        height: 520px;
       }
     }
 
     &.portrait{
-      @include theme.mobileVertical{
-        height: 400px;
-      }
-      @media only screen and (min-width: 475px) {
+      @media only screen and (min-width: 400px) {
         height: 500px;
       }
       @media only screen and (min-width: 475px) {
@@ -182,6 +181,23 @@ div.main{
       @include theme.mobileHorizontal{
         height: 590px;
       }
+    }
+
+    &.square{
+      @media only screen and (min-width: 400px) {
+        height: 450px;
+      }
+      @media only screen and (min-width: 475px) {
+        height: 525px;
+      }
+      @include theme.mobileHorizontal{
+        height: 540px;
+      }
+    }
+
+    &.landscape,
+    &.portrait,
+    &.square{
       @include theme.desktopSmall{
         height: 100%;
       }
@@ -200,41 +216,97 @@ div.main{
       transition-property: opacity;
       transition-timing-function: theme.$ease-in-out;
 
-
-      @media only screen and (min-width: 0px) {
-        height: 250px;
+      @include theme.mobileVertical {
         width: 150%;
+        &.portrait,
+        &.square{
+          height: 250px;
+        }
+        &.landscape{
+          height: 225px;
+        }
       }
       @media only screen and (min-width: 320px) {
-        height: 320px;
+        &.portrait,
+        &.square{
+          height: 320px;
+        }
+        &.landscape{
+          height: 300px;
+        }
       }
       @media only screen and (min-width: 350px) {
-        height: 350px;
+        &.portrait,
+        &.square{
+          height: 350px;
+        }
+        &.landscape{
+          height: 325px;
+        }
       }
       @media only screen and (min-width: 400px) {
-        height: 400px;
+        &.portrait,
+        &.square{
+          height: 400px;
+        }
+        &.landscape{
+          height: 350px;
+        }
       }
       @media only screen and (min-width: 475px) {
-        height: 475px;
+        &.portrait,
+        &.square{
+          height: 475px;
+        }
+        &.landscape{
+          height: 425px;
+        }
       }
       @media only screen and (min-width: 550px) {
-        height: 575px;
+        &.portrait,
+        &.square{
+          height: 575px;
+        }
+        &.landscape{
+          height: 525px;
+        }
       }
       @include theme.mobileHorizontal{
-        height: 620px;
         width: 680px;
+        &.portrait{
+          height: 620px;
+        }
+        &.landscape{
+          height: 530px;
+        }
+        &.square{
+          height: 590px;
+        }
       }
       @include theme.desktopSmall{
-        height: min(550px, 100%);
-        width: max(550px, 150%);
+        &.portrait,
+        &.landscape,
+        &.square{
+          height: min(550px, 100%);
+          width: max(550px, 150%);
+          margin-left: 0px;
+        }
       }
       @include theme.desktopMedium{
-        height: min(650px, 100%);
-        width: max(650px, 150%);
+        &.portrait,
+        &.landscape,
+        &.square{
+          height: min(650px, 100%);
+          width: max(650px, 150%);
+        }
       }
       @include theme.desktopLarge{
-        height: min(1000px, 100%);
-        width: max(1000px, 150%);
+        &.portrait,
+        &.landscape,
+        &.square{
+          height: min(1000px, 100%);
+          width: max(1000px, 150%);
+        }
       }
 
       & model-viewer{
@@ -261,18 +333,27 @@ div.main{
   & div.intro{
     position: relative;
     z-index: 100;
+    box-sizing: border-box;
 
     @include theme.mobileVertical{
       grid-row: 2;
       grid-column: 1;
+      width: calc(100% - 26px - 18px);
+      left:26px;
+      padding-right: 18px;
     }
     @include theme.mobileHorizontal{
       grid-row: 1;
       grid-column: 2;
+      width: auto;
+      left: 0px;
+      padding-right: 35px;
     }
     @include theme.desktopSmall{
       grid-row: 1;
       grid-column: 3;
+      padding-left: 0px;
+      padding-right: 0px;
     }
 
     & .exhibitionVerbs{
@@ -306,16 +387,22 @@ div.main{
       grid-template-columns: auto;
       grid-template-rows: 90px 90px;
       margin: auto 0px;
+      padding-left: 26px;
+      padding-right: 18px;
     }
     @include theme.mobileHorizontal{
       grid-row: 3;
       grid-column: 2;
       margin: unset;
+      padding-left: 0px;
+      padding-right: 35px;
     }
     @include theme.desktopSmall{
       grid-row: 2;
       grid-column: 3;
       grid-template-columns: auto 163px;
+      padding-left: 0px;
+      padding-right: 0px;
     }
     @include theme.desktopMedium{
       grid-template-columns: auto 206px;
