@@ -23,20 +23,14 @@ div.main{
     grid-template-columns: 1fr;
     left: 26px;
     top: 0px;
-    grid-template-rows: 350px auto 665px 76px;
+    grid-template-rows: auto auto 665px 76px;
     width: calc(100% - 26px - 18px);
     margin-bottom: 32px;
-  }
-  @media only screen and (min-width: 400px) {
-    grid-template-rows: 400px auto 665px 76px;
-  }
-  @media only screen and (min-width: 475px) {
-    grid-template-rows: 475px auto 665px 76px;
   }
 
   @include theme.mobileHorizontal{
     grid-template-columns: auto 490px;
-    grid-template-rows: 440px 590px 220px;
+    grid-template-rows: 440px auto 220px;
     left: 8px;
     top: 10px;
     width: calc(100% - 8px - 35px);
@@ -160,6 +154,33 @@ div.main{
       overflow: visible;
     }
 
+    &.landscape{
+      @include theme.mobileVertical{
+        height: 400px;
+      }
+      @media only screen and (min-width: 475px) {
+        height: 475px;
+      }
+      @include theme.mobileHorizontal{
+        height: 590px;
+      }
+    }
+
+    &.portrait{
+      @include theme.mobileVertical{
+        height: 400px;
+      }
+      @media only screen and (min-width: 475px) {
+        height: 500px;
+      }
+      @media only screen and (min-width: 475px) {
+        height: 575px;
+      }
+      @include theme.mobileHorizontal{
+        height: 590px;
+      }
+    }
+
     & div.renderWrap{
       width: 100%;
       height: 100%;
@@ -172,6 +193,7 @@ div.main{
       transition-duration: 0.4s;
       transition-property: opacity;
       transition-timing-function: theme.$ease-in-out;
+
 
       @media only screen and (min-width: 0px) {
         height: 250px;
