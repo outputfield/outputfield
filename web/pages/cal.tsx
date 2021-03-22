@@ -3,11 +3,11 @@ import Router from 'next/router';
 import { getErrorMessage } from "../api-client/errors";
 import { getPageContent } from "./api/page-content";
 
-const Discord = (props) => {
+const Cal = (props) => {
   const { pageData } = props;
 
   useEffect(() => {
-    Router.push(pageData.discord);
+    Router.push(pageData.calendar);
   });
 
   return (
@@ -15,7 +15,7 @@ const Discord = (props) => {
   );
 }
 
-Discord.getInitialProps = async function (context) {
+Cal.getInitialProps = async function (context) {
   try {
     const pageData = await getPageContent("Frontpage");
     return { pageData }
@@ -24,4 +24,4 @@ Discord.getInitialProps = async function (context) {
   }
 };
 
-export default Discord;
+export default Cal;
