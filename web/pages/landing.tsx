@@ -11,6 +11,90 @@ import { Text } from "../components/text/text.component";
 
 const page = "Frontpage";
 
+const models = [
+  /*
+    prepare glb file with https://modelviewer.dev/editor/
+
+    name - name to reference in css to apply custom sizing/styling of div.renderWrap for a specific model
+    src & poster - file names; have to be placed in "public/3d/" folder
+    orientation - "square", "landscape" or "portrait" to aid in page layout
+    cameraTarget,cameraOrbit,minCameraOrbit,maxCameraOrbit,minFieldOfView,maxFieldOfView - attributes from modelviewer
+  */
+  // {
+  //   name:"baggie",
+  //   src:"baggie_new.glb",
+  //   poster:"baggie_new.png",
+  //   orientation:"square",
+  //   cameraTarget:"0m -0.05m -3.882e-11m",
+  //   cameraOrbit:"-49.91deg 75.65deg 3.306m",
+  //   minCameraOrbit:"auto auto 3.306m",
+  //   maxCameraOrbit:"auto auto auto",
+  //   minFieldOfView:"45deg",
+  //   maxFieldOfView:"45deg"
+  // },
+  {
+    name:"walkinswelcome_promo",
+    src:"walkinswelcome_promo.glb",
+    poster:"walkinswelcome_promo.png",
+    orientation:"portrait",
+    cameraTarget:"0.03197m 3.069m -0.21m",
+    cameraOrbit:"23.1deg 94.01deg 8.35m",
+    minCameraOrbit:"auto auto 8.35m",
+    maxCameraOrbit:"auto auto auto",
+    minFieldOfView:"45deg",
+    maxFieldOfView:"45deg"
+  },
+  {
+    name:"walkinswelcome_pang",
+    src:"walkinswelcome_pang.glb",
+    poster:"walkinswelcome_pang.png",
+    orientation:"landscape",
+    cameraTarget:"-6m 25m -7m",
+    cameraOrbit:"24.49deg 91.27deg 149.2m",
+    minCameraOrbit:"auto 65deg 149.2m",
+    maxCameraOrbit:"auto 134deg auto",
+    minFieldOfView:"45deg",
+    maxFieldOfView:"45deg"
+  },
+  {
+    name:"walkinswelcome_dean",
+    src:"walkinswelcome_dean.glb",
+    poster:"walkinswelcome_dean.png",
+    orientation:"square",
+    cameraTarget:"-0.01m 31.49m 0.002085m",
+    cameraOrbit:"255.8deg 96.69deg 134.3m",
+    minCameraOrbit:"auto auto 134.3m",
+    maxCameraOrbit:"auto auto auto",
+    minFieldOfView:"45deg",
+    maxFieldOfView:"45deg"
+  },
+  {
+    name:"walkinswelcome_ilya",
+    src:"walkinswelcome_ilya.glb",
+    poster:"walkinswelcome_ilya.png",
+    orientation:"square",
+    cameraTarget:"0.01m 25.42m 0.208m",
+    cameraOrbit:"-42.81deg 69.2deg 80.57m",
+    minCameraOrbit:"auto auto 80.57m",
+    maxCameraOrbit:"auto auto auto",
+    minFieldOfView:"45deg",
+    maxFieldOfView:"45deg"
+  },
+  {
+    name:"walkinswelcome_hyodo",
+    src:"walkinswelcome_hyodo.glb",
+    poster:"walkinswelcome_hyodo.png",
+    orientation:"landscape",
+    cameraTarget:"0.008938m 20.29m -5.71m",
+    cameraOrbit:"-44.27deg 63.36deg 124.7m",
+    minCameraOrbit:"auto 39deg 124.7m",
+    maxCameraOrbit:"auto 119deg auto",
+    minFieldOfView:"45deg",
+    maxFieldOfView:"45deg"
+  }
+  // current model selection happens in getInitialProps
+];
+
 
 declare global {
   namespace JSX {
@@ -27,6 +111,7 @@ declare module 'react'{
 
 const Landing = (props) => {
   const { pageData } = props;
+  const currentModel = pageData.currentModel;
   /**
   Resembles the landing page.
     */
@@ -34,6 +119,7 @@ const Landing = (props) => {
   const [state, setState] = useState("");
   const [error, setError] = useState("");
   const [modal, setModal] = useState("");
+
 
   const subscribe = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -296,10 +382,9 @@ const Landing = (props) => {
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
 
-        <div className={styles.render}>
-          <div className={styles.renderWrap}>
-            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer src="3d/baggie_new.glb" poster="3d/baggie_new.png" auto-rotate camera-controls camera-target="0m -0.05m -3.882e-11m" camera-orbit="-49.91deg 75.65deg 3.306m" min-camera-orbit="auto auto 3.306m" max-camera-orbit="auto auto auto" min-field-of-view="45deg" max-field-of-view="45deg" interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
+        <div className={`${styles.render} ${styles[models[currentModel].orientation]}`}>
+          <div className={`${styles.renderWrap} ${styles[models[currentModel].orientation]}`}><script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+            <model-viewer src={"3d/"+models[currentModel].src} poster={"3d/"+models[currentModel].poster} auto-rotate camera-controls camera-target={models[currentModel].cameraTarget} camera-orbit={models[currentModel].cameraOrbit} min-camera-orbit={models[currentModel].minCameraOrbit} max-camera-orbit={models[currentModel].maxCameraOrbit} min-field-of-view={models[currentModel].minFieldOfView} max-field-of-view={models[currentModel].maxFieldOfView} interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
@@ -369,6 +454,7 @@ Landing.getInitialProps = async function (context) {
     // Use raw sanity query here because `getInitialProps` runs on the server.
     // This does not expose the key to the client
     const pageData = await getPageContent(page)
+    pageData.currentModel = Math.floor(Math.random() * models.length);
     return { pageData }
   } catch (event) {
     throw getErrorMessage(event);
