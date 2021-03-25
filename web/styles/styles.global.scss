@@ -32,6 +32,10 @@
     url(../assets/fonts/SaolDisplay-MediumItalic2.otf) format("opentype");
 }
 
+html,body,#__next{
+  height:100%;
+}
+
 body {
   margin: 0px;
   background-color: $background-grey;
