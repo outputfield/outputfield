@@ -17,7 +17,7 @@ export const getPageContent = async (name: string) => {
     let mObj = {} as any;
     switch(obj.type){
       case "textsection":
-        mObj[obj.id] = obj.text.map((o)=>{return o[0].text});
+        mObj[obj.id] = (obj.text!==undefined?obj.text.map((o)=>{return o[0].text}):"");
         break;
       case "field":
       case "checkbox":

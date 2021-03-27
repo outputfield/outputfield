@@ -102,7 +102,6 @@ const Live = (props) => {
 Live.getInitialProps = async function (context) {
   try {
     const pageData = await getPageContent("live");
-    console.log(pageData);
     return { pageData }
   } catch (event) {
     throw getErrorMessage(event);
