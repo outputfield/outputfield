@@ -41,9 +41,10 @@ const Live = (props) => {
   async function updateDonation(){
     const parse = require('html-react-parser');
     const r = await getPageContent("live") as any;
-    let m = parse(r.message.map((t,i)=>{
+    let m = (r.message == ""?"":
+    parse(r.message.map((t,i)=>{
       return t.split("\n").join("<br/>");
-    }).join("<br/>"));
+    }).join("<br/>")));
     setMessage(m);
     messageRef.current = m;
     if(!liveRef.current){
@@ -77,7 +78,7 @@ const Live = (props) => {
         <div className={styles.detailgrid}>
           <div className={styles.detailtitle}>Critical Broadcast: Stop AAPI Hate Fundraiser</div>
           <div className={styles.detaildescription}>
-            Insights from writers and activists that explore the challenges and rewards of naming political solidarity, and bridging theories of race to everyday life and acvtism. If you hear or see something that resonates, please consider donating. Your contibution will be doubled.<br/>
+            Insights from writers and activists that explore the challenges and rewards of naming political solidarity, and bridging theories of race to everyday life and activism. If you hear or see something that resonates, please consider donating. Your contibution will be doubled.<br/>
             <br/>
             From Anne Anlin Cheng’s recent call for a theory of the “yellow woman” to Grace Lee Boggs’ echoing insistence that we can only change society if we take responsibility for that change, we’ll be sharing voices that express the diversity of what it looks like to be political. Excavate the covert, subvert the inert. Jex Wang (Easter Margins) will conclude with an hour of ambient sound. Tracklist can be found <a href="https://soundcloud.com">here</a>.
           </div>
