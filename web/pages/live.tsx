@@ -41,10 +41,12 @@ const Live = (props) => {
   async function updateDonation(){
     const parse = require('html-react-parser');
     const r = await getPageContent("live") as any;
-    let m = (r.message == ""?"":
-    parse(r.message.map((t,i)=>{
-      return t.split("\n").join("<br/>");
-    }).join("<br/>")));
+    let m = "";
+    if(r.message && r.message!=""){
+      m = parse(r.message.map((t,i)=>{
+        return t.split("\n").join("<br/>");
+      }).join("<br/>"));
+    }
     setMessage(m);
     messageRef.current = m;
     if(!liveRef.current){
