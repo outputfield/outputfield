@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  min-width: 400px;
   min-height: 600px;
   font-family: "Neue Haas Unica Pro Regular";
   font-size: 16px;
@@ -95,15 +96,16 @@
     & .detailgrid{
       display:grid;
       text-align: left;
-      margin: 19px 0px 30px;
+      margin: 19px 0px 0px;
+      padding-bottom: 50px;
       @include theme.mobileVertical{
         grid-template-columns: 1fr;
       }
       @include theme.desktopSmall{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 370px 1fr;
       }
       @include theme.desktopMedium{
-        grid-column-gap: 25px;
+        grid-column-gap: 40px;
         grid-template-columns: auto 250px 200px;
       }
 
@@ -133,14 +135,15 @@
 
       & .detailcredit{
         padding: 25px 0px;
-
+        @include theme.desktopSmall{
+          padding: 25px 0px 0px;
+        }
         @include theme.desktopMedium{
           padding: 0px;
         }
       }
 
       & button{
-        margin-bottom: 50px;
         @include theme.desktopSmall{
           margin-top: 25px;
         }
