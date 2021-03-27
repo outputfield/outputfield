@@ -23,6 +23,7 @@ export default {
         { type: 'emailsignup' },
         { type: 'textsection' },
         { type: 'field' },
+        { type: 'checkbox' },
         { type: 'imageWithTitle'},
       ],
     },

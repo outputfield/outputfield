@@ -136,4 +136,18 @@ $buttonBorderHover: 2px solid theme.$primary;
   &:hover > .buttonFillSecond {
     transform: rotate(0deg);
   }
+
+  &.livepage{
+    &:hover > .buttonTextFirst,
+    &:hover > .buttonTextSecond {
+      color: theme.$error;
+    }
+    &:hover > .buttonFill {
+      background-color: theme.$background-grey;
+      border-color: theme.$black;
+    }
+    &.typing:hover > .buttonFill{
+      border-color: theme.$error;
+    }
+  }
 }

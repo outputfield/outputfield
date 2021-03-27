@@ -20,6 +20,7 @@ export const getPageContent = async (name: string) => {
         mObj[obj.id] = obj.text.map((o)=>{return o[0].text});
         break;
       case "field":
+      case "checkbox":
         mObj[obj.id] = obj.value;
         break;
       case "imageWithTitle":
