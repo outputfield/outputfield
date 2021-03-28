@@ -119,6 +119,10 @@
         grid-template-columns: auto 250px 200px;
       }
 
+      & a{
+        text-decoration: underline;
+      }
+
       & .detailtitle{
         font-family: "Editorial New Regular";
         font-size: 34px;
