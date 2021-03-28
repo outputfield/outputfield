@@ -60,6 +60,7 @@
     }
     & .donation{
       font-family: "Editorial New Regular";
+      text-align: left;
       font-size: 34px;
       line-height: 50px;
       text-shadow: 0px 0px 4px #05FF00;
@@ -69,6 +70,7 @@
       padding-bottom: 20px;
       @include theme.mobileHorizontal{
         position: fixed;
+        margin-left: 9px;
         left: 11px;
         top: 30px;
       }
