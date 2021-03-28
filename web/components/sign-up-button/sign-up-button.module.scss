@@ -138,6 +138,7 @@ $buttonBorderHover: 2px solid theme.$primary;
   }
 
   &.livepage{
+    &:focus .buttonText,
     &:hover > .buttonTextFirst,
     &:hover > .buttonTextSecond {
       color: theme.$error;
@@ -146,8 +147,10 @@ $buttonBorderHover: 2px solid theme.$primary;
       background-color: theme.$background-grey;
       border-color: theme.$black;
     }
-    &.typing:hover > .buttonFill{
-      border-color: theme.$error;
+    &:focus > .buttonBorder,
+    &:focus > .buttonFill,
+    &:hover > .buttonFill{
+      border-color: theme.$black;
     }
   }
 }
