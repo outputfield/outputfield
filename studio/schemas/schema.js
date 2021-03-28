@@ -16,6 +16,7 @@ import artist from './objects/artist.js'
 import textsection from './objects/textsection';
 import portableText from './objects/portableText';
 import field from './objects/field';
+import checkbox from './objects/checkbox';
 import imageWithTitle from './objects/imageWithTitle';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -34,6 +35,7 @@ export default createSchema({
     textsection,
     portableText,
     field,
+    checkbox,
     imageWithTitle,
   ])
 })
