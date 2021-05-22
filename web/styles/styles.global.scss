@@ -38,6 +38,12 @@
     url(../assets/fonts/EditorialNew-Regular.otf) format("opentype");
 }
 
+@font-face {
+  font-family: "Avara Bold Italic";
+  src: local("AvaraBold-Italic"), 
+    url(../assets/fonts/Avara-BoldItalic.otf) format("opentype")
+}
+
 html,body,#__next{
   height:100%;
 }

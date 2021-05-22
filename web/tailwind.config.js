@@ -4,9 +4,13 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Neue Haas Unica Pro Regular', 'sans-serif'],
-      serif: ['Saol Display Medium Italic', 'serif'],
+      serif: ['Avara Bold Italic', 'serif'],
     },
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'rsvp': '230px 250px 250px 250px',        
+      },
+    },
   },
   variants: {
     extend: {},
