@@ -57,36 +57,38 @@ const DaySubheader: React.FC = ({ children }) => {
 
 const Day: React.FC<{
   className?: string;
+  day: string;
   date: string;
   room: ReturnType<React.FC>;
   happening: ReturnType<React.FC>;
   when: ReturnType<React.FC>;
   who: ReturnType<React.FC>;
   description: ReturnType<React.FC>;
-}> = ({ className, date, room, happening, when, who, description }) => {
+}> = ({ className, day, date, room, happening, when, who, description }) => {
   return (
-    <div className={classnames("max-w-xs", className)}>
+    <div className={classnames("", className)}>
       <div className="pb-6">
-        <div className="font-serif italic text-4xl">{date}</div>
+        <div className="font-serif italic text-gray-700 pb-1">{day}</div>
+        <div className="font-serif italic text-4xl pb-2">{date}</div>
         <Link className="mb-6">RSVP</Link>
       </div>
-      <div className="h-28 text-lg">
+      <div className="h-24 text-lg leading-snug">
         <DaySubheader>What Room is Opening?</DaySubheader>
         {room}
       </div>
-      <div className="h-28 text-lg">
+      <div className="h-24 text-lg leading-snug">
         <DaySubheader>What else is Happening?</DaySubheader>
         {happening}
       </div>
-      <div className="h-20 text-lg">
+      <div className="h-20 text-lg leading-snug">
         <DaySubheader>When?</DaySubheader>
         {when}
       </div>
-      <div className="h-28 text-lg">
+      <div className="h-28 text-lg leading-snug">
         <DaySubheader>Who?</DaySubheader>
         {who}
       </div>
-      <div className="text-lg">{description}</div>
+      <div className="text-lg leading-snug">{description}</div>
     </div>
   );
 };
@@ -95,6 +97,7 @@ const Wednesday: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <Day
       className={classnames("", className)}
+      day="Wednesday"
       date="6/16"
       room={<div>Skin Garden Lobby & Walk-ins Welcome</div>}
       happening={<div>DJ sets hosted by Bien Agiter</div>}
@@ -116,6 +119,7 @@ const Thursday: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <Day
       className={classnames("", className)}
+      day="Thursday"
       date="6/17"
       room={<div>Bodies Unhinge</div>}
       happening={<div>Panel Discussion, Q&A</div>}
@@ -137,6 +141,7 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <Day
       className={classnames("", className)}
+      day="Friday"
       date="6/18"
       room={<div>Reconsider Flesh</div>}
       happening={<div>Listening Session (Theory for context)</div>}
@@ -156,22 +161,26 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
 
 const Rsvp = () => {
   return (
-    <div className="bg-gray-300 min-h-screen flex justify-center pt-10">
+    <div className="bg-gray-300 min-h-screen flex justify-center pt-20">
       <div className="container">
-        <div className="grid grid-cols-rsvp gap-10">
-          <Header className="col-span-1 row-span-1" />
-          <Wednesday className="col-span-1 row-span-1 col-start-2" />
-          <Thursday className="col-span-1 row-span-1 col-start-3" />
-          <Friday className="col-span-1 row-span-1 col-start-4" />
-          <div className="col-span-2 row-span-1 col-start-2 row-start-2">
-            <div className="font-serif text-4xl italic">
-              We’re raising funds for the featured artists. Donate to nourish
-              the underground!
-            </div>
-          </div>
-          <div className="col-span-1 row-span-1 col-start-4 row-start-2">
-            <div className="text-center">
-              <SignUpButton buttonText="Donate"></SignUpButton>
+        <div className="grid grid-rows-1 grid-auto-cols gap-10">
+          <Header className="row-start-1 col-start-1" />
+          <div className="row-start-1 col-start-2 ">
+            <div className="grid grid-auto-rows grid-cols-rsvp gap-20">
+              <Wednesday className="col-start-1 row-start-1" />
+              <Thursday className="col-start-2 row-start-1" />
+              <Friday className="col-start-3 row-start-1" />
+              <div className="col-start-1 row-start-2 col-span-2">
+                <div className="font-serif text-4xl italic">
+                  We’re raising funds for the featured artists. Donate to
+                  nourish the underground!
+                </div>
+              </div>
+              <div className="col-start-3 row-start-2">
+                <div className="text-center">
+                  <SignUpButton buttonText="Donate"></SignUpButton>
+                </div>
+              </div>
             </div>
           </div>
         </div>

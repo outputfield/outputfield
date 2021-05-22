@@ -8,7 +8,8 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        'rsvp': '230px 250px 250px 250px',        
+        // 'rsvp': '230px 250px 250px 250px',        
+        'rsvp': '240px 240px 240px',        
       },
     },
   },
