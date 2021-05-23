@@ -40,7 +40,9 @@ const Header: React.FC<{ className?: string }> = ({ className }) => {
         <div>
           <Logo className="mb-6" />
         </div>
-        <Link className="uppercase" href="/" target="_blank">Output Field</Link>
+        <Link className="uppercase" href="/" target="_blank">
+          Output Field
+        </Link>
         <div className="uppercase text-lg">Debut showcase</div>
       </div>
     </div>
@@ -172,31 +174,45 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
   );
 };
 
-const Rsvp = () => {
+const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
   return (
-    <div className="bg-gray-300 min-h-screen flex justify-center pt-20">
-      <div className="container">
-        <div className="grid grid-rows-1 grid-auto-cols gap-10">
-          <Header className="row-start-1 col-start-1 w-64" />
-          <div className="row-start-1 col-start-2 ">
-            <div className="grid grid-auto-rows grid-cols-rsvp gap-x-16 gap-y-10">
-              <Wednesday className="col-start-1 row-start-1" />
-              <Thursday className="col-start-2 row-start-1" />
-              <Friday className="col-start-3 row-start-1" />
-              <div className="col-start-1 row-start-2 col-span-2">
-                <div className="font-serif text-4xl italic">
-                  We’re raising funds for the featured artists. Donate to
-                  nourish the underground!
-                </div>
-              </div>
-              <div className="col-start-3 row-start-2">
-                <div className="text-center mt-3">
-                  <SignUpButton buttonText="Donate"></SignUpButton>
-                </div>
-              </div>
-            </div>
+    <div className={className}>
+      <div className="grid grid-auto-rows grid-cols-rsvp gap-x-16 gap-y-10">
+        <Wednesday className="" />
+        <Thursday className="" />
+        <Friday className="" />
+        <div className="col-start-1 row-start-2 col-span-2">
+          <div className="font-serif text-4xl italic">
+            We’re raising funds for the featured artists. Donate to nourish the
+            underground!
           </div>
         </div>
+        <div className="col-start-3 row-start-2">
+          <div className="text-center mt-3">
+            <SignUpButton buttonText="Donate"></SignUpButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Rsvp = () => {
+  return (
+    <div className="bg-gray-300 min-h-screen flex justify-center xl:pt-20">
+      <div className="container">
+        <div className="flex justify-center">
+        <div
+          className="grid gap-10
+          grid-cols-1 grid-auto-rows
+          xl:grid-rows-1 xl:grid-auto-cols"
+        >
+          <Header className="xl:row-start-1 xl:col-start-1 xl:w-64" />
+          <RsvpContent className="xl:row-start-1 xl:col-start-2 " />
+        </div>
+        </div>
+
+
       </div>
     </div>
   );
