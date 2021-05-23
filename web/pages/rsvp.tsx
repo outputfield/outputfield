@@ -96,6 +96,12 @@ const Day: React.FC<{
         <DaySubheader>What else is Happening?</DaySubheader>
         {happening}
       </div>
+      <div className="h-20 text-lg leading-snug">
+        <DaySubheader>Where?</DaySubheader>
+        <div>
+          Find zoom code in the Lobby 
+        </div>
+      </div>
       <div className="h-28 text-lg leading-snug">
         <DaySubheader>Who?</DaySubheader>
         {who}
@@ -110,12 +116,12 @@ const Wednesday: React.FC<{ className?: string }> = ({ className }) => {
     <Day
       className={classnames("", className)}
       day="Wednesday"
-      time="3PM PST"
+      time="2PM PST"
       date="6/16"
       rsvpLink="https://skingarden-day1.splashthat.com/"
       room={<div>Skin Garden Lobby & Walk-ins Welcome</div>}
-      happening={<div>DJ sets hosted by Bien Agiter</div>}
-      who={<div>Soft Matter, Online Threat, +</div>}
+      happening={<div>DJ sets hosted by bien agiter</div>}
+      who={<div>Soft Matter, Online Threat, & more</div>}
       description={
         <div>
           Get acquainted with the Skin Garden lobby. This will be our living
@@ -160,8 +166,8 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
       time="11AM PST"
       rsvpLink="https://skingarden-day3.splashthat.com/"
       room={<div>Reconsider Flesh</div>}
-      happening={<div>Listening Session (Theory for context)</div>}
-      who={<div>TBA+</div>}
+      happening={<div>Streaming theory about bodies</div>}
+      who={<div>TBA</div>}
       description={
         <div>
           We will be broadcasting some literature and theory that inspired the
@@ -177,17 +183,22 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
 const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
   return (
     <div className={className}>
-      <div className="grid grid-auto-rows grid-cols-rsvp gap-x-16 gap-y-10">
+      <div
+        className="grid 
+        gap-y-20 lg:gap-x-16 lg:gap-y-12
+        lg:grid-auto-rows grid-cols-1 lg:grid-cols-rsvp
+        max-w-xs sm:max-w-sm lg:max-w-none"
+      >
         <Wednesday className="" />
         <Thursday className="" />
         <Friday className="" />
-        <div className="col-start-1 row-start-2 col-span-2">
+        <div className="lg:col-span-2">
           <div className="font-serif text-4xl italic">
             We’re raising funds for the featured artists. Donate to nourish the
             underground!
           </div>
         </div>
-        <div className="col-start-3 row-start-2">
+        <div className="">
           <div className="text-center mt-3">
             <SignUpButton buttonText="Donate"></SignUpButton>
           </div>
@@ -200,19 +211,17 @@ const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
 const Rsvp = () => {
   return (
     <div className="bg-gray-300 min-h-screen flex justify-center xl:pt-20">
-      <div className="container">
+      <div className="container pb-10">
         <div className="flex justify-center">
-        <div
-          className="grid gap-10
+          <div
+            className="grid gap-10
           grid-cols-1 grid-auto-rows
           xl:grid-rows-1 xl:grid-auto-cols"
-        >
-          <Header className="xl:row-start-1 xl:col-start-1 xl:w-64" />
-          <RsvpContent className="xl:row-start-1 xl:col-start-2 " />
+          >
+            <Header className="xl:row-start-1 xl:col-start-1 xl:w-64" />
+            <RsvpContent className="xl:row-start-1 xl:col-start-2 " />
+          </div>
         </div>
-        </div>
-
-
       </div>
     </div>
   );
