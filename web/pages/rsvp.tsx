@@ -98,9 +98,7 @@ const Day: React.FC<{
       </div>
       <div className="h-20 text-lg leading-snug">
         <DaySubheader>Where?</DaySubheader>
-        <div>
-          Find zoom code in the Lobby 
-        </div>
+        <div>Find zoom code in the Lobby</div>
       </div>
       <div className="h-28 text-lg leading-snug">
         <DaySubheader>Who?</DaySubheader>
@@ -200,7 +198,12 @@ const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
         </div>
         <div className="">
           <div className="text-center mt-3">
-            <SignUpButton buttonText="Donate"></SignUpButton>
+            <SignUpButton
+              buttonText="Donate"
+              handleClick={() => {
+                window.open("/donate");
+              }}
+            />
           </div>
         </div>
       </div>
@@ -210,7 +213,7 @@ const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
 
 const Rsvp = () => {
   return (
-    <div className="bg-gray-300 min-h-screen flex justify-center xl:pt-20">
+    <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
       <div className="container pb-10">
         <div className="flex justify-center">
           <div
