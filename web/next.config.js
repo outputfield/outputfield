@@ -1,10 +1,5 @@
 module.exports = {
-  env: {
-    SANITY_TOKEN: "secret",
-    MAILCHIMP_API_KEY: "secret",
-    MAILCHIMP_LIST_ID: "secret",
-    MAILCHIMP_DATACENTER_KEY: "secret",
-  },
+  env: {},
   async redirects() {
     return [
       {
