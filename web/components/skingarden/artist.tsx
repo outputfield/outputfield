@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { Pify } from "../../components/skingarden/p-ify";
 import { SkinGardenArtist } from "../../constants/skingarden-artists";
 import { Link } from "./link";
 
@@ -37,13 +38,7 @@ const Description: React.FC<{
 }> = ({ className, artist }) => {
   return (
     <div className={classnames("text-base text-gray-800 space-y-4", className)}>
-      {artist.description
-        .split("\n")
-        .map((section) => section.trim())
-        .filter((section) => section?.length)
-        .map((section) => (
-          <p>{section}</p>
-        ))}
+      <Pify text={artist.description} />
     </div>
   );
 };
@@ -53,7 +48,12 @@ export const Artist: React.FC<{
   artist: SkinGardenArtist;
 }> = ({ className, artist }) => {
   return (
-    <div className={classnames(className, "w-full grid gap-4 sm:grid-cols-artist sm:grid-rows-artist")} style={{ /*minHeight: '12rem', gridTemplateColumns: 'auto 1fr'*/ }}>
+    <div
+      className={classnames(
+        className,
+        "w-full grid gap-4 sm:grid-cols-artist sm:grid-rows-artist"
+      )}
+    >
       <ArtImage
         className="sm:row-span-2 sm:row-start-1 sm:col-start-1"
         artist={artist}

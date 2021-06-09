@@ -8,7 +8,7 @@ export interface SkinGardenArtist {
   description: string;
 }
 
-export const skinGardenArtists: { [k: string]: SkinGardenArtist } = {
+export const skinGardenArtists = {
   toobaGreerWilliams: {
     name: "Candice Saint Williams AKA Tooba Greer Williams",
     image: "",
@@ -177,8 +177,8 @@ export const skinGardenArtists: { [k: string]: SkinGardenArtist } = {
   },
   oliaSvetlana: {
     name: "Olia Svetlana",
-    image: "Bologna, IT",
-    location: "",
+    image: "",
+    location: "Bologna, IT",
     description: `
     Olia was born as an online persona in August 2017, since that day it has undergone constant metamorphis: the appearance of its virtual body, reconstructing itself continuously by way of computer graphic.
     `,
@@ -201,8 +201,8 @@ export const skinGardenArtists: { [k: string]: SkinGardenArtist } = {
   },
   alexShilt: {
     name: "Alex Shilt",
-    image: "Daton, US",
-    location: "",
+    image: "",
+    location: "Daton, US",
     description: `
     Alex Shilt is a CG specialist currently based in Dayton, OH. He develops 3D assets & environments along with motion graphics for a variety of projects ranging from feature films to music videos. His work includes themes of the human form, cosmic horror, and the subconscious. Through his surrealist vignette's he hopes to elicit a sense of curiosity & amazement for the unknown.
     `,
@@ -272,6 +272,8 @@ export const skinGardenArtists: { [k: string]: SkinGardenArtist } = {
     `,
   },
 };
+
+const _proof: { [k: string]: SkinGardenArtist } = skinGardenArtists;
 
 // export const skinGardenArtists2: SkinGardenArtist[] = [
 // {
