@@ -10,12 +10,7 @@ module.exports = {
       },
       {
         source: "/RSVP",
-        destination: "/skingarden",
-        permanent: false,
-      },
-      {
-        source: "/rsvp",
-        destination: "/skingarden",
+        destination: "/rsvp",
         permanent: false,
       },
     ];

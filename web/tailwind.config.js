@@ -12,6 +12,10 @@ module.exports = {
       gridTemplateColumns: {
         // 'rsvp': '230px 250px 250px 250px',
         'rsvp': '240px 240px 240px',
+        'artist': 'auto 1fr',
+      },
+      gridTemplateRows: {
+        'artist': 'auto 1fr',
       },
     },
     colors: {

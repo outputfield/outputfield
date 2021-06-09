@@ -33,12 +33,6 @@ const DaySubheader: React.FC = ({ children }) => {
   return <h3 className="text-lg font-bold pb-1">{children}</h3>;
 };
 
-const Quote = () => (
-  <>
-    You will be organized, you will be an organism, you will articulate your
-    body—otherwise you're just depraved.
-  </>
-);
 
 const Day: React.FC<{
   className?: string;
@@ -261,37 +255,18 @@ const NewHeader: React.FC = () => {
   );
 };
 
-const Content: React.FC<{ className?: string; innerClassName?: string }> = ({
-  className,
-  innerClassName,
-  children,
-}) => {
-  return (
-    <div
-      className={classnames(
-        className,
-        "coooontenttttt flex justify-center px-6"
-      )}
-    >
-      <div className={classnames(innerClassName, "w-full max-w-4xl")}>
-        {children}
-      </div>
-    </div>
-  );
-};
-
 const Artists: React.FC = () => {
   return (
-    <>
-      <Content className="pt-24">
-        <h2 className="font-serif text-4xl pb-6">Artists</h2>
-      </Content>
-      <Content className="pt-0" innerClassName="space-y-20">
+    <div className="flex justify-center pt-24">
+      <div className="flex-1 max-w-4xl px-6">
+        <div id="artists" className="font-serif text-3xl pb-6">
+          Artists
+        </div>
         {Object.values(skinGardenArtists).map((artist, i) => (
-          <Artist artist={artist} key={i} />
+          <Artist className="pb-20" artist={artist} key={i} />
         ))}
-      </Content>
-    </>
+      </div>
+    </div>
   );
 };
 
@@ -299,7 +274,7 @@ const SkinGarden = () => {
   return (
     <div className="text-black bg-gray-100">
       {/* <NewHeader /> */}
-      {/* <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
+      <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
         <div className="container pb-10">
           <div className="flex justify-center">
             <div
@@ -312,7 +287,7 @@ const SkinGarden = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
       <Artists />
 
       <div className="pt-8 pb-20 text-center">
