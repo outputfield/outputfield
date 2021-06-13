@@ -77,7 +77,7 @@ const HeaderLink: React.FC<{ className?: string }> = ({
     <a
       className={classnames(
         className,
-        "text-4xl sm:text-7xl font-bold text-black block py-1 sm:py-2 border-b border-dashed first:border-t"
+        "text-4xl sm:text-7xl font-bold text-black block py-1 sm:py-3 border-b border-dashed first:border-t"
       )}
     >
       <Content>{children}</Content>
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
         <div
           className="
           flex space-x-8 justify-center pb-8 sm:pb-0
-          sm:justify-start sm:absolute sm:pl-52 sm:pt-6"
+          sm:justify-start sm:absolute sm:pl-52 sm:pt-7"
         >
           <HeaderDate className="text-red-500 transform -rotate-3">
             Wed 6/16
@@ -269,7 +269,7 @@ const SkinGarden = () => {
         </div>
       </Banner>
 
-      <Content className="pt-20 pb-20">
+      <Content className="pt-20 pb-24">
         <Previews />
       </Content>
       <Banner className="mb-28 uppercase font-bold py-4">
