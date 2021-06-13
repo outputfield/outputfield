@@ -10,8 +10,8 @@ export const Pify: React.FC<{ pClassName?: string; text: string }> = ({
         .split("\n")
         .map((section) => section.trim())
         .filter((section) => section?.length)
-        .map((section) => (
-          <p className={pClassName}>{section}</p>
+        .map((section, i) => (
+          <p className={pClassName} key={i}>{section}</p>
         ))}
     </>
   );

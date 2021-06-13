@@ -140,22 +140,35 @@ const PreviewSelector: React.FC<{
   active?: boolean;
   onClick?: () => void;
   className?: string;
-}> = ({ title, active, onClick, className }) => {
+  imageSrc: string;
+}> = ({ title, imageSrc, active, onClick, className }) => {
   return (
-    <div className={classnames("", className)}>
+    <div
+      className={classnames("cursor-pointer", className)}
+      onClick={() => onClick?.()}
+    >
       <div
         className={classnames(
           active && "",
-          "bg-green-300 h-52 w-40 cursor-pointer transition duration-200"
+          "h-[98px] w-[70px]",
+          "sm:h-[168px] sm:w-[120px]",
+          "lg:h-[280px] lg:w-[200px]",
+          "bg-green-300  cursor-pointer transition duration-200 p-0 relative"
         )}
         style={
           active
             ? { boxShadow: "0px 0px 10px 6px rgba(0,0,255,0.8)" }
             : undefined
         }
-        onClick={() => onClick?.()}
-      ></div>
-      <div className="uppercase text-sm font-bold pt-4">{title}</div>
+      >
+        <Image
+          src={imageSrc}
+          alt="room preview"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+      <div className="uppercase text-xs md:text-sm font-bold pt-4">{title}</div>
     </div>
   );
 };
@@ -172,27 +185,35 @@ const Previews: React.FC = () => {
   const content = previewContent[activePreview];
 
   return (
-    <div className="pb-28">
+    <div className="pb-40">
       <div className="flex justify-between">
         <PreviewSelector
           title="Bodies Unhinge"
+          imageSrc="/skingarden/rooms/Skin_Garden__Bodies_Unhinge.png"
           active={activePreview === 0}
           onClick={() => setActive(0)}
+          className="flex-1"
         />
         <PreviewSelector
           title="The Lobby"
+          imageSrc="/skingarden/rooms/Skin_Garden__Lobby.png"
           active={activePreview === 1}
           onClick={() => setActive(1)}
+          className="flex-1"
         />
         <PreviewSelector
           title="Reconsider Flesh"
+          imageSrc="/skingarden/rooms/Skin_Garden__Reconsider_Flesh.png"
           active={activePreview === 2}
           onClick={() => setActive(2)}
+          className="flex-1"
         />
         <PreviewSelector
           title="Walk-ins Welcome"
+          imageSrc="/skingarden/rooms/Skin_Garden__WalkinsWelcome.png"
           active={activePreview === 3}
           onClick={() => setActive(3)}
+          className="flex-1"
         />
       </div>
       <div className="pt-8 text-lg">{content}</div>
