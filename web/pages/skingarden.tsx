@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import "tailwindcss/tailwind.css";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import { Artist } from "../components/skingarden/artist";
@@ -8,9 +8,11 @@ import { SpacedParagraphs } from "../components/skingarden/p-ify";
 import { skinGardenArtists } from "../constants/skingarden-artists";
 import { skingardenText } from "../constants/skingarden-text";
 
-const Logo: React.FC<{ className?: string }> = ({ className }) => {
+const Banner: FC<{ className?: string }> = ({ children, className }) => {
   return (
-    <Image src="/SGLogo.png" alt="decorative arc" height="200" width="222" />
+    <div className={classnames(className, "w-full p-y-8 bg-gray-300")}>
+      <Content>{children}</Content>
+    </div>
   );
 };
 
@@ -75,7 +77,7 @@ const HeaderLink: React.FC<{ className?: string }> = ({
     <a
       className={classnames(
         className,
-        "text-4xl sm:text-6xl font-bold text-black block py-1 sm:py-2 border-b border-dashed first:border-t"
+        "text-4xl sm:text-7xl font-bold text-black block py-1 sm:py-2 border-b border-dashed first:border-t"
       )}
     >
       <Content>{children}</Content>
@@ -153,7 +155,7 @@ const PreviewSelector: React.FC<{
           "h-[98px] w-[70px]",
           "sm:h-[168px] sm:w-[120px]",
           "lg:h-[280px] lg:w-[200px]",
-          "bg-green-300  cursor-pointer transition duration-200 p-0 relative"
+          "cursor-pointer transition duration-200 p-0 relative"
         )}
         style={
           active
@@ -180,12 +182,12 @@ const previewContent = [
   `Reconsider Flesh is a breathing sculpture garden nestled inside walls sculpted by Salomé Chatriot. Sourcing the multiplicity of flesh, this body of work carves out a space for just some of the bodies excluded when multitudes are reduced to a monolithic standard. These 3-dimensional musings are presented with Bella Baguena's distorted readings.`,
 ];
 
-const Previews: React.FC = () => {
+const Previews: React.FC<{ className?: string }> = ({ className }) => {
   const [activePreview, setActive] = useState(0);
   const content = previewContent[activePreview];
 
   return (
-    <div className="pb-40">
+    <div className={classnames(className)}>
       <div className="flex justify-between">
         <PreviewSelector
           title="Bodies Unhinge"
@@ -221,14 +223,69 @@ const Previews: React.FC = () => {
   );
 };
 
+const Arrow: FC<{ className?: string; scale?: number }> = ({
+  className,
+  scale = 1,
+}) => {
+  return (
+    <div
+      className={classnames(
+        className,
+        "inline-block transform translate-y-[2px]"
+      )}
+    >
+      <Image
+        src="/skingarden/rooms/arrowLarge.svg"
+        alt="arrow"
+        height={15 * scale}
+        width={40 * scale}
+      />
+    </div>
+  );
+};
+
 const SkinGarden = () => {
   return (
     <div className="text-black bg-gray-100">
       <Header />
+      <Banner>
+        <div className="md:flex hidden font-bold text-sm lg:text-base uppercase flex-wrap justify-between py-4">
+          <div>Output Field's debut exhibition</div>
+          <Arrow />
+          <div>3 openings, 3 events, 3 days</div>
+          <Arrow />
+          <div>4 rooms, 30 artists</div>
+        </div>
+        <div className="md:hidden uppercase font-bold py-4 flex justify-center">
+          <div className="space-y-1">
+            <div>Output Field's debut exhibition</div>
+            <div>
+              <Arrow /> 3 openings, 3 events, 3 days
+            </div>
+            <div>
+              <Arrow /> 4 rooms, 30 artists
+            </div>
+          </div>
+        </div>
+      </Banner>
 
-      <Content className="pt-20">
+      <Content className="pt-20 pb-20">
         <Previews />
+      </Content>
+      <Banner className="mb-28 uppercase font-bold py-4">
+        <div className="md:flex justify-between space-y-4 md:space-y-0">
+          <div className="md:min-w-max">
+            We're raising $5000 for these featured artists{" "}
+            <a className="underline">
+              here!
+              <Arrow scale={1} className="-rotate-45" />
+            </a>
+          </div>
+          <div className="md:min-w-max">Full show notes below</div>
+        </div>
+      </Banner>
 
+      <Content>
         <Section title="Reconsider Flesh">
           <SpacedParagraphs text={skingardenText.reconsiderFlesh} />
           <ArtistGroup title="Space Sculpted By">
@@ -287,6 +344,19 @@ const SkinGarden = () => {
           <SpacedParagraphs text={skingardenText.acknowledgements} />
         </Section>
       </Content>
+      <Banner className="text-lg font-bold uppercase py-4">
+        <div className="space-y-2 lg:space-y-0 lg:flex lg:flex-row lg:justify-between lg:flex-wrap">
+          <div>Support our mission to redistribute clout.</div>
+          <a href="outputfield.com" target="_blank" className="underline block">
+            outputfield.com
+            <Arrow scale={1} className="-rotate-45" />
+          </a>
+          <a href="outputfield.com" target="_blank" className="underline block">
+            instagram
+            <Arrow scale={1} className="-rotate-45" />
+          </a>
+        </div>
+      </Banner>
     </div>
   );
 };
