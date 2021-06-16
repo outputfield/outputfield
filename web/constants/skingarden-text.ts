@@ -20,18 +20,18 @@ Bodies Unhinge is a digital manifestation of queerness exceeding capture. Here, 
   reconsiderFlesh: `
   Curated by Viv Qiu and Salomé Chatriot
 
-Reconsider Flesh is a non-chronological, anti-categorical spectrum of digital bodies. This breathing sculpture garden presents virtual presentations of skin, flesh, and bone inside a breathing, organic grotto sculpted by Salomé Chatriot. Move through as you navigate the walls Salomé sculpted by capturing data from measuring breathing.
+  Reconsider Flesh is a non-chronological, anti-categorical spectrum of digital bodies. This breathing sculpture garden houses virtual representations of skin, flesh, and bone inside a breathing, organic grotto sculpted by Salomé Chatriot. Move through as you navigate the walls Salomé sculpted by capturing data from measuring breathing.
 
-These bodies are layered with Bella Baguena's distorted readings of Gordon Hall's Why I Don't Talk about 'The Body', a polemic on the turn-of-phrase "The Body"  and the damaging effects of such language in the english-speaking art world. This space is an embodiment of the multiplicity of flesh, one that Gordon states is too often substituted with the singular verbiage: "The Body." Drawing from her shared experience of "having" a 'trans body,' as it were, Bella Baguena sounds out Gordon's theory inside this fleshy assemblage.
+  These bodies are layered with Bella Baguena's distorted readings of Gordon Hall's Why I Don't Talk about 'The Body', a polemic on the turn-of-phrase "The Body"  and the damaging effects of such language in the english-speaking art world. This space is an embodiment of the multiplicity of flesh, one that Gordon states is too often substituted with the singular verbiage: "The Body." Drawing from her shared experience of "having" a 'trans body,' as it were, Bella Baguena sounds out Gordon's theory inside this fleshy assemblage.
 
-Reconsider Flesh carves out a space for just some of the bodies excluded when multitudes are reduced to a monolith. 
-`,
+  Reconsider Flesh carves out a space for just some of the bodies excluded when multitudes are reduced to a monolith.`,
   walkinsWelcome: `
   Walk-ins Welcome is a digital tattoo showroom of tattoos incorporating digital mediums (e.g. 3D modeling, virtual reality, digital painting). The soundscape is assembled from residual sounds of a tattoo in session: plastic crinkling, ink shaking, machines whirring. 
 
 Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of tattooers who have embraced this shift in their practice. 
 
-This sculpture garden features flash available for your skin, etched onto fleshy structures sculpted by Nusi Quero in collaboration with Alex Shilt. The space is encased in skeletal walls sculpted by Lady Bambs. The soundscape is a remote collaboration between Miss Sammie and Nusi Quero.`,
+This sculpture garden features flash available for your skin, etched onto fleshy structures sculpted by Nusi Quero in collaboration with Alex Shilt. The space is encased in skeletal walls sculpted by Lady Bambs. The soundscape is a remote collaboration between Miss Sammie and Nusi Quero.
+`,
   curators: `
   As the core curator of Skin Garden, Viv Qiu invited researcher and theorist, Venus in Foil, and biosynthetic sculptress, Salomé Chatriot, to each co-curate a room within Skin Garden. Meshing Venus’ psychoanalytic research, and Salomé’s fluid approach to form, Skin Garden is an exercise in curatorial plurality: a transdisciplinary project.   `,
   acknowledgements: `

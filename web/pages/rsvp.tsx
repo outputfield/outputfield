@@ -165,7 +165,7 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
       rsvpLink="https://skingarden-day3.splashthat.com/"
       room={<div>Reconsider Flesh</div>}
       happening={<div>Streaming theory about bodies</div>}
-      who={<div>TBA</div>}
+      who={<div>Gordon Hall, Gilles Deleuze, Bob Flanagan</div>}
       description={
         <div>
           We will be broadcasting some literature and theory that inspired the

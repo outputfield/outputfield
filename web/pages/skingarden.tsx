@@ -353,7 +353,7 @@ const SkinGarden = () => {
             <Artist artist={skinGardenArtists.oliaSvetlana} />
           </ArtistGroup>
         </Section>
-        <Section title="Walkins Welcome">
+        <Section title="Walk-ins Welcome">
           <SpacedParagraphs text={skingardenText.walkinsWelcome} />
           <ArtistGroup title="Space Sculpted By">
             <Artist artist={skinGardenArtists.ladyBambs} />
