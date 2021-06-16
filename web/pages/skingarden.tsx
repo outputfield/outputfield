@@ -312,13 +312,12 @@ const SkinGarden = () => {
           <ArtistGroup title="Featuring Artwork From">
             <Artist artist={skinGardenArtists.bora} />
             <Artist artist={skinGardenArtists.victoriaCribb} />
-            {/* TODO */}
-            {/* <Artist artist={skinGardenArtists.hardmetacore} /> */}
+            <Artist artist={skinGardenArtists.hardmetacore} />
             <Artist artist={skinGardenArtists.mengki} />
             <Artist artist={skinGardenArtists.vxn} />
             <Artist artist={skinGardenArtists.deboraSilva} />
             <Artist artist={skinGardenArtists.harrietDavey} />
-            <Artist artist={skinGardenArtists.humanImmitation} />
+            <Artist artist={skinGardenArtists.humanImitation} />
             <Artist artist={skinGardenArtists.nadyaPlyamko} />
             <Artist artist={skinGardenArtists.teresaRofer} />
             <Artist artist={skinGardenArtists.elPopoSangre} />
