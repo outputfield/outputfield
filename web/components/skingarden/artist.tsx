@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import Image from "next/image";
 import { Pify } from "../../components/skingarden/p-ify";
 import { SkinGardenArtist } from "../../constants/skingarden-artists";
 import { Link } from "./link";
@@ -14,8 +15,16 @@ const Header: React.FC<{ className?: string; artist: SkinGardenArtist }> = ({
         <div className="text-gray-800 text-sm uppercase">{artist.location}</div>
       </div>
       <div>
-        <Link className="text-sm">website</Link>
-        <Link className="text-sm ml-2 sm:ml-4">instagram</Link>
+        {artist.website ? (
+          <Link className="text-sm" href={artist.website}>
+            website
+          </Link>
+        ) : null}
+        {artist.instagram ? (
+          <Link className="text-sm ml-2 sm:ml-4" href={artist.instagram}>
+            instagram
+          </Link>
+        ) : null}
       </div>
     </div>
   );
@@ -27,7 +36,11 @@ const ArtImage: React.FC<{ className?: string; artist: SkinGardenArtist }> = ({
 }) => {
   return (
     <div className={classnames(className, "")}>
-      <div className={classnames("w-48 h-48 bg-green-100 shadow-md")}></div>
+      {artist.image ? (
+        <Image src={artist.image} height="192" width="192" />
+      ) : (
+        <div className={classnames("w-48 h-48 bg-green-100 shadow-md")}></div>
+      )}
     </div>
   );
 };

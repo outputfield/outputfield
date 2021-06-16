@@ -19,8 +19,11 @@ export const skingardenText = {
   As the core curator of Skin Garden, VIvian Qiu invited anthropologist Venus in Foil and biosynthetic sculptress Salomé Chatriot to co-curate two of the three rooms within Skin Garden. Meshing Venus’ psychoanalytic research, and Salomé’s fluid approach to form, Skin Garden is an exercise in curatorial plurality: a transdisciplinary project. 
   `,
   acknowledgements: `
-  This show was made possible with the help of so many: Thank you, Peter Kirn for your help mastering audio. Thank you to all the queers in our communities who sent us voice samples of their readings and breath: Mia, Dorothy, Zac, Betty’s Friends who read, Kelso, Egyto. Thank you to Benny, Sammie, and Don for your help in making this real in New Art City. Thank you to Alex Shilt and Lady Bambs for coming in for the rescue throughout the process. 
+  This show was made possible with the help of so many: Thank you to all the queers in our communities who sent us voice samples of your voice and breath: Mia, Dorothy, Zac, Anchi Ciwas, Julia, Kelso, Egyto. Thank you, Peter Kirn for your help mastering audio. Thank you to Benny, Sammie, and Don for your help in making this real in New Art City. Thank you to Alex Shilt and Lady Bambs for coming in for the rescue throughout the process. 
 
-  Much thanks to Maura Reilly, author of Curatorial Activism, for writing the book what inspired the approach to this exhibition. Thank you Gordon Hall: your writings about ‘The Body’ had  strong influence on the direction behind Reconsider Flesh’s soundscape. Thank you Digi.Gxl for making it easier to find talented femme, nonbinary, women-identified artists in digital art.   Thank you Faith Kim for your design contributions to the Output Field brand identity and Skin Garden promotional materials. Thank you Max Bendick and Brendan Lee for your contributions to this website, and your continued contributions to Output Field’s mission to redistribute clout.  
-  `,
+Much thanks to Maura Reilly, author of Curatorial Activism, for writing the book what inspired the approach to this exhibition. Thank you Gordon Hall: your polemic about ‘The Body’ had strong influence on the direction behind Reconsider Flesh’s soundscape. Thank you Digi.Gxl for making it easier to find talented femme, nonbinary, women-identified artists in CG art.
+
+Thank you, Faith Kim, for your design contributions to the Output Field brand identity and Skin Garden promotional materials. 
+
+Thank you, Max Bendick, Brendan Lee, and Daniel Illner for your contributions to this website, and your continued contributions to Output Field’s mission to redistribute clout. Thank you to all of those who invited friends and loved ones to come see this exhibition with you, we’ll see you in the next one. `,
 };

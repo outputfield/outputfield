@@ -72,11 +72,13 @@ const Section: React.FC<{ title?: string }> = ({ title, children }) => {
 const HeaderLink: React.FC<{
   className?: string;
   href?: string;
+  target?: string;
   zIndexClassName?: string;
-}> = ({ children, className, href, zIndexClassName }) => {
+}> = ({ children, className, href, target, zIndexClassName }) => {
   return (
     <a
       href={href}
+      target={target}
       className={classnames(
         className,
         zIndexClassName,
@@ -138,7 +140,9 @@ const Header: React.FC = () => {
         </HeaderLink>
         <HeaderLink zIndexClassName="z-50">Show Info</HeaderLink>
         <HeaderLink zIndexClassName="z-50">Transcripts</HeaderLink>
-        <HeaderLink zIndexClassName="z-50">Donate</HeaderLink>
+        <HeaderLink zIndexClassName="z-50" href="/donate" target="_blank">
+          Donate
+        </HeaderLink>
         <HeaderLink zIndexClassName="z-50">
           Livestream{" "}
           <span className="text-3xl text-red-500">(9am-12pm PST today)</span>
@@ -361,11 +365,15 @@ const SkinGarden = () => {
       <Banner className="text-lg font-bold uppercase py-4">
         <div className="space-y-2 lg:space-y-0 lg:flex lg:flex-row lg:justify-between lg:flex-wrap">
           <div>Support our mission to redistribute clout.</div>
-          <a href="outputfield.com" target="_blank" className="underline block">
+          <a href="/" target="_blank" className="underline block">
             outputfield.com
             <Arrow scale={1} className="-rotate-45" />
           </a>
-          <a href="outputfield.com" target="_blank" className="underline block">
+          <a
+            href="https://www.instagram.com/output.field/"
+            target="_blank"
+            className="underline block"
+          >
             instagram
             <Arrow scale={1} className="-rotate-45" />
           </a>

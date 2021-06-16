@@ -11,7 +11,7 @@ export interface SkinGardenArtist {
 export const skinGardenArtists = {
   toobaGreerWilliams: {
     name: "Candice Saint Williams AKA Tooba Greer Williams",
-    image: "",
+    image: "/skingarden/artists/Tooba Greer Williams.jpeg",
     website: "www.toobagreerwilliams.com/",
     instagram: "www.instagram.com/joop_type/",
     location: "New York, NY",
@@ -25,7 +25,7 @@ export const skinGardenArtists = {
   },
   kushagra: {
     name: "Kushagra",
-    image: "",
+    image: "/skingarden/artists/Kushagra.jpg",
     website: "hen.link/kushlet",
     instagram: "https://www.instagram.com/kushlet/",
     location: "Calcutta, India",
@@ -35,7 +35,7 @@ export const skinGardenArtists = {
   },
   bettyApple: {
     name: "Betty Apple",
-    image: "",
+    image: "/skingarden/artists/Betty Apple.jpg",
     website: "https://soundcloud.com/applebetty",
     instagram: "https://www.instagram.com/lovebettyapple/",
     location: "Taipei, Taiwan",
@@ -45,7 +45,7 @@ export const skinGardenArtists = {
   },
   ior50: {
     name: "IOR50",
-    image: "",
+    image: "/skingarden/artists/ior50.jpg",
     website: "https://ior50.com/",
     instagram: "https://www.instagram.com/ior50.studio/",
     location: "Cyberspace",
@@ -57,9 +57,9 @@ export const skinGardenArtists = {
   },
   salomeChatriot: {
     name: "Salomé Chatriot",
-    image: "",
-    website: 'https://salomechatriot.net/',
-    instagram: 'https://www.instagram.com/salomechatriot/',
+    image: "/skingarden/artists/SalomeChatriot.jpg",
+    website: "https://salomechatriot.net/",
+    instagram: "https://www.instagram.com/salomechatriot/",
     location: "Paris, France",
     description: `
     Salomé Chatriot is a contemporary artist and an mutimedia interaction designer.
@@ -74,7 +74,7 @@ The images produced by the artist are indeed hybrid and oscillate between biolog
   },
   bellaBaguena: {
     name: "Bella Baguena",
-    image: "",
+    image: "/skingarden/artists/Bella Baguena.jpg",
     website: "https://soundcloud.com/abel-baguena",
     instagram: "https://www.instagram.com/xbellaxbaguenax/",
     location: "Valencia, Spain / Paris, FR",
@@ -87,7 +87,7 @@ Bella’s objective is the close connection of the emotional experience between 
   },
   bora: {
     name: "BORA",
-    image: "",
+    image: "/skingarden/artists/Bora.JPG",
     website: "https://boramurmure.com/",
     instagram: "https://www.instagram.com/boramurmure/",
     location: "Lyon, FR",
@@ -96,16 +96,16 @@ Bella’s objective is the close connection of the emotional experience between 
   },
   victoriaCribb: {
     name: "Victória Cribb",
-    image: "",
-    website: 'https://vitoriacribb.cargo.site/',
-    instagram: 'https://www.instagram.com/louquai/',
+    image: "/skingarden/artists/Vitoria Cribb.jpg",
+    website: "https://vitoriacribb.cargo.site/",
+    instagram: "https://www.instagram.com/louquai/",
     location: "Rio De Janeiro, BR",
     description: `
     Vitória creates digital and visual narratives that permeate techniques such as: creation of 3D avatars, filters in augmented reality and immersive environments. She uses the digital environment as a means to explain investigations and current issues that her subconscious is experiencing. The artist investigates the unfolding behaviors of new visual / social technologies and transposes her thoughts through the immateriality present in the digital.`,
   },
   mengki: {
     name: "Mengki",
-    image: "",
+    image: "/skingarden/artists/Mengki Chen.png",
     website: "http://mengkichen.com/",
     instagram: "https://www.instagram.com/mengkiiii/",
     location: "Shanghai, CN",
@@ -114,16 +114,16 @@ Bella’s objective is the close connection of the emotional experience between 
   },
   vxn: {
     name: "VXN",
-    image: "",
-    website: 'https://linktr.ee/vicampobello',
-    instagram: 'https://www.instagram.com/vicampobello/',
+    image: "/skingarden/artists/VXN.jpg",
+    website: "https://linktr.ee/vicampobello",
+    instagram: "https://www.instagram.com/vicampobello/",
     location: "Buenos Aires, ARG",
     description: `
     Space distorts as human beings try to find a place to inhabit. The perception of geometry that surrounds it, is constantly building or deconstructing a different reality, where we are all trying to create our sense of place. Graphics, nature-inspired textures and futuristic worlds feature the work of Victoria Campobello; alias VXN. Abstract shapes of amorphous forms coexist in highly textured images that blend in three dimensional space.    `,
   },
   deboraSilva: {
     name: "Débora Silva",
-    image: "",
+    image: "/skingarden/artists/Debora Silva.png",
     website: "http://deborassilva.com/",
     instagram: "https://www.instagram.com/deb0ras/",
     location: "London, UK",
@@ -136,7 +136,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   harrietDavey: {
     name: "Harriet Davey",
-    image: "",
+    image: "/skingarden/artists/Harriet Davey.jpg",
     instagram: "https://www.instagram.com/harriet.blend/",
     website: "https://www.twitch.tv/whowle",
     location: "Berlin, DE",
@@ -145,7 +145,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   humanImitation: {
     name: "Human Imitation",
-    image: "",
+    image: "/skingarden/artists/Human Imitation.jpg",
     instagram: "https://www.instagram.com/human_imitation/",
     location: "Lafayette, New Orleans",
     description: `
@@ -153,7 +153,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   nadyaPlyamko: {
     name: "Nadya Plyamko",
-    image: "",
+    image: "/skingarden/artists/Nadya Plyamko.jpg",
     instagram: "https://www.instagram.com/cirrusmin0r/",
     website: "https://www.patreon.com/cirrusminor",
     location: "Kyiv, Ukraine",
@@ -162,17 +162,17 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   teresaRofer: {
     name: "Teresa Rofer",
-    image: "",
-    website: 'https://vimeo.com/user119516361',
-    instagram: 'https://www.instagram.com/teresarofer/',
+    image: "/skingarden/artists/Teresa Rofer.jpg",
+    website: "https://vimeo.com/user119516361",
+    instagram: "https://www.instagram.com/teresarofer/",
     location: "Madrid, ES",
     description: `
     Teresa Rofer (1995) is a visual artist whose work investigates, from an experimental perspective, the expressive and formal possibilities of digital media and the way they are connected to reality. She completed her higher education studies at the University of Seville and the University of the Basque Country, working in advertising and image contexts until 2018, while simultaneously collaborating with visual and musical artists and cultural entities. Teresa Rofer creates pieces where she unfolds, always from an existential and intimist approach, enlightening points of view about the fragility of a utopian individual who does not renounce to express their direct experience of the world. The collective emotional traces which are somatized in the physical body, the intrinsic ambiguities of digital images or the frustrations of individuals exposed to a programmed impersonality. These concepts find in Teresa Rofer’s pieces, endowed with minimal narrative elements, a number of suggestive and novel hybridizations.    `,
   },
   hardmetacore: {
     name: "Hardmetacore",
-    image: "",
-    instagram: "https://www.instagram.com/hardmetacore/",
+    image: "/skingarden/artists/Hardmetacore.png",
+    instagram: "https://www.instagram.com/hardmetacore/Hardmetacore.png",
     location: "Milan, IT",
     description: `
     Italian CGI designer focusing on computer imagery interlocking feelings of the human sphere and the relationship between the real self and the digital alter-ego. Technology is not neutral, we live inside what we create and it lives inside us as well. We live in a world of digital connections, and it matters which ones we build and which ones we destroy. Hardmetacore practice focuses also on the grotesque side of beauty and how technology changes the way we perceive the human body.
@@ -180,7 +180,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   elPopoSangre: {
     name: "El Popo Sangre",
-    image: "",
+    image: "/skingarden/artists/El Popo Sangre.png",
     website: "vimeo.com/elpoposangre",
     instagram: "https://www.instagram.com/elpoposangre/",
     location: "Paris, FR",
@@ -189,32 +189,32 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   ryanVautier: {
     name: "Ryan Vautier",
-    image: "",
+    image: "/skingarden/artists/Ryan Vautier.png",
     location: "London, UK",
-    instagram:  'https://www.instagram.com/ryan_vautier/',
-    website: 'https://www.ryanvautier.com/',
+    instagram: "https://www.instagram.com/ryan_vautier/",
+    website: "https://www.ryanvautier.com/",
     description: `
     Ryan Vautier is a CGI artist and designer based in London who creates animated worlds exploring the fractures between digital and physical. Focusing on the concept that we currently have access to two separate planes of existence, he seeks to explore information of evolution from the digital realm.    `,
   },
   sarahBlomey: {
     name: "Sarah Blomey",
-    image: "",
-    instagram: 'https://www.instagram.com/sarahblomey/',
+    image: "/skingarden/artists/Sarah Blomey.png",
+    instagram: "https://www.instagram.com/sarahblomey/",
     location: "London, UK",
     description: `
     Sarah Blomey is a CGI Artist based in London, UK. Her work explores the possibilities artificial growth; how digital tools can replicate and build on organic processes. She works with 3D software to create models, simulations and virtual environments. Her recent works are part of an ongoing project to populate a self-evolving virtual world, in collaboration with artist Ryan Vautier.    `,
   },
   oliaSvetlana: {
     name: "Olia Svetlana",
-    image: "",
-    instagram: 'https://www.instagram.com/oliasvetlanova_/',
+    image: "/skingarden/artists/Olia Svetlana.png",
+    instagram: "https://www.instagram.com/oliasvetlanova_/",
     location: "Bologna, IT",
     description: `
     Olia was born as an online persona in August 2017, since that day it has undergone constant metamorphis: the appearance of its virtual body, reconstructing itself continuously by way of computer graphic.    `,
   },
   ladyBambs: {
     name: "Lady Bambs",
-    image: "",
+    image: "/skingarden/artists/Lady Bambs.png",
     website: "https://www.bambibambs.club/",
     instagram: "https://www.instagram.com/ladybambs/",
     location: "Los Angeles, US",
@@ -223,7 +223,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   nusiQuero: {
     name: "Nusi Quero",
-    image: "",
+    image: "/skingarden/artists/Nusi Quero.png",
     website: "www.nusiquero.com",
     instagram: "https://www.instagram.com/nusi_quero/",
     location: "Los Angeles, US",
@@ -234,23 +234,23 @@ Silva’s creative process in the virtual space frees her subjects from physical
     name: "Alex Shilt",
     website: "http://www.alexshilt.com/",
     instagram: "https://www.instagram.com/alex.obj/",
-    image: "",
+    image: "/skingarden/artists/Alex Shilt.jpg",
     location: "Dayton, US",
     description: `
     Alex Shilt is a CG specialist currently based in Dayton, OH. He develops 3D assets & environments along with motion graphics for a variety of projects ranging from feature films to music videos. His work includes themes of the human form, cosmic horror, and the subconscious. Through his surrealist vignette's he hopes to elicit a sense of curiosity & amazement for the unknown.    `,
   },
   sammieVeeler: {
     name: "Sammie Veeler",
-    image: "",
-    website: 'newart.city/show/miss-sammie',
-    instagram: 'https://www.instagram.com/miss__sammie/',
+    image: "/skingarden/artists/Sammie Veeler.jpg",
+    website: "newart.city/show/miss-sammie",
+    instagram: "https://www.instagram.com/miss__sammie/",
     location: "Los Angeles, CA",
     description: `
     Miss Sammie is a multidisciplinary artist and cofounder of New Art City. Her sound practice concerns field recording, deep listening, and the process of translation. Her work in this exhibition is atmospheric, engaged with translating residual shop sounds into virtual space.    `,
   },
   hydroMachine: {
     name: "Hyodomachine",
-    image: "",
+    image: "/skingarden/artists/Hyodomachine.png",
     instagram: "https://www.instagram.com/hyodomachine/",
     location: "Seoul, KR",
     description: `
@@ -258,7 +258,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   lvDian: {
     name: "Lv Dian",
-    image: "",
+    image: "/skingarden/artists/Lv Dian.jpeg",
     instagram: "https://www.instagram.com/lvdiankk/",
     location: "Shanghai, CN",
     description: `
@@ -266,7 +266,7 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   heavenlyBeautyTattoo: {
     name: "Heavenly Beauty Tattoo",
-    image: "",
+    image: "/skingarden/artists/Heavenly Beauty Tattoo.png",
     instagram: "https://www.instagram.com/heavenly_beauty_tattoo/",
     location: "Moscow, RU",
     description: `
@@ -274,17 +274,17 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   pang: {
     name: "Pang",
-    image: "",
-    instagram: 'https://www.instagram.com/pang.ink/',
-    website: 'http://pangink.com/',
+    image: "/skingarden/artists/Pang.jpg",
+    instagram: "https://www.instagram.com/pang.ink/",
+    website: "http://pangink.com/",
     location: "Bay Area, US",
     description: `
     Pang is a Chinese-American scratcher based in the Bay Area. Incorporating virtual reality, digital painting, and remote collaboration, she translates movement, pixels, and heritage into ink, into skin.    `,
   },
   vivianQiu: {
     name: "Viv Qiu",
-    image: "",
-    website: 'https://www.vivianqiu.com/',
+    image: "/skingarden/artists/Vivian Qiu.JPG",
+    website: "https://www.vivianqiu.com/",
     location: "Bay Area, US",
     description: `
     Vivian Qiu is a futurist based in the Bay Area, co-parented by Chinese immigrants and the internet. Working at micro and macro scales, she oscillates between object and concept, aesthetic and systemic. She is a zealot for the experimental, the weird, the speculative, and the absurd. With ties to industrial design, research, curation, creative direction, she’s made a home in concept as her core medium.  Founder of Output Field, Vivian dedicates all parts of her practice to redistributing clout and pursuing curation as polylogue, rather than monologue 
@@ -292,18 +292,18 @@ Silva’s creative process in the virtual space frees her subjects from physical
   },
   venusInFoil: {
     name: "Venus in Foil",
-    image: "",
-    website: 'https://soundcloud.com/venusinfoil',
-    instagram: 'https://www.instagram.com/venusinfoil/',
+    image: "/skingarden/artists/Venus In Foil.png",
+    website: "https://soundcloud.com/venusinfoil",
+    instagram: "https://www.instagram.com/venusinfoil/",
     location: "Toronto, CA",
     description: `
     Co-curator of Bodies Unhinge, Venus in Foil is a PhD candidate at Brock University: her research deals with the affective remains of childhood trauma and aesthetic modes of survival, and involves elements of queer theory, affect theory, sound studies and psychoanalysis. She is a member of the posthumanist research group and a co-founder of Soak, a collective and club night aimed at supporting people of marginalized genders in experimental electronic music    `,
   },
   salomeChatriotCurator: {
     name: "Salomé Chatriot",
-    image: "",
-    website: 'https://salomechatriot.net/',
-    instagram: 'https://www.instagram.com/salomechatriot/',
+    image: "/skingarden/artists/SalomeChatriot_Portrait.jpg",
+    website: "https://salomechatriot.net/",
+    instagram: "https://www.instagram.com/salomechatriot/",
     location: "Paris, FR",
     description: `
     Architect behind Reconsider Flesh, Salomé co-curated the sculptures sprinkled throughout her breathing grotto. Working with Vivian, Salomé curated the placement and composition of the featured artworks throughout the space.    `,
