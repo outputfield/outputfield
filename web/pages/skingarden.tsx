@@ -294,7 +294,7 @@ const SkinGarden = () => {
         <div className="md:flex justify-between space-y-4 md:space-y-0">
           <div className="md:min-w-max">
             We're raising $5000 for these featured artists{" "}
-            <a className="underline">
+            <a href="/donate" target="_blank" className="underline">
               here!
               <Arrow scale={1} className="-rotate-45" />
             </a>
