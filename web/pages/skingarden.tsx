@@ -138,16 +138,15 @@ const Header: React.FC = () => {
         <HeaderLink href="/rsvp" zIndexClassName="z-50">
           RSVP
         </HeaderLink>
-        <HeaderLink zIndexClassName="z-50">Show Info</HeaderLink>
-        <HeaderLink zIndexClassName="z-50">Transcripts</HeaderLink>
+        <HeaderLink zIndexClassName="z-50" href="https://www.notion.so/outputfield/Transcripts-1bc96764836b43ff9164e3cf779237bb" target="_blank">Transcripts</HeaderLink>
         <HeaderLink zIndexClassName="z-50" href="/donate" target="_blank">
           Donate
         </HeaderLink>
-        <HeaderLink zIndexClassName="z-50">
+        <HeaderLink zIndexClassName="z-50" href="https://us02web.zoom.us/u/ketykq6snj" target="_blank">
           Livestream{" "}
           {/* <span className="text-3xl text-red-500">(9am-12pm PST today)</span> */}
         </HeaderLink>
-        <HeaderLink zIndexClassName="z-50" className="bg-yellow-500">
+        <HeaderLink href="https://newart.city/show/skingarden" target="_blank" zIndexClassName="z-50" className="bg-yellow-500">
           Enter the exhibition
         </HeaderLink>
       </div>
