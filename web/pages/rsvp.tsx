@@ -3,9 +3,29 @@ import Image from "next/image";
 import React from "react";
 import "tailwindcss/tailwind.css";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
-import { Artist } from "../components/skingarden/artist";
-import { Link } from "../components/skingarden/link";
-import { skinGardenArtists } from "../constants/skingarden-artists";
+
+const Link: React.FC<{
+  className?: string;
+  href?: string;
+  target?: string;
+}> = ({ className, children, href, target }) => {
+  return (
+    <a
+      className={classnames(
+        "text-lg font-semibold filter drop-shadow-2xl",
+        className
+      )}
+      style={{
+        color: "rgb(4, 4, 255)",
+        textShadow: `0 0 2px rgba(4, 4, 255, 0.4)`,
+      }}
+      href={href}
+      target={target}
+    >
+      {children}
+    </a>
+  );
+};
 
 const Logo: React.FC<{ className?: string }> = ({ className }) => {
   return (
@@ -20,7 +40,7 @@ const Header: React.FC<{ className?: string }> = ({ className }) => {
         <div>
           <Logo className="mb-6" />
         </div>
-        <Link className="text-lg uppercase" href="/" target="_blank">
+        <Link className="uppercase" href="/" target="_blank">
           Output Field
         </Link>
         <div className="uppercase text-lg">Debut showcase</div>
@@ -32,7 +52,6 @@ const Header: React.FC<{ className?: string }> = ({ className }) => {
 const DaySubheader: React.FC = ({ children }) => {
   return <h3 className="text-lg font-bold pb-1">{children}</h3>;
 };
-
 
 const Day: React.FC<{
   className?: string;
@@ -65,25 +84,23 @@ const Day: React.FC<{
           {date}
           <span className="text-base pl-4">{time}</span>
         </div>
-        {/* <a className="bg-blue-400 mb-6 text-lg px-4 py-2 text-white rounded-sm">RSVP</a>
-        <br/> */}
-        <Link className="text-lg mb-6" href={rsvpLink} target="_blank">
+        <Link className="mb-6" href={rsvpLink} target="_blank">
           RSVP
         </Link>
       </div>
-      <div className="h-24 text-md leading-snug">
+      <div className="h-24 text-lg leading-snug">
         <DaySubheader>What Room is Opening?</DaySubheader>
         {room}
       </div>
-      <div className="h-24 text-md leading-snug">
+      <div className="h-24 text-lg leading-snug">
         <DaySubheader>What else is Happening?</DaySubheader>
         {happening}
       </div>
-      <div className="h-20 text-md leading-snug">
+      <div className="h-20 text-lg leading-snug">
         <DaySubheader>Where?</DaySubheader>
         <div>Find zoom code in the Lobby</div>
       </div>
-      <div className="h-20 sm:h-28 text-md leading-snug">
+      <div className="h-28 text-lg leading-snug">
         <DaySubheader>Who?</DaySubheader>
         {who}
       </div>
@@ -163,18 +180,12 @@ const Friday: React.FC<{ className?: string }> = ({ className }) => {
 
 const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
   return (
-    <div id="schedule" className={classnames(className)}>
-      {/*       <div
-        className="grid
-        gap-y-20 lg:gap-x-16 lg:gap-y-12
-        lg:grid-auto-rows grid-cols-1 lg:grid-cols-rsvp
-        px-6 sm:px-0 sm:max-w-sm lg:max-w-none"
-      > */}
+    <div className={className}>
       <div
-        className="grid
+        className="grid 
         gap-y-20 lg:gap-x-16 lg:gap-y-12
         lg:grid-auto-rows grid-cols-1 lg:grid-cols-rsvp
-        px-6 sm:px-0 sm:max-w-xl lg:max-w-none"
+        max-w-xs sm:max-w-sm lg:max-w-none"
       >
         <Wednesday className="" />
         <Thursday className="" />
@@ -200,106 +211,27 @@ const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
   );
 };
 
-const NewTitle: React.FC = () => {
-  return (
-    <div>
-      <code className="uppercase text-sm text-gray-200">
-        Output Field's debut showcase
-      </code>
-      <div className="text-white font-serif mt-8 mb-2 text-5xl">
-        Skin Garden
-      </div>
-      <code className="text-right w-full">
-        <div className="font-serif text-gray-200">reconsider flesh</div>
-      </code>
-    </div>
-  );
-};
-
-const NewHeader: React.FC = () => {
-  return (
-    <div className="w-full bg-gray-900 text-white pt-20 pb-10 sm:pb-20 px-8">
-      <div className="flex justify-center">
-        <NewTitle />
-      </div>
-
-      <div className="pt-20 sm:pt-28 font-serif text-xl text-center">
-        Wed 6/16 - Fri 6/18
-      </div>
-      <div className="pt-4 flex justify-center">
-        <button className="bg-blue-400 sm:w-auto text-white px-5 py-2 text-xl rounded-sm w-full">
-          RSVP
-        </button>
-      </div>
-      <div className="pt-4 flex justify-center space-x-2">
-        <a
-          href="#schedule"
-          className="w-20 py-1 text-md rounded-sm border border-opacity-100 text-white border-white text-center"
-        >
-          Schedule
-        </a>
-        <a
-          href="#artists"
-          className="w-20 py-1 text-md rounded-sm border border-opacity-100 text-white border-white text-center"
-        >
-          Artists
-        </a>
-        {/* <button className="w-16 py-1 border-white">
-          Artists
-        </button>
-        <button className="w-16 py-1 border-white rounded-sm text-white">
-          Calendar
-        </button> */}
-      </div>
-    </div>
-  );
-};
-
-const Artists: React.FC = () => {
-  return (
-    <div className="flex justify-center pt-24">
-      <div className="flex-1 max-w-4xl px-6">
-        <div id="artists" className="font-serif text-3xl pb-6">
-          Artists
-        </div>
-        {Object.values(skinGardenArtists).map((artist, i) => (
-          <Artist className="pb-20" artist={artist} key={i} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const SkinGarden = () => {
   return (
-    <div className="text-black bg-gray-100">
-      {/* <NewHeader /> */}
-      <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
-        <div className="container pb-10">
-          <div className="flex justify-center">
-            <div
-              className="grid gap-10
+    <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
+      <div className="container pb-10">
+        <div className="flex justify-center">
+          <div
+            className="grid gap-10
           grid-cols-1 grid-auto-rows
           xl:grid-rows-1 xl:grid-auto-cols"
-            >
-              <Header className="xl:row-start-1 xl:col-start-1 xl:w-64" />
-              <RsvpContent className="xl:row-start-1 xl:col-start-2 " />
-            </div>
+          >
+            <Header className="xl:row-start-1 xl:col-start-1 xl:w-64" />
+            <RsvpContent className="xl:row-start-1 xl:col-start-2 " />
           </div>
         </div>
-      </div>
-      <Artists />
-
-      <div className="pt-8 pb-20 text-center">
-        <SignUpButton
-          buttonText="Donate"
-          handleClick={() => {
-            window.open("/donate");
-          }}
-        />
       </div>
     </div>
   );
 };
 
 export default SkinGarden;
+
+// const RSVP: React.FC = () => <div>rsvp</div>
+
+// export default RSVP;

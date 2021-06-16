@@ -145,7 +145,7 @@ const Header: React.FC = () => {
         </HeaderLink>
         <HeaderLink zIndexClassName="z-50">
           Livestream{" "}
-          <span className="text-3xl text-red-500">(9am-12pm PST today)</span>
+          {/* <span className="text-3xl text-red-500">(9am-12pm PST today)</span> */}
         </HeaderLink>
         <HeaderLink zIndexClassName="z-50" className="bg-yellow-500">
           Enter the exhibition
