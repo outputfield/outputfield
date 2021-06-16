@@ -15,7 +15,7 @@ const Header: React.FC<{ className?: string; artist: SkinGardenArtist }> = ({
       </div>
       <div>
         <Link className="text-sm">website</Link>
-        <Link className="text-sm ml-2">instagram</Link>
+        <Link className="text-sm ml-2 sm:ml-4">instagram</Link>
       </div>
     </div>
   );

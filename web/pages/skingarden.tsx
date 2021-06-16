@@ -69,18 +69,23 @@ const Section: React.FC<{ title?: string }> = ({ title, children }) => {
   );
 };
 
-const HeaderLink: React.FC<{ className?: string }> = ({
-  children,
-  className,
-}) => {
+const HeaderLink: React.FC<{
+  className?: string;
+  href?: string;
+  zIndexClassName?: string;
+}> = ({ children, className, href, zIndexClassName }) => {
   return (
     <a
+      href={href}
       className={classnames(
         className,
+        zIndexClassName,
         "text-4xl sm:text-7xl font-bold text-black block py-1 sm:py-3 border-b border-dashed first:border-t"
       )}
     >
-      <Content>{children}</Content>
+      <Content className={zIndexClassName} innerClassName={zIndexClassName}>
+        {children}
+      </Content>
     </a>
   );
 };
@@ -104,7 +109,7 @@ const Header: React.FC = () => {
       >
         <div className="sm:w-full sm:max-w-xl sm:text-right sm:pt-20">
           <Image
-            src="/SGLogo.png"
+            src="/skingarden/logorotate.gif"
             alt="Sking garden logo"
             height="200"
             width="222"
@@ -116,6 +121,7 @@ const Header: React.FC = () => {
       <Content>
         <div
           className="
+          z-0
           flex space-x-8 justify-center pb-8 sm:pb-0
           sm:justify-start sm:absolute sm:pl-52 sm:pt-7"
         >
@@ -127,11 +133,19 @@ const Header: React.FC = () => {
         </div>
       </Content>
       <div>
-        <HeaderLink>RSVP</HeaderLink>
-        <HeaderLink>Show Info</HeaderLink>
-        <HeaderLink>Transcripts</HeaderLink>
-        <HeaderLink>Donate</HeaderLink>
-        <HeaderLink className="bg-yellow-500">Enter the garden</HeaderLink>
+        <HeaderLink href="/rsvp" zIndexClassName="z-50">
+          RSVP
+        </HeaderLink>
+        <HeaderLink zIndexClassName="z-50">Show Info</HeaderLink>
+        <HeaderLink zIndexClassName="z-50">Transcripts</HeaderLink>
+        <HeaderLink zIndexClassName="z-50">Donate</HeaderLink>
+        <HeaderLink zIndexClassName="z-50">
+          Livestream{" "}
+          <span className="text-3xl text-red-500">(9am-12pm PST today)</span>
+        </HeaderLink>
+        <HeaderLink zIndexClassName="z-50" className="bg-yellow-500">
+          Enter the exhibition
+        </HeaderLink>
       </div>
     </div>
   );
@@ -168,6 +182,7 @@ const PreviewSelector: React.FC<{
           alt="room preview"
           layout="fill"
           objectFit="cover"
+          className="cursor-pointer"
         />
       </div>
       <div className="uppercase text-xs md:text-sm font-bold pt-4">{title}</div>
@@ -177,9 +192,9 @@ const PreviewSelector: React.FC<{
 
 const previewContent = [
   `Output Field presents its debut exhibition: Skin Garden, a collection of artworks discussing bodies: through movement, space, sound, self, and fellow bodies. Skin Garden is body language. The three rooms inside this lobby present audiovisual reflections on our physical vessels, as they relate to trauma, language, queerness, tradition, and multiplicity.`,
-  `Walk-ins Welcome is a digital tattoo showroom. Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of artists who have embraced this shift in their practice.`,
   `Bodies Unhinge is an articulation of queer affect, through breath, movement, and voice. IOR50 and Betty Apple explore the ways unruly aesthetic experiences disrupt the borders of flesh and shake loose the psychic debris left by trauma. Here, the queer dynamics of raving offer the club as a site to sound out the affective afterlife of psychic injury.`,
   `Reconsider Flesh is a breathing sculpture garden nestled inside walls sculpted by Salomé Chatriot. Sourcing the multiplicity of flesh, this body of work carves out a space for just some of the bodies excluded when multitudes are reduced to a monolithic standard. These 3-dimensional musings are presented with Bella Baguena's distorted readings.`,
+  `Walk-ins Welcome is a digital tattoo showroom. Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of artists who have embraced this shift in their practice.`,
 ];
 
 const Previews: React.FC<{ className?: string }> = ({ className }) => {
@@ -190,15 +205,15 @@ const Previews: React.FC<{ className?: string }> = ({ className }) => {
     <div className={classnames(className)}>
       <div className="flex justify-between">
         <PreviewSelector
-          title="Bodies Unhinge"
-          imageSrc="/skingarden/rooms/Skin_Garden__Bodies_Unhinge.png"
+          title="The Lobby"
+          imageSrc="/skingarden/rooms/Skin_Garden__Lobby.png"
           active={activePreview === 0}
           onClick={() => setActive(0)}
           className="flex-1"
         />
         <PreviewSelector
-          title="The Lobby"
-          imageSrc="/skingarden/rooms/Skin_Garden__Lobby.png"
+          title="Bodies Unhinge"
+          imageSrc="/skingarden/rooms/Skin_Garden__Bodies_Unhinge.png"
           active={activePreview === 1}
           onClick={() => setActive(1)}
           className="flex-1"

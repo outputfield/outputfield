@@ -18,6 +18,9 @@ module.exports = {
       gridTemplateRows: {
         'artist': 'auto 1fr',
       },
+      cursor: {
+        pointer: 'url(/cursorHover_shadow.svg) 4 2, auto'
+      }
     },
     colors: {
       transparent: 'transparent',
@@ -56,7 +59,7 @@ module.exports = {
         '800': '#00006A',
         '900': '#000037'
       },
-    }
+    },
   },
   variants: {
     extend: {},
