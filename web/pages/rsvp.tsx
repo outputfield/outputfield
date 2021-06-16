@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import "tailwindcss/tailwind.css";
@@ -211,9 +212,53 @@ const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
   );
 };
 
+const meta_title = "Skin Garden RSVP";
+const meta_description = "RSVP for Skin Garden";
+const meta_canonical = "https://outputfield.com/rsvp";
+const meta_image = "https://outputfield.com/meta/social.png";
+
 const SkinGarden = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
+      <Head>
+        <title>{meta_title}</title>
+        <meta property="og:title" content={meta_title} />
+        <meta name="twitter:title" content={meta_title} />
+        <meta itemProp="name" content={meta_title} />
+        <link rel="canonical" href={meta_canonical} />
+        <meta property="og:url" content={meta_canonical} />
+        <meta name="description" content={meta_description} />
+        <meta itemProp="description" content={meta_description} />
+        <meta property="og:description" content={meta_description} />
+        <meta name="twitter:description" content={meta_description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="" />
+        <meta name="twitter:image" content={meta_image} />
+        <meta property="og:image" content={meta_image} />
+        <meta itemProp="image" content={meta_image} />
+        <meta property="og:image:alt" content={meta_title} />
+        <link rel="icon" href="/meta/favicon.ico" />
+        <link rel="shortcut icon" href={meta_canonical + "/meta/favicon.ico"} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={meta_canonical + "/meta/apple-touch-icon.png"}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href={meta_canonical + "/meta/favicon-32x32.png"}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href={meta_canonical + "/meta/favicon-16x16.png"}
+        />
+      </Head>
+
       <div className="container pb-10">
         <div className="flex justify-center">
           <div

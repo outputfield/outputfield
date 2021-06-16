@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import Head from "next/head";
 import Image from "next/image";
 import React, { FC, useState } from "react";
 import "tailwindcss/tailwind.css";
@@ -138,15 +139,30 @@ const Header: React.FC = () => {
         <HeaderLink href="/rsvp" zIndexClassName="z-50">
           RSVP
         </HeaderLink>
-        <HeaderLink zIndexClassName="z-50" href="https://www.notion.so/outputfield/Transcripts-1bc96764836b43ff9164e3cf779237bb" target="_blank">Transcripts</HeaderLink>
+        <HeaderLink
+          zIndexClassName="z-50"
+          href="https://www.notion.so/outputfield/Transcripts-1bc96764836b43ff9164e3cf779237bb"
+          target="_blank"
+        >
+          Transcripts
+        </HeaderLink>
         <HeaderLink zIndexClassName="z-50" href="/donate" target="_blank">
           Donate
         </HeaderLink>
-        <HeaderLink zIndexClassName="z-50" href="https://us02web.zoom.us/u/ketykq6snj" target="_blank">
+        <HeaderLink
+          zIndexClassName="z-50"
+          href="https://us02web.zoom.us/u/ketykq6snj"
+          target="_blank"
+        >
           Livestream{" "}
           {/* <span className="text-3xl text-red-500">(9am-12pm PST today)</span> */}
         </HeaderLink>
-        <HeaderLink href="https://newart.city/show/skingarden" target="_blank" zIndexClassName="z-50" className="bg-yellow-500">
+        <HeaderLink
+          href="https://newart.city/show/skingarden"
+          target="_blank"
+          zIndexClassName="z-50"
+          className="bg-yellow-500"
+        >
           Enter the exhibition
         </HeaderLink>
       </div>
@@ -262,9 +278,52 @@ const Arrow: FC<{ className?: string; scale?: number }> = ({
   );
 };
 
+const meta_title = "Skin Garden";
+const meta_description = "Enter the garden";
+const meta_canonical = "https://outputfield.com/skingarden";
+const meta_image = "https://outputfield.com/meta/social.png";
+
 const SkinGarden = () => {
   return (
     <div className="text-black bg-gray-100">
+      <Head>
+        <title>{meta_title}</title>
+        <meta property="og:title" content={meta_title} />
+        <meta name="twitter:title" content={meta_title} />
+        <meta itemProp="name" content={meta_title} />
+        <link rel="canonical" href={meta_canonical} />
+        <meta property="og:url" content={meta_canonical} />
+        <meta name="description" content={meta_description} />
+        <meta itemProp="description" content={meta_description} />
+        <meta property="og:description" content={meta_description} />
+        <meta name="twitter:description" content={meta_description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="" />
+        <meta name="twitter:image" content={meta_image} />
+        <meta property="og:image" content={meta_image} />
+        <meta itemProp="image" content={meta_image} />
+        <meta property="og:image:alt" content={meta_title} />
+        <link rel="icon" href="/meta/favicon.ico" />
+        <link rel="shortcut icon" href={meta_canonical + "/meta/favicon.ico"} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={meta_canonical + "/meta/apple-touch-icon.png"}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href={meta_canonical + "/meta/favicon-32x32.png"}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href={meta_canonical + "/meta/favicon-16x16.png"}
+        />
+      </Head>
       <Header />
       <Banner>
         <div className="md:flex hidden font-bold text-sm lg:text-base uppercase flex-wrap justify-between py-4">
