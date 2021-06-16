@@ -60,8 +60,10 @@ a {
   text-decoration: none;
 }
 
-html, body, input, img, img:hover {
-  @include defaultCursor;
+html, body, input, img:hover {
+  &:not(.cursor-pointer) {
+    @include defaultCursor;
+  }
 }
 
 a:hover, button:hover{

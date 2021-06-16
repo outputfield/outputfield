@@ -1,13 +1,13 @@
 import axios from "axios";
-import React, { useState,useEffect,useRef, AriaAttributes, DOMAttributes } from "react";
 import Head from 'next/head';
+import React, { useEffect, useRef, useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
-import { getPageContent } from "./api/page-content"
 import colors from "../colors";
 import styles from "../components/landingPage/index.module.scss";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
 import { TextInput } from "../components/text-input/text-input.component";
 import { Text } from "../components/text/text.component";
+import { getPageContent } from "./api/page-content";
 
 const page = "Frontpage";
 
@@ -105,7 +105,7 @@ declare global {
 }
 declare module 'react'{
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    itemprop?:any;
+    // itemProp?:any;
   }
 }
 
@@ -338,11 +338,11 @@ const Landing = (props) => {
         <title>{meta_title}</title>
       	<meta property="og:title" content={meta_title}/>
       	<meta name="twitter:title" content={meta_title}/>
-      	<meta itemprop="name" content={meta_title}/>
+      	<meta itemProp="name" content={meta_title}/>
         <link rel="canonical" href={meta_canonical}/>
         <meta property="og:url" content={meta_canonical}/>
         <meta name="description" content={meta_description}/>
-        <meta itemprop="description" content={meta_description}/>
+        <meta itemProp="description" content={meta_description}/>
         <meta property="og:description" content={meta_description}/>
         <meta name="twitter:description" content={meta_description}/>
         <meta property="og:type" content="website"/>
@@ -350,7 +350,7 @@ const Landing = (props) => {
         <meta name="twitter:site" content=""/>
         <meta name="twitter:image" content={meta_image}/>
         <meta property="og:image" content={meta_image}/>
-        <meta itemprop="image" content={meta_image}/>
+        <meta itemProp="image" content={meta_image}/>
         <meta property="og:image:alt" content={meta_title}/>
         <link rel="shortcut icon" href={meta_canonical+"/meta/favicon.ico"}/>
         <link rel="apple-touch-icon" sizes="180x180" href={meta_canonical+"/meta/apple-touch-icon.png"}/>

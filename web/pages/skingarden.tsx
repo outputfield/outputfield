@@ -1,233 +1,470 @@
 import classnames from "classnames";
+import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import React, { FC, useState } from "react";
 import "tailwindcss/tailwind.css";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
+import { Artist } from "../components/skingarden/artist";
+import { SpacedParagraphs } from "../components/skingarden/p-ify";
+import { skinGardenArtists } from "../constants/skingarden-artists";
+import { skingardenText } from "../constants/skingarden-text";
 
-const Link: React.FC<{
+const Banner: FC<{ className?: string }> = ({ children, className }) => {
+  return (
+    <div className={classnames(className, "w-full p-y-8 bg-gray-300")}>
+      <Content>{children}</Content>
+    </div>
+  );
+};
+
+const DonateButton: React.FC = () => (
+  <SignUpButton
+    buttonText="Donate"
+    handleClick={() => {
+      window.open("/donate");
+    }}
+  />
+);
+
+const Content: React.FC<{ className?: string; innerClassName?: string }> = ({
+  className,
+  innerClassName,
+  children,
+}) => {
+  return (
+    <div className={classnames(className, "flex justify-center px-6 sm:px-10")}>
+      <div className={classnames(innerClassName, "w-full max-w-4xl")}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+const ArtistGroup: React.FC<{ title?: string; className?: string }> = ({
+  title,
+  children,
+  className,
+}) => {
+  return (
+    <div className={className}>
+      {title ? (
+        <h3 className="font-bold text-black uppercase mb-8">{title}:</h3>
+      ) : null}
+
+      <div className="space-y-20">{children}</div>
+    </div>
+  );
+};
+
+const Section: React.FC<{ title?: string }> = ({ title, children }) => {
+  return (
+    <div className="pb-48 last:pb-24">
+      {title ? (
+        <h2 className="text-3xl sm:text-4xl pb-6 font-serif">{title}</h2>
+      ) : null}
+      <div className="space-y-24">{children}</div>
+      <div className="text-center pt-20">
+        <DonateButton />
+      </div>
+    </div>
+  );
+};
+
+const HeaderLink: React.FC<{
   className?: string;
   href?: string;
   target?: string;
-}> = ({ className, children, href, target }) => {
+  zIndexClassName?: string;
+}> = ({ children, className, href, target, zIndexClassName }) => {
   return (
     <a
-      className={classnames(
-        "text-lg font-semibold filter drop-shadow-2xl",
-        className
-      )}
-      style={{
-        color: "rgb(4, 4, 255)",
-        textShadow: `0 0 2px rgba(4, 4, 255, 0.4)`,
-      }}
       href={href}
       target={target}
+      className={classnames(
+        className,
+        zIndexClassName,
+        "text-4xl sm:text-7xl font-bold text-black block py-1 sm:py-3 border-b border-dashed first:border-t"
+      )}
     >
-      {children}
+      <Content className={zIndexClassName} innerClassName={zIndexClassName}>
+        {children}
+      </Content>
     </a>
   );
 };
-
-const Logo: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <Image src="/SGLogo.png" alt="decorative arc" height="200" width="222" />
-  );
-};
-
-const Header: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <div className={classnames("p-5 text-center", className)}>
-      <div className="text-center flex flex-col">
-        <div>
-          <Logo className="mb-6" />
-        </div>
-        <Link className="uppercase" href="/" target="_blank">
-          Output Field
-        </Link>
-        <div className="uppercase text-lg">Debut showcase</div>
-      </div>
-    </div>
-  );
-};
-
-const DaySubheader: React.FC = ({ children }) => {
-  return <h3 className="text-lg font-bold pb-1">{children}</h3>;
-};
-
-const Day: React.FC<{
-  className?: string;
-  day: string;
-  date: string;
-  time: string;
-  rsvpLink: string;
-  room: ReturnType<React.FC>;
-  happening: ReturnType<React.FC>;
-  who: ReturnType<React.FC>;
-  description: ReturnType<React.FC>;
-}> = ({
+const HeaderDate: React.FC<{ className?: string }> = ({
+  children,
   className,
-  day,
-  date,
-  time,
-  room,
-  happening,
-  rsvpLink,
-  who,
-  description,
 }) => {
   return (
-    <div className={classnames("", className)}>
-      <div className="pb-6">
-        <div className="font-serif italic text-gray-700 pb-2 text-base">
-          {day}
-        </div>
-        <div className="font-serif italic text-4xl pb-2">
-          {date}
-          <span className="text-base pl-4">{time}</span>
-        </div>
-        <Link className="mb-6" href={rsvpLink} target="_blank">
-          RSVP
-        </Link>
-      </div>
-      <div className="h-24 text-lg leading-snug">
-        <DaySubheader>What Room is Opening?</DaySubheader>
-        {room}
-      </div>
-      <div className="h-24 text-lg leading-snug">
-        <DaySubheader>What else is Happening?</DaySubheader>
-        {happening}
-      </div>
-      <div className="h-20 text-lg leading-snug">
-        <DaySubheader>Where?</DaySubheader>
-        <div>Find zoom code in the Lobby</div>
-      </div>
-      <div className="h-28 text-lg leading-snug">
-        <DaySubheader>Who?</DaySubheader>
-        {who}
-      </div>
-      <div className="text-md leading-snug">{description}</div>
+    <div className={classnames("uppercase font-bold text-lg", className)}>
+      {children}
     </div>
   );
 };
-
-const Wednesday: React.FC<{ className?: string }> = ({ className }) => {
+const Header: React.FC = () => {
   return (
-    <Day
-      className={classnames("", className)}
-      day="Wednesday"
-      time="2PM PST"
-      date="6/16"
-      rsvpLink="https://skingarden-day1.splashthat.com/"
-      room={<div>Skin Garden Lobby & Walk-ins Welcome</div>}
-      happening={<div>DJ sets hosted by bien agiter</div>}
-      who={<div>Soft Matter, Online Threat, & more</div>}
-      description={
-        <div>
-          Get acquainted with the Skin Garden lobby. This will be our living
-          room for the next three days. Some of our artist friends will be
-          streaming some mixes over Zoom. Zoom code will be in the New Art City
-          space
-        </div>
-      }
-    />
-  );
-};
-
-const Thursday: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <Day
-      className={classnames("", className)}
-      day="Thursday"
-      date="6/17"
-      time="9AM PST"
-      rsvpLink="https://skingarden-day2.splashthat.com/"
-      room={<div>Bodies Unhinge</div>}
-      happening={<div>Panel Discussion, Q&A</div>}
-      who={<div>Betty Apple, IOR50, Venus in Foil</div>}
-      description={
-        <div>
-          Tune in to hear the approach behind the room, Bodies Unhinge. The
-          artists behind the space discuss the process behind articulating queer
-          affect, through breath, movement, voice. There will be a Q&A at the
-          end.
-        </div>
-      }
-    />
-  );
-};
-
-const Friday: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <Day
-      className={classnames("", className)}
-      day="Friday"
-      date="6/18"
-      time="11AM PST"
-      rsvpLink="https://skingarden-day3.splashthat.com/"
-      room={<div>Reconsider Flesh</div>}
-      happening={<div>Streaming theory about bodies</div>}
-      who={<div>TBA</div>}
-      description={
-        <div>
-          We will be broadcasting some literature and theory that inspired the
-          concept behind Reconsider Flesh, namely the soundscape. Tune in to
-          hear thoughts on our relationship with bodies, and the plurality they
-          carry with them.
-        </div>
-      }
-    />
-  );
-};
-
-const RsvpContent: React.FC<{ className: string }> = ({ className }) => {
-  return (
-    <div className={className}>
+    <div className="">
       <div
-        className="grid 
-        gap-y-20 lg:gap-x-16 lg:gap-y-12
-        lg:grid-auto-rows grid-cols-1 lg:grid-cols-rsvp
-        max-w-xs sm:max-w-sm lg:max-w-none"
+        className="
+        w-full flex justify-center
+        sm:absolute"
       >
-        <Wednesday className="" />
-        <Thursday className="" />
-        <Friday className="" />
-        <div className="lg:col-span-2">
-          <div className="font-serif text-4xl italic">
-            We’re raising funds for the featured artists. Donate to nourish the
-            underground!
-          </div>
+        <div className="sm:w-full sm:max-w-xl sm:text-right sm:pt-20">
+          <Image
+            src="/skingarden/logorotate.gif"
+            alt="Sking garden logo"
+            height="200"
+            width="222"
+            className="z-10"
+          />
         </div>
-        <div className="">
-          <div className="text-center mt-3">
-            <SignUpButton
-              buttonText="Donate"
-              handleClick={() => {
-                window.open("/donate");
-              }}
-            />
-          </div>
+      </div>
+
+      <Content>
+        <div
+          className="
+          z-0
+          flex space-x-8 justify-center pb-8 sm:pb-0
+          sm:justify-start sm:absolute sm:pl-52 sm:pt-7"
+        >
+          <HeaderDate className="text-red-500 transform -rotate-3">
+            Wed 6/16
+          </HeaderDate>
+          <HeaderDate className="transform rotate-12">Thur 6/17</HeaderDate>
+          <HeaderDate className="transform -rotate-12">Fri 6/18</HeaderDate>
         </div>
+      </Content>
+      <div>
+        <HeaderLink href="/rsvp" zIndexClassName="z-50">
+          RSVP
+        </HeaderLink>
+        <HeaderLink
+          zIndexClassName="z-50"
+          href="https://www.notion.so/outputfield/Transcripts-1bc96764836b43ff9164e3cf779237bb"
+          target="_blank"
+        >
+          Transcripts
+        </HeaderLink>
+        <HeaderLink zIndexClassName="z-50" href="/donate" target="_blank">
+          Donate
+        </HeaderLink>
+        <HeaderLink
+          zIndexClassName="z-50"
+          href="https://us02web.zoom.us/j/86576915254"
+          target="_blank"
+        >
+          Livestream{" "}
+          {/* <span className="text-3xl text-red-500">(9am-12pm PST today)</span> */}
+        </HeaderLink>
+        <HeaderLink
+          href="https://newart.city/show/skingarden"
+          target="_blank"
+          zIndexClassName="z-50"
+          className="bg-yellow-500"
+        >
+          Enter the exhibition
+        </HeaderLink>
       </div>
     </div>
   );
 };
+
+const PreviewSelector: React.FC<{
+  title: string;
+  active?: boolean;
+  onClick?: () => void;
+  className?: string;
+  imageSrc: string;
+}> = ({ title, imageSrc, active, onClick, className }) => {
+  return (
+    <div
+      className={classnames("cursor-pointer", className)}
+      onClick={() => onClick?.()}
+    >
+      <div
+        className={classnames(
+          active && "",
+          "h-[98px] w-[70px]",
+          "sm:h-[168px] sm:w-[120px]",
+          "lg:h-[280px] lg:w-[200px]",
+          "cursor-pointer transition duration-200 p-0 relative"
+        )}
+        style={
+          active
+            ? { boxShadow: "0px 0px 10px 6px rgba(0,0,255,0.8)" }
+            : undefined
+        }
+      >
+        <Image
+          src={imageSrc}
+          alt="room preview"
+          layout="fill"
+          objectFit="cover"
+          className="cursor-pointer"
+        />
+      </div>
+      <div className="uppercase text-xs md:text-sm font-bold pt-4">{title}</div>
+    </div>
+  );
+};
+
+const previewContent = [
+  `Output Field presents its debut exhibition: Skin Garden, a collection of artworks discussing bodies: through movement, space, sound, self, and fellow bodies. Skin Garden is body language. The three rooms inside this lobby present audiovisual reflections on our physical vessels, as they relate to trauma, language, queerness, tradition, and multiplicity.`,
+  `Bodies Unhinge is an articulation of queer affect, through breath, movement, and voice. IOR50 and Betty Apple explore the ways unruly aesthetic experiences disrupt the borders of flesh and shake loose the psychic debris left by trauma. Here, the queer dynamics of raving offer the club as a site to sound out the affective afterlife of psychic injury.`,
+  `Reconsider Flesh is a breathing sculpture garden nestled inside walls sculpted by Salomé Chatriot. Sourcing the multiplicity of flesh, this body of work carves out a space for just some of the bodies excluded when multitudes are reduced to a monolithic standard. These 3-dimensional musings are presented with Bella Baguena's distorted readings.`,
+  `Walk-ins Welcome is a digital tattoo showroom. Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of tattooers who have embraced this shift in their practice.`,
+];
+
+const Previews: React.FC<{ className?: string }> = ({ className }) => {
+  const [activePreview, setActive] = useState(0);
+  const content = previewContent[activePreview];
+
+  return (
+    <div className={classnames(className)}>
+      <div className="flex justify-between">
+        <PreviewSelector
+          title="The Lobby"
+          imageSrc="/skingarden/rooms/Skin_Garden__Lobby.png"
+          active={activePreview === 0}
+          onClick={() => setActive(0)}
+          className="flex-1"
+        />
+        <PreviewSelector
+          title="Bodies Unhinge"
+          imageSrc="/skingarden/rooms/Skin_Garden__Bodies_Unhinge.png"
+          active={activePreview === 1}
+          onClick={() => setActive(1)}
+          className="flex-1"
+        />
+        <PreviewSelector
+          title="Reconsider Flesh"
+          imageSrc="/skingarden/rooms/Skin_Garden__Reconsider_Flesh.png"
+          active={activePreview === 2}
+          onClick={() => setActive(2)}
+          className="flex-1"
+        />
+        <PreviewSelector
+          title="Walk-ins Welcome"
+          imageSrc="/skingarden/rooms/Skin_Garden__WalkinsWelcome.png"
+          active={activePreview === 3}
+          onClick={() => setActive(3)}
+          className="flex-1"
+        />
+      </div>
+      <div className="pt-8 text-lg">{content}</div>
+    </div>
+  );
+};
+
+const Arrow: FC<{ className?: string; scale?: number }> = ({
+  className,
+  scale = 1,
+}) => {
+  return (
+    <div
+      className={classnames(
+        className,
+        "inline-block transform translate-y-[2px]"
+      )}
+    >
+      <Image
+        src="/skingarden/rooms/arrowLarge.svg"
+        alt="arrow"
+        height={15 * scale}
+        width={40 * scale}
+      />
+    </div>
+  );
+};
+
+const meta_title = "Skin Garden";
+const meta_description = "Enter the garden";
+const meta_canonical = "https://outputfield.com/skingarden";
+const meta_image = "https://outputfield.com/meta/social.png";
 
 const SkinGarden = () => {
   return (
-    <div className="bg-gray-100 min-h-screen flex justify-center xl:pt-20">
-      <div className="container pb-10">
-        <div className="flex justify-center">
-          <div
-            className="grid gap-10
-          grid-cols-1 grid-auto-rows
-          xl:grid-rows-1 xl:grid-auto-cols"
-          >
-            <Header className="xl:row-start-1 xl:col-start-1 xl:w-64" />
-            <RsvpContent className="xl:row-start-1 xl:col-start-2 " />
+    <div className="text-black bg-gray-100">
+      <Head>
+        <title>{meta_title}</title>
+        <meta property="og:title" content={meta_title} />
+        <meta name="twitter:title" content={meta_title} />
+        <meta itemProp="name" content={meta_title} />
+        <link rel="canonical" href={meta_canonical} />
+        <meta property="og:url" content={meta_canonical} />
+        <meta name="description" content={meta_description} />
+        <meta itemProp="description" content={meta_description} />
+        <meta property="og:description" content={meta_description} />
+        <meta name="twitter:description" content={meta_description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="" />
+        <meta name="twitter:image" content={meta_image} />
+        <meta property="og:image" content={meta_image} />
+        <meta itemProp="image" content={meta_image} />
+        <meta property="og:image:alt" content={meta_title} />
+        <link rel="icon" href="/meta/favicon.ico" />
+        <link rel="shortcut icon" href={meta_canonical + "/meta/favicon.ico"} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={meta_canonical + "/meta/apple-touch-icon.png"}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href={meta_canonical + "/meta/favicon-32x32.png"}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href={meta_canonical + "/meta/favicon-16x16.png"}
+        />
+      </Head>
+      <Header />
+      <Banner>
+        <div className="md:flex hidden font-bold text-sm lg:text-base uppercase flex-wrap justify-between py-4">
+          <div>Output Field's debut exhibition</div>
+          <Arrow />
+          <div>3 openings, 3 events, 3 days</div>
+          <Arrow />
+          <div>4 rooms, 30 artists</div>
+        </div>
+        <div className="md:hidden uppercase font-bold py-4 flex justify-center">
+          <div className="space-y-1">
+            <div>Output Field's debut exhibition</div>
+            <div>
+              <Arrow /> 3 openings, 3 events, 3 days
+            </div>
+            <div>
+              <Arrow /> 4 rooms, 30 artists
+            </div>
           </div>
         </div>
-      </div>
+      </Banner>
+
+      <Content className="pt-20 pb-24">
+        <Previews />
+      </Content>
+      <Banner className="mb-28 uppercase font-bold py-4">
+        <div className="md:flex justify-between space-y-4 md:space-y-0">
+          <div className="md:min-w-max">
+            We're raising $5000 for these featured artists{" "}
+            <a href="/donate" target="_blank" className="underline">
+              here!
+              <Arrow scale={1} className="-rotate-45" />
+            </a>
+          </div>
+          <div className="md:min-w-max">Full show notes below</div>
+        </div>
+      </Banner>
+
+      <Content>
+        <Section title="The Lobby">
+          <SpacedParagraphs text={skingardenText.lobby} />
+          <ArtistGroup title="Soundscape By">
+            <Artist artist={skinGardenArtists.toobaGreerWilliams} />
+          </ArtistGroup>
+          <ArtistGroup title="Space Sculpted By">
+            <Artist artist={skinGardenArtists.kushagra} />
+          </ArtistGroup>
+        </Section>
+      </Content>
+
+      <Content>
+        <Section title="Bodies Unhinge">
+          <SpacedParagraphs text={skingardenText.bodiesUnhinge} />
+          <ArtistGroup title="Sound Woven By">
+            <Artist artist={skinGardenArtists.bettyApple} />
+          </ArtistGroup>
+          <ArtistGroup title="Space Sculpted By">
+            <Artist artist={skinGardenArtists.ior50} />
+          </ArtistGroup>
+        </Section>
+      </Content>
+
+      <Content>
+        <Section title="Reconsider Flesh">
+          <SpacedParagraphs text={skingardenText.reconsiderFlesh} />
+          <ArtistGroup title="Space Sculpted By">
+            <Artist artist={skinGardenArtists.salomeChatriot} />
+          </ArtistGroup>
+          <ArtistGroup title="Sound Woven By">
+            <Artist artist={skinGardenArtists.bellaBaguena} />
+          </ArtistGroup>
+          <ArtistGroup title="Featuring Artwork From">
+            <Artist artist={skinGardenArtists.bora} />
+            <Artist artist={skinGardenArtists.victoriaCribb} />
+            <Artist artist={skinGardenArtists.hardmetacore} />
+            <Artist artist={skinGardenArtists.mengki} />
+            <Artist artist={skinGardenArtists.vxn} />
+            <Artist artist={skinGardenArtists.deboraSilva} />
+            <Artist artist={skinGardenArtists.harrietDavey} />
+            <Artist artist={skinGardenArtists.humanImitation} />
+            <Artist artist={skinGardenArtists.nadyaPlyamko} />
+            <Artist artist={skinGardenArtists.teresaRofer} />
+            <Artist artist={skinGardenArtists.elPopoSangre} />
+            <Artist artist={skinGardenArtists.ryanVautier} />
+            <Artist artist={skinGardenArtists.sarahBlomey} />
+            <Artist artist={skinGardenArtists.oliaSvetlana} />
+          </ArtistGroup>
+        </Section>
+        <Section title="Walk-ins Welcome">
+          <SpacedParagraphs text={skingardenText.walkinsWelcome} />
+          <ArtistGroup title="Space Sculpted By">
+            <Artist artist={skinGardenArtists.ladyBambs} />
+          </ArtistGroup>
+          <ArtistGroup title="Sculptures By">
+            <Artist artist={skinGardenArtists.nusiQuero} />
+            <Artist artist={skinGardenArtists.alexShilt} />
+          </ArtistGroup>
+          <ArtistGroup title="Sound Woven By">
+            <Artist artist={skinGardenArtists.sammieVeeler} />
+            <Artist artist={skinGardenArtists.nusiQuero} />
+          </ArtistGroup>
+          <ArtistGroup title="Featuring Tattoos From">
+            <Artist artist={skinGardenArtists.hydroMachine} />
+            <Artist artist={skinGardenArtists.lvDian} />
+            <Artist artist={skinGardenArtists.heavenlyBeautyTattoo} />
+            <Artist artist={skinGardenArtists.pang} />
+          </ArtistGroup>
+        </Section>
+        <Section title="Curators">
+          <SpacedParagraphs text={skingardenText.curators} />
+          <ArtistGroup>
+            <Artist artist={skinGardenArtists.vivianQiu} />
+            <Artist artist={skinGardenArtists.venusInFoil} />
+            <Artist artist={skinGardenArtists.salomeChatriotCurator} />
+          </ArtistGroup>
+        </Section>
+        <Section title="Acknowledgements">
+          <SpacedParagraphs text={skingardenText.acknowledgements} />
+        </Section>
+      </Content>
+      <Banner className="text-lg font-bold uppercase py-4">
+        <div className="space-y-2 lg:space-y-0 lg:flex lg:flex-row lg:justify-between lg:flex-wrap">
+          <div>Support our mission to redistribute clout.</div>
+          <a href="/" target="_blank" className="underline block">
+            outputfield.com
+            <Arrow scale={1} className="-rotate-45" />
+          </a>
+          <a
+            href="https://www.instagram.com/output.field/"
+            target="_blank"
+            className="underline block"
+          >
+            instagram
+            <Arrow scale={1} className="-rotate-45" />
+          </a>
+        </div>
+      </Banner>
     </div>
   );
 };
 
 export default SkinGarden;
+
+// trigger build

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head';
+import React, { useEffect, useRef, useState } from "react";
 import { getErrorMessage } from "../api-client/errors";
-import { getPageContent } from "./api/page-content";
 import styles from "../components/live/live.module.scss";
 import { SignUpButton } from "../components/sign-up-button/sign-up-button.component";
+import { getPageContent } from "./api/page-content";
 
 
 declare module 'react'{
@@ -77,11 +77,11 @@ const Live = (props) => {
         <style>{'html,body,#__next { background-color: #e5e5e5; }'}</style>
       	<meta property="og:title" content={meta_title}/>
       	<meta name="twitter:title" content={meta_title}/>
-      	<meta itemprop="name" content={meta_title}/>
+      	<meta itemProp="name" content={meta_title}/>
         <link rel="canonical" href={meta_canonical}/>
         <meta property="og:url" content={meta_canonical}/>
         <meta name="description" content={meta_description}/>
-        <meta itemprop="description" content={meta_description}/>
+        <meta itemProp="description" content={meta_description}/>
         <meta property="og:description" content={meta_description}/>
         <meta name="twitter:description" content={meta_description}/>
         <meta property="og:type" content="website"/>
@@ -89,7 +89,7 @@ const Live = (props) => {
         <meta name="twitter:site" content=""/>
         <meta name="twitter:image" content={meta_image}/>
         <meta property="og:image" content={meta_image}/>
-        <meta itemprop="image" content={meta_image}/>
+        <meta itemProp="image" content={meta_image}/>
         <meta property="og:image:alt" content={meta_title}/>
         <link rel="shortcut icon" href="https://outputfield.com/meta/favicon.ico"/>
         <link rel="apple-touch-icon" sizes="180x180" href="https://outputfield.com/meta/apple-touch-icon.png"/>
