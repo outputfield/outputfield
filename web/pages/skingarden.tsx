@@ -197,7 +197,7 @@ const previewContent = [
   `Output Field presents its debut exhibition: Skin Garden, a collection of artworks discussing bodies: through movement, space, sound, self, and fellow bodies. Skin Garden is body language. The three rooms inside this lobby present audiovisual reflections on our physical vessels, as they relate to trauma, language, queerness, tradition, and multiplicity.`,
   `Bodies Unhinge is an articulation of queer affect, through breath, movement, and voice. IOR50 and Betty Apple explore the ways unruly aesthetic experiences disrupt the borders of flesh and shake loose the psychic debris left by trauma. Here, the queer dynamics of raving offer the club as a site to sound out the affective afterlife of psychic injury.`,
   `Reconsider Flesh is a breathing sculpture garden nestled inside walls sculpted by Salomé Chatriot. Sourcing the multiplicity of flesh, this body of work carves out a space for just some of the bodies excluded when multitudes are reduced to a monolithic standard. These 3-dimensional musings are presented with Bella Baguena's distorted readings.`,
-  `Walk-ins Welcome is a digital tattoo showroom. Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of artists who have embraced this shift in their practice.`,
+  `Walk-ins Welcome is a digital tattoo showroom. Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of tattooers who have embraced this shift in their practice.`,
 ];
 
 const Previews: React.FC<{ className?: string }> = ({ className }) => {
@@ -302,6 +302,30 @@ const SkinGarden = () => {
           <div className="md:min-w-max">Full show notes below</div>
         </div>
       </Banner>
+
+      <Content>
+        <Section title="The Lobby">
+          <SpacedParagraphs text={skingardenText.lobby} />
+          <ArtistGroup title="Soundscape By">
+            <Artist artist={skinGardenArtists.toobaGreerWilliams} />
+          </ArtistGroup>
+          <ArtistGroup title="Space Sculpted By">
+            <Artist artist={skinGardenArtists.kushagra} />
+          </ArtistGroup>
+        </Section>
+      </Content>
+
+      <Content>
+        <Section title="Bodies Unhinge">
+          <SpacedParagraphs text={skingardenText.bodiesUnhinge} />
+          <ArtistGroup title="Sound Woven By">
+            <Artist artist={skinGardenArtists.bettyApple} />
+          </ArtistGroup>
+          <ArtistGroup title="Space Sculpted By">
+            <Artist artist={skinGardenArtists.ior50} />
+          </ArtistGroup>
+        </Section>
+      </Content>
 
       <Content>
         <Section title="Reconsider Flesh">

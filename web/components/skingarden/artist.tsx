@@ -37,7 +37,13 @@ const ArtImage: React.FC<{ className?: string; artist: SkinGardenArtist }> = ({
   return (
     <div className={classnames(className, "")}>
       {artist.image ? (
-        <Image src={artist.image} height="192" width="192" />
+        <Image
+          src={artist.image}
+          alt="artist image"
+          height="192"
+          width="192"
+          objectFit="cover"
+        />
       ) : (
         <div className={classnames("w-48 h-48 bg-green-100 shadow-md")}></div>
       )}
