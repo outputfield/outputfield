@@ -151,7 +151,7 @@ const Header: React.FC = () => {
         </HeaderLink>
         <HeaderLink
           zIndexClassName="z-50"
-          href="https://us02web.zoom.us/j/86576915254"
+          href="https://us02web.zoom.us/j/86150716637"
           target="_blank"
         >
           Livestream{" "}
