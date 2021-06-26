@@ -8,7 +8,7 @@ export const skingardenText = {
   `,
 
   bodiesUnhinge: `
-  Created by Viv Qiu and Venus in Foil
+  Curated by Viv Qiu and Venus in Foil
 
   This room articulates the experience of becoming unhinged: exploring the ways unruly aesthetic experiences disrupt the borders of flesh and shake loose the psychic debris left by trauma. Here, the queer dynamics of raving offer the club as a site to sound out the affective afterlife of psychic injury.
 

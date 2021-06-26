@@ -110,7 +110,7 @@ const Header: React.FC = () => {
         w-full flex justify-center
         sm:absolute"
       >
-        <div className="sm:w-full sm:max-w-xl sm:text-right sm:pt-20">
+        <div className="sm:w-full sm:max-w-xl sm:text-right sm:pt-6">
           <Image
             src="/skingarden/logorotate.gif"
             alt="Sking garden logo"
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <Content>
+      {/* <Content>
         <div
           className="
           z-0
@@ -134,11 +134,11 @@ const Header: React.FC = () => {
           <HeaderDate className="transform rotate-12">Thur 6/17</HeaderDate>
           <HeaderDate className="transform -rotate-12">Fri 6/18</HeaderDate>
         </div>
-      </Content>
+      </Content> */}
       <div>
-        <HeaderLink href="/rsvp" zIndexClassName="z-50">
+        {/* <HeaderLink href="/rsvp" zIndexClassName="z-50">
           RSVP
-        </HeaderLink>
+        </HeaderLink> */}
         <HeaderLink
           zIndexClassName="z-50"
           href="https://www.notion.so/outputfield/Transcripts-1bc96764836b43ff9164e3cf779237bb"
@@ -151,11 +151,10 @@ const Header: React.FC = () => {
         </HeaderLink>
         <HeaderLink
           zIndexClassName="z-50"
-          href="https://us02web.zoom.us/j/88490061082"
+          href="https://www.youtube.com/playlist?list=PLKQkL1w2Lx2sdws9l78G-YWWCkdZyRIGK"
           target="_blank"
         >
-          Livestream{" "}
-          {/* <span className="text-3xl text-red-500">(9am-12pm PST today)</span> */}
+          Livestream archive
         </HeaderLink>
         <HeaderLink
           href="https://newart.city/show/skingarden"
