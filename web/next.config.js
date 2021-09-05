@@ -11,7 +11,7 @@ module.exports = {
       {
         source: "/sgarchive",
         destination:
-          "https://www.youtube.com/playlist?list=PLKQkL1w2Lx2uPjLpn_t5no-fxDaL48u20",
+          "https://youtube.com/playlist?list=PLKQkL1w2Lx2uPjLpn_t5no-fxDaL48u20",
         permanent: false,
       },
     ];
