@@ -151,7 +151,7 @@ const Header: React.FC = () => {
         </HeaderLink>
         <HeaderLink
           zIndexClassName="z-50"
-          href="https://www.youtube.com/playlist?list=PLKQkL1w2Lx2sdws9l78G-YWWCkdZyRIGK"
+          href="/sgarchive"
           target="_blank"
         >
           Livestream archive
