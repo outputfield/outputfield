@@ -3,6 +3,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/leymusoom',
+        destination: 'https://newart.city/show/leymusoom-digital-shrine',
+        permanent: false,
+      },
+      {
         source: "/pressrelease",
         destination:
           "https://www.notion.so/Output-Field-presents-Skin-Garden-A-virtual-exhibition-about-bodies-3b0423fcb4034d6399b1baa907ebce4f",
