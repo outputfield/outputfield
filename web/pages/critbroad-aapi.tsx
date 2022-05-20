@@ -138,7 +138,7 @@ Live.getInitialProps = async function (context) {
     const pageData = await getPageContent("live");
     return { pageData }
   } catch (event) {
-    throw getErrorMessage(event);
+    throw getErrorMessage(event as any);
   }
 };
 

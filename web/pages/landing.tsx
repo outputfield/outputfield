@@ -130,7 +130,7 @@ const Landing = (props) => {
       const response = await axios.post("/api/signup", { email });
       setState("success");
     } catch (event) {
-      setError(getErrorMessage(event));
+      setError(getErrorMessage(event as any));
       setState("error");
     }
   };
@@ -457,7 +457,7 @@ Landing.getInitialProps = async function (context) {
     pageData.currentModel = Math.floor(Math.random() * models.length);
     return { pageData }
   } catch (event) {
-    throw getErrorMessage(event);
+    throw getErrorMessage(event as any);
   }
 };
 
