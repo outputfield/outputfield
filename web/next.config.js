@@ -19,6 +19,23 @@ module.exports = {
           "https://youtube.com/playlist?list=PLKQkL1w2Lx2uPjLpn_t5no-fxDaL48u20",
         permanent: false,
       },
+      {
+        source: "/live",
+        destination:"/powersofcringe",
+        permanent: false,
+      },
+      {
+        source: "/pofc-transcript",
+        destination:
+          "https://outputfield.notion.site/Full-Transcript-976a9230657d422aad5c687fa3d0e062",
+        permanent: false,
+      },
+      {
+        source: "/pofc-citations",
+        destination:
+          "https://outputfield.notion.site/Citations-time-stamped-d4c642ead1e44e6694a9bf276e974195",
+        permanent: false,
+      },
     ];
   },
 };
