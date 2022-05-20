@@ -169,7 +169,8 @@ const Live = (props) => {
   const meta_title = "Output Field";
   const meta_description = "Powers of Cringe";
   const meta_canonical = "https://outputfield.com/powersofcringe";
-  const meta_image = "https://outputfield.com/powersofcringe/tourdemoon-x-outputfield.png";
+  const meta_image =
+    "https://outputfield.com/powersofcringe/tourdemoon-x-outputfield.png";
 
   return (
     <div className={styles.root}>
@@ -215,7 +216,7 @@ const Live = (props) => {
         />
       </Head>
       <div className={styles.grid}>
-        {message != "" ? (
+        {/* {message != "" ? (
           <div className={styles.donation}>{message}</div>
         ) : (
           <div className={styles.icon}>
@@ -225,8 +226,25 @@ const Live = (props) => {
               Output Field
             </a>
           </div>
-        )}
+        )} */}
+        <div className={styles.icon}>
+          <a href="../">
+            <img src="live/favicon.png" />
+            <br />
+            Output Field
+          </a>
+        </div>
         <div className={styles.video}>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/eM3NVbiQQdA"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          {/*         
           {live == true ? (
             <iframe
               ref={video}
@@ -245,7 +263,7 @@ const Live = (props) => {
                 src="powersofcringe/tourdemoon-x-outputfield.png"
               />
             </div>
-          )}
+          )} */}
         </div>
         <div className={styles.detailgrid}>
           <div className={styles.detailtitle}>
