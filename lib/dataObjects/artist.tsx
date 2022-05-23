@@ -1,20 +1,20 @@
-import Work from './work';
-import Link from './link';
+import Work from './work'
+import Link from './link'
 
 export default class Artist{
-  name: string;
-  handle: string;
-  iconColor: string;
-  medium: string;
-  location: string;
-  email: string;
-  pronouns: string;
-  works: Work[];
-  bio: string;
-  mediums: string[];
-  mediumsOfInterest: string[];
-  links: Link[];
-  referredBy: Artist;
+  name: string
+  handle: string
+  iconColor: string
+  medium: string
+  location: string
+  email: string
+  pronouns: string
+  works: Work[]
+  bio: string
+  mediums: string[]
+  mediumsOfInterest: string[]
+  links: Link[]
+  referredBy: string
 
   constructor(
     name: string,
@@ -22,27 +22,27 @@ export default class Artist{
     iconColor: string,
     medium: string,
     location: string,
-    email: string = null,
-    pronouns: string = null,
-    works: Work[] = null,
-    bio: string = null,
-    mediums: string[] = null,
-    mediumsOfInterest: string[] = null,
-    links: Link[] = null,
-    referredBy: Artist = null,
+    email: string,
+    pronouns: string,
+    works: Work[],
+    bio: string,
+    mediums: string[],
+    mediumsOfInterest: string[],
+    links: Link[],
+    referredBy: string,
   ){
-    this.name = name;
-    this.handle = handle;
-    this.iconColor = iconColor;
-    this.medium = medium;
-    this.location = location;
-    this.email = email;
-    this.pronouns = pronouns;
-    this.works = works;
-    this.bio = bio;
+    this.name = name
+    this.handle = handle
+    this.iconColor = iconColor
+    this.medium = medium
+    this.location = location
+    this.email = email
+    this.pronouns = pronouns
+    this.works = works
+    this.bio = bio
     this.mediums = mediums
-    this.mediumsOfInterest = mediumsOfInterest;
-    this.links = links;
-    this.referredBy = referredBy;
+    this.mediumsOfInterest = mediumsOfInterest
+    this.links = links
+    this.referredBy = referredBy
   }
 }

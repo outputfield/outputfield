@@ -12,59 +12,75 @@ model User {
   name      String    @unique @db.VarChar(255)
   password  String?
   email     String    @unique @db.VarChar(255)
-  pronoun   String?
-  role      UserRole  @default(ARTIST)
   createdAt DateTime  @default(now()) @map(name: "created_at")
-  bio       String    @default("")
-  medium    String    @default("")
 
   // Relation fields
-  tokens    Token[]
-  projects  Project[]
+  // tokens    Token[]
+  // projects  Project[]
+  artist    Artist?
+  // curator     Curator?
+  // venue     Venue?
 }
 
 model Artist {
   id                Int       @id @default(autoincrement())
-  name              String    @unique @db.VarChar(255)
-  email             String    @unique @db.VarChar(255)
+  title             String    @default("")
   pronoun           String?   @default("")
   createdAt         DateTime  @default(now()) @map(name: "created_at")
   bio               String    @default("")
-  medium            String    @default("")
   location          String    @default("")
   iconColor         String    @default("")
-  handle            String    @unique @db.VarChar(255)
+  handle            String    @unique @db.VarChar(255) 
   mediums           String[]
   mediumsOfInterest String[]
 
+  // Relation fields
   work              Work[]
   links             Link[]
-  //referredBy        Artist[]
 
-  // Relation fields
+  referrerId        Int?      
+  referredBy        Artist?   @relation("ArtistReference", fields: [referrerId], references: [id])
+  referred          Artist?  @relation("ArtistReference")
+
   //tokens    Token[]
   //projects  Project[]
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
 }
 
-model Token {
-  id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  type       TokenType
-  emailToken String?   @unique // Only used for short lived email tokens
-  valid      Boolean   @default(true)
-  expiration DateTime
+// TODO:
+// model Curator {
+//   id        Int       @id @default(autoincrement())
+  // user       User     @relation(fields: [userId], references: [id])
+  // userId     Int
+// }
 
-  // Relation fields
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
-}
+// TODO:
+// model Venue {
+//   id        Int       @id @default(autoincrement())
+  // user       User     @relation(fields: [userId], references: [id])
+  // userId     Int
+// }
 
-model Project {
-  id            Int      @id @default(autoincrement())
-  title         String?  @db.VarChar(255)
-  contributors  User[]
-}
+// model Token {
+//   id         Int       @id @default(autoincrement())
+//   createdAt  DateTime  @default(now())
+//   updatedAt  DateTime  @updatedAt
+//   type       TokenType
+//   emailToken String?   @unique // Only used for short lived email tokens
+//   valid      Boolean   @default(true)
+//   expiration DateTime
+
+//   // Relation fields
+//   user   User @relation(fields: [userId], references: [id])
+//   userId Int
+// }
+
+// model Project {
+//   id            Int      @id @default(autoincrement())
+//   title         String?  @db.VarChar(255)
+//   contributors  User[]
+// }
 
 model Work {
   id        Int       @id @default(autoincrement())
@@ -84,13 +100,7 @@ model Link {
   artistID  Int
 }
 
-enum UserRole {
-  ARTIST
-  CURTATOR
-  VENUE
-}
-
-enum TokenType {
-  EMAIL // used as a short lived token sent to the user's email
-  API
-}
+// enum TokenType {
+//   EMAIL // used as a short lived token sent to the user's email
+//   API
+// }

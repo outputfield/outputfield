@@ -1,12 +1,10 @@
-import { useRouter } from 'next/router';
-import styles from "./artist.module.scss";
-import { ArtistRow } from "../artists/artistRow.component";
-import { TabView } from "../tabView/tabView.component";
-import { WorkPanel } from "../tabView/workPanel.component";
-import { InfoPanel } from "../tabView/infoPanel.component";
-import { ContactPanel } from "../tabView/contactPanel.component";
-import artistdata from "../data/artist-data";
-import Artist from '../data/artist';
+import React, { useRouter } from 'next/router'
+import { ArtistRow } from '../artists/artistRow.component'
+import { TabView } from '../tabView/tabView.component'
+import { WorkPanel } from '../tabView/workPanel.component'
+import { InfoPanel } from '../tabView/infoPanel.component'
+import { ContactPanel } from '../tabView/contactPanel.component'
+import artistdata from '../data/artist-data'
 
 interface Props{
   overlay?: boolean;
@@ -18,25 +16,24 @@ const ArtistPage = (
   {
     overlay = false,
     artistid,
-    exitFunction = null,
+    exitFunction,
   }:Props,
-  props
 ) => {
   // renders contact section as a third tab in main view instead of accessible through info
-  const contactTab = false;
+  const contactTab = false
 
-  const router = useRouter();
-  let artist = props.test;
+  const router = useRouter()
+  let artist
 
-  if (router.query.hasOwnProperty("artistid")){
-    artist = artistdata.get(router.query["artistid"]);
-  } else if (artistid != undefined || artistid != "") {
-    artist = artistdata.get(artistid);
+  if (router.query.artistid){
+    artist = artistdata.get(router.query['artistid'])
+  } else if (artistid != undefined || artistid != '') {
+    artist = artistdata.get(artistid)
   }
 
   // when page opened as direct url, exit navigates to list
   function closeArtist(){
-    router.push("/artists");
+    router.push('/artists')
   }
   // when page opened as overlay from list, exit button uses passed function
   //  which closes overlay and pops history state
@@ -44,9 +41,9 @@ const ArtistPage = (
   // catch 'back' browser event and close overlay but don't trigger another history pop
   window.onpopstate = function(event) {
     if(exitFunction){
-      (exitFunction)(false);
+      (exitFunction)(false)
     }
-  };
+  }
 
   if(artist==null||artist==undefined){
     /*
@@ -55,37 +52,37 @@ const ArtistPage = (
     return (null);
     */
     return (
-      <div style={{width:"100%",minHeight:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+      <div style={{width:'100%',minHeight:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
         This artist does not exist
       </div>
     )
   } else {
     return (
-      <div className={styles.root+(overlay?" "+styles.overlay:"")}>
-        <div className={styles.exit} onClick={overlay?exitFunction:closeArtist}/>
+      <div>
+        <div onClick={overlay?exitFunction:closeArtist}/>
         <ArtistRow artist={artist} type="detail"/>
         { contactTab?
           (
-            <TabView headers={["work","info","contact"]} activeTab={0}>
-            <WorkPanel works={artist.works}/>
-            <InfoPanel artist={artist} includeContact={false} />
-            <ContactPanel artist={artist} separateTab={true}/>
+            <TabView headers={['work','info','contact']} activeTab={0}>
+              <WorkPanel works={artist.works}/>
+              <InfoPanel artist={artist} includeContact={false} />
+              <ContactPanel artist={artist} separateTab={true}/>
             </TabView>
           ) :
           (
-            <TabView headers={["work","info"]} activeTab={0}>
-            <WorkPanel works={artist.works}/>
-            <InfoPanel artist={artist} />
+            <TabView headers={['work','info']} activeTab={0}>
+              <WorkPanel works={artist.works}/>
+              <InfoPanel artist={artist} />
             </TabView>
           )
         }
       </div>
-    );
+    )
   }
-};
+}
 
 // ArtistPage.getInitialProps = async function () {
 //   return {}
 // };
 
-export default ArtistPage;
+export default ArtistPage

@@ -11,12 +11,12 @@ export const sendMessage = async (
   // ADD EMAIL STUFF
 
   console.log(
-    "NEW EMAIL:" +
-    "\ndestination: \t"+destination+
-    "\ntopic: \t\t\t"+topic+
-    "\nsubject: \t\t"+subject+
-    "\nbody: \t\t\t"+body
-  );
+    'NEW EMAIL:' +
+    '\ndestination: \t'+destination+
+    '\ntopic: \t\t\t'+topic+
+    '\nsubject: \t\t'+subject+
+    '\nbody: \t\t\t'+body
+  )
 
-  return false;
+  return false
 }

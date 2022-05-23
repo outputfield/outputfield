@@ -1,6 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
 
+export const getArtists = () => {
+  return prisma?.artist.findMany({
+    include: {
+      work: true,
+      links: true
+    },
+  })
+}
+
 export default async function (
   req: NextApiRequest,
   res: NextApiResponse
@@ -9,20 +18,23 @@ export default async function (
   // }
   if (req.method === 'GET') {
     try {
-      const data = await prisma.artist.findMany({
+      console.log(prisma)
+      const data = await prisma?.artist.findMany({
         include: {
           work: true,
           links: true
         },
       })
+      console.log(data)
       if (!data) {
         return res.status(404)
       } else {
-        res.status(200).json(data);
+        res.status(200).json(data)
       }
     } catch (err) {
-      res.status(405);
-      res.end();
+      console.log(err)
+      res.status(405)
+      res.end()
     }
   }
 }

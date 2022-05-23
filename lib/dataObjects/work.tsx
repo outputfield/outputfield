@@ -1,9 +1,9 @@
-export default class Work{
-  type: string;
-  link: string;
+export default class Work {
+  type: string
+  link: string
 
   constructor(type: string, link: string){
-    this.type = type;
-    this.link = link;
+    this.type = type
+    this.link = link
   }
 }

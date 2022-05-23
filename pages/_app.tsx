@@ -1,14 +1,15 @@
-import '../styles/globals.scss'
+import React from 'react'
+import Layout from '../components/layout'
 
-declare module 'csstype' {
-  interface Properties {
-    '--iconcolor'?: any;
-    '--col'?: any;
-  }
+type Props = {
+  Component: React.FC,
+  pageProps: any
 }
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp: React.FunctionComponent<Props> = ({ Component, pageProps }) => (
+  <Layout>
+    <Component {...pageProps} />
+  </Layout>
+)
 
 export default MyApp

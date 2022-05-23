@@ -1,47 +1,47 @@
-import styles from "./artists.module.scss";
-import Artist from "../data/artist";
+import React from 'react'
+import Artist from '../data/artist'
 
-interface Props {
+export interface ArtistRowProps {
   artist: Artist;
-  type: "list" | "detail";
+  type: 'list' | 'detail';
   onClick?: (event: any) => any;
 }
 
 export const ArtistRow = ({
   artist,
   type,
-  onClick = null,
-}:Props) => {
-  let row = (
-    <div className={styles.artistHeader +" "+ styles[type]}>
-      <div className={styles.icon} style={{"--iconcolor": artist.iconColor}}/>
-      <div className={styles.info}>
-        <h1 className={styles.name}>
+  onClick,
+}:ArtistRowProps) => {
+  const row = (
+    <div>
+      <div/>
+      <div>
+        <h1>
           {artist.name}
         </h1><br/>
-        <div className={styles.handle}>
+        <div>
           {artist.handle}
         </div>
-        <div className={styles.separator}/>
-        <div className={styles.location}>
+        <div/>
+        <div>
           {artist.location}
         </div><br/>
-        {type=="detail"?
+        {type == 'detail' ?
           (
-            <div className={styles.pronouns}>
+            <div>
               {artist.pronouns}
             </div>
-          ):""
+          ):''
         }
       </div>
-      <div className={styles.medium}>
+      <div>
         {artist.medium}
       </div>
     </div>
   )
 
-  if(type=="detail"){
-    return row;
+  if(type=='detail'){
+    return row
   } else {
     return (
       <a onClick={onClick}>

@@ -1,5 +1,4 @@
-import * as React from "react";
-import styles from "./button.module.scss";
+import * as React from 'react'
 
 interface Props {
   children?: string | React.ReactNode;
@@ -13,10 +12,20 @@ export const Button = ({
   id,
 }:Props) => {
   return (
-    <button className={styles.root} onClick={onClick} id={id}>
+    <button className="my-0px mx-auto flex items-center
+  justify-center
+  w-72
+  h-16
+  bg-black
+  text-white
+  border
+  border-solid
+  border-black
+  border-box
+  uppercase" onClick={onClick} id={id}>
       {
         children
       }
     </button>
-  );
+  )
 }

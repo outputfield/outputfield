@@ -1,6 +1,6 @@
-import Artist from './artist';
-import Work from './work';
-import Link from './link';
+import Artist from './artist'
+import Work from './work'
+import Link from './link'
 
 /*
 __ARTIST
@@ -34,23 +34,23 @@ movement
 sound
 */
 
-export default class Artistlist{
-  artists: Artist[];
+export default class Artistlist {
+  artists: Artist[]
 
   constructor( artists : Artist[] ) {
-    this.artists = artists;
+    this.artists = artists
   }
 
-  push(artist){
-    this.artists[this.artists.length] = artist;
+  push(artist: Artist) {
+    this.artists[this.artists.length] = artist
   }
 
-  get(handle){
-    let found = false;
-    for(let i=0; i<this.artists.length; i++){
-      if(!found && this.artists[i].handle==handle){
-        found = true;
-        return this.artists[i];
+  get(handle: any) {
+    let found = false
+    for (let i=0; i<this.artists.length; i++) {
+      if (!found && this.artists[i].handle==handle) {
+        found = true
+        return this.artists[i]
       }
     }
   }
