@@ -29,8 +29,6 @@ Bodies Unhinge is a digital manifestation of queerness exceeding capture. Here, 
   Walk-ins Welcome is a digital tattoo showroom of tattoos incorporating digital mediums (e.g. 3D modeling, virtual reality, digital painting). The soundscape is assembled from residual sounds of a tattoo in session: plastic crinkling, ink shaking, machines whirring. 
 
 Advances in image-rendering have become interwoven into the process of tattooing, and archived onto skin. More and more, this analog art form has seen a shift towards the digital and the experimental. Walk-ins Welcome is a showcase of tattooers who have embraced this shift in their practice. 
-
-This sculpture garden features flash available for your skin, etched onto fleshy structures sculpted by Nusi Quero in collaboration with Alex Shilt. The space is encased in skeletal walls sculpted by Lady Bambs. The soundscape is a remote collaboration between Miss Sammie and Nusi Quero.
 `,
   curators: `
   As the core curator of Skin Garden, Viv Qiu invited researcher and theorist, Venus in Foil, and biosynthetic sculptress, Salomé Chatriot, to each co-curate a room within Skin Garden. Meshing Venus’ psychoanalytic research, and Salomé’s fluid approach to form, Skin Garden is an exercise in curatorial plurality: a transdisciplinary project.   `,
