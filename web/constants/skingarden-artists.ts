@@ -221,15 +221,6 @@ Betty Apple’s work focuses on using body politics and performativity as her fr
     description: `
     Bambs is a Korean-American combustion whose work is just as intense as she is. Obsessing over the incomparable details of nature’s structures, cycles, flirtations drives her to create until her eyes feel they’ll pop out of their feeble sockets. Her mediums include 3D sculptures, marker illustrations, and fiction writing.    `,
   },
-  nusiQuero: {
-    name: "Nusi Quero",
-    image: "/skingarden/artists/Nusi Quero.png",
-    website: "www.nusiquero.com",
-    instagram: "https://www.instagram.com/nusi_quero/",
-    location: "Los Angeles, US",
-    description: `
-    Nusi Quero is a multi-disciplinary artist and designer based in Los Angeles. The work of Nusi Quero explores themes of complexity, language, ornament, and enigma. He is currently creating a collection of couture, as well as experiences, environments, and curiosities, both virtual and visceral.      `,
-  },
   alexShilt: {
     name: "Alex Shilt",
     website: "http://www.alexshilt.com/",

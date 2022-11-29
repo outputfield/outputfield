@@ -417,12 +417,10 @@ const SkinGarden = () => {
             <Artist artist={skinGardenArtists.ladyBambs} />
           </ArtistGroup>
           <ArtistGroup title="Sculptures By">
-            <Artist artist={skinGardenArtists.nusiQuero} />
             <Artist artist={skinGardenArtists.alexShilt} />
           </ArtistGroup>
           <ArtistGroup title="Sound Woven By">
             <Artist artist={skinGardenArtists.sammieVeeler} />
-            <Artist artist={skinGardenArtists.nusiQuero} />
           </ArtistGroup>
           <ArtistGroup title="Featuring Tattoos From">
             <Artist artist={skinGardenArtists.hydroMachine} />
