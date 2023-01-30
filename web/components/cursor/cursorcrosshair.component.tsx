@@ -1,7 +1,6 @@
 import React from "react";
-import ReactCursorPosition from "react-cursor-position";
 import { ICursorCrosshairProps, ICursorCrosshairStyles } from "./cursorcrosshair.model";
-import classNames from "classnames";
+// import classNames from "classnames";
 import styles from "./cursor.module.scss";
 
 export const CursorCrosshair = ({

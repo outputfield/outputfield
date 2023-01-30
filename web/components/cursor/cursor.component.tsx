@@ -1,5 +1,4 @@
 import React from "react";
-import ReactCursorPosition from "react-cursor-position";
 import { ICursorProps, ICursorStyles } from "./cursor.model";
 import { CursorCrosshair } from "./cursorcrosshair.component";
 import styles from "./cursor.module.scss";
@@ -17,9 +16,9 @@ export const Cursor = ({
   };
 
   return (
-    <ReactCursorPosition className={styles.cursorposition} mapChildProps={({position}) => {return{x: position.x, y: position.y};}}>
+    <>
       <CursorCrosshair color={color} strokeLength={strokeLength}/>
       {children}
-    </ReactCursorPosition>
+    </>
   );
 };
