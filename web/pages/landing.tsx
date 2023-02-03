@@ -26,99 +26,27 @@ const models = [
       (explanation needed)
     cameraTarget,cameraOrbit,minCameraOrbit,maxCameraOrbit,minFieldOfView,maxFieldOfView - attributes from modelviewer
       cameraTarget:
-        1) Under camera icon, third tab, note XYZ value under "Target Point".
+        Under camera icon, third tab, note XYZ value under "Target Point".
       cameraOrbit:
-        2) Note the "camera-orbit" attribute of the <model-viewer></model-viewer>
+        Note the "camera-orbit" attribute of the <model-viewer></model-viewer>
+      minCameraOrbit,maxCameraOrbit:
+        ???
       minFieldOfView / maxFieldOfView:
-        3) Note the "field-of-view" attribute of the <model-viewer></model-viewer>
-      
-
+        Note the "field-of-view" attribute of the <model-viewer></model-viewer>
   */
-  // {
-  //   name:"baggie",
-  //   src:"baggie_new.glb",
-  //   poster:"baggie_new.png",
-  //   orientation:"square",
-  //   cameraTarget:"0m -0.05m -3.882e-11m",
-  //   cameraOrbit:"-49.91deg 75.65deg 3.306m",
-  //   minCameraOrbit:"auto auto 3.306m",
-  //   maxCameraOrbit:"auto auto auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // },
-  // {
-  //   name:"walkinswelcome_promo",
-  //   src:"walkinswelcome_promo.glb",
-  //   poster:"walkinswelcome_promo.png",
-  //   orientation:"portrait",
-  //   cameraTarget:"0.03197m 3.069m -0.21m",
-  //   cameraOrbit:"23.1deg 94.01deg 8.35m",
-  //   minCameraOrbit:"auto auto 8.35m",
-  //   maxCameraOrbit:"auto auto auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // },
-  // {
-  //   name:"walkinswelcome_pang",
-  //   src:"walkinswelcome_pang.glb",
-  //   poster:"walkinswelcome_pang.png",
-  //   orientation:"landscape",
-  //   cameraTarget:"-6m 25m -7m",
-  //   cameraOrbit:"24.49deg 91.27deg 149.2m",
-  //   minCameraOrbit:"auto 65deg 149.2m",
-  //   maxCameraOrbit:"auto 134deg auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // },
-  // {
-  //   name:"walkinswelcome_dean",
-  //   src:"walkinswelcome_dean.glb",
-  //   poster:"walkinswelcome_dean.png",
-  //   orientation:"square",
-  //   cameraTarget:"-0.01m 31.49m 0.002085m",
-  //   cameraOrbit:"255.8deg 96.69deg 134.3m",
-  //   minCameraOrbit:"auto auto 134.3m",
-  //   maxCameraOrbit:"auto auto auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // },
-  // {
-  //   name:"walkinswelcome_ilya",
-  //   src:"walkinswelcome_ilya.glb",
-  //   poster:"walkinswelcome_ilya.png",
-  //   orientation:"square",
-  //   cameraTarget:"0.01m 25.42m 0.208m",
-  //   cameraOrbit:"-42.81deg 69.2deg 80.57m",
-  //   minCameraOrbit:"auto auto 80.57m",
-  //   maxCameraOrbit:"auto auto auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // },
-  // {
-  //   name:"walkinswelcome_hyodo",
-  //   src:"walkinswelcome_hyodo.glb",
-  //   poster:"walkinswelcome_hyodo.png",
-  //   orientation:"landscape",
-  //   cameraTarget:"0.008938m 20.29m -5.71m",
-  //   cameraOrbit:"-44.27deg 63.36deg 124.7m",
-  //   minCameraOrbit:"auto 39deg 124.7m",
-  //   maxCameraOrbit:"auto 119deg auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // }
-  // - - - - - - - 
-  // {
-  //   name:"Candida_v02",
-  //   src:"Candida_v02.glb",
-  //   poster:"Candida_v02.png",
-  //   orientation:"square",
-  //   cameraTarget:"-37.95m 47.24m 5.71m",
-  //   cameraOrbit:"-44.27deg 63.36deg 124.7m",
-  //   minCameraOrbit:"517.3deg 74.65deg 269.1m",
-  //   maxCameraOrbit:"auto 119deg auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // }, 
+
+  {
+    name:"Candida_v02",
+    src:"Candida_v02.glb",
+    poster:"Candida_v02.png",
+    orientation:"square",
+    cameraTarget:"-37.95m 47.24m 5.71m",
+    cameraOrbit:"-44.27deg 63.36deg 124.7m",
+    minCameraOrbit:"517.3deg 74.65deg 269.1m",
+    maxCameraOrbit:"auto 119deg auto",
+    minFieldOfView:"45deg",
+    maxFieldOfView:"45deg"
+  }, 
   {
     name:"Corrompida1_v08",
     src:"Corrompida1_v08.glb",
