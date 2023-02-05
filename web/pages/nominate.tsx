@@ -20,7 +20,7 @@ Nominate.getInitialProps = async function (context) {
     const pageData = await getPageContent("Frontpage");
     return { pageData }
   } catch (event) {
-    throw getErrorMessage(event);
+    if (event instanceof Error) throw getErrorMessage(event);
   }
 };
 

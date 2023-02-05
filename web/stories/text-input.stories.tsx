@@ -1,9 +1,7 @@
-import { withKnobs } from "@storybook/addon-knobs";
 import React, { useEffect, useRef } from "react";
 import { TextInput } from "../components/text-input/text-input.component";
 
 export default {
-  decorators: [withKnobs],
   title: "ui-kit/text-input",
 };
 

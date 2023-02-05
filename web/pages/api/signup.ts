@@ -102,11 +102,13 @@ export default async (
 
     return res.status(200).json({ email: signupRequest.email });
   } catch (event) {
+    let response
+    if (event instanceof Error) response = event.message
 
-    if (event.response.status === 400) {
+    if (response.status === 400) {
       return sendError(res, 400, "Email is already used.");
     }
-    else if (event.response.status === 403) {
+    else if (response.status === 403) {
       return sendError(res, 403, "Internal auth issue");
     }
     else {
