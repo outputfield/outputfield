@@ -17,81 +17,109 @@ const models = [
 
     name - name to reference in css to apply custom sizing/styling of div.renderWrap for a specific model
     src & poster - file names; have to be placed in "public/3d/" folder
+      poster: 1) Go to camera icon, third tab. 
+              2) Drag model into initial position. 
+              3) Click "SAVE CURRENT AS INITIAL" 
+              4) Go to two arrows icon, first tab. 
+              5) Select 1080p and PNG. 
     orientation - "square", "landscape" or "portrait" to aid in page layout
+      (explanation needed)
     cameraTarget,cameraOrbit,minCameraOrbit,maxCameraOrbit,minFieldOfView,maxFieldOfView - attributes from modelviewer
+      cameraTarget:
+        Under camera icon, third tab, note XYZ value under "Target Point".
+      cameraOrbit:
+        Note the "camera-orbit" attribute of the <model-viewer></model-viewer>
+      minCameraOrbit,maxCameraOrbit:
+        ???
+      minFieldOfView / maxFieldOfView:
+        Note the "field-of-view" attribute of the <model-viewer></model-viewer>
   */
-  // {
-  //   name:"baggie",
-  //   src:"baggie_new.glb",
-  //   poster:"baggie_new.png",
-  //   orientation:"square",
-  //   cameraTarget:"0m -0.05m -3.882e-11m",
-  //   cameraOrbit:"-49.91deg 75.65deg 3.306m",
-  //   minCameraOrbit:"auto auto 3.306m",
-  //   maxCameraOrbit:"auto auto auto",
-  //   minFieldOfView:"45deg",
-  //   maxFieldOfView:"45deg"
-  // },
+
   {
-    name:"walkinswelcome_promo",
-    src:"walkinswelcome_promo.glb",
-    poster:"walkinswelcome_promo.png",
-    orientation:"portrait",
-    cameraTarget:"0.03197m 3.069m -0.21m",
-    cameraOrbit:"23.1deg 94.01deg 8.35m",
-    minCameraOrbit:"auto auto 8.35m",
-    maxCameraOrbit:"auto auto auto",
-    minFieldOfView:"45deg",
-    maxFieldOfView:"45deg"
-  },
-  {
-    name:"walkinswelcome_pang",
-    src:"walkinswelcome_pang.glb",
-    poster:"walkinswelcome_pang.png",
-    orientation:"landscape",
-    cameraTarget:"-6m 25m -7m",
-    cameraOrbit:"24.49deg 91.27deg 149.2m",
-    minCameraOrbit:"auto 65deg 149.2m",
-    maxCameraOrbit:"auto 134deg auto",
-    minFieldOfView:"45deg",
-    maxFieldOfView:"45deg"
-  },
-  {
-    name:"walkinswelcome_dean",
-    src:"walkinswelcome_dean.glb",
-    poster:"walkinswelcome_dean.png",
+    name:"Candida_v02",
+    src:"Candida_v02.glb",
+    poster:"Candida_v02.png",
     orientation:"square",
-    cameraTarget:"-0.01m 31.49m 0.002085m",
-    cameraOrbit:"255.8deg 96.69deg 134.3m",
-    minCameraOrbit:"auto auto 134.3m",
-    maxCameraOrbit:"auto auto auto",
-    minFieldOfView:"45deg",
-    maxFieldOfView:"45deg"
-  },
-  {
-    name:"walkinswelcome_ilya",
-    src:"walkinswelcome_ilya.glb",
-    poster:"walkinswelcome_ilya.png",
-    orientation:"square",
-    cameraTarget:"0.01m 25.42m 0.208m",
-    cameraOrbit:"-42.81deg 69.2deg 80.57m",
-    minCameraOrbit:"auto auto 80.57m",
-    maxCameraOrbit:"auto auto auto",
-    minFieldOfView:"45deg",
-    maxFieldOfView:"45deg"
-  },
-  {
-    name:"walkinswelcome_hyodo",
-    src:"walkinswelcome_hyodo.glb",
-    poster:"walkinswelcome_hyodo.png",
-    orientation:"landscape",
-    cameraTarget:"0.008938m 20.29m -5.71m",
+    cameraTarget:"-37.95m 47.24m 5.71m",
     cameraOrbit:"-44.27deg 63.36deg 124.7m",
-    minCameraOrbit:"auto 39deg 124.7m",
+    minCameraOrbit:"517.3deg 74.65deg 269.1m",
     maxCameraOrbit:"auto 119deg auto",
     minFieldOfView:"45deg",
     maxFieldOfView:"45deg"
-  }
+  }, 
+  {
+    name:"Corrompida1_v08",
+    src:"Corrompida1_v08.glb",
+    poster:"Corrompida1_v08.png",
+    orientation:"landscape",
+    cameraTarget:"0.72m 6.75m -0.12m",
+    cameraOrbit:"-80.55deg 86.7deg 32.54m",
+    minCameraOrbit:"-180deg 0deg auto",
+    maxCameraOrbit:"180deg 180deg auto",
+    minFieldOfView:"30deg",
+    maxFieldOfView:"30deg"
+  },
+  {
+    name:"Crawler2_v02",
+    src:"Crawler2_v02.glb",
+    poster:"Crawler2_v02.png",
+    orientation:"landscape",
+    cameraTarget:"0.07m 0.96m -0.44m",
+    cameraOrbit:"76.02deg 90.35deg 11.37m",
+    minCameraOrbit:"-180deg 0deg auto",
+    maxCameraOrbit:"180deg 180deg auto",
+    minFieldOfView:"30deg",
+    maxFieldOfView:"30deg"
+  },
+  {
+    name:"Downshifting",
+    src:"Downshifting.glb",
+    poster:"Downshifting.png",
+    orientation:"landscape",
+    cameraTarget:"-0.46m 0.31m 0.02m",
+    cameraOrbit:"-103.9deg 88deg 8.087m",
+    minCameraOrbit:"-180deg 0deg auto",
+    maxCameraOrbit:"180deg 180deg auto",
+    minFieldOfView:"30deg",
+    maxFieldOfView:"30deg"
+  },
+  {
+    name:"Fluid_v02",
+    src:"Fluid_v02.glb",
+    poster:"Fluid_v02.png",
+    orientation:"landscape",
+    cameraTarget:"0.08m 6.60m 0.02m",
+    cameraOrbit:"-80.55deg 86.7deg 28.04m",
+    minCameraOrbit:"-180deg 0deg auto",
+    maxCameraOrbit:"180deg 180deg auto",
+    minFieldOfView:"30deg",
+    maxFieldOfView:"30deg"
+  },
+  {
+    name:"Gluttony_v02",
+    src:"Gluttony_v02.glb",
+    poster:"Gluttony_v02.png",
+    orientation:"portrait",
+    cameraTarget:"-2.81m 80.26m -5.67m",
+    cameraOrbit:"-80.55deg 86.7deg 436m",
+    minCameraOrbit:"-180deg 0deg auto",
+    maxCameraOrbit:"180deg 180deg auto",
+    minFieldOfView:"30deg",
+    maxFieldOfView:"30deg"
+  },
+  {
+    name:"Quartz",
+    src:"Quartz.glb",
+    poster:"Quartz.png",
+    orientation:"portrait",
+    cameraTarget:"0.03m 1.45m 0.92m",
+    cameraOrbit:"0deg 75deg 9.248m",
+    minCameraOrbit:"-180deg 0deg auto",
+    maxCameraOrbit:"180deg 180deg auto",
+    minFieldOfView:"30deg",
+    maxFieldOfView:"30deg"
+  },
+  
   // current model selection happens in getInitialProps
 ];
 
@@ -328,7 +356,7 @@ const Landing = (props) => {
   const isError = state === "error";
 
   const meta_title = "Output Field";
-  const meta_description = "Neutralize the canon";
+  const meta_description = "Breach the canon";
   const meta_canonical = "https://outputfield.com";
   const meta_image = "https://outputfield.com/meta/social.png";
 
@@ -385,11 +413,11 @@ const Landing = (props) => {
         <div className={`${styles.render} ${styles[models[currentModel].orientation]}`}>
           <div className={`${styles.renderWrap} ${styles[models[currentModel].orientation]}`}><script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
             {/*  */}
-            {/* <model-viewer src={"3d/"+models[currentModel].src} poster={"3d/"+models[currentModel].poster} auto-rotate camera-controls camera-target={models[currentModel].cameraTarget} camera-orbit={models[currentModel].cameraOrbit} min-camera-orbit={models[currentModel].minCameraOrbit} max-camera-orbit={models[currentModel].maxCameraOrbit} min-field-of-view={models[currentModel].minFieldOfView} max-field-of-view={models[currentModel].maxFieldOfView} interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
+            <model-viewer src={"3d/"+models[currentModel].src} poster={"3d/"+models[currentModel].poster} auto-rotate camera-controls camera-target={models[currentModel].cameraTarget} camera-orbit={models[currentModel].cameraOrbit} min-camera-orbit={models[currentModel].minCameraOrbit} max-camera-orbit={models[currentModel].maxCameraOrbit} min-field-of-view={models[currentModel].minFieldOfView} max-field-of-view={models[currentModel].maxFieldOfView} interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
               </div>
-            </model-viewer> */}
+            </model-viewer>
           </div>
           <a className={styles.downArrow} onClick={function(e){scrollTo(e)}}><div/></a>
         </div>
