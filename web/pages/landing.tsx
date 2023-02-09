@@ -412,7 +412,6 @@ const Landing = (props) => {
 
         <div className={`${styles.render} ${styles[models[currentModel].orientation]}`}>
           <div className={`${styles.renderWrap} ${styles[models[currentModel].orientation]}`}><script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            {/*  */}
             <model-viewer src={"3d/"+models[currentModel].src} poster={"3d/"+models[currentModel].poster} auto-rotate camera-controls camera-target={models[currentModel].cameraTarget} camera-orbit={models[currentModel].cameraOrbit} min-camera-orbit={models[currentModel].minCameraOrbit} max-camera-orbit={models[currentModel].maxCameraOrbit} min-field-of-view={models[currentModel].minFieldOfView} max-field-of-view={models[currentModel].maxFieldOfView} interaction-prompt="none" style={{"--poster-color":colors.backgroundGrey}} id="modelViewer" data-js-focus-visible>
               <div className="progress-bar hide" slot="progress-bar">
                 <div className="update-bar"></div>
