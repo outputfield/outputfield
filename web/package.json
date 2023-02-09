@@ -48,7 +48,7 @@
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
     "postcss": "^8.2.15",
-    "sass-loader": "^10.1.0",
+    "sass-loader": "^13.2.0",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.1.2",
     "typescript": "^4.0.5"
